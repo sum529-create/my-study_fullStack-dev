@@ -1,0 +1,18 @@
+package ex02_variable;
+
+public class Ex04_casting {
+
+	public static void main(String[] args) {
+		/*
+		 * 타입 변환 - 형 변환	= casting
+		 * 
+		 * 1. 자동 타입 변환
+		 * 		1) java가 스스로 타입을 변환
+		 * 		2) 작은 크기 -> 큰 크기
+		 * 		3) 정수와 실수의 연산 -> 정수를 실수로 자동 타입 변환 후에 연산
+		 */
+		
+		System.out.println(1 + 1.5);
+	}
+
+}

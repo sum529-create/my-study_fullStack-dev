@@ -1,0 +1,22 @@
+package ex01_oop;
+
+class Watch{
+
+	public Watch(int i, int j, int k) {
+		// TODO Auto-generated constructor stub
+	}
+	
+}
+
+public class Ex01_Watch {
+
+	public static void main(String[] args) {
+		
+		Watch watch = new Watch(16, 15, 30);
+		
+		watch.addHour(25);	// 25시간 후
+		watch.addMinute(61);
+
+	}
+
+}

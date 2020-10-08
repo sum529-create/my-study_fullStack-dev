@@ -1,0 +1,12 @@
+// 주석 : 설명, 안내를 작성 ( // 주석 , /* 주석 */ )
+
+package ex01_basic; // 패키지 (폴더와 유사, 최소 3수준 권장, 수업의 편의상 1수준)
+
+public class Ex01 {	// 클래스 (소스 코드명과 같다 : Ex01.java)
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,23 @@
+package ex01_array;
+
+public class Ex02_forEach {
+
+	public static void main(String[] args) {
+		
+		// 일반 for문
+		// for (int i = 0; i<a.length; i++)
+		// 		배열 요소 : a[i]
+		
+		// 향상 for문
+		// for (int n : a)
+		// 		배열 요소 : n
+		
+		int[] a = new int[5];
+		
+		for(int n : a) {
+			System.out.println(n);
+		}
+		
+	}
+
+}

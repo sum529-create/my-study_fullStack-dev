@@ -1,0 +1,57 @@
+package ex03_polymorphism_quiz;
+
+
+class Staff{
+	
+	// field
+	private String name;		// 이름
+	private String depart;		// 부서
+	
+
+}
+
+class SalaryMan extends Staff{
+	
+	// field
+	private int salary;			// 기본급 (정해진 급여)
+
+	
+	
+}
+
+
+class SalesMan extends SalaryMan{
+	
+	// field
+	private int salesVolume;	// 판매량
+	private double incentive;	// 인센티브(판매량이 100이상이면 20%, 아니면 5%)
+	
+
+}
+
+class Alba extends Staff{
+	
+	// field
+	private int times;			// 일한 시간
+	private double payPerHour;		// 시급
+	
+
+}
+
+class Company {
+	
+	// field
+	private Staff[] staffList;
+	private int idx;
+	
+}
+
+
+public class Quiz02 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

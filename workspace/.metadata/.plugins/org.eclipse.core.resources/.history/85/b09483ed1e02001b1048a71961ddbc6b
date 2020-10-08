@@ -1,0 +1,10 @@
+package ex02_object_array;
+
+public class Ex06_Concert {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

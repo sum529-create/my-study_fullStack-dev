@@ -1,0 +1,42 @@
+package ex01_oop;
+
+class Exam{
+	// field
+	String examName;
+	int kor, eng, mat;	// 0 ~ 100
+	double avg;
+	char grade;		// A, B, C, D, F [90. 80, 70, ...]
+	
+	// constructor
+	Exam(String examName){
+		this.examName = examName;
+	}
+	
+	// method
+	void setScore() {
+		kor = (int)(Math.random() * 101) + 0;	// 0부터 101개 난수(0~100)
+		eng = (int)(Math.random() * 101) + 0;	// 0부터 101개 난수(0~100)
+		mat = (int)(Math.random() * 101) + 0;	// 0부터 101개 난수(0~100)
+	}
+	void setAverage() {
+		// 평균
+	}
+	void setGrade() {
+		// 학점 채우기
+	}
+	void info() {
+		System.out.println(examName + "의 결과");
+		System.out.println("국, 영, 수: " + kor + ", " + eng + ", " + mat);
+		System.out.println("평균 : " + avg + "(" + grade + ")");
+	}
+	
+}
+
+
+public class Ex08_Student {
+
+	public static void main(String[] args) {
+
+	}
+
+}

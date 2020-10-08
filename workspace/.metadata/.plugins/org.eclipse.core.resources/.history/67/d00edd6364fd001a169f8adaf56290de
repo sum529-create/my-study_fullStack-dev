@@ -1,0 +1,31 @@
+package ex03_method;
+
+import java.util.Date;
+
+class User{
+	// field
+	String id;
+	String pw;
+	Date date;	// Date 타입의 date 객체
+	
+	// method
+	// 1. 필드 정보 저장
+	//	1) 결과타입 : void
+	//	2) 메소드명 : setInfo
+	//	3) 매개변수 : String uId, String uPw;
+	void setInfo(String uId, String uPw) {
+		id = uId;
+		pw = uPw;
+		date = new Date();	// 현재 날짜와 시간 의미
+	}
+}
+
+public class Ex01_User {
+
+	public static void main(String[] args) {
+
+		
+		
+	}
+
+}

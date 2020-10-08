@@ -1,0 +1,23 @@
+package ex03_loop;
+
+public class Ex06_continue {
+
+	public static void main(String[] args) {
+		
+		// continue 문
+		// 실행 중인 loop문으로 되돌아 감
+		
+		// 1. 1 ~ 10 사이 정수 중에서 4 ~ 6만 제외하고 출력
+		
+		for(int a= 1; a<=10; a++) {
+			if ( a >= 4 && a <= 6) {
+				continue;
+			}
+			
+			System.out.println(a);
+		}
+		
+
+	}
+
+}

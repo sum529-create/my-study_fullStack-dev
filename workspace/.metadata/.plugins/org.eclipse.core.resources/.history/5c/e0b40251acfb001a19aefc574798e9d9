@@ -1,0 +1,19 @@
+package ex01_array;
+
+public class Ex01_array {
+
+	public static void main(String[] args) {
+		
+		/*
+		 * 배열 (array)
+		 * 1. 변수가 여러 개 필요할 때 배열을 대신 사용할 수 있다.
+		 * 2. 선언 방법
+		 * 		1) int[] a = new int[5];	// int 타입 5개 변수 생성, 배열 a 생성
+		 * 		2) int a[] = new int[5];	// 추천하지 않음
+		 * 		3) int[] a;
+		 * 			a = new int[5];
+		 * 3. 초기화 방법
+		 */
+	}
+
+}

@@ -1,0 +1,137 @@
+package ex03_polymorphism_quiz;
+
+
+class Staff{
+	
+	// field
+	private String name;		// 이름
+	private String depart;		// 부서
+
+	// constructor
+	public Staff(String name, String depart) {
+		super();
+		this.name = name;
+		this.depart = depart;
+	}
+	
+	// method
+	public void info() {
+		System.out.println("직원이름 : " + name);
+		System.out.println("소속부서 : " + depart);
+	}
+	public int pay() {
+		return 0;	// 사용되는 반환 값은 아니다.
+	}
+}
+
+class SalaryMan extends Staff{
+	
+	// field
+	private int salary;			// 기본급 (정해진 급여)
+
+	// constructor
+	public SalaryMan(String name, String depart, int salary) {
+		super(name, depart);
+		this.salary = salary;
+	}
+
+	@Override
+	public void info() {
+		super.info();		// 이름, 부서를 출력하는 staff의 info메소드
+		System.out.println("기본급 : " + salary);
+	}
+
+	@Override
+	public int pay() {
+		return salary;
+	}
+
+	// method
+	
+	
+}
+
+
+class SalesMan extends SalaryMan{
+	
+	// field
+	private int salesVolume;	// 판매량
+	private double incentive;	// 인센티브(판매량이 100이상이면 20%, 아니면 5%)
+	
+	public SalesMan(String name, String depart, int salary) {
+		super(name, depart, salary);
+	}
+	
+	// method
+	public int salesPay() {
+		return (int)(salesVolume * incentive);
+	}
+
+	public void setSalesVolume(int salesVolume) {
+		this.salesVolume = salesVolume;
+	}
+	
+	@Override
+	public void info() {
+		super.info();		// 이름, 부서, 기본급을 출력하는 SalaryMan의 info()메소드
+		System.out.println("판매수당 : " + salesPay());
+		System.out.println("총 급여 : " + pay());
+	}
+
+	@Override
+	public int pay() {
+		return super.pay() + salesPay();		// super.pay() : SalaryMan의 pay()는 기본급을 의미한다
+	}
+	
+}
+
+class Alba extends Staff{
+	
+	// field
+	private int times;			// 일한 시간
+	private double payPerHour;		// 시급
+
+	// constructor
+	public Alba(String name, String depart, int times, double payPerHour) {
+		super(name, depart);
+		this.times = times;
+		this.payPerHour = payPerHour;
+	}
+	
+	// method
+	public void setTimes(int times) {
+		this.times = times;
+	}
+
+	@Override
+	public void info() {
+		super.info();		// 이름, 부서
+		System.out.println("총 급여 : " + pay());
+	}
+
+	@Override
+	public int pay() {
+		return (int)(times * payPerHour);
+	}
+	
+	
+	
+}
+
+class Company {
+	
+	// field
+	private Staff[] staffList;
+	private int idx;
+	
+}
+
+
+public class Quiz02 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

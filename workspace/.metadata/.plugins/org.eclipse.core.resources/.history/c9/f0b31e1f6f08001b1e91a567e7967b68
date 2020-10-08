@@ -1,0 +1,32 @@
+package ex02_interface;
+
+// 인터페이스 이름은 "~할 수 있는"이라는 이름을 종종 사용한다.
+
+// 상속(extends)과 구현(implements)을 동시에 진행할 수 있다.
+// 1. 상속은 다중 상속(2개 이상 클래스를 상속)이 불가능하다.
+// 2. 자바의 다중 상속은 "상속 + 구현"으로 진행할 수 있다.
+
+// 상속 먼저 구현 나중
+
+class Phone{
+	// field
+	private String owner;
+
+	// constructor
+	public Phone(String owner) {
+		super();
+		this.owner = owner;
+	}
+	
+	
+}
+
+
+public class Ex03_Computable {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

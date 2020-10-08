@@ -1,0 +1,31 @@
+package ex03_access_modifier;
+
+class Person{
+	
+	// field
+	private String name;
+	private int age;
+	private char gender;
+	private double height;
+	private boolean adult;
+	
+	// constructor
+	public Person() {
+		// 하는 일 없음	: new Person()을 호출할 수 있도록 만들어 둔다.
+	}
+	
+	// setter
+	public void setName(String name) {
+		
+	}
+	
+}
+
+public class Ex03_Person {
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}

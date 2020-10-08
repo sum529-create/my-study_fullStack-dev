@@ -1,0 +1,10 @@
+package ex01_upcasting;
+
+public class Ex03_Coffee {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,86 @@
+package choosuk;
+
+import java.util.Scanner;
+
+class Player{
+	Scanner sc = new Scanner(System.in);
+	String playerName;
+	int[] playerNum = new int[3];
+	
+	
+	Player(String playerName){
+		this.playerName = playerName;
+	}
+	String getName() {
+		return playerName;
+	}
+	
+
+	
+	void getEnter() {
+		sc.nextLine();
+	}
+	
+	boolean gamePlay() {
+		for(int j =0; j < playerNum.length; j++) {
+			int random = (int)(Math.random()*3)+1;
+			playerNum[j] = random;
+		}
+		System.out.println("[" + playerName + "]:");
+		getEnter();
+		
+		System.out.println("\t\t");
+		
+		boolean result = true;
+		for(int i = 0; i<playerNum.length; i++) {
+			System.out.println(playerNum[i] + "\t");
+			if(playerNum[0] == playerNum[i]) {
+				result = false;
+				break;
+			}
+		}
+		return result;
+		
+	}
+}
+class Game{
+	
+	Scanner sc = new Scanner(System.in);
+	Player[] player;
+	
+	Game() {
+		System.out.print("겜블링 게임에 참여할 선수 숫자를 입력하세요 >> ");
+		int num = sc.nextInt();
+		sc.nextLine();
+		player = new Player[num];
+		
+		for(int i =0; i < player.length; i++) {
+			System.out.print((i+1) + "번째 선수 이름 >> ");
+			String name = sc.next();
+			player[i] = new Player(name);
+			
+		}
+	}
+	void info(){
+		while(true) {
+			for(int i = 0; i<player.length; i++) {
+				if(player[i].gamePlay()) {
+					System.out.println(player[i] + "승리!");
+				}else {
+					System.out.println("아쉽군요!");
+				}
+			}
+		}
+	}
+}
+
+public class Ex08 {
+
+	public static void main(String[] args) {
+		
+		Game game = new Game();
+		game.info();
+		
+	}
+
+}

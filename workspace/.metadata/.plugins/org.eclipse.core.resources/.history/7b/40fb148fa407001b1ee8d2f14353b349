@@ -1,0 +1,36 @@
+package ex02_downcasting;
+
+// 모든 사람은 Person 타입이다.
+
+class Person{
+	// method
+	public void eat() {
+		System.out.println("먹는다.");
+	}
+	public void sleep() {
+		System.out.println("잔다.");
+	}
+}
+
+class Student extends Person{
+	// method
+	public void study() {
+		System.out.println("공부한다.");
+	}
+}
+
+class Worker extends Person{
+	// method
+	public void work() {
+		System.out.println("일한다.");
+	}
+}
+
+public class Ex01_Person {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

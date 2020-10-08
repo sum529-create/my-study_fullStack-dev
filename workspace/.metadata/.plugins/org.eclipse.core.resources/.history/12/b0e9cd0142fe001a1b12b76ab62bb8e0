@@ -1,0 +1,17 @@
+package ex01_oop;
+
+// 좌표
+class Coord {
+	// field
+	int x;
+	int y;
+}
+
+public class Ex02_Circle {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

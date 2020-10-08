@@ -1,0 +1,26 @@
+package ex04_loop_quiz;
+
+import java.util.Scanner;
+
+public class Quiz06 {
+
+	public static void main(String[] args) {
+		
+		// 문제. 평점(1~5)을 3번 입력 받는다.
+		// 1~5사이의 입력이 아니면 다시 입력받는다.
+		
+		Scanner sc = new Scanner(System.in);
+		
+		for(int a= 1; a<=3; a++) {
+			System.out.print("1번째 평점 입력 >>> ");
+			int num = sc.nextInt();
+			if(num<=5 && num>=1) {
+				System.out.print(a + "번째 평점 입력 >>> ");
+				num = sc.nextInt();
+				
+			}
+		}
+
+	}
+
+}

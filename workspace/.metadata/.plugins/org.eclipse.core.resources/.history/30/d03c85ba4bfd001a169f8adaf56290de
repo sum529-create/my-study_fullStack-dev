@@ -1,0 +1,24 @@
+package ex02_user_type;
+
+
+/*
+ * 메소드
+ * 1. 클래스 내부에 추가하는 함수이다.
+ * 2. 메소드를 만드는 것을 메소드 정의라고 한다.
+ * 3. 메소드 정의 형식
+ * 		결과 타입 메소드이름(매개변수){
+ * 			본문
+ * 			return 결과;	// 결과가 없으면 생략
+ * 		}
+ */
+
+public class Computer {
+	
+	// 필드
+	String model;
+	String manufacturer;
+	int price;
+	
+	// 메소드
+	
+}

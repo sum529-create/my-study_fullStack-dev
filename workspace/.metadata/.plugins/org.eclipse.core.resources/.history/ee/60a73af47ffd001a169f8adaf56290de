@@ -1,0 +1,29 @@
+package ex03_method;
+
+// this : 객체 자신의 참조값
+// 객체 -> 필드, 메소드
+
+class computer{
+	// field
+	String model;
+	String manufacturer;
+	int price;
+	
+	// method
+	// 1. setInfo()
+	void setInfo(String model, String manufacturer, int price) {
+		model = this.model;
+		manufacturer = this.manufacturer;
+		price = this.price;
+	}
+	
+}
+
+public class Ex05_this {
+
+	public static void main(String[] args) {
+		
+		
+	}
+
+}

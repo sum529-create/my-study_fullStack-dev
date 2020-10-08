@@ -1,0 +1,14 @@
+package ex01_abstract;
+
+public class Ex02_Shape {
+
+	public Ex02_Shape() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

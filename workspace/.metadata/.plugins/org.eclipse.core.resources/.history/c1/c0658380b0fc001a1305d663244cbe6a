@@ -1,0 +1,54 @@
+package ex03_array_quiz;
+
+public class Quiz15 {
+
+	public static void main(String[] args) {
+		
+		// 문제. 5000원짜리 로또
+		int[][] lotto = new int[6][5];
+		
+
+		for(int i=0; i < lotto.length; i++) {
+			for(int j = 0; j< lotto[i].length; j++) {
+				lotto[i][j] = (int)(Math.random()*45)+1;
+			    for(int k=0;k<3;k++) //중복 값 제거 반복문
+		        {
+			    	for(int l=0;l<3;l++)
+			    	{
+			    		 if(lotto[i][j] == lotto[k][l]) {
+			    			 lotto[k][l]--;
+			    			 break;
+			    		 }
+			    	}
+		        }
+			}
+		}
+		
+
+		for(int i=0; i < lotto.length; i++) {
+			
+			for(int j = 0; j< lotto[i].length; j++) {	
+				System.out.print(lotto[i][j] + "\t");
+			}
+			System.out.println();
+		}
+		
+		
+		for(int i=0; i < lotto.length; i++) {
+			
+			for(int j = 0; j< lotto[i].length; j++) {				
+				int x = (int)(Math.random()*6);
+				int y = (int)(Math.random()*5);
+				int temp = lotto[i][j];
+				lotto[i][j] = lotto[x][y];
+				lotto[x][y] = temp;
+				System.out.print(lotto[i][j] + "\t");
+			}
+			System.out.println();
+		}
+		
+		
+		
+	}
+
+}

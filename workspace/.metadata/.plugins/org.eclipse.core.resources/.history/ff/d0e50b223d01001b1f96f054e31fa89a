@@ -1,0 +1,36 @@
+package ex02_object_array;
+
+class Song{
+
+	// field
+	String title;
+	String genre;
+	double playTime;
+	
+	// constructor
+	public Song(String title, String genre, double playTime) {
+		this.title = title;
+		this.genre = genre;
+		this.playTime = playTime;
+		
+	}
+	
+	
+	// method
+	
+	void info() {
+		System.out.println(title + ", " + genre + ", " + playTime);
+	}
+	
+	
+}
+
+public class Ex02_Singer {
+
+	public static void main(String[] args) {
+		
+		
+
+	}
+
+}

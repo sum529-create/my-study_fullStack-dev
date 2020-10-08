@@ -1,0 +1,30 @@
+package ex02_downcasting;
+
+class Car{
+	
+	// field
+	private String model;
+	
+}
+
+class EV extends Car{
+	
+	// field
+	private int battery;
+	
+}
+
+class Hybrid extends EV{
+	
+	// field
+	private int oil;
+}
+
+public class Ex02_Car {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

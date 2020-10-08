@@ -1,0 +1,13 @@
+package ex03_array_quiz;
+
+public class Quiz08 {
+
+	public static void main(String[] args) {
+		
+		// 문제. 0~9 사이 난수를 100개 생성하고,
+		// 각 숫자들의 생성 횟수(빈도수)
+		
+
+	}
+
+}

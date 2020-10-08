@@ -1,0 +1,5 @@
+package ex02_user_type;
+
+public class Person {
+
+}

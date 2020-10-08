@@ -1,0 +1,13 @@
+package ex04_loop_quiz;
+
+public class Quiz12 {
+
+	public static void main(String[] args) {
+		
+		// 문제. 10000원 모두 쓰기
+		// 사용할 금액을 입력 받아서 10000원에서 공제하기
+		
+
+	}
+
+}

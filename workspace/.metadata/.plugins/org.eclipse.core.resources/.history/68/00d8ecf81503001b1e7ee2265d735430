@@ -1,0 +1,65 @@
+package choosuk;
+
+import java.util.Scanner;
+
+class PhoneBook{
+	Phone[] phoneList;
+	
+	PhoneBook(int num){
+		this.phoneList = new Phone[num];
+	}
+}
+
+class Phone{
+	String name;
+	String tel;
+	
+	Phone(String name, String tel){
+		this.name = name;
+		this.tel = tel;
+		
+	}
+	void info() {
+		while(true) {
+			System.out.print("검색할 이름 >> ");
+			Scanner sc = new Scanner(System.in);
+			String name = sc.next();
+			if(name.equals("그만")) {
+				System.out.println("프로그램을 종료합니다.");
+				break;
+			}else if(name.equals(name)) {
+				System.out.println(name + " 번호는 " + tel + "입니다.");
+			}else {
+				System.out.println(name + "없습니다.");
+			}
+		}
+	}
+	
+}
+
+public class Ex07 {
+
+	public static void main(String[] args) {
+		
+		System.out.print("몇 명의 정보를 저장하시겠습니까? >> ");
+		Scanner sc = new Scanner(System.in);
+		int num = sc.nextInt();
+		PhoneBook phonebook = new PhoneBook(num);
+		Phone perinfo = null;		
+		
+		for(int i =0; i< num; i++) {
+			System.out.print("이름과 전화번호(이름과 번호는 빈 칸없이 입력) >> ");
+			String name = sc.next();
+			String tel = sc.next();	
+			perinfo = new Phone(name, tel);
+			if(i == num-1) {
+				System.out.println("저장되었습니다.");
+			}
+		}
+		perinfo.info();
+
+		
+		sc.close();
+	}
+
+}

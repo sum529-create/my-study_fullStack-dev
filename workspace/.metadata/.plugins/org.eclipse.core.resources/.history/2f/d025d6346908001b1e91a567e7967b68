@@ -1,0 +1,54 @@
+package ex02_interface;
+
+interface Animal {
+	void eat();		// public abstract void eat();
+	
+	
+}
+
+class Lion implements Animal{
+
+	@Override
+	public void eat() {
+		// TODO Auto-generated method stub
+		System.out.println("사자가 먹는다.");
+	}
+	// Lion만 가지고 있는 일반 메소드
+	public void run() {
+		System.out.println("사자는 달린다.");
+	}
+}
+
+class Shark implements Animal{
+
+	@Override
+	public void eat() {
+		// TODO Auto-generated method stub
+		System.out.println("상어가 먹는다.");
+	}
+	// Shark만 가기고 있는 일반 메소드
+	
+	public void swim() {
+		System.out.println("상어는 헤엄친다.");
+	}
+}
+
+public class Ex03_Animal {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+			@Override
+			public void eat() {
+				// TODO Auto-generated method stub
+				System.out.println("독수리가 먹는다.");
+			}
+		public void flu() {
+			System.out.println("독수리는 하늘을 난다.");
+		}
+	}
+
+}
+
+
+	

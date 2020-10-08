@@ -1,0 +1,5 @@
+package Ex03_interface;
+
+public interface Shape {
+
+}

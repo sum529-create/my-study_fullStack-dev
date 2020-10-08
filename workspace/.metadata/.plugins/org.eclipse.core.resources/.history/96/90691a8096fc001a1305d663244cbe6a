@@ -1,0 +1,64 @@
+package ex03_array_quiz;
+
+import java.util.Scanner;
+
+public class Quiz12 {
+
+	public static void main(String[] args) {
+		
+		// 문제. 성적 관리 프로그램
+				// 학생 3명 + 과목 3명
+				// 학생 3명의 이름은 "타요", "띠띠뽀", "뽀로로"이다.
+				// 과목 이름 : "국어", "영어", "수학"
+				// 입력 받는 성적들을 합계와 함께 출력하시오.
+		// 실행 예)
+		// 타요의 국어 점수 >>> 10
+		// 타요의 영어 점수 >>> 10
+		// 타요의 수학 점수 >>> 10
+		// ...
+		// 성적 결과
+		// 		국어 영어 수학 총점
+		// 타요 10 	 10   10   30
+		// ...
+		// 합계 0	 0	  0	   0
+		
+		int[][] total = new int[3][3];
+		String[] sub = {"국어", "영어", "수학"};
+		String[] name = {"타요", "띠띠뽀", "뽀로로"};
+		int[] sum = new int[4];
+		int all = 0;
+		
+		Scanner sc = new Scanner(System.in);
+		
+		for(int i = 0; i<total.length; i++) {
+			for(int j=0; j<total[i].length; j++) {
+				System.out.print(name[i] + "의 " + sub[j] + "점수 >>> ");
+				total[i][j] = sc.nextInt();
+				sum[j] += total[i][j];				
+			}
+			System.out.println();
+		}
+		
+		System.out.println("성적 결과\n\t\t국어\t영어\t수학\t총점");
+		
+		for(int i = 0; i<total.length; i++) {
+			System.out.print(name[i] + "\t");
+			for(int j=0; j<total[i].length; j++) {
+				System.out.print(total[i][j] + "\t");
+			}
+			System.out.println(sum[i]);
+		}
+		
+		System.out.print("합계\t");
+		for(int i = 0; i<total.length; i++) {
+			sum[total.length] += sum[i];
+			System.out.print(sum[i] + "\t");
+			all += sum[i];
+		}
+		
+		System.out.println(all);
+		sc.close();
+		
+	}
+
+}

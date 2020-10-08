@@ -1,0 +1,22 @@
+package ex02_quiz;
+
+import javax.swing.JOptionPane;
+
+public class Quiz04 {
+
+	public static void main(String[] args) {
+		
+		// 문제. 매출액(정수)과 등급("VIP", "일반")을 입력 받아서,
+		// "VIP" 등급은 매출액의 20%를 할인하고,
+		// "일반" 등급은 매출액의 5%를 할인하여 실제 매출액을 출력하시오.
+		
+		String strCost = JOptionPane.showInputDialog("나이를 입력하세요.");
+		int cost = Integer.parseInt(strCost);
+		
+		String strGrade = JOptionPane.showInputDialog("등급을 입력하세요.");
+		
+		JOptionPane.showMessageDialog(null, strGrade == "VIP"? cost-(cost * 0.2): cost - (cost * 0.05));
+		
+	}
+
+}

@@ -1,0 +1,14 @@
+package ex01_user_type;
+
+// 클래스 book
+// 제목, 저자, 가격, 판매량, 베스트 셀러 유무(판매량이 1000 이상은 베스트 셀러)
+
+public class Ex02_Book {
+
+	public static void main(String[] args) {
+		
+		
+
+	}
+
+}

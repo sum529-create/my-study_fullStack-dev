@@ -1,0 +1,10 @@
+package ex01_branch;
+
+public class Ex05_switch {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

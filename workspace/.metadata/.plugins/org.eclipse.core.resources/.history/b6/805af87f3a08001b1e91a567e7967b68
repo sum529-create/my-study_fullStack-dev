@@ -1,0 +1,10 @@
+package ex03_polymorphism_quiz;
+
+public class Ex01_Elec {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,23 @@
+package ex02_quiz;
+
+import java.util.Scanner;
+
+public class Quiz06 {
+
+	public static void main(String[] args) {
+		
+		// 문제. 주민등록번호를 하이픈(-)없이 입력 받아서,
+		// "남자", "여자"를 구분하여 출력하시오.
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.println("주민등록번호를 입력하시오.");
+		int psn = sc.nextInt();
+		
+		//123456 7891234
+		
+		int num = (psn / 1000000)%10;
+		System.out.println(num);
+
+	}
+
+}

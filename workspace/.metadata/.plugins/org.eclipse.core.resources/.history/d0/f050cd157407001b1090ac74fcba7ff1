@@ -1,0 +1,10 @@
+package ex01_package;
+
+public class Mother {
+
+	public static void main(String[] args) {
+		Father f = new Father();
+
+	}
+
+}

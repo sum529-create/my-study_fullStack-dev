@@ -1,0 +1,79 @@
+package ex02_interface;
+
+class Pet{
+	// field
+	private String name;
+
+	// constructor
+	public Pet(String name) {
+		super();
+		this.name = name;
+	}
+
+	// method
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public void feed(String food) {
+		System.out.println("먹는다.");
+	}
+	
+}
+
+class Dog extends Pet{
+	
+	// constructor
+	public Dog(String name) {
+		super(name);
+	}
+}
+
+class Turtle extends Pet{
+	
+	// constructor
+	public Turtle(String name) {
+		super(name);
+	}
+}
+
+class Person {
+	// method
+	public void feed() {
+		
+	}
+
+	public void feed(Pet pet, String food) {
+		pet.feed(food);
+		
+	}
+
+	public void walkingWithPet(Pet pet) {
+		if(pet instanceof Dog ) {
+			System.out.println(pet + "랑 산책하기");
+		}
+	}
+}
+
+
+public class Ex04_Walkable {
+
+	public static void main(String[] args) {
+		
+		Person p = new Person();
+		Dog dog = new Dog("코야");
+		Turtle turtle = new Turtle("꼬부기");
+		p.feed(dog, "닭가슴살");
+		p.feed(turtle, "참치");
+		
+		p.walkingWithPet(dog);	// 코야랑 산책하기
+		p.walkingWithPet(turtle);	// 실행이 되지 않도록 처리
+		
+		
+	}
+
+}

@@ -1,0 +1,23 @@
+package ex03_array_quiz;
+
+public class Quiz13 {
+
+	public static void main(String[] args) {
+		
+		// 문제. 영한 사전
+		// 사계절을 영어로 묻고 답하기
+		// 실행 예)
+		// 봄을 영어로 하면? >>> Spring
+		// 정답
+		// 여름을 영어로 하면 >>> Summer
+		// 정답
+		// 가을을 영어로 하면 >>> fall
+		// 정답
+		// 겨울을 영어로 하면 >>> walter
+		// 오답
+		
+		
+
+	}
+
+}

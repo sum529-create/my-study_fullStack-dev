@@ -1,0 +1,18 @@
+package ex01_user_type;
+
+/*
+ * 객체지향언어
+ * 1. 모든 사물을 객체로 만들어서 처리하는 언어이다.
+ * 2. 객체를 만드는 설계도를 클래스라고 한다.
+ * 		클래스
+ * 		붕어빵 기계
+ */
+
+public class Ex01_Computer {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

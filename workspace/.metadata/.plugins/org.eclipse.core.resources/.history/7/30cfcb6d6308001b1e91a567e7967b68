@@ -1,0 +1,10 @@
+package ex02_interface;
+
+public class Ex01_Shape {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,62 @@
+package ex03_access_modifier;
+
+class Book{
+	private String sub;
+	private String author;
+	private int price;
+	private int count;
+	private boolean best;
+	
+	
+	// setter
+	public void subSetter(String sub) {
+		this.sub = sub;
+	}
+	public void authorSetter(String author) {
+		this.author = author;
+	}
+	public void priceSetter(int price) {
+		this.price = price;
+	}
+	public void countSetter(int count) {
+		this.count = count;
+	}
+	public void bestSetter(boolean best) {
+		this.best = best;
+	}
+	
+	public String subGetter() {
+		return sub;
+	}
+	public String authorGetter() {
+		return author;
+	}
+	public int priceGetter() {
+		return price;
+	}
+	public int countGetter() {
+		return count;
+	}
+	public boolean bestGetter() {
+		return best;
+	}
+}
+
+public class Ex02_Book {
+
+	public static void main(String[] args) {
+		Book bestSell = new Book();
+		bestSell.subSetter("어린왕자");
+		bestSell.authorSetter("생떽쥐베리");
+		bestSell.priceSetter(10000);
+		bestSell.countSetter(1000);
+		
+		System.out.println(bestSell.subGetter());
+		System.out.println(bestSell.authorGetter());
+		System.out.println(bestSell.priceGetter());
+		System.out.println(bestSell.countGetter());
+		System.out.println(bestSell.bestGetter());
+		
+	}
+
+}

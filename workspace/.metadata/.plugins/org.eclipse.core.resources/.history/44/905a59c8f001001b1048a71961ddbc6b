@@ -1,0 +1,23 @@
+package ex02_object_array;
+
+// 하루
+class Day{
+	
+}
+
+// 일주일 스케줄
+class WeekScheduler{
+	// field
+	Day[] week;
+	String[] weekName = {"일", "월", "화", "수", "목", "금", "토"};
+	
+}
+
+public class Ex05_Scheduler {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

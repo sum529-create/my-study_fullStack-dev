@@ -1,0 +1,29 @@
+package ex04_loop_quiz;
+
+public class Quiz11 {
+
+	public static void main(String[] args) {
+		
+		// 문제. 369게임
+		// 1 ~ 99 사이 369게임 결과 출력하기
+		// 1	2	짝	4	5	짝	7	8	짝	10
+		
+		
+		for(int a = 1; a<100; a++) {
+			String strChk = String.valueOf(a);
+			char chk = strChk.charAt(0);
+	        if (chk == '3' || chk == '6' || chk == '9') {
+	            System.out.print('짝' + "\t");
+	        }
+	        else {
+				System.out.print(a + "\t");
+			}
+	        
+	        if (a % 10 == 0) {
+	            System.out.println();
+	        }
+		}
+
+	}
+
+}

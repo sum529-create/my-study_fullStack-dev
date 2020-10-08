@@ -1,0 +1,55 @@
+package ex02_object_array;
+
+class Song{
+
+	// field
+	String title;
+	String genre;
+	double playTime;
+	
+	// constructor
+	public Song(String title, String genre, double playTime) {
+		this.title = title;
+		this.genre = genre;
+		this.playTime = playTime;
+		
+	}
+	
+	
+	// method
+	
+	void info() {
+		System.out.println(title + ", " + genre + ", " + playTime);
+	}
+	
+	
+}
+
+class Singer{
+	
+	// field
+	String name;
+	Song[] songList;	// 길이가 없는 배열 선언
+						// new Song[3]처럼 배열 길이를 고정하면 안된다.
+	
+	// constructor
+	public Singer(String name, int songCount) {
+		this.name = name;
+		// songCount의 길이를 가지는 songList 배열 생성
+		songList = new Song[songCount];
+	}
+	
+	
+}
+
+public class Ex02_Singer {
+
+	public static void main(String[] args) {
+		
+		Singer singer = new Singer("IU", 3);	// IU의 노래 3곡
+		
+		System.out.println(singer.songList.length);
+
+	}
+
+}

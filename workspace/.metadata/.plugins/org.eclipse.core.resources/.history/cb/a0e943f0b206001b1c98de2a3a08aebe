@@ -1,0 +1,31 @@
+package ex01_inheritance;
+
+// 슈퍼클래스
+class Mother{
+	
+	// constructor
+	Mother(){
+		System.out.println("엄마가 태어났다.");
+	}
+	
+}
+
+// 서브클래스
+class Daughter extends Mother{
+	
+	// constructor
+	Daughter(){
+		System.out.println("딸이 태어났다.");
+	}
+}
+
+
+public class Ex04_constructor {
+
+	public static void main(String[] args) {
+		
+		
+
+	}
+
+}

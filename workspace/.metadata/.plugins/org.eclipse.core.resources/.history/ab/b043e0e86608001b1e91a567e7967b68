@@ -1,0 +1,30 @@
+package Ex03_interface;
+
+public class Rect implements Shape {
+	
+	private int width, height;
+	
+	public Rect(int width, int height) {
+		super();
+		this.width = width;
+		this.height = height;
+	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return "사각형";
+	}
+
+	@Override
+	public double getArea() {
+		// TODO Auto-generated method stub
+		return width * height;
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

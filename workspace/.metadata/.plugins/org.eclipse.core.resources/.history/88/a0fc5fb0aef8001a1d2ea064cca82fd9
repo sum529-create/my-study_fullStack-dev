@@ -1,0 +1,11 @@
+package ex04_loop_quiz;
+
+public class Quiz02 {
+
+	public static void main(String[] args) {
+		// 문제. 퀴즈 정답 맞추기
+		
+
+	}
+
+}

@@ -1,0 +1,10 @@
+package ex01_upcasting;
+
+public class Ex02_Shape {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,46 @@
+package ex03_operator;
+
+public class Ex02_operator {
+
+	public static void main(String[] args) {
+		/*
+		 * 4. 관계 연산자
+		 * 		1) >	: 초과, 크다
+		 * 		2) >=	: 이상, 크거나 같다
+		 * 		3) <	: 미만, 작다
+		 * 		4) <=	: 이하, 작거나 같다
+		 * 		5) !=	: 같지 않다
+		 * 		6) ==	: 같다 (primitive type)
+		 * 			equals : 같다 (reference type)
+		 * 		7) 결과 : true 또는 false
+		 * 
+		 * 5. 논리 연산자
+		 * 		1) && : 모든 조건식의 결과자 True이면 True, 아니면 False (and)
+		 * 		2) || : 조건식의 결과가 하나라도 True이면 True, 아니면 False (OR)
+		 * 		3) !  : 조건식의 결과를 반대롤 변경 (Not) 
+		 */
+		
+		int a = 10;
+		int b = 11;
+		
+		System.out.println(a > b); 		// false
+		System.out.println(a >= b); 	// false
+		System.out.println(a < b); 		// true
+		System.out.println(a <= b);		// true
+		System.out.println(a == b);		// false
+		System.out.println(a != b);		// true
+		
+		String str1 = new String("Hello");
+		String str2 = new String("Hello");
+		
+		System.out.println(str1 == str2);	// false (두 Hello가 저장된 위치를 비교)	
+		System.out.println(str1.equals(str2));	// true (두 Hello의 내용을 비교)
+		
+		int c = 10;
+		int d = 11;
+		
+		boolean r1 = c > d && c == 10;
+		System.out.println(r1);
+	}
+
+}

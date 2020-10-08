@@ -1,0 +1,46 @@
+package ex02_interface;
+
+class Pet{
+	// field
+	private String name;
+
+	// constructor
+	public Pet(String name) {
+		super();
+		this.name = name;
+	}
+
+	// method
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public void feed(String food) {
+		System.out.println("먹는다.");
+	}
+	
+}
+
+class Dog extends Pet{
+	public Dog(String name) {
+		super(name);
+	}
+}
+
+class Turtle extends Pet{
+	// constructor
+	
+}
+
+public class Ex04_Walkable {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

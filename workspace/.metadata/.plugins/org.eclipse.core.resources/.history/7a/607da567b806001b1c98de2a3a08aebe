@@ -1,0 +1,40 @@
+package ex01_inheritance;
+
+// 슈퍼클래스
+class Father{
+	
+	// field
+	String fName;
+	
+	// constructor
+	Father(String fName) {
+		this.fName = fName;
+	}
+	
+	// method
+}
+
+// 서브 클래스
+class Son extends Father{
+	
+	// field
+	String sName;
+	
+	// constructor
+	Son(String fName, String sName){
+		// 반드시 슈퍼 클래스의 constructor를 호출해야 한다.
+		super(fName);	// Father(String fName) { ... } 호출
+		this.sName = sName;
+		
+	}
+}
+
+public class Ex05_constructor {
+
+	public static void main(String[] args) {
+		
+		
+
+	}
+
+}

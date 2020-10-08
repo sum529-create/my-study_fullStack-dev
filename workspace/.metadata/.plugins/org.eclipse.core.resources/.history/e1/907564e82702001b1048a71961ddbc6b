@@ -1,0 +1,148 @@
+package ex02_object_array;
+
+import java.util.Scanner;
+
+// 좌석 1개
+class Seat{
+	
+	// field
+	String name;
+	
+	// constructor
+	Seat(){	}	// seat 생성 모습 : new Seat(), 빈 좌석 생성
+	
+	// method
+	// 1. 좌석 확인
+	String getName() {
+		return name;
+	}
+	// 2. 좌석 예약
+	void reserve(String name) {
+		this.name = name;
+		
+	}
+	// 3. 좌석 예약 취소
+	void cancel() {
+		name = null;
+	}
+	// 4. 좌석 예약 여부 확인
+	boolean isOccupied() {
+		if (name == null) {
+			return false;
+		}else {
+			return true;
+		}
+	}
+	// 5. 좌석 예약자 확인
+	boolean match(String name) {
+		return this.name.equals(name);
+	}
+	
+	
+}
+
+// 등급별 좌석(S, A, B)
+class SeatGroup{
+	
+	// field
+	char seatType;	// 'S', 'A', 'B'
+	Seat[] seats;
+	Scanner sc = new Scanner(System.in);
+	
+	// constructor
+	SeatGroup(char seatType, int nSeats){
+		this.seatType = seatType;
+		seats = new Seat[nSeats];	// 좌석의 개수만 설정
+		for(int i = 0; i<seats.length; i++) {
+			System.out.print("" + seatType + i + " ");
+			seats[i] = new Seat();
+		}
+	}
+	
+	// method
+	
+	// 1. 좌석 예약
+	// 1) 결과타입 : boolean(성공하면 true, 실패하면 false)
+	// 2) 메소드명 : reserve
+	// 3) 매개변수 : 없다.
+	
+	boolean reserve() {
+		// 전체 좌석 예약 현황 출력
+		seatGroupInfo();
+		
+		// 시트번호(seatNo)는 seats배열의 인덱스보다 1이 더 크다.
+		System.out.print("시트번호 입력 >> ");
+		int seatNo = sc.nextInt();
+		// 시트번호의 유효범위 : 1 ~ seats.length
+		if(seatNo < 1 || seatNo > seats.length) {
+			System.out.println(seatNo + "번 좌석은 없는 번호입니다. 예약을 마칩니다.");
+			return false;
+		}
+		// 시트번호의 유효번호 : isOccupied 메소드 호출
+		if(seats[seatNo - 1].isOccupied()) {
+			System.out.println(seatNo + "은 이미 예약된 좌석입니다. 예약을 마칩니다.");
+			return false;
+		}
+		// 예약 진행 : 예약할 좌석(seat 객체)는 seats[seatNo - 1]이다.
+		System.out.println("예약자 이름 입력 >> ");
+		String name = sc.next();
+		seats[seatNo - 1].reserve(name); 	// Seat클래스의 reserve()메소드 호출
+		System.out.println("예약이 완료되었습니다.");
+		return true;
+	}
+	
+	// 좌석 예약 취소
+	// 1) 결과타입 : boolean (취소되면 true, 실패시 false)
+	// 2)메소드명 : cancel
+	// 3)매개변수 : 없다.
+	
+	boolean cancel(){
+		// 전체좌석 예약 현황 출력
+		seatGroupInfo();
+		// 이름으로 취소하기
+		System.out.print("예약 취소자의 이름 : ");
+		String name = sc.next();
+		for(int i = 0; i < seats.length; i++) {
+			if (seats[i].match(name)) { // seats[i].equals(name)
+				// 예약 취소
+				seats[i].cancel();
+				System.out.println("예약 취소가 완료되었습니다.");
+				return true;
+			}else {
+				// 동일한 예약자가 없는곳? No
+			}
+			// end for
+		}
+		// for문이 끝나고 필요한 코드? 동일한 예약 이름이 없는 경우 처리
+		System.out.println("동일한 예약자가 없습니다.");
+		return false;	
+	}
+	
+	
+	//3. 예약 현황 출력
+	void seatGroupInfo() {
+		System.out.println(seatType + " : ");
+		for(int i = 0; i< seats.length; i++) {
+			if(seats[i].isOccupied()) {		// 예약된 시트이면 
+				System.out.print(seats[i].getName() + "\t");
+			}else {
+				System.out.println("---\t");
+				
+			}
+		}
+		System.out.println();
+		
+	}
+	
+}
+
+
+public class Ex06_Concert {
+
+	public static void main(String[] args) {
+		
+		
+		
+	}
+
+}

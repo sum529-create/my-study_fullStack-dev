@@ -1,0 +1,72 @@
+package ex02_object_array;
+
+import java.util.Scanner;
+
+// 좌석 1개
+class Seat{
+	
+	// field
+	String name;
+	
+	// constructor
+	Seat(){	}	// seat 생성 모습 : new Seat(), 빈 좌석 생성
+	
+	// method
+	// 1. 좌석 확인
+	String getName() {
+		return name;
+	}
+	// 2. 좌석 예약
+	void reserve(String name) {
+		this.name = name;
+		
+	}
+	// 3. 좌석 예약 취소
+	void cancel() {
+		name = null;
+	}
+	// 4. 좌석 예약 여부 확인
+	boolean isOccupied() {
+		if (name == null) {
+			return false;
+		}else {
+			return true;
+		}
+	}
+	// 5. 좌석 예약자 확인
+	boolean match(String name) {
+		return this.name.equals(name);
+	}
+	
+	
+}
+
+// 등급별 좌석(S, A, B)
+class SeatGroup{
+	
+	// field
+	char seatType;	// 'S', 'A', 'B'
+	Seat[] seats;
+	Scanner sc = new Scanner(System.in);
+	
+	// constructor
+	SeatGroup(char seatType, int nSeats){
+		this.seatType = seatType;
+		seats = new Seat[nSeats];	// 좌석의 개수만 설정
+		for(int i = 0; i<seats.length; i++) {			
+			seats[i] = new Seat();
+		}
+	}
+	
+}
+
+
+public class Ex06_Concert {
+
+	public static void main(String[] args) {
+		
+		
+		
+	}
+
+}

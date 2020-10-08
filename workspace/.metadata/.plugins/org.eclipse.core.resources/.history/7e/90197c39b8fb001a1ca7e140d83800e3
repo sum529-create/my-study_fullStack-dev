@@ -1,0 +1,15 @@
+package ex01_array;
+
+public class Ex02_forEach {
+
+	public static void main(String[] args) {
+		
+		// 일반 for문
+		// for (int i = 0; i<a.length; i++)
+		
+		// 향상 for문
+		// for (int n : a)
+
+	}
+
+}

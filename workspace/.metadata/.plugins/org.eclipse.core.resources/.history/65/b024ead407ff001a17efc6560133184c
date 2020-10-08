@@ -1,0 +1,11 @@
+package ex01_oop;
+
+public class Ex09_BankAccount {
+
+	public static void main(String[] args) {
+		
+		BankAccount me = new BankAccount("1234");	// 계좌번호
+
+	}
+
+}

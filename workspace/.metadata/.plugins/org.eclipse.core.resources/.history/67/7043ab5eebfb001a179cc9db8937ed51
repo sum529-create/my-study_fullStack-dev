@@ -1,0 +1,33 @@
+package ex03_array_quiz;
+
+public class Quiz08 {
+
+	public static void main(String[] args) {
+		
+		// 문제. 0~9 사이 난수를 100개 생성하고,
+		// 각 숫자들의 생성 횟수(빈도수)를 그래프화 하여 출력하시오.
+		// 실행 예)
+		// 0 : ##### 5
+		// 1 : ######## 8
+		// ...
+		// 9 : #### 4
+		
+		
+		int rand = (int)(Math.random()*9);
+		int[] num = new int[10];
+		int count = 0;
+		
+		for(int i=0; i<10; i++) {
+			for(int e=1; e<100; e++) {
+				System.out.println(rand);
+				if (num[i] == num[e]) {
+					count++;
+				}
+			}
+		}
+		System.out.println(count);
+		
+		
+	}
+
+}

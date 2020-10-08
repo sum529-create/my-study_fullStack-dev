@@ -1,0 +1,25 @@
+package ex01_input;
+
+public class Ex03_JOptionPane {
+
+	public static void main(String[] args) {
+		
+		/*
+		 * JOptionPane 클래스
+		 * 
+		 * 1. GUI 컴포넌트를 통한 입력과 출력을 지원
+		 * 2. Swing 컴포넌트 이용
+		 * 		1) javax.swing 패키지에 저장 (import 필요)
+		 * 		2) javax.swing.JOptionPane
+		 * 3. 입력 메소드
+		 * 		1) showInputDialog()
+		 * 		2) 반환되는 값(입력되는 값)의 타입은 언제나 String 이다.
+		 * 		3) String 변수 = JOptionPane.showInputDialog("메시지")
+		 * 4. 출력 메소드 
+		 * 		1) showMessageDialog()
+		 * 		2) JOptionPane.showMessageDialog(null, "메소드");
+		 *  
+		 */
+	}
+
+}

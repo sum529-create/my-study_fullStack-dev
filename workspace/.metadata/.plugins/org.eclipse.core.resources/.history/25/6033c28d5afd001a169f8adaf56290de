@@ -1,0 +1,11 @@
+package ex02_user_type;
+
+public class Person {
+	String name;
+	int age;
+	char gender;
+	double height;
+	boolean isAdult;
+	Computer computer;
+	Book book;
+}

@@ -1,0 +1,24 @@
+package ex01_input;
+
+public class Ex01_Scanner {
+
+	public static void main(String[] args) {
+		
+		/*
+		 * 그 동안 사용했던 클래스
+		 * 
+		 * 모두 동일한 패키지에 저장되어 있다.
+		 * 패키지명 : java.lang
+		 * 1. String
+		 * 2. System
+		 * 3. Integer
+		 * 4. Boolean
+		 * 5. Double
+		 * 
+		 * java.lang 패키지에 저장된 클래스들은 import가 필요없다.
+		 * 
+		 */
+		
+	}
+
+}

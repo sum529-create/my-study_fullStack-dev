@@ -1,0 +1,84 @@
+package ex02_downcasting;
+
+class Car{
+	
+	// field
+	private String model;
+
+	// constructor
+	public Car(String model) {
+		super();
+		this.model = model;
+	}
+
+	public String getModel() {
+		return model;
+	}
+
+	public void setModel(String model) {
+		this.model = model;
+	}
+	public void drive() {
+		System.out.println(model + "타고 드라이브 한다.");
+	}
+	
+}
+
+class EV extends Car{
+	
+	// field
+	
+	private int battery;
+
+	public EV(String model, int battery) {
+		super(model);
+		this.battery = battery;
+	}
+	// method
+
+	public int getBattery() {
+		return battery;
+	}
+
+	public void setBattery(int battery) {
+		this.battery = battery;
+	}
+	public void charge(int battery) {
+		this.battery += battery;
+		System.out.println(getModel() + "의 배터리 : " + this.battery); 	// 모델명 확인 : getModel()
+	}
+}
+
+class Hybrid extends EV{
+	
+	// field
+	private int oil;
+	private final int FULL_OIL = 60;	// 가득한 연료통 60
+
+	// constuctor
+	public Hybrid(String model, int battery, int oil) {
+		super(model, battery);
+		this.oil = oil;
+	}
+
+	// method
+	public int getOil() {
+		return oil;
+	}
+
+	public void setOil(int oil) {
+		this.oil = oil;
+	}
+	
+	
+	
+}
+
+public class Ex02_Car {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

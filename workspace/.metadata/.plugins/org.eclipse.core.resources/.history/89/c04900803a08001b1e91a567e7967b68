@@ -1,0 +1,34 @@
+package ex03_polymorphism_quiz;
+
+class Elec{
+	
+	private String model;
+	private int price;
+	
+	public Elec(String model, int price){
+		this.model = model;
+		this.price = price;
+	}
+	
+}
+
+class Customer{
+	
+	private int money;
+	private double bonusPoint;
+	private Elec[] cart;
+	private int idx;
+	
+	public Customer(){
+		
+	}
+}
+
+public class Ex01_Elec {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

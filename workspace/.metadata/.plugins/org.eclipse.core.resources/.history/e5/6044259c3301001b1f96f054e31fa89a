@@ -1,0 +1,58 @@
+package ex01_oop;
+
+class Bakery{
+	int count;
+	int money;
+	int cost;
+
+	public Bakery(int count, int money, int cost) {
+		this.count = count;
+		this.money = money;
+		this.cost = cost;
+	}
+
+	public void info() {
+		System.out.println("빵집 " + count + ", 자본금" + cost + "원");
+		
+	}
+	
+}
+
+class Customer{
+	int cost;
+
+	public Customer(int cost) {
+		this.cost = cost;
+	}
+
+	public void buy(Bakery tour, int cost) {
+		tour.count += cost / tour.money;
+		tour.cost += cost;
+		System.out.println("가진빵" + (cost / tour.money) + ", 남은돈" + cost + "원");
+	}
+	
+}
+
+public class Ex10_Bakery {
+
+	public static void main(String[] args) {
+		Bakery paris = new Bakery(100, 500, 10_000);	// 빵100개, 빵하나500원, 자본금 10,000원
+		Bakery tour = new Bakery(50, 1000, 10_000);	// 빵50개, 빵하나1000원, 자본금 10,000원
+		
+		Customer customer = new Customer(20_000);	// 가진돈 20_000원
+		
+		// 첫 번째 빵집 방문
+		customer.buy(paris, 10_000);	// 가진빵20개, 남은돈10_000원
+		
+		// 두 번째 빵집 방문
+		customer.buy(tour, 10_000);	// 가진빵30개, 남은돈0원
+		
+		// 첫 번째 빵집 상황
+		paris.info();	// 빵집80, 자본금 20_000원
+		
+		// 두 번째 빵집 상황
+		tour.info();	// 빵집40, 자본금 20_000원
+
+	}
+
+}

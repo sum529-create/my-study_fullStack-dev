@@ -1,0 +1,27 @@
+package ex03_method;
+
+import java.util.Date;
+
+class Person{
+	
+	// field
+	String name;
+	Date date;
+	double height;
+	double weight;
+	
+	
+	
+	
+}
+
+
+
+public class Ex02_Person {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

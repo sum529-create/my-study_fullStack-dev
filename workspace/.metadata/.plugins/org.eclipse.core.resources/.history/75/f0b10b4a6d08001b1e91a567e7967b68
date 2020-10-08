@@ -1,0 +1,15 @@
+package ex02_interface;
+
+// 인터페이스 이름은 "~할 수 있는"이라는 이름을 종종 사용한다.
+
+// 상속(extends)과 구현(implements)을 동시에 진행할 수 있다.
+
+
+public class Ex03_Computable {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

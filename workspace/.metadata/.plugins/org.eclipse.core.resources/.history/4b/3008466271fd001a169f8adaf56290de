@@ -1,0 +1,40 @@
+package ex03_method;
+
+/*
+ * 메소드 오버로딩 (method overloading)
+ * 1. 메소드명이 같은 메소드를 여러 개 만들 수 있다.
+ * 2. 반드시 매개변수가 달라야 한다.
+ * 3. 결과타입은 전혀 상관이 없다.
+ */
+
+class Book {
+	// field
+	String title;
+	String author;
+	int price;
+	
+	// method
+	
+	// 1. 필드 정보 저장 메소드
+	void setInfo(String t, String a, int p){
+		title = t;
+		author = a;
+		price = p;
+	}
+	
+	// 2. 필드 정보 저장 메소드
+	void setInfo(String t, int p) {
+		title  = t;
+		author = "저자 미상";
+		price = p;
+	}
+}
+
+public class Ex03_method_overloading {
+
+	public static void main(String[] args) {
+
+		
+	}
+
+}

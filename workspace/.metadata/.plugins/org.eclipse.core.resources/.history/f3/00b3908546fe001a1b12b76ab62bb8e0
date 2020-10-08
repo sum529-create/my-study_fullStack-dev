@@ -1,0 +1,70 @@
+package ex01_oop;
+
+// 좌표
+class Coord {
+
+	// field
+	int x;
+	int y;
+	
+	// constructor
+	public Coord(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+	public Coord(Coord coord1) {
+		
+	}
+
+	
+	// method
+	public void info() {
+		System.out.println("좌표 [" + x + "," + y + "]");
+		
+	}
+}
+
+// 원
+class Circle{
+	
+	// field
+	double r;
+	Coord center;
+
+
+
+	// constructor
+	public Circle(double r) {
+		this.r = r;
+	}
+	
+	public Circle(int i, int j, double r) {
+		// TODO Auto-generated constructor stub
+	}
+
+	// method
+	public void info() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+}
+
+public class Ex02_Circle {
+
+	public static void main(String[] args) {
+		Coord coord1 = new Coord(3, 5);
+		Coord coord2 = new Coord(coord1);
+		
+		coord1.info();		// 좌표 [3, 5]
+		coord2.info();		// 좌표 [3, 5]
+		
+		Circle circle1 = new Circle(1.5);
+		Circle circle2 = new Circle(33, 55, 1.5);
+		
+		circle1.info();		// 좌표 [1,1], 반지름 1.5, 크기 7.xxx
+		circle2.info();		// 좌표 [33, 55],  반지름 1.5, 크기 7.xxx
+
+	}
+
+}

@@ -1,0 +1,18 @@
+package choosuk;
+
+import java.util.Scanner;
+
+public class Ex04 {
+
+	public static void main(String[] args) {
+
+		int[] unit = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 5, 1};
+		Scanner sc = new Scanner(System.in);
+		int money = sc.nextInt();
+		
+		int convert = unit[5];
+		System.out.println(convert);
+		
+	}
+
+}

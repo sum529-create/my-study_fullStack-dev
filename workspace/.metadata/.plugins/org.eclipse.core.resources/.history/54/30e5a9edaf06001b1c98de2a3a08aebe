@@ -1,0 +1,32 @@
+package ex01_inheritance;
+
+// has - a 관계
+// 1. 상속 관계로 구현할 수 있다.
+// 2. 대부분은 상속 말고, 포함 관계로 구현한다.
+
+// Circle has a Coord
+// 슈퍼클래스 : coord
+// 서브클래스 : Circle
+
+// 슈퍼클래스
+class Coord{
+	
+	// field
+	int x, y;
+	
+	// constructor
+	
+	
+	// method
+	
+}
+
+public class Ex03_has_a {
+
+	public static void main(String[] args) {
+
+		
+		
+	}
+
+}

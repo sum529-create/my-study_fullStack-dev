@@ -1,0 +1,41 @@
+package ex03_operator;
+
+public class Ex01_operator {
+
+	public static void main(String[] args) {
+		
+		/*
+		 * 1. 산술 연산자
+		 * 		1) +
+		 * 		2) -
+		 * 		3) *
+		 * 		4) / : 정수 (몫), 실수(나누기)
+		 * 		5) % : 정수(나머지)
+		 * 
+		 * 2. 증감 연산자
+		 * 		1) a++ : a를 사용하고 1 증감
+		 * 		2) ++a : a를 증가시키고 사용
+		 * 		3) a-- : a를 사용하고 1 감소
+		 * 		4) --a : a를 사용하고 1 감소
+		 */
+		
+		int a = 7;
+		int b = 2;
+		
+		// 라인 복사 : 커서를 두고 Ctrl + Alt + 방향키(↓)
+		
+		System.out.println(a+ "+" + b + "=" + (a+b));
+		System.out.println(a+ "-" + b + "=" + (a-b));
+		System.out.println(a+ "*" + b + "=" + (a*b));
+		System.out.println(a+ "/" + b + "=" + (a/b));
+		System.out.println(a+ "%" + b + "=" + (a%b));
+		
+		int c =10;
+		int d = c++;	// c를 d에 저장하고 c를 1증가시킨다.
+		System.out.println(c);	// 11
+		System.out.println(d);	// 10
+		
+		
+	}
+
+}

@@ -1,0 +1,10 @@
+package ex01_inheritance;
+
+
+
+public class Ex06_method_override {
+
+	public static void main(String[] args) {
+		
+	}
+}

@@ -1,0 +1,25 @@
+package ex04_loop_quiz;
+
+import java.util.Scanner;
+
+public class Quiz03 {
+
+	public static void main(String[] args) {
+		// 문제. 평점 입력 받아서 해당 평점만큼 ★을 출력하시오.
+		// 평점은 1 ~ 5 사이 정수로 입력 받는데, 벗어난 범위는 다시 입력받는다.
+		
+		Scanner sc = new Scanner(System.in);
+		int grade = 0;
+		String stars = null;
+		int n = 0;
+		
+		do {
+			System.out.print("숫자를 입력하시오. >> ");
+			grade = sc.nextInt();
+			System.out.print("★");
+			++n;
+		}while(n==grade);
+
+	}
+
+}

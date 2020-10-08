@@ -1,0 +1,84 @@
+package choosuk;
+
+import java.util.Scanner;
+
+
+class Phone{
+	String name, tel;
+	
+	Phone(){ }
+	
+	// 1. 정보 확인
+	String getPerson() {
+		return tel;
+	}
+	
+	// 2. 정보 저장
+	void setPerson(String name, String tel) {
+		this.name = name;
+		this.tel = tel;
+	}
+	
+	// 3. 정보 출력
+	void printPerson() {
+		if(name == null || name.isEmpty()) {
+			System.out.println(name + "없습니다.");
+		}else {
+			System.out.println(name + " 번호는 " + tel + "입니다.");
+		}
+	}
+	
+}
+class PhoneBook{
+	Phone[] phoneList;
+	int num;
+	Scanner sc = new Scanner(System.in);
+	
+	PhoneBook(int num){
+		this.num = num;
+		this.phoneList = new Phone[num];
+	}
+	void addPerson() {
+
+		for(int i =0; i< phoneList.length; i++) {
+			System.out.print("이름과 전화번호(이름과 번호는 빈 칸없이 입력) >> ");
+			String name = sc.next();
+			String tel = sc.next();	
+			phoneList[i].setPerson(name, tel);
+			if(i == num-1) {
+				System.out.println("저장되었습니다.");
+			}
+		}
+	}
+	void info() {
+		while(true) {
+			System.out.print("검색할 이름 >> ");
+			Scanner sc = new Scanner(System.in);
+			String name = sc.next();
+			for(int i=0; i< phoneList.length; i++) {
+				if(phoneList[i].getPerson() == name) {
+					phoneList[i].printPerson();
+				}else if(name == "그만") {
+					System.out.println("프로그램을 종료합니다.");
+					sc.close();
+					break;
+				}
+			}
+		}
+	}
+}
+
+public class Ex07 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("몇 명의 정보를 저장하시겠습니까? >> ");
+		int num = sc.nextInt();
+
+		PhoneBook phonebook = new PhoneBook(num);
+		phonebook.info();
+		
+		
+	}
+
+}

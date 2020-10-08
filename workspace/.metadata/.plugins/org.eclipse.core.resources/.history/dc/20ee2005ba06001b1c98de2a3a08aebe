@@ -1,0 +1,16 @@
+package ex01_inheritance;
+
+/*
+ *  메소드 오버라이드 (method override)
+ *  
+ *  1. 슈퍼 클래스의 메소드를 서브클래스는 사용할 수 있다.	(재활용)
+ *  2. 슈퍼 클래스의 메소드를 서브클래스가 다시만들어서 사용할 수 있다.	(오버라이드)
+ *  3. 슈퍼클래스의 메소드와 원형(결과타입 + 메소드명 + 매개변수)이 모두 같아야 한다.
+ */
+
+public class Ex06_method_override {
+
+	public static void main(String[] args) {
+		
+	}
+}

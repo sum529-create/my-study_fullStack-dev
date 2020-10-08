@@ -1,0 +1,25 @@
+package ex03_operator;
+
+public class Ex01_operator {
+
+	public static void main(String[] args) {
+		
+		/*
+		 * 1. 산술 연산자
+		 * 		1) +
+		 * 		2) -
+		 * 		3) *
+		 * 		4) / : 정수 (몫), 실수(나누기)
+		 * 		5) % : 정수(나머지)
+		 * 
+		 * 2. 
+		 */
+		
+		int a = 7;
+		int b = 2;
+		
+		System.out.println(a+ "+" + b + "=" + (a+b));
+		System.out.println(a-b);
+	}
+
+}

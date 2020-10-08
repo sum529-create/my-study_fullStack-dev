@@ -1,0 +1,44 @@
+package ex02_branch_quiz;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class Quiz07 {
+
+	public static void main(String[] args) {
+		
+		// 문제. 가위바위보
+		// 실행
+		// 가위바위보 >> 가위
+		// 당신은 가위, 컴퓨터는 보, 이겼습니다.
+		// Hint : 가위는 0, 바위는 1, 보는 2
+		
+		Scanner sc = new Scanner(System.in);
+		Random ran = new Random();
+		int rsp = ran.nextInt(2);
+		String crsp = null;
+		
+		System.out.print("가위바위보! >> ");
+		String prsp = sc.nextLine();
+		
+		switch(rsp) {
+		case 0 : crsp = "가위"; break;
+		case 1 : crsp = "바위"; break;
+		case 2 : crsp = "보"; break;
+		}
+		if (prsp.equals(crsp)) {
+			System.out.println("당신은 " + prsp + ", 컴퓨터는 " + crsp + ", 비겼습니다.");
+		} else if(crsp.equals("가위") && prsp == "바위") {
+			System.out.println("당신은 " + prsp + ", 컴퓨터는 " + crsp + ", 이겼습니다.");
+		} else if(crsp.equals("바위") && prsp == "보") {
+			System.out.println("당신은 " + prsp + ", 컴퓨터는 " + crsp + ", 이겼습니다.");
+		} else if(crsp.equals("보") && prsp == "가위") {
+			System.out.println("당신은 " + prsp + ", 컴퓨터는 " + crsp + ", 이겼습니다.");
+		}else {
+			System.out.println("당신은 " + prsp + ", 컴퓨터는 " + crsp + ", 졌습니다.");
+		}
+		
+
+	}
+
+}

@@ -1,0 +1,12 @@
+package ex03_array_quiz;
+
+public class Quiz15 {
+
+	public static void main(String[] args) {
+		
+		// 문제. 5000원짜리 로또
+		
+
+	}
+
+}

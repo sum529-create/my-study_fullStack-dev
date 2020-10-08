@@ -1,0 +1,40 @@
+package ex02_object_array;
+
+class Gun{
+	
+	// field
+	String model;
+	int bullet;
+	
+	// constructor
+	Gun(String model, int bullet){
+		this.model = model;
+		this.bullet = bullet;
+	}
+	
+	// method
+	void shoot() {
+		if(bullet >0) {
+			bullet --;
+			System.out.println(model + "빵야! (" + bullet + "발 남음)");
+		}else if(bullet == 0) {
+			System.out.println(model + "총알이 없습니다.");
+		}
+	}
+	
+	void info() {
+		System.out.println(model + "(" + bullet + "발)");
+	}
+	
+	
+}
+
+public class Ex03_Soldier {
+
+	public static void main(String[] args) {
+		
+		
+
+	}
+
+}

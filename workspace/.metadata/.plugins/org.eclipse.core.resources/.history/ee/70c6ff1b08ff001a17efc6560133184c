@@ -1,0 +1,32 @@
+package ex01_oop;
+
+class BankAccount{
+
+	public BankAccount(String string, int i) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public void deposit(int i) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+}
+
+public class Ex09_BankAccount {
+
+	public static void main(String[] args) {
+		
+		BankAccount me = new BankAccount("1234", 10_000);
+		BankAccount mom = new BankAccount("4321", 100_000);
+		
+		me.deposit(10_000);	// 내 계좌에 10_000원 입금
+		me.deposit(-100);	// 내 계좌에 마이너스 입금 (불가)
+		
+		me.withdraw(20_000);	// 내 계좌에서 20_000 출금
+		me.withdraw(100);	// 내 계좌에서 잔액보다 큰 금액 출금 안됨
+		
+		
+	}
+
+}

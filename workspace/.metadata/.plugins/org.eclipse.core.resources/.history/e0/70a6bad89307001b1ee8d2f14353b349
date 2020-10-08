@@ -1,0 +1,51 @@
+package ex01_upcasting;
+
+// 슈퍼클래스
+class Elec{
+	
+	// field
+	private int watt;
+	
+	// constructor
+	public Elec(int watt) {
+		this.watt = watt;
+	}
+	public Elec() {}
+	
+	// method
+	public void info() {
+		System.out.println("소비전력 : " + watt + "w");
+	}
+	
+}
+
+// 서브 클래스
+class TV extends Elec{
+	
+	// field
+	private int size;
+	
+	// constructor
+	public TV(int size, int watt) {
+		super(watt);
+		this.size = size;
+	}
+	
+	// method
+	@Override
+	public void info() {
+		System.out.println("크기 : " + size + "인치");
+		super.info(); 	// Elec의 info메소드
+	}
+	
+}
+
+public class Ex01_Elec {
+
+	public static void main(String[] args) {
+		TV tv = new TV(100, 50);
+		tv.info();
+				
+	}
+
+}

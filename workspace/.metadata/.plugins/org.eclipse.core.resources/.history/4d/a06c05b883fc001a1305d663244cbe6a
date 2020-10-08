@@ -1,0 +1,14 @@
+package ex02_2d_array;
+
+public class Ex04_forEach {
+
+	public static void main(String[] args) {
+		
+		// 2차원 배열은 1차원 배열을 모아 놓은 것이다.
+		
+		// int[][] a = new int[3][2];
+		
+
+	}
+
+}

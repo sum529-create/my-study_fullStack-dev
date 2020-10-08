@@ -1,0 +1,30 @@
+package ex03_access_modifier;
+
+import java.util.Date;
+
+class User{
+	
+	// Field
+	private String id;
+	private String pw;
+	private Date date;
+	
+	// Constructor
+	// 이클립스가 자동으로 만들어 준다.
+	
+	// getters and setters
+	// 이클립스가 자동으로 만들어 준다.
+	
+	// 메뉴 : Source 메뉴에 있다.
+	
+	
+}
+
+public class Ex04_User {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,10 @@
+package ex02_package;
+
+public class Baby {
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}

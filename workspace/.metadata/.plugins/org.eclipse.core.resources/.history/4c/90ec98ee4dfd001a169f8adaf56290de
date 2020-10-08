@@ -1,0 +1,9 @@
+package ex02_user_type;
+
+public class Book {
+	String title;
+	String author;
+	int price;
+	int amount;
+	boolean isBestSeller;
+}

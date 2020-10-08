@@ -1,0 +1,33 @@
+package ex02_object_array;
+
+import java.util.Scanner;
+
+// 하루
+class Day{
+	
+}
+
+// 일주일 스케줄
+class WeekScheduler{
+	// field
+	Day[] week;
+	String[] weekName = {"일", "월", "화", "수", "목", "금", "토"};
+	int nthWeek;	// 1주차 ~ n주차
+	Scanner sc = new Scanner(System.in);
+	
+	// constructor
+	public WeekScheduler(int nthWeek) {
+		this.nthWeek = nthWeek;
+		// week 배열의 길이 결정하기
+		
+	}
+}
+
+public class Ex05_Scheduler {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

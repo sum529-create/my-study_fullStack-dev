@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="ex01_input.Ex01_Scanner"/>
+<fullyQualifiedTypeName name="java.nio.channels.ScatteringByteChannel"/>
+<fullyQualifiedTypeName name="javax.sound.midi.SysexMessage"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="org.omg.CORBA.FREE_MEM"/>
+<fullyQualifiedTypeName name="java.util.Random"/>
+<fullyQualifiedTypeName name="ex01_oop.Person"/>
+<fullyQualifiedTypeName name="ex01_oop.Ex09_BankAccount"/>
+<fullyQualifiedTypeName name="ex02_object_array.Person"/>
+<fullyQualifiedTypeName name="ex02_object_array.Song"/>
+<fullyQualifiedTypeName name="ex02_object_array.Gun"/>
+<fullyQualifiedTypeName name="java.text.DecimalFormat"/>
+<fullyQualifiedTypeName name="java.util.Arrays"/>
+<fullyQualifiedTypeName name="choosuk.RandomGenerator"/>
+<fullyQualifiedTypeName name="choosuk.PhoneBook"/>
+<fullyQualifiedTypeName name="choosuk.Phone"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="java.util.Scanner"/>
+<fullyQualifiedTypeName name="ex01_inheritance.Daughter"/>
+<fullyQualifiedTypeName name="ex01_inheritance.Son"/>
+<fullyQualifiedTypeName name="ex01_inheritance.Espresso"/>
+<fullyQualifiedTypeName name="ex01_inheritance.BulgogiPizza"/>
+<fullyQualifiedTypeName name="ex02_inheritance_quiz.Person"/>
+<fullyQualifiedTypeName name="java.lang.Comparable"/>
+<fullyQualifiedTypeName name="java.lang.Override"/>
+<fullyQualifiedTypeName name="java.lang.Math"/>
+<fullyQualifiedTypeName name="ex02_downcasting.Person"/>
+<fullyQualifiedTypeName name="ex02_downcasting.EV"/>
+<fullyQualifiedTypeName name="ex02_downcasting.Hybrid"/>
+<fullyQualifiedTypeName name="java.io.ObjectInputStream.GetField"/>
+<fullyQualifiedTypeName name="ex03_polymorphism_quiz.Elec"/>
+<fullyQualifiedTypeName name="Ex03_interface.Rect"/>
+<fullyQualifiedTypeName name="ex02_interface.SmartPhone"/>
+<fullyQualifiedTypeName name="ex02_interface.Dog"/>
+<fullyQualifiedTypeName name="ex02_interface.Pet"/>
+</qualifiedTypeNameHistroy>

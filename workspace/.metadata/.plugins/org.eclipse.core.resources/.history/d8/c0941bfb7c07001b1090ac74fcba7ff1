@@ -1,0 +1,10 @@
+package ex03_access_modifier;
+
+public class Ex02_Book {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

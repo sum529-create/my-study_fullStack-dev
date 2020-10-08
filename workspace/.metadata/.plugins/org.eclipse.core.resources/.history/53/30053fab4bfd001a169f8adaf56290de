@@ -1,0 +1,8 @@
+package ex02_user_type;
+
+public class Computer {
+	
+	String model;
+	String manufacturer;
+	int price;
+}

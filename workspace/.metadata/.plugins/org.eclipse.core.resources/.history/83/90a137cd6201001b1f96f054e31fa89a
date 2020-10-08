@@ -1,0 +1,74 @@
+package ex02_object_array;
+
+import java.text.DecimalFormat;
+import java.util.Arrays;
+
+class Student{
+	
+	// field
+	String name;
+	int[] scores;	// 모든 점수들
+	double average; // 평균
+	char grade;		// 학점
+	boolean isPass;
+	
+	// constructor
+	Student(String name){
+		this.name = name;
+	}
+	
+	// method
+	void setScores(int scoreCount) {
+		this.scores = new int[scoreCount];
+		for(int i = 0; i<scores.length; i++) {		// i < scoreCount도 가능하다.
+			this.scores[i] = (int)(Math.random() * 101);	// 101개 점수 중 하나(0~100)
+		}
+		this.average = getAverage();
+		this.grade = getGrade();
+		this.isPass = isPass();
+	}
+	double getAverage() {
+		int total = 0;
+		for(int i =0; i < scores.length; i++) {
+			total += scores[i];
+		}
+		return (double)total / scores.length;
+		
+	}
+	char getGrade() {
+		if(average >= 90) {
+			return 'A';
+		}
+		else if(average >= 80) {
+			return 'B';
+		}
+		else if(average >= 70) {
+			return 'C';
+		}
+		else if(average >= 60) {
+			return 'D';
+		}else {
+			return 'F';
+		}
+		
+	}
+	boolean isPass() {
+		return average >= 60;
+	}
+	void info() {
+		System.out.print(name + ", ");
+		System.out.print(Arrays.toString(scores) + ", ");
+		DecimalFormat df = new DecimalFormat("0.00");	// 소수점 변환
+		System.out.println(df.format(average) + ", ");
+	}
+	
+}
+
+
+public class Ex04_Student {
+
+	public static void main(String[] args) {
+		
+	}
+
+}

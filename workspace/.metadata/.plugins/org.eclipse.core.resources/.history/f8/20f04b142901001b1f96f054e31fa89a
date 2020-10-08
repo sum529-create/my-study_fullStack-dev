@@ -1,0 +1,10 @@
+package ex01_oop;
+
+public class Ex10_Bakery {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

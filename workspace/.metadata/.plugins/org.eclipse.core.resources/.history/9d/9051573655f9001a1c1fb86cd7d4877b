@@ -1,0 +1,16 @@
+package ex04_loop_quiz;
+
+public class Quiz05 {
+
+	public static void main(String[] args) {
+		
+		// 1. 세로로 출력하는 전체 구구단
+		// 2 x 1 = 1
+		// 2 x 2 = 4
+		
+		
+		// 2. 가로로 출력하는 전체 구구단
+		// 2 x 1 = 1	2 x 2 = 4
+	}
+
+}

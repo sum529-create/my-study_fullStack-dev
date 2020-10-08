@@ -1,0 +1,19 @@
+package ex04_constructor;
+
+class Person{
+	// field
+	String name;
+	String sn;	// 주민등록번호 (하이픈 포함)
+	int age;	// 나이 자동
+	char gender;
+	boolean isKorean;
+}
+
+public class Ex03_Person {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

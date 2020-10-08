@@ -1,0 +1,46 @@
+package ex02_inheritance_quiz;
+
+// 슈퍼클래스
+class Staff{
+	
+	// field
+	String name;		// 이름
+	String depart;		// 부서
+	
+}
+
+//서브 클래스
+class SalaryMan extends Staff{
+	
+	// field
+	int salary;			// 기본급 (정해진 급여)
+	
+	
+	
+}
+
+// 서브 클래스
+class SalesMan extends SalaryMan{
+	
+	// field
+	int salesVolumn;	// 판매량
+	double incentive;	// 인센티브
+}
+
+// 서브 클래스
+class Alba extends Staff{
+	
+	// field
+	int times;			// 일한 시간
+	int payPerHour;		// 시급
+	
+}
+
+public class Quiz05 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

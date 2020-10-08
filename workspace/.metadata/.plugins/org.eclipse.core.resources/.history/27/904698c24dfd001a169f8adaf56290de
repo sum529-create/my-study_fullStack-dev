@@ -1,0 +1,16 @@
+package ex02_user_type;
+
+public class MainClass2 {
+
+	public static void main(String[] args) {
+		
+		// Computer 생성
+		Computer myCom = new Computer();
+		
+		// save 메소드 호출
+		myCom.save("GRAM", "LG", 180);
+			
+
+	}
+
+}
