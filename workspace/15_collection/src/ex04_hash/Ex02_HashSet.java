@@ -58,13 +58,25 @@ public class Ex02_HashSet {
 		
 		Member m1 = new Member("abc");
 		Member m2 = new Member("abc");
+		Member m3 = new Member("xyz");
 		
 		Set<Member> set = new HashSet<Member>();
 		
 		set.add(m1);
 		set.add(m2);	// 둘다 hashCode가 1으로 되어 있어 둘이 같은 값일 수 있다라는 것을 볼 수 있다. 
+		set.add(m3);
 		
 		System.out.println(set);
+		
+		// HashMap의 활용
+		//회원 (Member)별 포인트(Integer) 관리
+		
+		Map<Member, Integer> map = new HashMap<Member, Integer>();
+		map.put(m1, 5000);	// m1회원의 포인트 5000
+		map.put(m2, 6000);	// m1회원의 포인트 6000으로 수정
+		map.put(m3, 10000);	
+		
+		System.out.println(map);
 			
 	}
 
