@@ -17,6 +17,11 @@ class Pistol extends Thread{
 	public void run() {
 		for(int i = 1; i<=bullet; i++) {
 			System.out.println(model + "(" + i + "발 쐈다.)");
+			try {
+				sleep(500); // 0.5초 딜레이				
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 		}
 	}
 	
