@@ -1,0 +1,101 @@
+DBA -> Database Administrator
+
+새 사용자 계정 추가
+
+create user student identified by 1111
+
+grant connect, resource, dba to student
+
+
+* 접속 
+	1) conn
+	2) conn 계정
+	3) conn 계정 / 비밀번호
+
+* 접속자 확인
+	show user
+
+* 사용자 생성
+	1) 관리자 권한(DBA)을 가진 계정만 할 수 있는 작업이다.
+	2) 같은 계정은 한 번만 생성할 수 있다.
+	3) create user 계정 identified by 비밀번호;
+
+* 사용자에게 권한 부여
+	1) 권한이 없으면 아무 것도 하지 못한다.
+	2) connect, resource, dba 중 원하는 권한을 부여한다.
+	3) 관리자권한(DBA)을 가진 계정만 할 수 있는 작업이다.
+	4) grant 권한 to 계정;
+
+* 사용자 삭제
+	1) 관리자 권한(DBA)을 가진 계정만 할 수 있는 작업이다.
+	2) 데이터가 없는 사용자 삭제
+		- Drop user 계정;
+	3) 데이터가 있는 사용자 삭제
+		- Drop user 계정 CASCADE;
+
+* 사용자의 권한 해제
+	1) 관리자권한(DBA)을 가진 계정만 할 수 있는 작업이다.
+	2)  revoke 권한 from 계정;
+
+* Oracle의 데이터 타입
+	1) 숫자 : number
+	2) 문자 : char			
+		ex) 우편번호, 주민등록번호 등
+	3) 가변형 문자 : varChar2
+		ex) 주소 등
+	4) 날짜 : date, timestamp
+
+* Oracle의 타입과 Jva의 타입 매칭
+	   oracle	   Java
+	1) number	int, double
+	2) char 	String
+	3) varchar2	String
+	4) date		Date
+	5) timestamp	java.sql.Timestamp
+
+
+* Oracle의 테이블은 Java의 클래스와 매칭된다.
+
+	1) Java Class
+		class Member{
+			Sring id;
+			int point;
+			Date regDate;
+		}
+		
+	2)Oracle Table
+		create table member (id varchar2(20),
+				point number,
+				regDate date);
+
+* 키(key)
+	1) 기본키 : primary key
+		- 중복이 없고, (unique)
+		- 널 값이 없다. (not null)
+		- 개체 무결성이라고 한다.
+		- 예시 : 대기번호, 주민등록번호, 학번...
+
+	2) 외래키 : foreign key
+		- 다른 테이블의 기본키 또는 unique 칼럼을 참조하는 키(key)이다.
+		- 참조(reference)하는 키나 칼럼이 가지고 있는 값(도메인)만 가질 수 있다.
+		- 참조 무결성이라 한다.
+		
+
+* TABLE 생성
+	1) 기본키, 널 값 유무(필수 속성), 중복 가능 유무(UNIQUE)를 판단한다.
+	2) 다른 테이블을 참조할 때는 테이블은 기본키 또는 UNIQUE 칼럼을 참조한다.
+	3) CREATE TABLE 테이블명 (칼럼명 타입 [NOT NULL][ UNIQUE][PRIMARY KEY]);
+	   CREATE TABLE 테이블명 (칼럼명 타입 REFERENCES 참조테이블명(참조칼럼));
+
+
+
+
+-------------------------------------------------------
+Relation Database Management System
+
+
+무결성 - 데이터베이스의 일관성과 연관성이 잘 이루어져있는것
+
+행(Row) : 레코드(Record), 튜플(Tuple)
+열(Column) : 필드(Field), 속성(Attribute)
+도메인 : 한 필드가 가질 수 있는 값의 범위를 의미한다.(성별 : 남, 여)

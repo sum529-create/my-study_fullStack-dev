@@ -1,0 +1,31 @@
+SQL : Structed Query Language (구조화된 질의어:쿼리)
+
+1. DDL : Data Defination Language
+	1) 데이터 정의어
+	2) CREATE, ALTER, DROP, RENAME, TRUNCATE
+	- CREATE : 생성
+	- ALTER : 변경
+	- DROP : 삭제
+	- RENAME : 이름 바꾸기 
+	- TRUNCATE : 내용 삭제 (구조 남김)
+
+2. DML : Data Manipulation Language
+	1) 데이터 조작어
+	2) INSERT, UPDATE, DELETE
+	3) INSERT INTO VALUES : 행(ROW, RECORD, TUPLE, ENTITY)삽입
+	4) UPDATE SET WHERE : 행(ROW, RECORD, TUPLE, ENTITY) 수정
+	5) DELETE FROM WHERE : 행(ROW, RECORD, TUPLE, ENTITY) 삭제
+
+3. DQL : Data Query Language
+	1) 데이터 질의어
+	2) DML의 일부로 본다.
+	3) SELECT FROM WHERE : 데이터(행(ROW, RECORD, TUPLE, ENTITY))검색
+
+4. DCL : Data Control Language
+	1) 데이터 제어어
+	2) GRANT, REVOKE, COMMIT, ROLLBACK
+	3) GRANT TO 계정 : 권한 부여하기
+	4) REVOKE 권한 FROM 계정 : 권한 뺏기
+	5) COMMIT : 작업 저장 (DML 대상 작업)
+	6) ROLLBACK : 작업 취소 (DML 대상 작업)
+
