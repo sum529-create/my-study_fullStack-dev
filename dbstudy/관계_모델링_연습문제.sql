@@ -1,11 +1,15 @@
 -- 삭제 (8개 테이블 순서 맞춰서 삭제하기)
+
+-- 외래키를 가진 4개 테이블 먼저 삭제
 DROP TABLE 제품;
 DROP TABLE 주문;
 DROP TABLE 배송;
-DROP TABLE 택배업체;
+DROP TABLE 게시판;
+
+-- 기본키를 가진 4개 테이블은 서로 간 삭제 순서가 없다.
 DROP TABLE 창고;
 DROP TABLE 제조사;
-DROP TABLE 게시판;
+DROP TABLE 택배업체;
 DROP TABLE 회원;
 
 
