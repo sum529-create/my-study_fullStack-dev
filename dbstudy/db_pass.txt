@@ -1,0 +1,8 @@
+DB password
+
+1111
+1111
+
+
+sqlplus
+conn
