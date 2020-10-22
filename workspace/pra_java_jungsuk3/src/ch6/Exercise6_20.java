@@ -8,9 +8,20 @@ public class Exercise6_20 {
 
 	 * */
 	
-	private static int[] shuffle(int[] original) {
-		// TODO Auto-generated method stub
-		return null;
+	private static int[] shuffle(int[] arr) {
+		
+		if(arr == null || arr.length == 0) {
+			return arr;
+		}
+		
+		int rand = (int)(Math.random()*arr.length);
+		for(int i =0; i<arr.length; i++) {			
+			int temp = arr[i];
+			arr[i] = arr[rand];
+			arr[rand] = temp;
+		}
+		
+		return arr;
 	}
 
 	
