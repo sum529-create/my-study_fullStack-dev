@@ -3,10 +3,21 @@ package ch6;
 public class Exercise6_22 {
 
 	/* (1) isNumber 메서드를 작성하시오. */
-	private static String isNumber(String str) {
-		// TODO Auto-generated method stub
-		return null;
+	private static Boolean isNumber(String str) {
+		if(str  == null || str.equals("")) {
+			return false;
+		}
+		for(int i = 0; i<str.length(); i++) {
+			char ch = str.charAt(i);
+			if(ch < '0' || ch > '9') {
+				return false;
+			}
+		
+			
+		}
+		return true;
 	}
+	
 
 	
 
