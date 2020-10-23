@@ -5,8 +5,7 @@ public class Exercise6_24 {
 	/* (1) abs 메서드를 작성하시오. */
 
 	private static int abs(int value) {
-		// TODO Auto-generated method stub
-		return 0;
+		return value >= 0 ? value : -value;
 	}
 
 
