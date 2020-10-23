@@ -1,0 +1,9 @@
+SPRING 계정 삭제 후 재 생성
+	- 테이블 존재하는 상태
+1. SYSTEM 계정으로 접속
+2. SYSTEM 계정으로 워크시트에서 쿼리 작업
+	1) DROP USER SPRING;
+	2) DROP USER SPRING CASCADE;
+3. SPRING 계정 재생성
+	1) CREATE USER SPRING IDENTIFIED BY 1111;
+	2) GRANT DBA TO SPRING;
