@@ -2,9 +2,20 @@ package ch6;
 
 public class Exercise6_23 {
 	/* (1) max 메서드를 작성하시오 . */
-	private static String max(int[] data) {
-		// TODO Auto-generated method stub
-		return null;
+	private static int max(int[] arr) {
+		if(arr == null || arr.length ==0) {
+			return -999999;
+		}
+		
+		int max = arr[0];
+		
+		for(int i =1; i<arr.length; i++) {
+			if(arr[i] > max) {
+				max = arr[i];
+			}
+		}
+		
+		return max;
 	}
 
 
