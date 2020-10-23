@@ -12,18 +12,28 @@ class MyTv {
 
 	void turnOnOff() {
 		// (1) isPowerOn의 값이 true면 false로, false면 true로 바꾼다.
+		if(isPowerOn == true) {
+			isPowerOn = false; 
+		}else {
+			isPowerOn = true;
+		}
 	}
 
 
 	void volumeUp() {
 		// (2) volume의 값이 MAX_VOLUME보다 작을 때만 값을 1 증가시킨다.
-
+		if(volume < MAX_VOLUME) {
+			volume++;
+		}
 	}
 
 
 	void volumeDown() {
 
 		// (3) volume의 값이 MIN_VOLUME보다 클 때만 값을 1 감소시킨다.
+		if(volume > MIN_VOLUME) {
+			volume--;
+		}
 	}
 
 
@@ -31,16 +41,26 @@ class MyTv {
 
 		// (4) channel의 값을 1 증가시킨다.
 		// 만일 channel이 MAX_CHANNEL이면 , channel의 MIN_CHANNEL 값을 로 바꾼다.
+
+		if(channel == MAX_CHANNEL) {
+			channel = MIN_CHANNEL;
+		}else {
+			channel++;
+		}
+		
 	}
 
 	void channelDown() {
 
 		// (5) channel의 값을 1 감소시킨다 .
 		// 만일 channel이 MIN_CHANNEL이면, channel의 값을 MAX_CHANNEL 로 바꾼다.
-
+		if(channel == MIN_CHANNEL) {
+			channel = MAX_CHANNEL;
+		}else {			
+			channel--;
+		}
 	}
 } 
-
 public class Exercise6_21 {
 
 	public static void main(String[] args) {
