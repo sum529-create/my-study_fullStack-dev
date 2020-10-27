@@ -15,20 +15,28 @@ class SutdaDeck1 {
 		}
 	}
 
-	public char[] pick(int i) {
-		
-		return null;
-	}
-
-	public char[] pick() {
-		
-		return null;
-	}
-
 	public void shuffle() {
-		
+		SutdaCard1 temp = null;
+		for(int i = 0 ; i<cards.length; i++) {
+			int rand = (int)(Math.random()*cards.length);
+			temp = cards[i];
+			cards[i] = cards[rand];
+			cards[rand] = temp;
+			
+		}
 		
 	} 
+	public SutdaCard1 pick(int index) {
+		if(index < 0 || index >= CARD_NUM)
+			return null;
+		return cards[index];
+	}
+
+	public SutdaCard1 pick() {
+		int rand = (int)(Math.random()*cards.length);
+		return pick(rand);
+	}
+
 	
 	/* (1) 위에 정의된 세 개의 메서드를 작성하시오 . */
 	
