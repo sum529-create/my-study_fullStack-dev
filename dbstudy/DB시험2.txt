@@ -1,0 +1,78 @@
+* 데이터 딕셔너리
+0 DB자원을 효율적으로 관리하기 위한 정보를 저장하는 시스템 테이블
+0 테이블 생성, 변경 시 자동으로 갱신되는 테이블
+0 사용자는 조회 외 사용불가(수정, 삭제)
+0 조회시 시스템이 직접 관리하여 암호같은 기호가 보여짐
+
+
+select * from 테이블;
+
+drop table 테이블;
+drop view 뷰명
+
+select * from 테이블 명 where 1 =2;
+-> 구조만 만들음
+
+update 테이블명 set 바꿀값 where 조건값;
+
+delete from 테이블명 where 조건값;
+
+create table 테이블(
+ 컬럼명 형식 [defualt 값, primary key, references 테이블(컬럼), not null, unique]
+);
+
+
+* NVL 처리함수
+-> NVL(값, 값이 NULL일 시 사용값)
+
+* NOT IN() / IN()
+-> 포함안함/ 함
+
+* IS NULL
+-> NULL값이 아닌것
+
+* 어느 값이 포함되는 것
+-> LIKE '%U' 끝자리
+-> LIKE '%U%' 포함
+-> LIKE 'U%' 앞자리
+
+* 다중 LIKE문
+-> REGEXP_LIKE(컬럼, 'U|u');
+
+* 대문자로 변환
+-> UPPER(컬럼);
+
+* 소문자로 변환
+-> LOWER(컬럼);
+
+* N번째 글자 조회
+-> LIKE '__A'
+
+* ~에서 ~까지 값
+-> BETWEEN A AND B
+
+* GROUP BY
+SELECT 컬럼 FROM 테이블 GROUP BY 컬럼과 일치
+
+* HAVING
+-> GROUP BY 사용 후 계산시 사용
+
+* AS
+-> 별명
+
+* INNER JOIN 사용법
+-> SELECT 컬럼 FROM 테이블 컬럼 INNER JOIN 컬럼 ON 컬럼 = 컬럼
+-> SELECT 컬럼 FROM 테이블 컬럼, 컬럼 WHERE 컬럼 = 컬럼
+
+
+
+-- SELECT 검색할 칼럼
+-- FROM 테이블
+-- [WHERE 조건식]
+-- [GROUP BY 그룹화할 칼럼]
+-- HAVING
+-- [ORDER BY 정렬 칼럼]
+
+
+
+
