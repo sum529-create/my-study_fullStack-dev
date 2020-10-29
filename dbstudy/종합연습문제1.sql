@@ -73,7 +73,61 @@ DELETE FROM USERS WHERE USER_NO = 5;
 SELECT USER_ID AS 아이디, COUNT(*) AS 구매횟수 FROM BUYS GROUP BY USER_ID;
 
 -- 어떤 고객이 어떤 제품을 구매했는지 조회하시오.
+-- 이력이 없는 고객도 함께 조회하시오. (user테이블의  모든 데이터를 포함하고, BUYS테이블의 일치하는 데이터만 포함하는 외부 조인)
 -- 고객명  구매제품
 -- 강호동  청바지
 --      ...
+
+-- 내부 조인
 SELECT U.USER_NAME AS 고객명, B.PROD_NAME AS 구매제품 FROM BUYS B, USERS U WHERE B.USER_ID = U.USER_ID;
+
+-- 외부조인 -- 왼쪽 외부조인
+SELECT U.USER_NAME AS 고객명, B.PROD_NAME AS 구매제품 FROM USERS U, BUYS B WHERE U.USER_ID = B.USER_ID(+);
+SELECT U.USER_NAME AS 고객명, B.PROD_NAME AS 구매제품 FROM USERS U LEFT OUTER JOIN BUYS B ON U.USER_ID = B.USER_ID;
+
+-- 제품을 구매한 이력이 있는 고객아이디, 고객명과 총 구매횟수를 조회하시오.
+SELECT U.USER_ID AS 고객아이디 ,U.USER_NAME AS 고객명, COUNT(*) AS 구매횟수 FROM USERS U, BUYS B WHERE U.USER_ID = B.USER_ID GROUP BY U.USER_NAME, U.USER_ID;
+
+-- 제품을 구매한 이력이 있는 고객명과 총 구매액을 조회하시오.
+SELECT U.USER_NAME AS 고객명, SUM(B.PROD_PRICE * B.BUY_AMOUNT) AS 구매액 FROM USERS U, BUYS B WHERE U.USER_ID = B.USER_ID GROUP BY U.USER_NAME;
+
+-- 구매 이력과 상관없이 고객별 구매횟수를 조회하시오.
+SELECT U.USER_ID AS 고객아이디, U.USER_NAME AS 고객명, COUNT(PROD_NAME) AS 구매횟수 FROM USERS U, BUYS B WHERE U.USER_ID = B.USER_ID GROUP BY U.USER_ID, U.USER_NAME;
+
+-- 구매 이력이 없으면 구매횟수는 0으로 조회하시오.
+SELECT U.USER_ID AS 고객아이디, U.USER_NAME AS 고객명, COUNT(PROD_NAME) AS 구매횟수 FROM USERS U, BUYS B WHERE U.USER_ID = B.USER_ID(+) GROUP BY U.USER_ID, U.USER_NAME;
+
+-- 구매 이력에 상관없이 고객별 총 구매액을 조회하시오.
+-- 구매 이력이 없으면 총 구매액을 0으로 조회하시오.
+SELECT U.USER_NAME AS 고객명, NVL(SUM(B.PROD_PRICE * B.BUY_AMOUNT),0) AS 구매액 FROM USERS U , BUYS B WHERE U.USER_ID = B.USER_ID(+) GROUP BY U.USER_NAME;
+
+-- 카테고리가 '전자'인 제품을 구매한 고객명과 총 구매액을 조회하시오.
+SELECT U.USER_NAME AS 고객명, SUM(B.PROD_PRICE * B.BUY_AMOUNT) AS 총구매액 FROM USERS U, BUYS B WHERE U.USER_ID = B.USER_ID AND B.PROD_CATEGORY = '전자' GROUP BY U.USER_NAME;
+
+-- 구매횟수가 2회 이상인 고객명과 구매횟수를 조회하시오.
+SELECT U.USER_NAME AS 고객명, COUNT(PROD_NAME) AS 구매횟수 FROM USERS U, BUYS B WHERE U.USER_ID = B.USER_ID GROUP BY U.USER_NAME HAVING (COUNT(*)>= 2) ;
+
+-- USERS 테이블과 BUYS 테이블 각각의 종속 관계를 확인하고
+-- 정규화 하시오.
+-- BUYS테이블을 BUYS테이블과 RPODUCT 테이블로 분리한다.
+
+CREATE TABLE PRODUCT(
+    PROD_CODE NUMBER PRIMARY KEY,
+    PROD_NAME VARCHAR2(20) UNIQUE,
+    PROD_CATEGORY VARCHAR2(20),
+    PROD_PRICE NUMBER
+);
+
+CREATE TABLE BUYS(
+    BUY_NO NUMBER PRIMARY KEY,
+    USER_ID VARCHAR2(20) REFERENCES USERS(USER_ID),
+    PROD_NAME VARCHAR2(20) REFERENCES PRODUCT(PROD_NAME),
+    BUY_AMOUNT NUMBER
+);
+
+
+
+
+
+
+
