@@ -1,0 +1,72 @@
+create sequence 시퀀스
+increase by n
+start with N
+maxvalue n|nomaxvalue
+minvalue n|nominvalue
+cycle | nocycle
+cache | nocache
+
+시퀀스.currval
+시퀀스.nextval
+
+
+문자열
+1. 대소문자 변환 -> UPPER | LOWER | INITCAP
+
+2. 길이 구하기 -> LENGTH, LENGTHB
+
+3. 문자열 연결하기 -> ||, CONCAT
+
+4. 문자열 분리하기 -> SUBSTR('12-34', 1, 2)  => 12
+		      SUBSTR('12-34', -2) => 34
+
+5. 문자열 찾기 -> INSTR('ABC', 'B') => 2
+		  INSTR('ABCABC', 'B', 1, 2) => 1번째 위치부터 찾아 2번째 B어디있어 => 5
+
+6. 문자 채우기 -> RPAD('A', 4, '*') => A***
+		  LPAD('A', 4, '*') => ***A
+
+7. 불필요한 문자 제거 -> TRIM, RTRIM, LTRIM('  A'); -> 'A'
+
+SELECT RPAD(SUBSTR(LAST_NAME, 1, 2), 10, '*') FROM EMPLOYEES;
+SELECT SUBSTR('홍길동', 1, 1) FROM DUAL;
+SELECT SUBSTR('CO CO', INSTR('CO CO', ' ')+1)
+
+
+숫자
+1. 반올림 -> ROUND(1.23, 1) => 1.2
+	     ROUND(1.23) => 1
+	     ROUND(13.23, -1) => 10
+
+2. 자르기 -> TRUNC(1.23, 1) => 1.2
+	     
+3. 올림 -> CEIL(123.45 * 10) / 10 => 1의 자리 올림
+
+4. 내림 -> FLOOR(123.45 * 10) / 10 => 1의 자리 내림
+=> 내림은 작은 수로 변환함
+	     
+5. 집계함수 -> SUM,AVG, MAX, MIN, COUNT
+
+
+날짜
+1. 현재 날짜 -> SYSDATE
+
+2. 연산가능
+SYSDATE + 2 => 2일후
+SYSDATE + 0.5 => 12시간 후
+
+3. 개월 연산 -> ADD_MONTHS, MONTHS_BETWEEN
+
+
+타입변환
+1. 문자열 변환 -> TO_CHAR
+
+2. 숫자로 변환 -> TO_NUMBER
+
+3. 날짜로 변환 -> TO_DATE('20/10/30', 'YY/MM//DD')
+   형식 맞춰서 -> TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+
+YY 연도 MM 월 DD 일 HH시간 MI분 SS초
+
+
+
