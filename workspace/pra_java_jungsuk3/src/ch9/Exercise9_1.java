@@ -52,10 +52,13 @@ class SutdaCard {
 
 		 */
 		if(obj instanceof SutdaCard){
-   			SutdaCard c = (SutdaCard) obj;
+			   SutdaCard c = (SutdaCard) obj;
+
 			return num==c.num && isKwang == c.isKwang;
-		}
-		return false;
+
+			}
+
+			return false;
 	}
 
 
