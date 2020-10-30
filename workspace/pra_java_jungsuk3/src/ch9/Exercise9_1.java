@@ -51,9 +51,11 @@ class SutdaCard {
 		 * 멤버변수 num, isKwang을 비교하도록 오버라이딩 하시오. 
 
 		 */
-		
-		
-		return isKwang; 
+		if(obj instanceof SutdaCard){
+   			SutdaCard c = (SutdaCard) obj;
+			return num==c.num && isKwang == c.isKwang;
+		}
+		return false;
 	}
 
 
