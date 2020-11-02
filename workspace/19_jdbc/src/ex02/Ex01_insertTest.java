@@ -65,9 +65,12 @@ public class Ex01_insertTest {
 			e.printStackTrace();
 		}finally{
 			try {
-			if(conn != null) {
-				conn.close();
-			}
+				if(ps != null) {
+					ps.close();
+				}
+				if(conn != null) {
+					conn.close();
+				}
 			}catch (Exception e) {
 				e.printStackTrace();
 			}
