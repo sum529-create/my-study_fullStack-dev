@@ -1,0 +1,69 @@
+eclipse -> 오른쪽 상단에 Perspective
+
+웹 서버 : 정적 웹페이지의 구동
+
+웹 애플리케이션 서버 : 동적 웹페이지 구동
+(WAS)
+
+
+
+	was[동적]가 webserver[정적] 포함
+=>	jsp		정적 html
+ ex)	TOMCAT
+
+
+D:\Spring0914\install\apache-tomcat-8.5.59\conf\server.xml
+-> port = 8080  //  오라클에서는 8081 or 8080
+   서로 달라야 정상적인 작동을 한다.
+
+D:\Spring0914\install\apache-tomcat-8.5.59\bin\startup.bat
+눌러야 작동
+
+D:\Spring0914\install\apache-tomcat-8.5.59\lib
+jar -> java archieve file
+만약에 ojdbc6.jar을 둔다면 이 tomcat은 db파일을 사용할 수 있다.
+
+
+
+
+-> Tomcat 압축을 이미 풀어 사용할 수 있다.
+
+
+eclipse -> 하단에 servers -> new server 클릭 -> Apache/Tomcat v9.0 Server -> 경로 설정(directory) D:\Spring0914\install\apache-tomcat-8.5.59
+
+
+
+* Tomcat삭제 방법
+- servers -> 우클릭 delete [실제로 지워지지는 않고 목록에서 지워짐]
+그래서 -> windows -> preferences -> Server -> Runtime Environment -> remove
+
+
+* Tomcat 시작 방법
+Servers -> Tomcat우클릭 -> start
+<> 중지 -> stop
+
+
+* 크롬 웹 창을 사용하고 싶을 때
+window -> webserver -> 크롬 선택
+
+* 인코딩
+1. window -> preferences -> General -> Content Types ->  default encoding -> UTF-8 적어준다.
+2. window -> preferences -> General -> Workspace -> Text file encoding -> other -> UTF-8
+-- 여기까지는 java 공통
+3. window -> preferences -> Web -> [css, html, jsp]Files 다 -> encoding -> 맨처음 UTF-8로 변경
+xml도 해야하지만 xml은 utf-8이 기본이다.
+
+
+
+* 파일 생성 시
+-> Dynamic Web Project
+target => apache 8.5
+version => 3.1 확인
+
+-> context root = project's name
+http://www.naver.com/webtoon/a.png
+	domain      / context root(path)
+
+
+src -> java
+WebContent -> html			
