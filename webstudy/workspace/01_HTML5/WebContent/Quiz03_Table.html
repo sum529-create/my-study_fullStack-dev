@@ -5,6 +5,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<div style = "float:left; margin-left : 1%;">
 	<h3>연습문제1</h3>
 	<table border = "/">
 	<caption>제주특별자치도 학교현황(2015 기준)</caption>
@@ -14,66 +15,77 @@
 		<col>
 		<col style = "background : lightgray">
 	</colgroup>
-	<tbody>
-		<tr style = " font-style: bold">
+	<thead>
+		<tr>
 			<th>구분</th>
 			<th>학교수</th>
 			<th>학급수</th>
 			<th>학생수</th>
 			<th>교환수</th>
 		</tr>
+	</thead>
+	<tbody>
 		<tr>
-			<td>유치원</td>
+			<td style = " font-weight: bold">유치원</td>
 			<td>117</td>
 			<td>252</td>
 			<td>5,547</td>
 			<td>474</td>
 		</tr>
+	</tbody>
+	<tfoot>
 		<tr>
-			<td>합계</td>
+			<td style = " font-weight: bold">합계</td>
 			<td>300</td>
 			<td>3,437</td>
 			<td>86,954</td>
 			<td>6,111</td>
 		</tr>
-	</tbody>
+	</tfoot>
 	</table>
+	</div>
 	
+	<div style = "float:left; margin-left : 1%;">
 	<h3>연습문제2</h3>
 	<table border ="/">
 		<caption>우리팬션 객실안내</caption>
 		<colgroup>
 		<col style = " font-weight: bold">
 	</colgroup>
-		<tbody>
-			<tr style = "background:lightgray; font-weight: bold">
+		<thead>
+			<tr>
 				<th>방이름</th>
 				<th>고객구분</th>
 				<th>정원</th>
 				<th>가격</th>
 			</tr>
+		</thead>
+		<tbody>
 			<tr>
-				<td>콜로라도</td>
+				<td style = " font-weight: bold">콜로라도</td>
 				<td>여성 전용</td>
 				<td rowspan = "3">4인실</td>
 				<td rowspan = "4">100,000원</td>
 			</tr>
 			<tr>
-				<td rowspan = "2">아레나도</td>
+				<td rowspan = "2" style = " font-weight: bold">아레나도</td>
 				<td>가족용</td>
 			</tr>
 			<tr>
 				<td>가족용</td>
 			</tr>
 			<tr>
-				<td>엘레나</td>
+				<td style = " font-weight: bold">엘레나</td>
 				<td>커플 전용</td>
 				<td>2인실</td>
 			</tr>
-			<tr  style = "background:lightgray; font-weight: bold">
+		</tbody>
+		<tfoot  style = "background:lightgray; font-weight: bold">
+			<tr>
 				<td colspan="4">6월 15일까지 전 객실 50% 할인</td>
 			</tr>
-		</tbody>
+		</tfoot>
 	</table>
+	</div>
 </body>
 </html>
