@@ -7,7 +7,7 @@
 	table{
 		border-collapse : collapse;
 		border : 1px solid black;
-		margin-bottom : 10px;
+		margin-bottom : 30px;
 	}
 	tr, td{
 		 border : 1px solid black;
@@ -34,7 +34,7 @@
 	 -->
 	 
 	 <h3>테이블 연습 1</h3>
-	 <table border="/">
+	 <table> <!-- <table border="/"> -->
 	 	<thead>
 	 	<tr>
 	 	<th> 번호</th>
@@ -66,12 +66,36 @@
 	 
 	 <!-- 
 	 	셀 병랍
-	 	1. <td>, <th> <rowspan>
-	 	
-	 
+	 	1. <td>, <th> 태그에서 설정한다.
+	 	2. rowspan 속성: 행 병합, 위 아래 셀 병합
+	 	3. colspan 속성: 열 병합, 좌우 셀 병합
 	  -->
 	  
-	  
+	  <h3>위아래가 병합된 테이블</h3>
+	 <table border="1">
+	 	<tbody>
+	 		<tr>
+	 			<td rowspan="2">A</td>
+	 			<td>B</td>
+	 		</tr>
+	 		<tr>
+	 			<td>C</td>
+	 		</tr>
+	 	</tbody>
+	 </table>
+	 
+	 <h3>좌우가 병합된 테이블</h3>
+	 <table border="1">
+	 	<tbody>
+	 		<tr>
+	 			<td colspan="2">A</td>
+	 		</tr>
+	 		<tr>
+	 			<td>B</td>
+	 			<td>C</td>
+	 		</tr>
+	 	</tbody>
+	 </table>
 	  
 	  <table>
 	  <thead>
@@ -96,7 +120,7 @@
 	  </table>
 	  
 	  
-	  <h3>&lt;colgroup&gt; </h3>
+	  <h3>&lt;colgroup&gt; 태그가 사용된 테이블</h3>
 	  <table border="/">
 	  	<!-- thead, tbody, tfoot 모두 생략 -->
 	  	<colgroup>
