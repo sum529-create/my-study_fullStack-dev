@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<style>
+	input{
+		border-right:1px solid #D8D8D8;
+		border-left:1px solid #D8D8D8;
+		border-top:1px solid #D8D8D8;
+		border-bottom:1px solid #D8D8D8;
+	}
+	span{
+		color:gray;
+	}
+	#a{
+		border-right:1px solid #D8D8D8;
+		border-left:1px solid #D8D8D8;
+		border-top:1px solid #D8D8D8;
+		border-bottom:1px solid #D8D8D8;
+	}
+</style>
+<body style = "background:#EDEDED;">
+
+	<table style = "margin-left:20%; border:0">
+		<thead>
+			<tr>
+				<th colspan="3">
+					<img src="https://mblogthumb-phinf.pstatic.net/20160622_73/hhtthh82_1466581509899OrBaG_PNG/%B3%D7%C0%CC%B9%F6-%B7%CE%B0%ED-%B0%ED%C8%AD%C1%FA.png?type=w800" style="width:200px;">
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td colspan="3">		
+				<label for="id">
+				아이디
+				</label>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<span style = "background:white;padding:5px;" id = "a">
+						<input type = "text" name = "reg_id"id="id" style ="height:20px; width:400px;">
+						<span>@naver.com</span>
+					</span>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<label for="pw1">
+						비밀번호<br/>
+					<input type = "password" name = "reg_pw"id="pw1" style = "height:30px; width:505px;" id = "a">
+					</label>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<label for="pw2">
+						비밀번호 재확인<br/>
+					<input type = "password" name = "reg_pw"id="pw2" style = "height:30px; width:505px;" id = "a">
+					</label>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<label for="name">
+						이름<br/>
+					<input type = "text" name = "reg_name"id="name" style = "height:30px; width:505px;" id = "a">
+					</label>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="year">
+						생년월일
+					</label>
+				</td>
+			</tr>
+			<tr style = "padding : 0; margin:0">
+				<td>				
+					<input type = "text" name = "reg_year"id="year" placeholder="년(4자)" style = "height:30px; width:180px;margin:0px" id = "a">
+				</td>
+				<td >
+					<select name = "month" style = "height:35px; width:160px;" id = "a">
+						<option value = "0">월</option>
+						<option value = "1">1</option>
+						<option value = "2">2</option>
+						<option value = "3">3</option>
+						<option value = "4">4</option>
+						<option value = "5">5</option>
+						<option value = "6">6</option>
+						<option value = "7">7</option>
+						<option value = "8">8</option>
+						<option value = "9">9</option>
+						<option value = "10">10</option>
+						<option value = "11">11</option>
+						<option value = "12">12</option>
+					</select>		
+					
+				</td>
+				
+				<td>
+					<input type = "text" name = "reg_day"id="day" placeholder="일" style = "height:30px; width:120px;" id = "a">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3" style = "height:30px; width:495px;">
+					<label for = "gender">
+						성별<br/>
+						<select name = "month" style = "height:30px; width:515px;" id = "a">
+							<option value = "성별">성별</option>
+							<option value = "남자">남자</option>
+							<option value = "여자">여자</option>
+							<option value = "선택안함">선택안함</option>
+						</select>
+					</label>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<label for = "email">
+						본인 확인 이메일(선택)<br/>
+						<input type = "email" name = "reg_email"id="email" placeholder="선택입력" style = "height:30px; width:505px;" id = "a">
+					</label>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3">
+				<label for = "phone">
+					휴대전화 <br/>
+				</label>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<select name = "word_num" style = "height:30px; width:515px;" id = "a">
+							<option value = "대한민국">대한민국 +82</option>
+							<option value = "일본">일본 +81</option>
+							<option value = "중국">중국 +86</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type = "tel" name = "reg_phone"id="phone" placeholder="전화번호 입력" style = "height:30px; width:370px;" id = "a">
+				</td>
+				<td>
+					<input type = "submit" value = "인증번호 받기" src="#" style = "color : white; background :#0BC904; height:40px; width:130px;">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<input type = "text" placeholder="인증번호 입력하세요." style = "height:30px; width:505px;" id = "a">
+				</td>
+			</tr>
+		
+		</tbody>
+		
+		<tfoot>
+			<tr>
+				<td colspan="3">
+					<input type = "submit" value = "가입하기"  src="#"  style = "color : white; background : #0BC904;height:40px; width:515px; margin-top:20px;">
+				</td>
+			</tr>
+		</tfoot>
+		
+	</table>
+	
+
+		
+
+
+		
+		
+		
+</body>
+</html>
