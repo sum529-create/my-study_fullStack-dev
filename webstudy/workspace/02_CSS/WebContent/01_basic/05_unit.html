@@ -21,9 +21,21 @@
 		height : 50vh;
 		background-color : lightgray;
 	}
+	#outer{
+		font-size : 20px;	/* 부모의 크기 : 20px */
+	}
+	#inner{
+		font-size: 0.5em;	/* 자식의 크기 : 10px */
+	}
 </style>
 </head>
 <body>
 	<div id = "box1">BOX1</div>
+	<div id = "outer">
+		outter
+		<div id = "inner">
+			inner
+		</div>
+	</div>
 </body>
 </html>
