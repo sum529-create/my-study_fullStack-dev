@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<!-- 
+		입력 태그 : <form>
+		1. action 속성 : submit할 때 입력된 정보를 보낼 경로를 작성한다.
+		2. method 속성 : 입력된 정보를 보내는 방식을 작성한다.
+			1) get
+				(1) 디폴트 방식이다.
+				(2) 정보를 헤더(header)에 포함시켜서 보낸다.
+				(3) 정보가 URL에 노출된다.
+				(4) 보안이 취약하다. (검색)
+				(5) 빠르다.
+			2) post
+				(1) 정보를 본문(body)에 포함시켜서 보낸다.
+				(2) 정보가 URL에 노출되지 않는다.
+				(3) 보안이 우수하다. (로그인, 회원가입)
+				(4) 느리다.
+		3. enctype 속성
+			1) 파일을 업로드 할 때 사용한다.
+			2) 업로드 처리 시 2가지 속성을 아래와 같이 처리한다.
+				(1) method = "post"
+				(2) enctype = "multiport/form-data"
+		4. <form> 태그의 자식 태그
+			1) <input> 태그
+				(1) type = "text"
+				(2) type = "password"
+				(3) type = "button" 
+				(4) type = "submit"
+				(5) type = "reset"
+				(6) type = "radio" 
+				(7) type = "checkbox"
+				(8) type = "file" 
+			2) <select> 태그
+			3) <button> 태그
+			4) <textarea> 태그
+					
+	 -->
+
+	<h3>파일 업로드 폼</h3>
+	<form action="1" method = "post" enctype="multipart/form-data">
+		첨부파일 <input type = "file" name = "filename" multiple/> <!-- name은 자바 변수명이 된다. multiple은 다중 첨부를 의미한다. -->
+		<input type = "submit" name = "필요없음" value = "업로드하기"/> <!--  -->	
+	
+	</form>
+
+	<hr/>
+
+	<h3>각종 텍스트 입력 태그</h3>
+	<form>
+		<ol>
+			<li><input type = "text" placeholder = "일반텍스트"/></li>
+			<li><input type = "password" placeholder = "비밀번호"/></li>
+			<li><input type = "number" placeholder = "숫자"/></li>
+			<li><input type = "email" placeholder = "이메일"/></li>
+			<li><input type = "url" placeholder = "인터넷주소"/></li>
+			<li><input type = "date" placeholder = "날짜"/></li>
+			<li><input type = "time" placeholder = "시간"/></li>
+			
+			
+		</ol>
+	</form>
+	
+	<hr/>
+	
+	<h3>버튼 모양의 태그</h3>
+	<form>
+		<ol>
+			<li><input type ="button" value = "일반버튼"/></li>
+			<li><input type ="submit" value = "전송버튼"/></li>
+			<li><input type ="reset" value = "취소버튼"/></li>
+			<li><input type ="image" alt = "전송버튼" src = "#"/></li>
+			<li><button>전송버튼</button></li>
+			
+		</ol>
+	</form>
+	
+	<hr/>
+	
+	<h3>선택 태그</h3>
+	<dl>
+		<dt>다중 선택</dt>
+		<dd>
+			<fieldset style = "width:200px">
+				<legend>취미</legend>
+				<input type = "checkbox" name = "hobbies" value = "movie"/>영화 <br>
+				<input type = "checkbox" name = "hobbies" value = "travel"/>여행 <br>
+				<input type = "checkbox" name = "hobbies" value = "game"/>게임 <br>
+				
+			</fieldset>
+		</dd>
+		<dt>단일 선택</dt>
+		<dd>
+			<fieldset style = "width:200px">
+				<legend>주소</legend>
+				<input type = "radio" name = "address" value = "seoul"/>서울 <br>
+				<input type = "radio" name = "address" value = "jeju"/>제주 <br>
+				<input type = "radio" name = "address" value = "mokpo"/>목포 <br>
+				
+			</fieldset>
+			
+		</dd>
+	</dl>
+	
+	<hr/>
+	
+	<h3>목록 태그</h3>
+	<table>
+		<tbody>
+			<tr>
+				<td>select one</td>
+				<td>select list</td>
+				<td>combo(select + input)</td>
+			</tr>
+			<tr>
+				<td>
+					<select name = "isp">	<!-- 후에 java에서 array가 아닌 String isp하면 됨 -->
+						<option value = "skt">SKT</option>
+						<option value = "kt">KT</option>
+						<option value = "lg">LG</option>
+					</select>
+				</td>
+				<td>
+					<select name = "jobs" multiple>
+						<option value = "1">의사</option>
+						<option value = "2">변호사</option>
+						<option value = "3">교사</option>
+						<option value = "4">개발자</option>
+						<option value = "5">DBA</option>
+					</select>
+				</td>
+				<td>
+					<!-- 콤보는 input이다. input에 datalist를 추가하는 개념이다. -->
+					<input type = "text" list="domains" placeholder="도메인 입력 및 선택"/>	<!-- list 속성으로 <datalist>와 연결한다. -->
+					<datalist id = "domains">	<!-- <datalist> 태그의 id 속성으로 input 태그의 list 속성과 연결된다. -->
+						<option value = "gmail.com" />
+						<option value = "naver.com" />
+						<option value = "daum.com" />
+						<option value = "kakao.com" />
+					</datalist>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<hr/>
+	
+	<h3>다중 행 입력이 가능한 태그</h3>
+	<textarea rows="10" cols="100" name = "content" placeholder="내용"></textarea>
+
+	<hr/>
+
+	<h3>이름표(label) 붙이기</h3>
+	<input type = "checkbox" name = "wishlist" value = "tv" id="wish"><label for="wish">TV</label>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
