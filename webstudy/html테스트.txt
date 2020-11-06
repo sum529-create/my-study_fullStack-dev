@@ -1,0 +1,127 @@
+<p>는 줄 바꿈 안됨
+<pre>가 줄 바꿈 그대로 표시
+
+
+* linebreakTag
+작다 : <		&lt;	less than
+크다 : >		&gt;	greater	than
+작거나같다 : ≤		&le;	less equal
+크거나같다 : ≥		&ge;	greater equal
+공백 : a b		&nbsp;	non break space;
+&			&amp;
+
+
+
+* ul - li 태그 -> style에서 list-style-type : ?
+	- disc  기본 색동그라미
+	- circle 빈 동그라미
+	- square 색네모
+
+ul -> 동글  ol -> 숫자
+
+
+
+* 사전
+dl
+	- dt  - 이름
+	- dd  - 슘
+
+* meta
+<meta charset="UTF-8">
+	     ="${encoding}"
+<meta http-equiv="content-type" content="text/html">
+		 = "refresh"    content="5, ulr = ?"> // 5초 뒤 ?로 이동한다
+<meta name = "viewport" content="width=device-width, initial-scale=1.0">
+<meta name = "description" content="설명">
+<meta name = "keyword" content="meta, viewport, description, keywords">
+
+
+* font
+- size = "n">
+- color = "red">
+- face = "돋움, 돋움체, sans-serif"> 앞에서 먼저
+
+
+* a
+- href="링크">
+- target = "_self"> 현재창
+- target = "_blank"> 새 창
+
+
+* form
+- action = "경로">
+- method = "get(url노출, 보안취약, 빠름) | post(url노출x, 보안, 느림)">
+- enctype = "multipart/form-data">
+
+
+* 텍스트 input		<form>으로 묶을것
+- type 	= "text"
+	= "password"
+	= "number"
+	= "email"
+	= "url"
+	= "date"
+	= "time"
+	= "tel"
+
+* placeholder = "고정"
+
+* 버튼 input		<form>으로 묶을것
+- type 	= "button"	일반
+	= "submit"	전송
+	= "reset"	취소
+	= "image" alt = "" src="#"
+
+
+* 선택 input		<fieldset>으로 묶을것
+- type 	= "checkbox" name = "묶을값" value = "값이름">
+	= "radiobox" name = "묶을값" value = "값이름">
+
+
+* 콤보상자
+- <select name = "isp"	multiple(값고정) >
+	- <option value="a">a</option>
+	- <option value="b">b</option>
+
+* 콤보상자
+- <input type = "text" list="domain">
+- <datalist id = "domain">
+	<option value = "저장할 값1"/>
+	<option value = "저장할 값2"/>
+- </datalist>
+
+
+* 다중 행입력
+- <textarea rows="10" cols="100" name ="content"> </textarea>
+
+
+* label
+<input type ="checkbox" name="wishlist" value="tv" id = "wish">
+	<label for="wish">TV</label>
+
+
+
+* colspan 가로
+* rowspan 세로
+
+* caption
+* colgroup
+	- <col> 1열
+
+
+* 글자간격
+- text-align : /*left, right, center, justify*/
+- text-justify : /*distribute(글자 간격을 조정), inter-word(단어 간격을 조정)*/
+- line-height : 1.5 줄 간격
+- text-indent : 50px; 들여쓰기 첫줄만
+
+* 텍스트 디자인
+- text-decoration : /* none, underline, line-through, overline */
+- text-shadow : x y 번짐 색
+- letter-spacing : 글자 간격
+- word-spacing : 단어 간격
+
+- font-size : 
+- font-style: italic
+- font-weight : 굵게
+- font-family 'Nanum Gothic', 'sans-serif'
