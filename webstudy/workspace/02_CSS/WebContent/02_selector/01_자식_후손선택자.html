@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type = "text/css">
+		table{
+			border:1px solid black;
+			border-collapse: collapse;
+			width : 150px;
+			height : 100px;
+			margin-bottom : 100px;
+		}
+		tr, td, th{
+			border:1px solid black;
+		}
+	/* 1. 자식 선택자 */ 
+		table > thead{
+			background : lightgray;
+		}
+		/* table 태그의 자식 태그로 td태그는 없다. (td태그) */
+		table > td{
+			color:red;
+		}
+		table > thead > tr> td{
+			color:red;
+		}
+		thead > tr > td{	/* 시작 요소는 (thead) 마음대로 정해도 된다. */
+			color:blue;
+		}
+	/* 2. 후손 선택자 */
+		table td{	/* table 태그 아래의 모든 td */
+			font-style:italic;
+		}
+		/* table 태그에서 자식 선택자의 주의점 */
+		/* table 태그 아래에는 tbody 태그가 자동으로 추가된다.  -> */	/* #t > tr > td{ */
+		/* table 태그의 자식으로 tr 태그는 처리할 수 없다. (후손만 가능) */
+		#t > tbody > tr > td{
+			color : blue;
+		}
+		
+	
+</style>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th>이름</th>
+				<th>주소</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>James</td>
+				<td>London</td>
+			</tr>			
+			<tr>
+				<td>emily</td>
+				<td>seoul</td>
+			</tr>			
+			<tr>
+				<td>jessica</td>
+				<td>newyork</td>
+			</tr>			
+		</tbody>
+	</table>
+	
+	<!-- thead, tbody, tfoot이 없는 테이블 -->
+	<table id ="t">
+		<tr>
+			<th>제품명</th>
+			<th>가격</th>
+		</tr>
+		<tr>
+			<td>세탁기</td>
+			<td>150</td>
+		</tr>
+		<tr>
+			<td>건조기</td>
+			<td>150</td>
+		</tr>
+	</table>
+
+</body>
+</html>

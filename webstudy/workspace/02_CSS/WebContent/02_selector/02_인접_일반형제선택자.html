@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type = "text/css">
+	h3 ~ div{ /* h3 태그의 모든 div 동생 태그들이 선택된다. */
+		line-height: 100px;
+	}
+	
+	/* 2. 인접 형제 선택자 */
+	h3 + div{	/* h3 태그에 바로 아래 div 태그만 선택된다. */
+		background: yellow;
+	}
+	a:hover{
+		color:white;
+		text-shadow: 2px 2px 3px black;
+	}
+</style>
+
+</head>
+<body>
+	<h3>선택자</h3>
+	<div id = "a">
+		<a>1. 자식 선택자</a>
+	</div>
+	<div>
+		2. 형제 선택자
+	</div>
+</body>
+</html>

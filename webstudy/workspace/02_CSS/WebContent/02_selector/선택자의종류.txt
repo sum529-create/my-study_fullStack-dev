@@ -1,0 +1,34 @@
+선택자 (selector)
+
+1. 전체 선택자: *
+	*{
+		font-family : 'Roboto', sans-serif;
+	}
+2. 태그 선택자: 태그이름
+	div{
+		font-family: 'Roboto', sans-serif; 
+	}
+3. id 속성 선택자: #id
+	#box{
+		font-family: 'Roboto', sans-serif;
+	}
+4. class 속성 선택자 : .class
+	.centered{
+		font-family: 'Roboto', sans-serif;
+	}
+5. 자식 선택자: 부모 > 자식 (바로 밑 자식만 가능하다.)
+	div > a {
+		text-decoration: none;
+	}
+6. 후손 선택자: 부모 자식 (부모 아래의 모든 후손이 선택된다.)
+	div a {
+		text-decoration: none;
+	}
+7. 인점 형제 선택자: 형 + 동생 (형의 첫 번째 동생만 선택된다.)
+	div + p {
+		text-align: center;
+	}
+8. 일반 형제 선택자 : 형 ~ 동생 (형의 모든 동생들이 선택된다)
+	div ~ p{
+		text-align : center;
+	}
