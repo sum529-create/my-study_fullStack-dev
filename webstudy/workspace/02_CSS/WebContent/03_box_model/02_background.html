@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type = "text/css">
+
+
+	.my-box{
+		background-color : crimson;
+	}
+	#box1{
+		/* box크기 == img크기 */
+		width : 640px;
+		height : 427px;
+		background-image: url(../assets/images/dachshund.jpg);
+		background-size: 640px 427px;	/* 가로 세로 순 */
+	}
+	
+	/* 2. box크기 < img크기 */
+	#box2{
+		width : 400px;
+		height: 300px;
+		background-image: url(../assets/images/dog.jpg);
+		background-size: cover;	/* 가로 세로 비율을 유지시키면서 크기를 맞춤 */
+	}
+	
+	/* 3. box크기 > img크기 */
+	#box3{
+		width : 1300px;
+		height: 426px;
+		background-image: url(../assets/images/dachshund2.jpg);	/* 가로 세로 비율을 유지시키면서 크기를 맞춤 */
+		background-repeat:no-repeat;
+		background-position: left; /* 세로(top, 생략:middle, bottom) 가로(left, center, right)*/
+	}
+	
+	body > div{
+		width:100%;
+		background-image: url(../assets/images/indoors.jpg);
+		background-repeat:no-repeat;
+	}
+</style>
+</head>
+<body>
+	<div>
+		<div id = "box1" class="my-box">
+			<h1>BOX-1</h1>
+		</div>
+		<div id = "box2" class="my-box">
+			<h1>BOX-2</h1>
+		</div>
+		<div id = "box3" class="my-box">
+			<h1>BOX-3</h1>
+		</div>
+	</div>
+	
+</body>
+</html>
