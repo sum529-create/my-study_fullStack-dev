@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type = "text/css">
+	/* 1. type 속성을 가지고 있는 모든 form태그 아래 input 태그들 */
+	form > input[type]{
+		background: green;
+	}
+	
+	/* 2. readonly 속성ㄹ을 가지고 있는 모든 form 태그 아래 input 태그들 */
+	form > input[readonly]{
+		background: lightgray;
+	}
+	
+	/* 3. type 속성 값이 text인 모든 form태그 아래 input 태그들 */
+	form > input[type = text]{
+		background: orange;
+	}
+	
+	/* 4. type 속성 값이 text가 아닌 모든 form 태그 아래 input 태그들 */
+	form > input:not([type = text]){
+		background: yellow;
+	}
+	
+	/* 5. src 속성이 jpg로 끝나는 img 태그 */
+	img[src$=jpg]{
+		opacity : 0.5;
+	}
+	img:hover{
+		opacity:1;
+		/* filter:brightness(150%); */
+	}
+	
+	img{
+		width:200px;
+	}
+</style>
+</head>
+<body>
+	<form action = "#">
+		<input type= "text" /> <br/>
+		<input type= "password"/><br/>
+		<input type= "email" value = "abc@naver.com" readonly/><br/>	<!-- 수정이 안되는 코드 readonly -->
+		<input type= "number" />
+	</form>
+	
+	<br/>
+	
+	<img alt = "피자할인" src = "../assets/images/event.jpg"/><br/>
+	<img alt = "디즈니" src = "../assets/images/disney.jpg"/><br/>
+	
+</body>
+</html>

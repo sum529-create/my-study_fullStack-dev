@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	h3 > a {
+		text-decoration: none;
+	}
+	
+	/* 방문하기 전 링크를 검정색으로 표현 */
+	h3 > a:link{
+		color:black;
+	}
+	
+	/* 방문 후 링크를 회색으로 표현 */
+	h3 > a:visited{
+		color : gray;
+	}
+	
+	/* 마우스를 클릭할 때 주황으로 표현 */
+	h3 > a:active{
+		color : orange;
+	}
+	
+	/* 마우스를 가져다대면 글꼴을 굵게 표현 */
+	h3 > a:hover{
+		font-weight: bold;
+		color : red;
+	}
+</style>
+</head>
+<body>
+	<h3><a href="https://www.google.co.kr/">GOOGLE</a></h3>
+	<h3><a href="https://www.naver.com/">NAVER</a></h3>
+	<h3><a href="https://www.kakaocorp.com/">KAKAO</a></h3>
+</body>
+</html>
