@@ -49,3 +49,10 @@
 	2) E:checked 	checked 상태인 E
 	3) E:enabled 	enabled 상태인 E
 	4) E:disabled	disabled 상태인 E	
+13. 구조 선택자
+	1) E:first-child	첫 번쨔 E(요소)
+	2) E:last-child		마지막 E
+	3) E:nth-child(n)	n번째(수열) E
+	4) E:first-of-type	첫 번째 타입 E(요소)
+	5) last-of-type		마지막 타입 E
+	6) E:nth-of-type(n)	n번째(수열) 타입 E
