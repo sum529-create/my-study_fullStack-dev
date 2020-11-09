@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- vender prefixfree 자동 포함 -->
+<!-- 
+	-webkit- : 크롬, 사파리
+	-moz-	 : 파이어폭스
+	-o-		 : 오페라
+ -->
+<script src = "../assets/script/prefixfree.min.js" type="text/javascript"></script>
+<style type="text/css">
+	.gradient-box{
+		height : 200px;
+	}
+	#grad1{		
+		background-color: red;	/* gradient 지원이 안 되면 red로 */
+		-webkit-background-image: linear-gradient(blue,pink);
+		-moz-background-image: linear-gradient(blue,pink);
+		-o-background-image: linear-gradient(blue,pink);
+		background-image: linear-gradient(blue,pink);
+	}
+	#grad2{
+		background-color: orange;
+		background-image: linear-gradient(to top left, hotpink, pink, white);
+	}
+	#grad3{
+		background-image: linear-gradient(to right, rgba(110,227,247, 0.9), rgba(110,227,247, 0.1));
+	}
+	
+	#grad4{
+		width: 500px;
+		height: 300px;
+		background-image : orange;
+		background-image : radial-gradient(lightpink, skyblue);
+	}
+	#grad5{
+		width: 500px;
+		height: 300px;
+		background-image : orange;
+		background-image : radial-gradient(circle, white, lime);
+	}
+</style>
+</head>
+<body>
+	<h3>linear gradient</h3>
+	<div id = "grad1" class = "gradient-box"></div>
+	<div id = "grad2" class = "gradient-box"></div>
+	<div id = "grad3" class = "gradient-box"></div>
+	
+	<h3>radial gradient</h3>
+	<div id = "grad4" class = "gradient-box"></div>
+	<div id = "grad5" class = "gradient-box"></div>
+	<div id = "grad6" class = "gradient-box"></div>
+</body>
+</html>
