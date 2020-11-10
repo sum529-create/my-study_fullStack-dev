@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	/* 
+		1. table은  width와 height를 줄 수 있다.
+		2. td는 width와 height를 줄 수 있다.
+		3. table의 border는 테이블 바깥쪽 선만 처리한다.
+		4. tr는 border가 처리되지 않는다.
+		5. td는 border는 각  셀의 바깥쪽 선만 처리한다.
+		6. td는 가로/세로 정렬이 모두 가능하다.
+		7. tr에 정렬 처리흘 하려면 class 속성을 주고 처리한다.
+	 */
+	 table{
+	 	width:300px;
+	 	height:100px;
+	 	border:1px solid black;
+	 }
+	 
+	 table, td{
+	 	border: 1px solid black;
+	 	border-collapse: collapse;	/* 단일 선표시 */
+	 }
+	 
+	 td{
+	 	/* text-align: center;		/* 가로 가운데 정렬 */ */
+	 	vertical-align: middle;	/* 세로 가운데 정렬, 테이블 전용 */
+	 	width:150px;
+	 }
+	 .tbody-row{
+	 	/* tr태그에 부여한 class 속성 */
+	 	text-align:right;
+	 }
+	 tr > td:nth-of-type(1) {width:100px;}
+	 tr > td:nth-of-type(2) {width:200px;}
+	 
+	 
+	 
+</style>
+</head>
+<body>
+	<table>
+		<caption>명단</caption>
+		<thead>
+			<tr>
+				<td>이름</td>
+				<td>소속</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="tbody-row">
+				<td>가길동</td>
+				<td>삼성</td>
+			</tr>
+			<tr class="tbody-row">
+				<td>나길동</td>
+				<td>현대</td>
+			</tr>
+			<tr class="tbody-row">
+				<td>다길동</td>
+				<td>SK</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
