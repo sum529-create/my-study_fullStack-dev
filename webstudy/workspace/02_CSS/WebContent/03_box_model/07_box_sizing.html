@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.box{
+		height: 100px;
+	}
+	#content-box{
+		box-sizing: content-box;	/* 기본값 */
+		width: 200px;				/* content: 200px */
+		padding: 20px;				/* padding: 20px */
+		border: 5px solid orange;	/* border: 5px */
+		/* content-box의 크기 : content(200px) + padding(40px) + border(10px) = 250px */
+	}
+	#border-box{
+		box-sizing: border-box;	/* border까지 width/height에 포함된다. */
+		width: 200px;
+		padding: 20px;
+		border: 5px solid orange;
+		/* border-box의 크기 : width와 같다. 200px이다. */
+	}
+</style>
+</head>
+<body>
+	<div id="content-box" class="box">BOX1</div>
+	<div id="border-box" class="box">BOX1</div>
+</body>
+</html>
