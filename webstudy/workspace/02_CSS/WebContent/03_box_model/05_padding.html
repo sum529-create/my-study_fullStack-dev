@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type = "text/css">
+
+	/* 
+		padding: border와 content 사이 여백(내부 여백) 
+		1. padding
+			1) padding : 전체
+			2) padding : 상하	  좌우
+			3) padding : 상 	좌우 	하
+			4) padding : 상 	우 	하 	좌
+		2. padding-top
+		3. padding-bottom
+		4. padding-left
+		5. padding-right
+	*/
+
+	.padding-box{
+		width:100px;
+		border: 1px solid black;
+	}
+	#box1{
+		padding: 20px;	/* 모두 20px */
+	}
+	#box2{
+		padding: 20px 50px;		/* 상하 20px 좌우50px */
+	}
+	#box3{
+		padding: 20px 0px 50px;		/* 상20px 좌우0px	하50px */
+	}
+	#box4{
+		padding: 0px 10px 20px 30px;	/* 상0px		우10px	하20px	좌30px */
+	}
+</style>
+</head>
+<body>
+	<div id="box1" class="padding-box">BOX1</div>
+	<div id="box2" class="padding-box">BOX2</div>
+	<div id="box3" class="padding-box">BOX3</div>
+	<div id="box4" class="padding-box">BOX4</div>
+</body>
+</html>

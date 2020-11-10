@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	/* 
+		1. margin
+			1) margin: 전체
+			2) margin: 상하 좌우
+			3) margin: 상 좌우 하
+			4) margin: 상 우 하 좌
+			
+		2. margin-top
+		3. margin-bottom
+		4. margin-left
+		5. margin-right
+		
+		6. margin: auto;
+		   margin: 0px auto;
+		   - 좌우여백을 auto로 지정하면 동일한 바깥 여백이 생기면서,
+		     box가 화면의 가운데로 배치된다. 
+		  
+	 */
+	 
+	 /* .margin-box{
+	 	border:1px solid black;
+	 	height: 100px;
+	 } */
+	 .box{	/* 정확히 가운데로 */
+	 	position:absolute;
+	 	margin-left:-150px;
+	 	left:50%;
+	 }
+	 /*#box1{
+	 	 margin:50px 500px 50px 50px; 
+	 }*/
+	 #box2{
+	 	width:300px;
+	 	height:60px;
+	 	background-color: lightblue;
+	 	border-radius: 30px;
+	 	text-align:center;
+	 	border:none;
+	 	line-height:60px;	/* height == line-height 이면 텍스트가 세로 가운데 정렬 */
+	 }
+	 
+</style>
+</head>
+<body>
+	<hr/>
+	<div class="box">
+		<div id="box1" class="margin-box"><img src = "../assets/images/dog.jpg" width = 300px></div>
+		<!--  <hr/> -->
+		<div id="box2" class="margin-box"><h3>닥스훈트</h3></div>
+	</div>
+</body>
+</html>
