@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+	/* ul과 li 태그는 모두 블록레벨 태그이다. */
+
+/* 	
+	ul {
+		list-style-type: none;	/* none, disc(속찬원), circle(빈원), square(검은사각형) */
+		background: yellow;
+		padding:0px;	/* 불릿기호 부분의 내부 여백을 제거 */	
+	}
+	
+	ul > li{
+		background: orange;
+		margin-bottom:20px;
+	} 
+*/
+	
+	/* 
+		ol태그의 list-style-type
+		1. decimal: 1, 2, 3, ... 
+		2. decimal-leading-zero: 01, 02, 03, ...
+		3. lower-roman: 그리스 소문자
+		4. upper-roman: 그리스 대문자
+		5. lower-alpha: 알파벳 소문자
+		6. upper-alpha: 알파벳 대문자
+		7. none
+	 */
+
+	body > ol {
+		list-style-type: upper-alpha;
+	}
+	ol > li:nth-of-type(2) > ol{
+		list-style-type: lower-alpha;
+	}
+	ol > li:nth-of-type(4) > ol{
+		list-style-type: decimal-leading-zero;
+	}
+	
+</style>
+</head>
+<body>
+
+	<h3>순서가 없는 목록</h3>
+	<ul>
+		<li>JAVA</li>
+		<li>ORACLE</li>
+		<li>HTML</li>
+		<li>CSS</li>
+		<li>JAVASCRIPT</li>
+	</ul>
+	
+	<hr/>
+
+	<h3>순서가 있는 목록</h3>
+	<ol>
+		<li>기상</li>
+		<li>아침수업
+			<ol>
+				<li>1교시</li>
+				<li>2교시</li>
+				<li>3교시</li>
+				<li>4교시</li>
+			</ol>
+		</li>
+		<li>점심</li>
+		<li>저녁수업
+			<ol>
+				<li>5교시</li>
+				<li>6교시</li>
+				<li>7교시</li>
+				<li>8교시</li>
+			</ol>
+		</li>
+		<li>취침</li>
+	</ol>
+</body>
+</html>

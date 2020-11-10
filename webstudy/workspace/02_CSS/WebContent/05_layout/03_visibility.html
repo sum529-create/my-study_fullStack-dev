@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	img{
+		width: 200px;
+		height:200px;
+	}
+	img:nth-of-type(2) {
+		/* visibility:hidden; */ 
+	}
+	img:nth-of-type(2):hover {
+		visibility:hidden; 
+	}
+	.answer{
+		visibility: hidden;
+	}
+	/* answer가 hidden 되더라도 outer는 남기 때문에 hover가 가능하다. */
+	.outer:hover > .answer{
+		visibility: visible;
+	}
+</style>
+</head>
+<body>
+	<img alt="피자할인" src = "../assets/images/event.jpg"> &nbsp;&nbsp;
+	<img alt="디즈니" src = "../assets/images/disney.jpg"> &nbsp;&nbsp;
+	<img alt="닥스훈트" src = "../assets/images/dachshund.jpg"> &nbsp;&nbsp;
+	
+	<br/><br/>
+	
+	<h3>다음 중 블록레벨이 아닌 태그는?</h3>
+	<ol>
+		<li>div</li>
+		<li>a</li>
+		<li>p</li>
+		<li>ul</li>
+	</ol>
+	정답: [ <span class="outer"><span class="answer">2</span></span> ]
+	
+</body>
+</html>
