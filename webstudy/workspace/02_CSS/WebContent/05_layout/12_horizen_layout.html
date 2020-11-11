@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	/* 
+		수평 레이아웃 방법
+		
+		1. float과 clear이용
+			: 마지막 float뒤에 clear를 삽입한다.
+		2. overflow와 float 이용
+			1) 부모 태그는 overflow: hidden;
+			2) 자식 태그는 float: left;
+		3. display 이용
+			1) 부모 태그는 display: flex;
+			2) 부코 태그는 flex-direction: row; ()
+			
+	 */
+	 
+	 /* 1. float과 clear 이용 */
+	 
+	 .container1{
+	 	background:lightgray;
+	 }
+	 .container1 > .box1{
+	 	width:200px;
+	 	height:200px;
+	 	border:1px solid black;
+	 	float: left;
+	 }
+	 .container1 > .clear-box{
+	 	clear: left;
+	 }
+	 
+	 /* 2. overflow와 float이용 */
+	 .container2{
+	 	background:lightgray;
+	 	overflow:hidden;
+	 }
+	 
+	 .container2 > .box2{
+	 	width:200px;
+	 	height:200px;
+	 	border:1px solid black;
+	 	float: left;
+	 }
+	 .container3{
+	 	display:flex;
+		background:lightgray;
+	 }
+	 .container3 > .box3{
+	 	width:200px;
+	 	height:200px;
+	 	border:1px solid black;
+	 }
+</style>
+</head>
+<body>
+	<div class="container1">
+		<div class="box1"></div>
+		<div class="box1"></div>
+		<div class="box1"></div>
+		<div class="clear-box"></div>
+	</div>
+	<div class="container2">
+		<div class="box2"></div>
+		<div class="box2"></div>
+		<div class="box2"></div>
+		<div class="clear-box"></div>
+	</div>
+	<div class="container3">
+		<div class="box3"></div>
+		<div class="box3"></div>
+		<div class="box3"></div>
+		<div class="clear-box"></div>
+	</div>
+</body>
+</html>
