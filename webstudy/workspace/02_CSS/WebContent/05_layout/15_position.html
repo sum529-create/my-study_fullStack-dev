@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+	/* 
+		position 속성 값
+		
+		1. static: 원래 배치되려는 곳에 배치된다.
+					top, bottome, left, right가 동작하지 않는다.
+					position의 기본값이다.
+		2. relative: 원래 배치되려는 곳에 배치된다.
+					 top, bottom, left, right가 동작한다.
+		3. absolute: 직접 배치하려는 것이다.
+					배치되는 기준 위치는 static이 아닌 부모 요소이다.
+					주로 relative인 부모가 사용된다.
+					부모 기준으로 top, bottom, left, right가 동작한다.
+	 */
+
+	.container{
+		position:relative;	/* 부모를 absolute을 주면 margin처리가 안된다 자식은 상관없음 그래서 보통  부모 : relative, 자식 : absolute 값을 준다.*/
+		width:500px;
+		height:500px;
+		border:1px solid black;
+		margin:auto;
+	}
+	#spring{
+		position:absolute;	/* absolute : 부모중에서 static이 아닌 요소 */
+		top:0px;
+		left:0px;
+		width:200px;
+		height:200px;
+		border:1px solid black;
+	}
+	#summer{
+		position:absolute;	
+		top:0px;
+		right:0px;
+		width:200px;
+		height:200px;
+		border:1px solid black;
+	}
+	#fall{
+		position:absolute;	
+		bottom:0px;
+		left:0px;
+		width:200px;
+		height:200px;
+		border:1px solid black;
+	}
+	#winter{
+		position:absolute;	
+		bottom:0px;
+		right:0px;
+		width:200px;
+		height:200px;
+		border:1px solid black;
+	}
+</style>
+</head>
+<body>
+	<div class = "container">
+		<div class="box" id="spring">봄</div>		
+		<div class="box" id="summer">여름</div>		
+		<div class="box" id="fall">가을</div>		
+		<div class="box" id="winter">겨울</div>		
+	</div>
+	
+</body>
+</html>
