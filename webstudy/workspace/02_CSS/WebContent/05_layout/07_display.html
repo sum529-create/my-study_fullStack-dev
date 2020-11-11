@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	/* 수평 배치할 요소들의 부모 태그에
+		display: flex;	속성을 주면 쉽게 수평 배치가 된다.
+	 */
+
+	.container{
+		width:1000px;
+		display : flex;
+		/* nowrap: 줄 바꿈 하지 않겠다.
+		   	 wrap: 줄 바꿈 하겠다. */
+		flex-flow: nowrap;		/* nowrap(디폴트), wrap, wrap-reverse */
+		flex-direction: row;	/* row(디폴트), column, row-reverse, column-reverse */
+	}
+	.container > .box{
+		width:300px;
+		height:300px;
+		border: 1px solid black;
+	}
+</style>
+</head>
+<body>
+	<div class = "container">
+		<div class = "box">봄</div>
+		<div class = "box">여름</div>
+		<div class = "box">가을</div>
+		<div class = "box">겨울</div>
+	</div>
+</body>
+</html>
