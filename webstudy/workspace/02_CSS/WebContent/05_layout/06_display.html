@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	div{
+		border: 1px solid black;
+	}
+	.table{
+		/* <table>로 표시 */
+		display: table;	
+	}
+	.table-header{
+		/* <thead>로 표시 */
+		display: table-header-group;
+	}
+	.table-body{
+		/* <tbody>로 표시 */
+		display: table-row-group;	
+	}
+	.table-row{
+		/* <tr>로 표시 */
+		display: table-row;
+	}
+	.table-data{
+		/* <td>로 표시 */
+		display:table-cell;
+		
+		width:100px;
+		height:50px;
+		
+		/* 세로 방량 정렬(top, middle, bottom)이 가능하다. */
+		vertical-align:middle;
+	}
+</style>
+</head>
+<body>
+	<div class="table">
+		<div class="table-header">
+			<div class="table-row">
+				<div class="table-data">순번</div>
+				<div class="table-data">성명</div>
+				<div class="table-data">연락처</div>
+			</div>
+		</div>
+		<div class="table-body">
+			<div class="table-row">
+				<div class="table-data">1</div>
+				<div class="table-data">제임스</div>
+				<div class="table-data">010-1111-1111</div>
+			</div>
+			<div class="table-row">
+				<div class="table-data">2</div>
+				<div class="table-data">앨리스</div>
+				<div class="table-data">010-2222-2222</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
