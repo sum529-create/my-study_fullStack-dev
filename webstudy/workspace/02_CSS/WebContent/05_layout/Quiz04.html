@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	*{
+		margin:0px;
+	}
+	.gnb{	/* ul의 역할 */
+		background: black;
+		height:50px;
+	}
+	.gnb > a{
+		display: inline-block; /* inline은 유지하되 크기는 조절 할 수 있음*/
+		width:100px;
+		height:100%;	/* 부모 기준 100% */
+		text-decoration: none;
+		margin: 0px;
+		color:white;
+		line-height: 50px;		/* 세로 가운데 맞춤(height == line-height) */
+		text-align: center;		/* 가로 가운데 맞춤 */
+	}
+	.gnb > a:hover{
+		background:gray;
+		color:black;
+	}
+</style>
+</head>
+<body>
+	<div class = "gnb">
+		<a href="javascript:void(0)">Menu1</a>
+		<a href="javascript:void(0)">Menu2</a>
+		<a href="javascript:void(0)">Menu3</a>
+		<a href="javascript:void(0)">Menu4</a>
+	</div>
+</body>
+</html>
