@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	.scale-box{
+		width: 100px; /* 최초값 */
+		height:10px;
+		background:limegreen;
+		border: 2px solid green;
+		margin-left:500px;
+		
+		transition-delay: 1s;		/* 1초 후에 동작함 */
+		transition-duration: 5s;	/* 5초 동안 동작함 */
+		transition-timing-function: ease;
+		transition-property: transform;
+		/* transition-property: width; */
+	}
+	.rotate-box{
+		width: 100px; /* 최초값 */
+		height:100px;
+		background:limegreen;
+		border: 2px solid green;
+		margin-left:500px;
+		
+		transition-delay: 1s;		/* 1초 후에 동작함 */
+		transition-duration: 5s;	/* 5초 동안 동작함 */
+		transition-timing-function: ease;
+		transition-property: transform;
+		/* transition-property: width; */
+	}
+	
+	.scale-box:hover{
+		transform: scale(50, 1);
+		/* width: 500px */
+	}
+	.rotate-box:hover{
+		transform:rotate(1080deg);
+	}
+</style>
+</head>
+<body>
+	<h3>마우스를 대면 1초 후에 5초 동안 크기(너비)가 500px로 커지는 박스</h3>
+	<div class="scale-box"></div>
+	
+	<h3>마우스를 대면 1초 후에 5초동안 회전하는 박스</h3>
+	<div class="rotate-box"></div>
+</body>
+</html>

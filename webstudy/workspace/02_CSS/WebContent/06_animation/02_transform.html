@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	div {
+		width:100px;
+		height:100px;
+		background: teal;
+		margin-top:50px;
+		margin-left:50px;
+	}
+	.rotate-box{
+		-webkit-transform: rotate(45deg);	/* 시계방향 45도 회전 */
+		-moz-transform: rotate(45deg);	/* 시계방향 45도 회전 */
+		-o-transform: rotate(45deg);	/* 시계방량 45도 회전 */
+		transform: rotate(45deg); 	/* 시계방량 45도 회전 */
+	}
+	.translate-box{
+		/* 원래는 벤저 프리픽스가 필요합니다. */
+		transform: translate(500px,50px); /* 가로방향 500px, 세로방향 50px 이동 */
+	}
+	.scale-box{
+		transform:scale(1.5, 0.5);	/* 가로 1.5배, 세로 0.5배 커진다. */
+	}
+	.skew-box{
+		transform:skew(45deg);	/* 45도 기울임 */
+	}
+</style>
+</head>
+<body>
+	<h3>회전 박스</h3>
+	<div class="rotate-box"></div>
+	<h3>이동 박스</h3>
+	<div class="translate-box"></div>
+	<h3>크기 박스</h3>
+	<div class="scale-box"></div>
+	<h3>기울임 박스</h3>
+	<div class="skew-box"></div>
+</body>
+</html>

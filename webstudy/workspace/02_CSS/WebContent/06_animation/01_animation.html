@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	.box{
+		width: 100px;
+		height: 100px;
+		mergin-top: 10px;
+	}
+	#box1{
+		background: pink;
+		animation-name : animation1;
+		animation-duration: 2s;	/* 2초  지속시간*/	
+		animation-timing-function: ease;	/* 진행시간. ease : 천천히갔다가 빠르게 다시 천천히 */
+		animation-iteration-count: infinite;	/* 다시 무한반복 iteration-되폴이 */
+		animation-delay: 500ms;		/* 0.5초 지속시간*/
+	}
+	@keyframes animation1 { 
+		/* from ~ to */
+		from{
+			background: red;
+		}
+		to{
+			background:orange;
+		}
+		
+	}
+	#box2{
+		background:red;
+		animation-name: animation2;
+		animation-duration: 2s;		
+		animation-timing-function: ease;
+		animation-iteration-count: infinite;
+		animation-delay: 500ms;
+	}
+	@keyframes animation2 { 
+		/* %로 구간설정(100% 전체 구간) */
+		10%{
+			background:red;
+		}
+		25%{
+			background:orange;
+		}
+		40%{
+			background:yellow;
+		}
+		55%{
+			background:green;
+		}
+		70%{
+			background:blue;
+		}
+		85%{
+			background:navy;
+		}
+		100%{
+			background:purple;
+		}
+	}
+</style>
+</head>
+<body>
+	<div class="container">
+		<div id = "box1" class="box"></div>
+		<div id = "box2" class="box"></div>
+	</div>
+</body>
+</html>
