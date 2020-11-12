@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	.top-menu{
+		top:0px;
+		left:0px;
+		height:80px;
+		background: black;
+	}
+	.top-menu > .menu-bar{
+		list-style-type: none;
+	}
+	.top-menu > .menu-bar > li{
+		float:left;
+		left:0px;
+		top:0px;
+		padding:0px 20px;
+		height:80px;
+		width:160px;
+		text-align: center;
+		line-height:80px;
+		
+	}
+	.top-menu > .menu-bar > li > a{
+		text-decoration: none;
+		color:white;
+	}
+	li > a:hover{
+		display:block;
+		color:black;
+		background: lightgray;
+	}
+	
+	li > a:active {
+		display:block;
+		background: green;
+		color:black;
+	}
+	*{
+		margin:0px;
+	}
+</style>
+</head>
+<body>
+	<div class="top-menu">
+		<ul class="menu-bar">
+			<li><a href="javascrips:void(0)">HOME</a></li>
+			<li><a href="javascrips:void(0)">BOARD</a></li>
+			<li><a href="javascrips:void(0)">GUEST</a></li>
+			<li><a href="javascrips:void(0)">ABOUT</a></li>
+		</ul>
+	</div>
+</body>
+</html>
