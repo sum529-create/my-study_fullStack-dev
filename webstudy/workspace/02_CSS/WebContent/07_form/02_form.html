@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	fieldset{
+		border:1px solid lightgray;
+		margin-bottom:20px;
+		width:500px;
+	}
+	.small{
+		font-size: 15px;
+	}
+	.blind{
+		display: none;
+	}
+</style>
+</head>
+<body>
+	<form action="">
+		<fieldset>
+			<legend class="blind">신청과목</legend>
+			<label for="subject">이달에 신청할 과목을 선택하세요</label><span id="small">(1과목만 가능)</span>
+			<br/>
+			<input type = "radio" name= "subject" id="subject1" value="speaking">회화
+			<input type = "radio" name= "subject" id="subject2" value="grammar">문법
+			<input type = "radio" name= "subject" id="subject3" value="writing" checked>작문
+			<!-- radio 이중 하나는 꼭 선택해야 한다. checked는 꼭 사용하는 것을 권장 -->
+		</fieldset>
+	</form>
+	<form action="">
+		<fieldset>
+			<label for="news">메일로 받고 싶은 뉴스 주제를 선택해 주세요</label><span id="small">(복수 선택 가능)</span>
+			<br/>
+			<input type = "checkbox" name= "news" id="news1"  value="overseas-news">해외 딘신
+			<input type = "checkbox" name= "news" id="news2" value="five-speaking">5분 회화
+			<input type = "checkbox" name= "news" id="news3" value="morning-pops">모닝팝스
+			<!-- java로 넘어갈때 무조건 String 타입 -->
+		</fieldset>
+	</form>
+</body>
+</html>

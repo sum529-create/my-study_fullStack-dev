@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+label {
+		display: inline-block;
+		width: 100px;
+	}
+	input[type="text"], input[type="password"] {  /* #userId, #userPw { */
+		width: 300px;
+		padding: 10px 20px;  /* 상하10px 좌우20px */
+		border: 3px solid red;
+		margin-bottom: 10px;
+		box-sizing: border-box;
+	}
+	input:focus {
+		background: #eeeeee;
+		border: 3px solid orange;
+	}
+</style>
+</head>
+<body>
+	<form>
+		<label for="userId">아이디</label>
+		<input type="text" name="userId" id="userId" autofocus /><br/>
+		<!-- autofocus 속성은 페이지가 로드될 때 자동으로 포커스  -->
+		<label for="userPw">비밀번호</label>
+		<input type="password" name="userPw" id="userPw" />
+	</form>
+</body>
+</html>

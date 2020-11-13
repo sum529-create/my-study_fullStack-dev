@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	.label{
+		float:left;
+		width:150px;
+		text-align: right;
+		padding-right:10px;
+	}
+	.form input[type="submit"]{
+		margin:20px 0px 0px 160px;
+	}
+	
+</style>
+</head>
+<body>
+	<!-- 첨부가 있는 폼은 method, enctype 속성이 필수이다. -->
+	<form method="post" enctype = "multipart/form-data">
+		<div class="label">
+			<label for="userId">아이디</label>
+		</div>
+		<div class="form">
+			<input type = "text" name = "userId" id= "userId" required>
+		</div>
+		<div class="label">
+			<label for="userPw">비밀번호</label>
+		</div>
+		<div class="form">
+			<input type = "password" name = "userPw" id= "userPw" required>
+		</div>
+		<div class="label">
+			<label for="userPw2">비밀번호 확인</label>
+		</div>
+		<div class="form">
+			<input type = "password" name = "userPw2" id= "userPw2" required>
+		</div>
+		<div class="label">
+			<label for="userName">이름</label>
+		</div>
+		<div class="form">
+			<input type = "text" name = "userName" id= "userName">
+		</div>
+		<div class="label">
+			<label for="userEmail">이메일</label>
+		</div>
+		<div class="form">
+			<input type="text" name = "userEmail" id="userEmail" placeholder="아이디 입력">
+			@
+			<input type = "text" name ="domains" list="domains" placeholder="도메인 입력/선택">
+			<datalist id= "domains">	<!-- id="domains"는 list="domains"와 연결된다. -->
+				<option value="naver.com">
+				<option value="gmail.com">
+				<option value="kakao.com">
+				<option value="hanmail.com">
+			</datalist>
+		</div>
+		
+		<div class="label">
+			<label for = "emailYn">이메일 수신</label>
+		</div>
+		<div class="form">
+			<input type = "radio" name="emailYn" value = "y" id="emailYes">
+			<label for="emailYes">수신</label>
+			<input type = "radio" name="emailYn" value = "n" id="emailNo">
+			<label for="emailNo">미수신</label>
+		</div>
+		<div class="label">
+			<label for = "mobile1">연락처</label>
+		</div>
+		<div class="form">
+			<select name = "mobile1" id="mobile1">	<!-- name은 java에서 변수이름 -->
+				<option value="010">010</option>
+				<option value = "011">011</option>
+				<option value="016">016</option>
+				<option value="019">019</option>
+			</select>
+			-
+			<input type = "text" name = "mobile2" id="mobile2" placeholder="하이픈 없이 숫자만 입력"/>
+		</div>
+		
+		<div class="label">
+			<label>취미</label>
+		</div>
+		<div class="form">
+			<input type="checkbox" name= "hobbies" value = "movie" id="movie"/>
+			<label for="movie">영화</label>
+			<input type="checkbox" name= "hobbies" value = "travel" id="travel"/>
+			<label for="travel">여행</label>
+			<input type="checkbox" name= "hobbies" value = "game" id="game"/>
+			<label for="game">게임</label>
+		</div>
+		<div class="label">
+			<label for="profile">프로필 사진</label>
+		</div>
+		<div class="form">
+			<input type="file" name="profile" id="profile"/>
+		</div>
+		<div class="form">
+			<input type="submit" value="전송하기"/> <!-- submit은 name, id필요없음 -->
+			<button>전송하기</button>	<!-- form으로 전송 form action="dd/dd/NewIndex.do" -->
+		</div>
+	</form>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	.bline{
+		display:none;	/* 구역도 남기지 않고 화면에서 숨긴다 == visibility: hidden; */
+	}
+	fieldset{
+		width:400px;
+	}
+	ul{
+		list-style-type: none;		/* list-style: none; */
+	}
+	ul > li{
+		margin:10px;
+	}
+	label{
+		/*margin-right:20px;*/	/* == width:150px; */
+		display:inline-block;	/* 같은 inline을 유지하면서 width가 가능하다. */
+		width:150px;
+	}
+	input[type = "text"]{
+		width:100px;
+	}
+</style>
+</head>
+<body>
+	<!-- 서로 다른 기능을 가지고 있는 form을 자바로 전송할 시에 각각 하나의 *.java 로 전송된다. -->
+	
+	<!-- 
+		form 속성
+		
+		1. action: 입력 데이터를 어디로 보낼 것인가?			-- https://도메인/project[context root, context path]/~action~
+		2. method
+			1) get	: 보안이 필요하지 않을 때, 단순검색, 디폴트
+			2) post : 보안이 필요할 때(로그인, 회원가입)
+	 -->
+	<form action="">
+			<fieldset>
+				<legend class=bline>등록 정보</legend>
+				<ul>
+					<li>
+						<label for= "member">참여인원</label>
+						<input type="text" name ="member" id="member"/>	<!-- java에서 name을 받는다. -->
+					</li>
+					<li>
+						<label for= "item">지원물품</label>
+						<input type = "text" name="item" id = "item" />
+					</li>
+					<li>
+						<label for= "state">희망단계</label>
+						<input type = "range" name="state" id = "state" min="1" max="10" value="5"/>
+						
+					</li>
+				</ul>
+			</fieldset>
+	</form>
+	<form action="">
+		
+	</form>
+</body>
+</html>
