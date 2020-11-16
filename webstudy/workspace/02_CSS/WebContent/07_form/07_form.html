@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+<style type="text/css">
+	.left-wrap{
+		float: left;
+		width:260px;
+	}
+	.icon-box{
+		background-color: lightgray;
+		width:40px;
+		height:40px;
+		border-radius: 10px 0px 0px 0px;
+		text-align: center;
+		line-height: 40px;
+		float:left;
+	}
+	input[type="text"], input[type="password"]{
+		height:35px;
+		width:200px;
+		border:1px solid lightgray;
+		padding-left: 10px;
+		border-radius: 0px 0px 5px 0px;
+	}
+	.id-wrap, .pw-wrap, .login-button{
+		padding:3px;
+	}
+	.login-button{
+		float:left;
+	}
+	input[type="submit"]{
+		width:90px;
+		height:85px;
+		border-radius: 5px 5px 5px 5px;
+		border:none;
+		background-color:lightgray;
+		font-size: 16px;
+		margin-left: 3px;
+	}
+	
+</style>
+</head>
+<body>
+	<div class="login-wrap">
+		<div class="left-wrap">
+			<div class="id-wrap">
+				<div class="icon-box">
+					<!-- 아이콘 -->
+					<i class="fas fa-user"></i>
+				</div>
+				<div>
+					<input type="text" placeholder="Username">
+				</div>
+			</div>
+			<div class="pw-wrap">
+				<div class="icon-box">
+					<!-- 아이콘 -->			
+					<i class="fas fa-key"></i>	
+				</div>
+				<div>
+					<input type="password" placeholder="●●●●">
+				</div>
+			</div>
+		</div>
+		<div class="right-wrap">
+			<div class="login-button">
+				<input type="submit" value="로그인">
+			</div>
+		</div>
+	</div>
+</body>
+</html>
