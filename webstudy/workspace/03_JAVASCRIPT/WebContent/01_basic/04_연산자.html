@@ -36,6 +36,31 @@
 	*/
 	console.log(0 == false);	// true
 	console.log(0 === false);	// false
+	
+	/* 
+		4. 논리 연산자
+			1) &&
+			2) ||
+			3) !
+			4) short circuit evaluation
+				(1) && : false인 조건식이 나타나면 더 이상 진행하지 않는다. 결과는 false이니까
+				(2) || : true인 조건식이 나타나면 더 이상 진행하지 않는다. 결과는 true니까
+	*/
+
+	/*  
+		5. 조건 연산자
+			1) 조건식 ? 조건식의 결과가 true일 때 : 조건식의 결과가 false일 때
+	*/
+	// 올해 최저시급은 8590원이다.
+	// 하루 8시간은 최저시급으로 계산하고, 
+	// 초과 근무시간은 1.5배를 적용 받는다.
+	// 하루 10시간 근무하면 일급 얼만인가요?
+	
+	var minPay = 8590;
+	var workHour = 10;
+	
+	var totalPay = (workHour >= 8) ?  (minPay*8) + ((minPay*1.5)*(workHour-8)) : minPay*8; 
+	console.log(totalPay);
 </script>
 </head>
 <body>
