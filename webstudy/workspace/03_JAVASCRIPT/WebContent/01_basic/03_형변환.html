@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	/* 
+		형 변환
+		1. 숫자로 변환:Number(값)
+			1) 정수로 변환: parseInt(값)
+			2) 실수로 변환: parseFloat(값)
+		2. 문자열로 변환: String(값)
+	*/
+	var a = 1;
+	var b = 'hello';
+	var c = false;
+	var d = Math.sqrt(-4);	// 루트 -4, NaN(Not a Number)
+	var e = 1234567890 ** 100;	// 12345567890의 100제곱, Infinity(무한대)
+	
+	document.write('<h1>'+a);
+	document.write('<h1>'+b);
+	document.write('<h1>'+c);
+	document.write('<h1>'+d);
+	document.write('<h1>'+e);
+	
+	document.write('<h1>'+ Number(a));
+	document.write('<h1>'+ Number(a));
+	document.write('<h1>'+ Number(a));
+	document.write('<h1>'+ Number(a));
+	document.write('<h1>'+ Number(a));
+	
+	document.write('<h1>'+ String(a));
+	document.write('<h1>'+ String(b));
+	document.write('<h1>'+ String(c));
+	document.write('<h1>'+ String(d));
+	document.write('<h1>'+ String(e));
+</script>
+</head>
+<body>
+
+</body>
+</html>
