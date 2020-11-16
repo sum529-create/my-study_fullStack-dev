@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	.tab-contents{
+		display: none;	/* FRONT-END, BACK-END 내용 모두 사라짐 */
+	}
+	img{
+		width:50px;
+	}
+	#front:checked ~div:nth-of-type(2) {
+		display: block;
+	}
+	#back:checked ~div:nth-of-type(3) {
+		display: block;
+	}
+	input[type="radio"]{
+		display: none;
+	}
+	#front:checked ~.top-buttons label[for="front"], #back:checked ~.top-buttons label[for="back"]{
+		background: green;
+		color:black;
+	}
+	
+	.top-buttons{
+		display:flex;
+	}
+	.top-buttons > label{
+		display:block;
+		width:150px;
+		padding:10px;
+		text-align: center;
+		background: lightgreen;
+		color:white;
+	}
+	
+	.tab-contents > ul{
+		list-style-type: none;
+		padding:0px;
+	}
+	.tab-contents > ul > li.content {
+		overflow: hidden;
+	}
+	.tab-contents > ul >li.content .thumbnail{
+		float: left;
+	}
+	.tab-contents > ul >li.content .description{
+		float: left;
+		margin-left: 5px;
+	}
+	.main-aside{
+		width:300px;
+		border: 3px solid lime;
+	}
+</style>
+</head>
+<body>
+	<div class="main-aside">
+	
+		<!-- 상단 탭 -->
+		<input id="front" type="radio" name="tab" checked/>
+		<input id="back" type="radio" name="tab"/>
+		<div class="top-buttons">
+			<label for="front">FRONT-END</label>
+			<label for="back">BACK-END</label>
+		</div>
+		<!-- FRONT END탭 -->
+		<div class="tab-contents">
+			<ul>
+				<li class="content">
+					<a href="javascript:void(0)">
+						<div class="thumbnail">
+						<img src="https://via.placeholder.com/150">
+						</div>
+						<div class="description">
+							<strong>HTML</strong><br/>
+							HTML은 하이퍼텍스트 ...
+						</div>
+					</a>
+				</li>
+			</ul>
+			<ul>
+				<li class="content">
+					<a href="javascript:void(0)">
+						<div class="thumbnail">
+						<img src="https://via.placeholder.com/150">
+						</div>
+						<div class="description">
+							<strong>HTML</strong><br/>
+							CSS는 캐스캐이드 ...
+						</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<!-- BACK END탭 -->
+		<div class="tab-contents">
+			<ul>
+				<li class="content">
+					<a href="javascript:void(0)">
+						<div class="thumbnail">
+						<img src="https://via.placeholder.com/150">
+						</div>
+						<div class="description">
+							<strong>JSP</strong><br/>
+							JSP는 자바 서버 ...
+						</div>
+					</a>
+				</li>
+			</ul>
+			<ul>
+				<li class="content">
+					<a href="javascript:void(0)">
+						<div class="thumbnail">
+						<img src="https://via.placeholder.com/150">
+						</div>
+						<div class="description">
+							<strong>Spring</strong><br/>
+							Spring은 경량 컨테이너...
+						</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>
