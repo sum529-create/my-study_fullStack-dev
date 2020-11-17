@@ -72,6 +72,14 @@
 		document.getElementById('second').textContent = now.getSeconds();
 	</script>
 
-
+	<script type="text/javascript">
+		// 입력 대화상자에 생일을 yyyy-mm-dd 형식으로 입력하면
+		// 나이를 출력하시오.
+		var year = new Date(prompt('생일을 yyyy-mm-dd 형식으로 입력하시오')).getFullYear();
+		var age = new Date().getFullYear() - year + 1
+		alert('당신은 ' + age + '살 입니다.');
+		// 변수 선언을 생략하려면
+		// 최초의 값은 대입해 줘야 한다.
+	</script>
 </body>
 </html>
