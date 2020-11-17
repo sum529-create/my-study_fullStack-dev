@@ -39,8 +39,39 @@
 	
 	
 </script>
+<style type="text/css">
+	.clock{
+		width:1000px;
+		margin:auto;
+		text-align:center;
+		font-size:20px;
+	}
+	span{
+		color:red;
+		font-weight: 900;
+	}
+</style>
 </head>
 <body>
+	<div class="clock">
+		<span id= "year"></span>년&nbsp;
+		<span id= "month"></span>월&nbsp;
+		<span id= "date"></span>일&nbsp;
+		<span id= "hour"></span>시&nbsp;
+		<span id= "minute"></span>분&nbsp;
+		<span id= "second"></span>초&nbsp;
+	</div>
+
+	<script type="text/javascript">
+		var now = new Date();
+		document.getElementById('year').textContent = now.getFullYear();
+		document.getElementById('month').textContent = now.getMonth();
+		document.getElementById('date').textContent = now.getDate();
+		document.getElementById('hour').textContent = now.getHours();
+		document.getElementById('minute').textContent = now.getMinutes();
+		document.getElementById('second').textContent = now.getSeconds();
+	</script>
+
 
 </body>
 </html>
