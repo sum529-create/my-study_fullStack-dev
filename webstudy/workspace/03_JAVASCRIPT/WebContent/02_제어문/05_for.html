@@ -5,18 +5,60 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div id ="quiz1">
-		
-	</div>
+	<div id ="quiz1"></div>
+	<div id ="quiz2"></div>
+	<div id = "quiz3"></div>
+	<div id = "quiz4"></div>
 	<script type="text/javascript">
 		// quiz1.
 		// 입력 대화상자로 입력된 구구단만 출력하시오.
 		var b = Number(prompt('출력할 구구단 입력하세요.'));
 		var quiz1 = '';
-		for(var a=1; a<=9; a++){
+		for(var a=1; a<=9; a++){	/* var == let(지역 선언문) */
 			quiz1 += b + ' x '+ a + "=" +(b * a) + "<br/>";
 		}
 		document.getElementById('quiz1').innerHTML = quiz1;
+		
+		// quiz2
+		// 입력 대화상자로 시작하는 단과 종료하는 단을 입력 받아서
+		// 그 사이의 모든 구구단을 출력하시오.
+		var a = Number(prompt('출력할 구구단의 시작단을 입력하세요.'));
+		var b = Number(prompt('출력할 구구단의 끝단을 입력하세요.'));
+		var quiz2 = '';
+		for(var d=a;d<=b; d++ ){
+			for(var c = 1; c<= 9; c++){
+				quiz2 += d + 'x' + c + "=" + (d*c) + "<br/>"; 
+			}
+		}
+		document.getElementById('quiz2').innerHTML = quiz2;
+		
+		// quiz3
+		// table을 사용하여 구구단을 출력하시오.
+		var quiz3 = '<table>';
+			for(var b=1; b<=9; b++){
+			quiz3 += '<tr>';
+				for(var a=2; a<=9; a++){
+					quiz3 += '<td>';
+					quiz3 += a + "x" + b + '=' + (a*b) + '&nbsp&nbsp'; 				
+					quiz3 += '</td>';
+				}
+			quiz3 += '</tr>';
+			}
+		quiz3 += '</table>';
+		document.getElementById('quiz3').innerHTML = quiz3;
+		
+		
+		// ul을 사용하여 구구단을 출력하시오.
+		var quiz4 = '<ul>';
+			for(var b=1; b<=9; b++){
+			quiz4 += '<li>';
+				for(var a=2; a<=9; a++){
+					quiz4 += a + "x" + b + '=' + (a*b) + '&nbsp&nbsp';
+				}
+			quiz4 += '</li>';
+			}
+		quiz4 += '</ul>';
+		document.getElementById('quiz4').innerHTML = quiz4;
 	</script>
 </body>
 </html>
