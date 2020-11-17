@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	// 1. 날짜/시간 생성
+	
+	// 1) 현재 날짜와 시간
+	var now = new Date();
+	console.log('now = ' + now);
+	
+	// 2) 특정 날짜(타임스탬프)
+	var date1 = new Date(1000 * 60 * 60 * 24 * 360);
+	console.log('date1(1970년 1월 1일에서 1년 후) = ' + date1);
+	
+	// 3) 특정 날짜(년, 월, 일)
+	var date2 = new Date(2020, 12, 17);	// 월은 +1, 0부터 시작한다.
+	console.log('date2(1달 후) = ' + date2);
+	
+	// 4) 특정 날짜(년, 월, 일, 시, 분, 초)
+	var date3 = new Date(2020, 10, 17, 18, 11, 30);	// 2020-11-17 18:11:30
+	console.log('date3 = '+ date3);
+	
+	// 5) 특정 날짜('년-월-일, 년/월/일')
+	var date4 = new Date('2020-05-06');	// 2020-05-06
+	console.log('date4 = ' + date4);
+	
+	// 2. 원하는 정보만 추출
+	// 1) 년 : getFullYear()
+	// 2) 월(0~11) : getMonth()
+	// 3) 일(0~31) : getDate()
+	// 4) 요일번호(0~6) : getDay(), 0은 일, 1은 월, ... 6은 토
+	// 5) 시간(0~23): gerHours()
+	// 6) 분(0~59) : getMinutes()
+	// 7) 초(0~59) : getSeconds()
+	// 8) 밀리초(0~999) : getMilliseconds()
+	// 9) 밀리초(타임스탬프: 1970년  1월 1일 이후의 몇 밀리초가 지났는지 추출) : getTime()
+	
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>
