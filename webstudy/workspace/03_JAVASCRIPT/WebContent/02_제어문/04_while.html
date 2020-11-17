@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="n"></div>
+	<div id="quiz1"></div>
+	<div id="quiz2"></div>
+	<div id="quiz3"></div>
+	<script type="text/javascript">
+		var a = 0;
+		while(a < 5){
+			document.getElementById('n').innerHTML += a + '<br/>';
+			a++;
+		}
+		// quiz1
+		var quiz1 = '<ul>';
+		var a = 0;
+		while(a < 5){
+			quiz1 += '<li>' + a + '</li>';
+			a++;
+		}
+		quiz1 += '</ul>';
+		document.getElementById('quiz1').innerHTML = quiz1;
+		
+		// quiz2
+		var quiz2 = '<table border="1">';
+		var a = 0;
+		while(a<2){
+			quiz2 += '<tr>';
+			var b = 0;
+			while(b<3){
+				quiz2 += '<td>'+ (a * 3 + b) + '</td>';
+				b++;				
+			}
+			quiz2 += '</tr>';
+			a++;
+		}
+		
+		quiz2 += '</table>';
+		document.getElementById('quiz2').innerHTML = quiz2;
+		
+		// quiz3
+		var quiz3 = '<select>';
+		var a = 0;
+		while(a < 5){
+			quiz3 += '<option value =' + a + ">" + a + '</option>';
+			a++;
+		}
+		
+		quiz3 += '</select>';
+		document.getElementById('quiz3').innerHTML = quiz3;
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
