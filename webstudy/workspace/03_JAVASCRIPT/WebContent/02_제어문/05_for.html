@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div id ="quiz1">
+		
+	</div>
+	<script type="text/javascript">
+		// quiz1.
+		// 입력 대화상자로 입력된 구구단만 출력하시오.
+		var b = Number(prompt('출력할 구구단 입력하세요.'));
+		var quiz1 = '';
+		for(var a=1; a<=9; a++){
+			quiz1 += b + ' x '+ a + "=" +(b * a) + "<br/>";
+		}
+		document.getElementById('quiz1').innerHTML = quiz1;
+	</script>
+</body>
+</html>
