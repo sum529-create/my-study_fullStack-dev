@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h3>성적 결과</h3>
+	<ul>
+		<li>이름: <span id= "name"></span> </li>
+		<li>평균: <span id= "avg"></span>점 </li>
+		<li>학점: <span id= "grade"></span> </li>
+	</ul>
+<script type="text/javascript">
+	// 문제. 성적 처리 프로그램
+	// 1. 입력 대화상자를 이용해서 이름, 국어, 영어, 수학 점수를 입력 받는다.
+	// 2. 화면에 <ul>트그의 각 <li>태그로 이름, 평균 점수, 학점(A-F 10점 단위)을 출력하시요.
+	var name = prompt('이름을 입력하시오.');
+	var kor = parseInt(prompt('국어 점수를 입력하시오.'));
+	var eng = parseInt(prompt('영어 점수를 입력하시오.'));
+	var mat = parseInt(prompt('수학 점수를 입력하시오.'));
+	
+	var avg = parseInt(kor+eng+mat)/3;
+	var grade = avg >= 90 ? 'A' : avg >=80 ? 'B' : avg >= 70 ? 'C' : avg >= 60 ? 'D' : 'F';
+	var grade;
+	switch (avg) {
+	case 90:
+		grade = 'A';
+		break;
+	case 80:
+		grade = 'B';
+		break;
+	case 70:
+		grade = 'C';
+		break;
+	case 60:
+		grade = 'D'
+		break;
+	default:
+		grade = 'F'
+		break;
+	}
+	
+	var name1 = document.querySelector('#name');
+	name1.textContent = name;
+	var avg1 = document.querySelector('#avg');
+	avg1.textContent= avg;
+	var grade1 = document.querySelector('#grade');
+	grade1.textContent= grade;
+	
+</script>
+</body>
+</html>

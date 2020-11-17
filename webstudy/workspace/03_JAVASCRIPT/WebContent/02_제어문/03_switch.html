@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	// 짝수/홀수 구분하기
+	var n = Number(prompt('정수를 입력하세요.'));
+	if (n % 2 == 0){
+		alert(n + '은 짝수이다.');
+	}else{
+		alert(n + '은 홀수이다.');
+	}
+	switch(n % 2 == 0){
+	case 0:
+		alert(n + '은 짝수이다.');
+		break;
+	default: //case 1:
+		alert(n + '은 홀수이다.');
+		break;	// 넣을 필요가 없다.
+	}
+</script>
+</head>
+<body>
+
+</body>
+</html>
