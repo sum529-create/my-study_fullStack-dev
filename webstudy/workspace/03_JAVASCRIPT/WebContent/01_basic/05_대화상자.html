@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	/* 
+		1. 경고창: window.alert('경고메시지')
+		2. 입력창: window.prompt('입력메시지')
+			- 주의: 모든 입력은 '문자열'이다.
+		3. 확인창: window.confirm('확인메시지')
+			- 결과는 확인버튼(true), 취소버튼(false)
+	*/
+	
+	var name = prompt('이름을 입력하세요');
+	alert('입력된 이름은 ' + name + '입니다.');
+	
+	// 문제. 나이를 입력 받아서 다음 2가지를 출력하시오.
+	// 1. 성인/미성년자 구분
+	// 2. 내년 나이
+	var age = prompt('나이를 입력하세요.');
+	var bool = age >= 20 ? '성인' : '미성년자';
+	var nextAge = parseInt(age)+1;
+	alert(name + '님의 나이는 현재 ' + age + '살이며, 현재 ' + bool + '입니다. 내년 나이는 ' + nextAge + '살 입니다.');
+	
+	alert(confirm('계속 진행할까요?')? '진행합니다.' : '취소합니다.');
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>
