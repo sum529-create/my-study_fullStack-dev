@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<!-- 기본적으로 아무 동작이 없는 input type = "button" -->
+	<!-- 이벤트 속성: onXXX(onclick, onsubmit 등) -->
+	<!-- 이벤트속성의 값은 자바스크립트 코드이다. -->
+	<input type = "button" value="난수 생성" onclick = "makeRandom()"/><br/>
+	<div id="rand"></div>
+	
+	<script type="text/javascript">
+		function makeRandom(){
+			var rand = parseInt(Math.random()*10);	// 0 ~ 9
+			document.getElementById('rand').textContent = rand;
+		}
+	</script>
+	
+</body>
+</html>

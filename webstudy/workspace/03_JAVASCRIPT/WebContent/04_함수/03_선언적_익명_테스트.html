@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	// 선언적 함수와 익명 함수의 이름이 같다.
+	
+	// who am I?
+	view();	/* 선언적 함수 */
+	function view(){
+		console.log('선언적 함수 view');
+	}
+	
+	var view = function (){
+		console.log('익명 함수 view');
+	}
+	
+	// who am I?
+	view();/*  익명 함수 */
+	/* 첫번째 해석은 위 해석만 하고 끝나고 두번째 해석을 할 시 밑에있는것만 해석을 하여 겹쳐쓰기가 되어 아래것의 나오게 된다 */
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>
