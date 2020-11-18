@@ -17,18 +17,28 @@
 	// 5개의 양수를 입력 받아서 그 평균을 출력하시오.
 	// 양수 이외의 데이터가 입력되면 '양수가 아닙니다. 다시 입력하세오.'
 	// 오류 메시지를 출력하고 재입력을 받으시오.
-	var count = 0;
-	var num = '';
-	for(var a=1; a<=5; a++){
-		num = Number(prompt(a+ '변째 양수를 입력하세요.'));
-		if(num < 0 || isNaN(num)){
-			window.alert('양수가 아닙니다. 다시 입력하세요.');
-			continue;
+	var count = 5;
+	var total = 0;
+	var n = 0;
+	
+	while (n < count) {
+		
+		// 1. 입력
+		var num = Number(prompt((n + 1) + '번째 양수를 입력하세요.'));
+		
+		// 2. 양수 검사
+		if (num <= 0 || isNaN(num)) {
+			alert('양수가 아닙니다. 다시 입력하세요.');
+			continue;  // while (n < count) 으로 이동
 		}
-		count++;
-		num += num;	
+		
+		// 3. 합계 및 입력 횟수 증가
+		total += num;
+		n++;
+		
 	}
-	document.write('<br/><br/><br/>' + '평균은 ' + (num/count) + '입니다.');
+	
+	document.write('평균은 ' + (total / count) + '입니다.');
 	
 </script>
 </head>
