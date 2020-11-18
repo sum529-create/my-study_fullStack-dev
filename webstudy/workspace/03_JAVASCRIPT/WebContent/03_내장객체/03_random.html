@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	
+	// 1. 정수 난수 발생
+	// Math.random() 	  : 0 이상 1 미만의 실수 난수 발생
+	// Math.random() * 10 : 0 이상 10 미만의 실수 난수 발생
+	// parseInt(Math.random() * 10) 	: 0 이상 10 미만의 정수 난수 발생
+	// parseInt(Math.random() * 10) + 1 : 1 이상 11 미만의 정수 난수 발생
+	var dice = parseInt(Math.random()*6) + 1;	// 1부터 시작하는 6개의 난수
+	alert(dice);
+	
+	// 2. 실수 난수 발생
+	// Math.random() : 0  이상 1 미만의 실수 난수 발생
+	// 백분율로 환산 	 : 0% 이상 100% 미만의 백분율 난수 발생 (확률 처리)
+	alert(Math.random() < 0.1 ? '대박' : '꽝');
+	
+	
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>
