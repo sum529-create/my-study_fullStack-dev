@@ -4,21 +4,69 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
-	var array = [1, 2, 3, 4, 5];
 	
-	// 1. 일반 for문 
-	for(let i =0; i<array.length; i++){
-		console.log(array[i]);
+	// 1. 배열 전달하기
+	var array = [1,2,3,4,5];
+	printArray(array);		// 인수 array를 printArray 함수에 전달
+	
+	function  printArray(list) {	// 인수 array를 매개변수 list에 저장
+		for(let i = 0; i < list.length; i ++){
+			console.log(list[i]);
+		}
+	}
+
+	// 2. 인수와 매개변수의 매칭이 다른 경우(주로 개수가 다른 경우)
+	function myInfo(name, age){
+		console.log('이름: ' + name + ', 나이: ' + age + '살');
+		
 	}
 	
-	// 2. for in문
-	// 배열의 for in문은 배열의 '인덱스'를 추출한다.
-	for(let i in array){
-		console.log(array[i]);
+	myInfo('앨리스');		/* 앨리스 undefinde */
+	myInfo('제임스', 25, '남자');		// '남자' 무시, 제임스 25 출력
+	
+	// 3. 전개 연산자 활용(...)
+	var list = ['bmw', 7000, 13.5];
+	carInfo(...list);	/* list 배열 요소를 풀어서 전달하라. (매개변수를 3개 준비하라) */
+	function carInfo(model, price, oil) {
+		console.log('모델: ' + model + ', 가격: ' + price + ', 연비: ' + oil);
+	}
+
+	// 4. 전개 연산자 활용(...)
+	adder(1, 2);
+	adder(1, 2, 3);
+	adder(1, 2, 3, 4);	/* 오버로딩 사용 */
+	
+	function adder(...list){	/* 몇 개가 오든 모두 배열 list에 저장 */
+		var total =0;
+		for(let i = 0; i<list.length; i++){
+			total += list[i];
+		}
+		console.log('합계: ' + total);
 	}
 	
-	// 결론. 배열의 for in문은 느리다. 일반 for문을 사용하자.
+	// 5. 디폴트 처리 방법 (인수의 전달이 없는 경우 기본으로 사용할 값)
+	multiple(1,2);
+	multiple(2);
 	
+	function multiple(a,b){
+		// a, b는 모두 전달이 없는 경우 기본값(디폴트)으로 을 가진다.
+		if(!a) {a = 1;}		/* a || a = 1; a가 false이면(undefined) a = 1을 실행한다. */
+		if(!b) {b = 1;}		/* b || b = 1; */
+		console.log('곱하기 : ' + (a*b));
+	}
+	
+	// 6. arguments 객체
+	// 		1) 모든 함수는 arguments 라는 특별한 객체를 가지고 있다.
+	//		2) 전달된 모든 인수들이 arguments 객체에 저장된다.
+	//		3) arguments 객체는 배열과 매우 유사하다. (배열 유사 객체)
+	
+	function myInfo(){	// 전달된 '에밀리', 25, '여'는 arguments 객체에 저장된다.
+		for(let i = 0; i<arguments.length; i++){
+			console.log(arguments[i]);			
+		}
+	}
+	
+	myInfo('에밀리', 25, '여');
 	
 </script>
 </head>
