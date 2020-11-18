@@ -16,25 +16,25 @@
 	var week = now.getDay();
 	switch (week) {
 	case 0:
-		week = '일'
+		week = '일';
 		break;
 	case 1:
-		week = '월'
+		week = '월';
 		break;
 	case 2:
-		week = '화'
+		week = '화';
 		break;
 	case 3:
-		week = '수'
+		week = '수';
 		break;
 	case 4:
-		week = '목'
+		week = '목';
 		break;
 	case 5:
-		week = '금'
+		week = '금';
 		break;
 	default:
-		week='토'
+		week='토';
 		break;
 	}
 	alert('오늘은 ' + week + '요일 입니다.'); */
@@ -54,8 +54,45 @@
 			document.write((++count)+': hello<br/>');
 		}
 	
-
+	// 문제4. 날짜/시간 데이터를 전달하면 다음과 같은 형식의 데이터를 반환하는 to12times 함수를 구현하시오.
+	// 		 2020-11-18 수요일 오후 6:14
+	to12times(new Date());
 	
+	/* alert으로 처리한 것: Me */
+	var week='';
+	var amPm='';
+	function to12times(date){
+		switch (date.getDay()) {
+		case 0:	week = '일';	break;
+		case 1:	week = '월';	break;
+		case 2:	week = '화';	break;
+		case 3:	week = '수';	break;
+		case 4:	week = '목';	break;
+		case 5:	week = '금';	break;
+		default:week='토';break;
+		}
+		if(date.getHours() < 12){
+			amPm = '오전 ';
+		}else{
+			amPm = '오후 ';
+			amPm += 24 - date.getHours();
+			
+		}
+		alert(date.getFullYear()+ '-' + (date.getMonth()+1) + '-' +date.getDate()+ ' ' + week + '요일 '+ amPm + ':' +date.getMinutes());
+	}
+	/* teacher
+	console.log( to12times(new Date()) );
+	
+	function to12times(date) {
+		return date.getFullYear() + '-' +
+			   date.getMonth() + '-' +
+			   date.getDate() + ' ' +
+			   ['일', '월', '화', '수', '목', '금', '토'][date.getDay()] + '요일 ' +
+			   (date.getHours() < 12 ? '오전' : '오후') + ' ' +
+			   date.getHours() + ':' +
+			   date.getMinutes();
+	}
+	*/
 </script>
 </head>
 <body>
