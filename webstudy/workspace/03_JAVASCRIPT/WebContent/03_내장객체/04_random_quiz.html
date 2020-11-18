@@ -36,7 +36,10 @@
 			5) 몇 번만에 쓰러뜨렸는지 함께 출력한다.
 			6) 5% 확률로 한 번에 쓰러뜨릴 수 있다.
 	*/
-	var mEnergy = Number(100);
+
+ /* 
+ 	-- my answer -- alert 창 
+ 	var mEnergy = Number(100);
 	var mEnergyBar = '';
 	while(true){
 		var myAttack = parseInt(Math.random()*20);
@@ -57,7 +60,52 @@
 		}
 		mEnergyBar = '';
 		
+	} */
+	
+	
+	
+	var hp = 100;    // 적의 에너지
+	var attack = 0;  // 나의 공격력
+	var count = 0;   // 공격 횟수
+	var graph = '';  // 에너지 그래프
+	
+	var i = 0;
+	while (i < hp) {
+		graph += '■';
+		i++;
 	}
+	document.write('적의 에너지: ' + graph + ' <b>(' + hp + ')</b><br/>');
+	
+	do {
+		
+		if (Math.random() < 0.05) {  // 5% 확률로
+			hp = 0;
+		} else {
+			attack = parseInt(Math.random() * 20);  // 공격력이 랜덤 생성 (0 ~ 19)
+			hp -= attack;
+			(hp < 0) && (hp = 0);  // if (hp < 0) { hp = 0; } 과 같다.		
+		}
+		
+		count++;
+		
+		graph = '';
+		i = 0;
+		while (i < hp) {
+			graph += '■';
+			i++;
+		}
+		blankGraph = '';
+		i = 0;
+		while (i < (100 - hp)) {
+			blankGraph += '□';
+			i++;
+		}
+		
+		document.write('적의 에너지: ' + graph + blankGraph + ' <b>(' + hp + ')</b><br/>');
+		
+	} while (hp > 0);
+	
+	document.write('<h3>' + count + '번만에 쓰러뜨렸다.</h3>');
 	
 </script>
 </head>
