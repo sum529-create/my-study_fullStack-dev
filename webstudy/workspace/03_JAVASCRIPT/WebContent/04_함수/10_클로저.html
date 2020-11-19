@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	
+	// 일반적인 스코프(scope)의 이해
+	/*
+	function func() {
+		var a = 10;		// a는 func 함수 내부에서만 접근할 수 있다.
+	}
+	
+	alert(a);			// func 함수 내부의 변수에 접근할 수 없다.
+	*/
+	
+	// 외부 내부함수에서 사용한 값을 외부에서 return을 할 시 자동으로 소멸하게 된다. 그래서 값을 보관해주는 것을 클로저라고 한다.
+	/* 
+		클로저 (closure)
+		1. 함수가 다른 함수를 리턴할 대 발생하는 특징
+		2. 함수를 리턴받는 영역에서 리턴되는 함수 내부의 변수값을 유지시키는 것을 의미한다.
+		
+	*/
+	
+	// 외부함수 정의
+	function outer(a){
+		// 내부함수 정의
+		function inner(b){
+			b||(b+1);
+			return a + b;
+		}
+		// 내부함수 반환
+		return inner;	// 이름이 있는 선언적 함수의 반환 방법: 함수 이름만 반환한다.
+	}
+	
+	// 외부함수 호출
+	var result = outer(10);		// result는 무엇을 저장? => inner함수
+								// result는 함수
+	var total = result(20);					// 10 -> a, 20 -> b
+	console.log(total)
+	
+	// 1. 선언적 함수 정의
+	function func() {
+		var a = 10;	// return을 사용하면 a는 사용 끝.
+		return function(b){	// 하지만 function안에서 a를 담아 사용하게 되면 사용할 수있다.
+			a = b;
+			console.log(a)
+		};
+	}
+	
+	// 2. 선언적 함수 호출
+	var res = func();	// func 함수의 호출이 끝나면 func 내부는 소멸된다.
+				// func 함수의 호출이 끝나면 func 내부 변수 a는 소멸된다.
+	res(20);	// res는 내부 익명함수인데, 내부 익명함수가 변수 a를 사용하고 있다.
+				// 실제로 클로저에 의해서 소멸되지 않았다.
+	// fnc()(20);
+	
+	
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>
