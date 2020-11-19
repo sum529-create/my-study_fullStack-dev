@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	
+	// 함수의 리턴이 함수인 경우에는 주로 익명 함수를 반환한다.
+	
+	// 1) 함수 정의
+	function myInfo() {
+		return function (){
+			console.log('이름 : 홍길동, 나이: 25살');
+		};
+	}
+	
+	// 2) 함수 호출
+	// 	(1) 리턴(함수)값을 변수에 저장
+	var view = myInfo();	// 함수를 저장한 변수는 함수처럼 사용한다.
+	/* var view = function(){
+						console.log('이름: 홍길동, 나이: 25살');
+					};
+	*/
+	view();
+	
+	//	(2) 리턴(함수)값을 바로 다시 호출
+	myInfo()();
+	
+	
+</script>
+</head>
+<body>
+	
+	
+	
+</body>
+</html> b
