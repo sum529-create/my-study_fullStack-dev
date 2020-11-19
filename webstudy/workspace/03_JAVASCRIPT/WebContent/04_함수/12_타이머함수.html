@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	/* 
+		타이머 함수
+		
+		1. 특정 시간 후에 특정 함수를 실행시킨다.
+		2. 한 번만 동작하는 setTimeout 함수와
+			계속 동작하는 setInterval함수가 있다.
+		3. 동작 취소를 위해서 clearTimeout 함수와
+			clearInterval 함수를 사용할 수 있다.
+	*/
+	/* 
+		val id = setTimeout(함수, 시간(밀리초));
+		clearTimeout(id);
+	*/
+	/* 
+		val id = setInterval(함수, 시간(밀리초));
+		clearInterval(id);
+	*/
+	
+	
+	/* var boom = setTimeout(function (){
+		alert('펑');
+	},5000);
+	
+	if(confirm('폭탄을 해제할까요?(5초 안에 대답하시오.)')){
+		clearTimeout(boom);
+	} */
+	
+	// 5초 타이머 (5 -> 4 -> 3 -> 2 -> 1 -> '펑')
+	
+	// 1) setTimeout 함수를 이용한 반복 (재귀호출) [원래 한번만 하는 애들]
+	var count = 5;
+	(function timer() {
+		setTimeout(function(){
+			if(count == 0){
+				document.write('펑!');
+				return;	// return값이 없을 시 함수 종료, 함수의 종료
+			}
+			document.write(count-- + '&nbsp;');
+			timer();	// timer 함수 내부에서 timer 함수를 호출하는 재귀호출
+		}, 1000);
+	})();
+	
+	
+	// 2) setInterval 함수를 이용한 반복 [원래 반복하는 애들]
+	/* var count = 5;
+	var id = setInterval(function(){
+		if(count == 0){
+			document.write('펑!');
+			clearInterval(id);
+		}else{
+			document.write(count-- + '&nbsp;');
+		}
+	}, 1000);
+	 */
+</script>
+</head>
+<body>
+
+</body>
+</html>
