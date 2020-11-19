@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+	(function timer() {
+		setTimeout(function(){
+			var now = new Date();
+			timer();	// timer 함수 내부에서 timer 함수를 호출하는 재귀호출
+		}, 1000);
+	})();
+
+</script>
+</head>
+<body>
+	<div class="clock">
+		<span id= "year"></span>년&nbsp;
+		<span id= "month"></span>월&nbsp;
+		<span id= "date"></span>일&nbsp;
+		<span id= "hour"></span>시&nbsp;
+		<span id= "minute"></span>분&nbsp;
+		<span id= "second"></span>초&nbsp;
+	</div>
+	
+	<script type="text/javascript">
+		
+		
+		// 시계 만들기
+		// 2020년 11월 19일 15시 37븐 10초
+		(function watch(){
+			setTimeout(function(){
+				var now = new Date();
+				document.getElementById('year').textContent = now.getFullYear();
+				document.getElementById('month').textContent = now.getMonth();
+				document.getElementById('date').textContent = now.getDate();
+				document.getElementById('hour').textContent = now.getHours();
+				document.getElementById('minute').textContent = now.getMinutes();
+				document.getElementById('second').textContent = now.getSeconds();
+			
+				// 재귀 호출
+				watch();
+			}, 1000);
+		})();
+	</script>
+	
+</body>
+</html>
