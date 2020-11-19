@@ -58,7 +58,7 @@
 	// 		 2020-11-18 수요일 오후 6:14
 	to12times(new Date());
 	
-	/* alert으로 처리한 것: Me */
+	/* alert으로 처리한 것: Me 
 	var week='';
 	var amPm='';
 	function to12times(date){
@@ -73,6 +73,7 @@
 		}
 		if(date.getHours() < 12){
 			amPm = '오전 ';
+			amPm += date.getHours();
 		}else{
 			amPm = '오후 ';
 			amPm += 24 - date.getHours();
@@ -80,7 +81,8 @@
 		}
 		alert(date.getFullYear()+ '-' + (date.getMonth()+1) + '-' +date.getDate()+ ' ' + week + '요일 '+ amPm + ':' +date.getMinutes());
 	}
-	/* teacher
+	*/
+	
 	console.log( to12times(new Date()) );
 	
 	function to12times(date) {
@@ -92,7 +94,19 @@
 			   date.getHours() + ':' +
 			   date.getMinutes();
 	}
-	*/
+	
+	
+	// 문제5. 입력 대화상자로 생일(yyyy-mm-dd)을 입력 받아서
+	//		 getAge 함수에 전달하면 나이를 반환하도록 구현하시오.
+	var age = getAge(prompt('생일을 입력하시오.'));
+	console.log('나이: ' + age);
+	function getAge(strDate){
+		var date = new Date();
+		return date.getFullYear() - new Date(strDate).getFullYear() +1;
+	}
+	
+	
+	
 </script>
 </head>
 <body>
