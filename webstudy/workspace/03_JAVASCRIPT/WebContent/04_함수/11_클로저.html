@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+	// 1. 클로저의 이용이 없는 경우
+	function func1() {
+		a = 0;
+		a += 2;
+		return a;
+	}
+	console.log(func1());	// 2
+	console.log(func1());	// 2
+	console.log(func1());	// 2
+	
+	// 2. 클로저를 이용하는 경우				return을 사용해서 값이 소멸되지 않게 해준다.
+	// 1) 함수를 변수에 저장하는 '함수표현식'방식을 사용한다.
+	// 2) 반환 값으로 함수를 사용한다.
+	var func2 = function (){	// 이름을 따로 주지 않아도 된다.
+		b = 0;
+		return function(){
+			b += 2;
+			return b;
+		};
+	}();
+	
+	// 27행 () 없이 + func2() -> return값 이후 모두 출력 function ~ b;
+	// 내장 함수 출력? 2가지 방법
+	// 1. 위 함수를 2번 사용했으니 출력 함수를 2번 사용해 준다.  func2()()
+	// 2. 동일한 형식의 모습으로 갖추기 위해   ㄴ27행에 ()를 붙여준다.
+	
+	console.log(func2());	// 2
+	console.log(func2());	// 4
+	console.log(func2());	// 6
+	
+							
+	
+</script>
+</head>
+<body>
+	<h1>방문자 카운트: <span id= "count"></span>명</h1>
+	<input type = "button" value = "체크" onclick = "entryCheck()"/>
+	
+	<script type="text/javascript">
+		function entryCheck(){
+				return document.getElementById('count').textContent = increment();
+		}
+		var increment = function (){
+			visitNo = 0;		// 최초 선언 시에 한 번 접근된다. 이후에는 클로저의 visitNo를 사용한다.
+			return function(){
+				return ++visitNo;
+			}
+		}();
+	</script>
+	
+</body>
+</html>
