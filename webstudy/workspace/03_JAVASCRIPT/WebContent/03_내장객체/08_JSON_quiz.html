@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	
+	var sites = [
+		{
+			"logo": "https://www.google.co.kr/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png",
+			"name": "google",
+			"url": "https://www.google.co.kr/"
+		},
+		{
+			"logo": "https://t1.daumcdn.net/daumtop_chanel/op/20200723055344399.png",
+			"name": "daum",
+			"url": "https://www.daum.net/"
+		}
+	];
+	
+</script>
+</head>
+<body>
+
+	<input type = "button" value ="사이트 정보 가져오기" onclick = "getSites()" />
+	<br/><br/>
+
+	<table border= "1">
+		<thead>
+			<tr>
+				<td>로고</td>
+				<td>사이트명</td>
+				<td>링크</td>
+			</tr>
+		</thead>
+		<tbody id ="site-contents">
+			
+		</tbody>
+	</table>
+	<script type="text/javascript">
+		function getSites() {
+			var tform='';
+			var tch = JSON.parse(JSON.stringify(sites));
+			
+			for(let i = 0; i<sites.length; i++){
+				tform += '<tr>';
+				tform += '<td><img src="';
+				tform += tch[i].logo;
+				tform += '"></td>';
+				tform += '<td>';
+				tform += tch[i].name;
+				tform += '</td>';
+				tform += '<td><a href="';
+				tform += tch[i].url;
+				tform += '">' + tch[i].name + '</a></tr>';
+				tform += '</td>';
+				tform += '</tr>';
+			}
+			document.getElementById('site-contents').innerHTML = tform;
+		}
+	</script>
+</body>
+</html>
