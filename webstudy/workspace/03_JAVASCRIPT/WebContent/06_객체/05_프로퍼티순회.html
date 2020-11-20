@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	/* 
+		프로퍼티 순회
+		
+		1. for - in 문을 사용한다.
+		2. 사용 형식
+			for (var 프로퍼티 in 객체명){	// 객체 모든 프로퍼티가 문자열[String] 형식으로 넘어간다.
+				1) 객체명.프로퍼티 : 사용할 수 없다.
+				2) 객체명[프로퍼티] : for - in문은 이것만 가능하다.  
+			}
+	*/
+	
+	var computer = {
+			model : "gram",
+			price : 150,
+			date : new Date(2020, 10, 20)	// 2020 - 11 - 20
+	};
+	for(var p in computer){
+		// console.log(computer["p"]); 이것도 안된다. "_"
+		if(computer[p] instanceof Date){	// computer[p]가 Date타입이면
+			console.log(computer[p].getFullYear());
+			console.log(computer[p].getMonth()+1);
+			console.log(computer[p].getDate());
+		}
+		console.log(computer[p]);
+	}
+	
+	// 문제
+	var list = [
+		{
+			name: "제임스",
+			age: 20,
+			birthday: new Date(2001, 10, 20)
+		},
+		{
+			name: "앨리스",
+			age: 21,
+			birthday: new Date(2000, 10, 20)
+		}
+	];
+	
+	// 이름, 나이, 생년월일(년, 월, 일 분리) 출력
+	
+	for(var i = 0; i<list.length; i++){
+		for(var p in list[i]){
+			if(list[i][p] instanceof Date){
+				console.log(list[i][p].getFullYear());
+				console.log(list[i][p].getMonth()+1);
+				console.log(list[i][p].getDate());
+			}else{
+				console.log(list[i][p]);
+			}
+		}
+	}
+		
+	
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

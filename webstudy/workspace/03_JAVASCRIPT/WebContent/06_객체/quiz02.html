@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	
+	// 문제. 
+	// Student 생성자 함수를 정의하시오.
+	// 1. 매개변수 : name, kor, eng, mat
+	// 2. 프로퍼티: name, kor, eng, mat / getAverage(), getGrade()
+	// 3. student 3명 임의로 생성하시오.
+	// 4. students 배열에 3명을 저장하시오.
+	// 5. student 3명의 정보를 콘솔에 출력하시오.
+	
+	function Student(name, kor, eng, mat) {
+		this.name = name;
+		this.kor = kor;
+		this.eng = eng;
+		this.mat = mat;
+		
+		this.getAverage = function () {
+			return (this.kor + this.eng + this.mat)/3;
+		};
+		
+		// function들의 내용은 모든 객체가 동일한 내용을 참조하게 되므로
+		// 공용 공간인 프로토타입에 저장해 주는 것이 좋다.
+		this.__proto__.getGrade = function () {
+			var grade = '';
+			switch (this.getAverage()>0) {
+			case (this.getAverage() >= 90):
+				grade = 'A';
+				break;
+			case (this.getAverage() >= 80):
+				grade = 'B';
+				break;
+			case (this.getAverage() >= 70):
+				grade = 'C';
+				break;
+			case (this.getAverage() >= 60):
+				grade = 'D';
+				break;
+			default:
+				grade = 'F';
+				break;
+			}
+			return grade;
+		};
+	}
+	
+	var students = [
+		new Student('아무개', 80, 90 ,100),
+		new Student('이무개', 90, 50 ,70),
+		new Student('김무개', 60, 40 ,80)
+	];
+	
+	/* 
+		var p in students로 사용하지 않는다. students안에는 3개의 값이 존재
+		배열 값 각각이 출력될 수 없다.
+		for in : 각 객체 안 정보 출력
+		for(~ length) : 여러 객체 정보 출력
+		05에서 사용했던 두 구분의 중첩은 프로피티 형식이였기 때문.	객체명 : 객체값
+		
+		for(var p in students[i]){
+			student[i][p] : name, kor, eng, mat; 이름 지정해줘야함
+			student[i][p]() : getAverage(), getGrade();
+			혹은
+			/* 
+				if(p == "getAverage" || p == "getGrade"){
+					console.log(students[i][p]());
+				}else{
+					console.log(students[i][p]);
+				}
+					
+			*/
+		}
+	*/
+	
+	for(let i = 0; i<students.length; i++){
+		/* console.log('이름: ' + students[i].name);
+		console.log('국어: ' + students[i].kor);
+		console.log('영어: ' + students[i].eng);
+		console.log('수학: ' + students[i].mat);
+		console.log('평균: ' + students[i].getAverage());
+		console.log('학점: ' + students[i].getGrade()); */
+		// 매번 students[i]를 붙여야 하므로
+		// with문을 활용하여 코드를 줄여볼 수 있다.
+		with(students[i]){//모두 student[i]가 붙는다.
+			console.log('이름: ' + name);
+			console.log('국어: ' + kor);
+			console.log('영어: ' + eng);
+			console.log('수학: ' + mat);
+			console.log('평균: ' + getAverage());
+			console.log('학점: ' + getGrade());
+			
+		}
+	}
+</script>
+</head>
+<body>
+
+</body>
+</html>

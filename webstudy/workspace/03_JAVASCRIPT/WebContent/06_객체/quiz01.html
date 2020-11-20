@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	
+	// 가져온 JSON 데이터 -> 자바스크립트 객체로 변환된 상태
+	var books = [
+		{
+			title: "어린왕자",
+			author: "생떽쥐베리",
+			price : 15000,
+			publisher: "어린출판사"
+		},
+		{
+			title: "나는 자바다.",
+			author: "김자바",
+			price : 35000,
+			publisher: "자바출판사"
+		},
+		{
+			title: "나는 파이썬이다.",
+			author: "박파이",
+			price : 25000,
+			publisher: "파이출판사"
+		}
+	];
+	
+</script>
+</head>
+<body>
+	<input type ="button" value = "책 정보 가져오기" onclick="openbook()" />
+	<br/><br/>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>제목</th>
+				<th>저자</th>
+				<th>가격</th>
+				<th>출판사</th>
+			</tr>
+		</thead>
+		<tbody id ="book-contents">
+			
+		</tbody>
+	</table>
+	<script type="text/javascript">
+		function openbook(){
+			var tab = '';
+			for(var i = 0; i<books.length; i++){
+				tab += '<tr>';
+				for(var p in books[i]){	
+					tab += '<td>';
+					tab += books[i][p];
+					tab += '</td>'; 
+				}
+				tab += '</tr>'; 
+				document.getElementById('book-contents').innerHTML = tab;
+				
+			}
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	
+	// 1. 비어있는 객체 생성
+	var woman = {};
+	// var woman = new object();
+	
+	// 2. 프로퍼티 추가 (동적 추가)
+	// 없던 프로퍼티를 사용하면 자동으로 추가된다.
+	woman.name = "앨리스";
+	woman.age = 25;
+	woman.birthday = "1996-12-12";
+	
+	// 3. 프로퍼티 수정
+	// 있던 프로퍼티를 사용하면 자동으로 수정된다.
+	woman.name = "에밀리";
+	
+	// 4. 프로퍼티 삭제
+	// delete 객체명.프로퍼티, delete(객체명.프로퍼티)
+	delete woman.birthday;
+	
+	console.log('이름:' + woman.name);
+	console.log('나이:' + woman.age);
+	console.log('생일:' + woman.birthday);
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

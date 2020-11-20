@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	
+	// 객체의 프로퍼티는 모든 데이터를 저장할 수 있다.
+	// 데이터, 배열, 함수, 객체 등
+	
+	
+	var car = {
+		model: "e-class",
+		price: '7500',
+		buyDate: '2020-11-20',
+		company: {
+			name: 'benz',
+			country: 'germany',
+		},
+		tires: ["frontLeft", "frontRight", "backLeft", "backRight"],
+		drive: function () {
+			console.log("Let's go");
+		}
+	};
+	// 일반 객체
+	console.log('모델: ' +car.model);
+	console.log('가격: ' + car.price);
+	console.log('구매일: ' + car.buyDate);
+	
+	// 객체가 가진 또 다른 객체
+	console.log('제조사명: ' + car.company.name);
+	console.log('제조국가: ' + car.company.country);
+	
+	console.log('타이어 정보');
+	for (let i = 0; i< car.tires.length; i++){
+		console.log(car.tires[i]);
+	}
+	
+	// 출력
+	car.drive();
+</script>
+</head>
+<body>
+
+</body>
+</html>

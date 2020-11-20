@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	
+	// 1. 생성자 함수 정의
+	function product(name) {
+		this.name = name;
+		// 생성자 함수의 내부에서는 __proto__ 를 통해서 prototype에 접근할 수 있다.
+		this.__proto__.manufacturer = '오뚜기';
+		// 함수를 protype에 저장하기
+		this.__proto__.slogan = function () {
+			console.log('일찍 일어나라');
+		};
+	}
+	
+	// 2. 객체 생성
+	var product1 = new product('3분짜장');
+	var product2 = new product('3분카레');
+	
+	// 3. 객체의 프로퍼티 확인
+	for(var p in product1){
+		console.log(product1[p]);
+	}
+	for(var p in product2){
+		console.log(product2[p]);
+	}
+	
+	// 4. 객체들의 slogan()함수 호출
+	product1.slogan();
+	product2.slogan();
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

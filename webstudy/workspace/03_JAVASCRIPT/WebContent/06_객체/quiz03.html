@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	
+	// 문제. Car 생성자 함수를 만드시오.
+	// 1. 매개변수는 model, oil 이다.
+	// 2. 프로퍼티는 다음과 같다.
+	//	  1) model, speed, oil, MAX_SPEED, MAX_OIL, STEP_SPEED, STEP_OIL
+	//	  2) speedUp(), speedDown(), panel()
+	// 3. speedUp() 메소드: 속도 +10(STEP_SPEED), 연료 -5(STEP_OIL), 최고속도 100(MAX_SPEED)
+	// 4. speedDown() 메소드 ㅣ 속도 - 10(STEP_SPEED), 연료 안 씀, 최저 속도 0
+	// 5. oil은 제한 없이 사용할 수 있다.
+	// 6. panel() 메소드 : 모델명, 현재 속도, 연료량 콘솔 출력
+	
+	function Car(model, oil) {
+		this.model = model;
+		this.oil = oil;
+		this.speed = 0;
+		this.__proto__.MAX_SPEED = 100;
+		this.MAX_OIL;
+		this.__proto__.STEP_SPEED = 10;
+		this.__proto__.STEP_OIL = 5;
+			
+		this.__proto__.speedUp = function () {
+			if(this.speed <= this.__proto__.MAX_SPEED){
+				this.speed += this.__proto__.STEP_SPEED;
+				this.oil -= this.__proto__.STEP_OIL;
+			}
+		};
+		this.__proto__.speedDown = function () {
+			if(this.speed > 0){
+				this.speed -= this.__proto__.STEP_SPEED;
+			}else if(this.speed = 0){
+				return;
+			}else{
+				this.speed = 0;
+			}
+		};
+		this.panel = function () {
+			console.log('모델명: ' + this.model);
+			console.log('현재속도: ' + this.speed);
+			console.log('연료량: ' + this.oil);
+		};
+	}
+	
+	var car1 = new Car('bmw', 150);
+	var car2 = new Car('cube', 100);
+	var car3 = new Car('chairMan', 250);
+	
+	
+	car1.speedUp();
+	car2.speedUp();
+	car3.speedUp();
+
+	car1.speedDown();
+	car2.speedDown();
+	car3.speedDown();
+
+	car3.speedUp();
+	car2.speedUp();
+	car1.speedUp();
+	
+	car1.panel();console.log('');
+	car2.panel();console.log('');
+	car3.panel();
+	
+	
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+	/* 
+		this
+		
+		1. 객체 자신을 의미한다.
+		2. 객체 내부에서만 사용된다.
+		3. this가 작성된 객체를 의미한다.
+		
+	*/
+
+	var man = {
+		name: "제임스",
+		running: function(){
+			console.log(this);
+			console.log(this.name);
+			console.log(this.ame + '가 달린다.');
+		}
+	};
+	
+	man.running();
+</script>
+</head>
+<body>
+
+</body>
+</html>

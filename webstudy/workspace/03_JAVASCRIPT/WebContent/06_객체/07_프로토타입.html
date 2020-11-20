@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	
+	/* 
+		프로토타입
+		
+		1. 같은 모든 객체들이 접근하는 하나의 공간이다.
+		2. 모든 객체들이 같은 값을 가진다면 프로토타입(prototype)에 저장한다.
+	*/
+	
+	// 1. 생성자 함수 정의
+	function KoreaITStudent(name) {
+		this.name = name;
+		// this.academy = "코리아IT아카데미";    개별 객체마다 저장되므로 공간의 낭비이다. 저장할 필요가 없는 정보
+		
+	}
+	
+	
+	// 2. prototype에 저장하기
+	// 객체타입.prototype.프로퍼티명
+	KoreaITStudent.prototype.academy = "코리아IT아카데미";
+	
+	// 3. 객체 생성
+	var student1 = new KoreaITStudent('김아무개');
+	var student2 = new KoreaITStudent('이아무개');
+	
+	// 4. 모든 프로퍼티 확인을 위해 for - in문 사용
+	for(var p in student1){
+		console.log(student1[p]);
+	}
+	for(var p in student2){
+		console.log(student2[p]);
+	}
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

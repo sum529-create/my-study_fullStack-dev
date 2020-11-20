@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	/* 
+		객체 (object)
+		
+		1. 객체 생성 방법
+			var 객체명 = {
+				// 속성(프로퍼티, property)과 값의 조합
+				속성: 값,
+				속성: 값,			// 자바의 HashMap
+				...
+			};
+	
+		2. 객체의 속성(프로퍼티) 접근 방법
+			1) 마침표(.)  표기법: 객체명.속성
+			2) 대괄효([]) 표기법: 객체명["속성"]
+			
+		3. 자바스크립트 객체 - 자바 Map - JSON
+			JSON의 표준을 따라서 학습하세요.
+			- 객체 생성 시 콜론(:) 뒤에 공백
+			- 문자열 큰 따옴표("") 처리
+		
+	*/
+	
+	// 1. 객체 book 생성
+	var book = {
+		title : "홍길동전",
+		price : 15000,
+		pubDate : "2020-11-20" 
+	};
+			
+	// 2. 속성(프로퍼티) 확인
+	// 1) 마침표(.)
+	console.log('제목: ' + book.title);
+	console.log('가격: ' + book.price);
+	console.log('출판일: ' + book.pubDate);
+	
+	// 2) 대괄호([])
+	console.log('제목: ' + book["title"]);
+	console.log('가격: ' + book["price"]);
+	console.log('출판일: ' + book["pubDate"]);
+	
+	
+	
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>
