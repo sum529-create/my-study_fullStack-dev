@@ -25,8 +25,43 @@
 				}
 			}
 		5. JSON 데이터의 변환 과정 이해
-			1) JSON -> String JSON
+			1) JSON -> String JSON -> 자바스크립트 객체
+			2) 사용 메소드
+				(1) stringify(): JSON -> string -> JSON
+				(2) parse(): string JSON -> 자바스크립트 객체
 	*/
+	
+	// 1. JSON을 보내는 곳에 있는 오리지널 JSON라고 가정
+	var person = {
+		"name" : "에밀리",
+		"age" : 20,
+		"birthday" : "2001-11-20"
+	}; 
+	
+	// 2. string 으로 변환되서 데이터가 넘어 올 수 있다.
+	// JSON -> string JSON 		위 문장을 String형식으로 바꾼다.	,보내주기 위해서 변환, 클라이언트 서버에서 바꿔주기 위해서.. 등등 사용
+								// 자바는 stringify 기능이 없다. 직접 수기로 해야한다.
+	var strPerson = JSON.stringify(person);
+	
+	console.log(strPerson);	// {"name":"에밀리","age":20,"birthday":"2001-11-20"}
+	
+	// 3. String 타입의 JSON 데이터를 자바스크립트 객체로 변환해서 사용한다.
+	// String JSON -> 자바스크립트 객체
+	var woman = JSON.parse(strPerson);
+	
+	/* 
+		age: 20
+		birthday: "2001-11-20"
+		name: "에밀리"
+	*/
+	console.log(woman.name);
+	console.log(woman.age);
+	console.log(woman.birthday);
+	
+	
+	
+	
+	
 </script>
 </head>
 <body>
