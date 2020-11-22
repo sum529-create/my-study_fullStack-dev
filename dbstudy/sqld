@@ -1,0 +1,19 @@
+/*sqld 110번 문제*/
+
+drop table 자재발주;
+
+create table 자재발주(
+    자재번호 number primary key,
+    발주처ID number,
+    발주일자 date,
+    발주수량 number
+);
+
+insert into 자재발주 values(1, 001, '20150102', 100);
+insert into 자재발주 values(1, 001, '20150103', 200);
+insert into 자재발주 values(2, 001, '20150102', 200);
+insert into 자재발주 values(2, 002, '20150102', 100);
+insert into 자재발주 values(3, 001, '20150103', 100);
+insert into 자재발주 values(3, 002, '20150103', 200);
+
+select * from 자재발주;
