@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var array = ['영화', '여행', '게임'];
+		
+		var aUl = document.createElement('ul');
+		document.body.appendChild(aUl);
+		var aLi;
+		for(var i = 0; i<array.length; i++){
+			aLi = document.createElement('li');
+			aUl.appendChild(aLi);
+			var aText = document.createTextNode(array[i]);
+			aLi.appendChild(aText);
+		}
+	</script>
+</body>
+</html>
