@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h1>안녕하세요.</h1>
+	
+	<div id="container">
+		<div id="box1">BOX1</div>
+		<div id="box2">BOX2</div>
+		<div id="box3">BOX3</div>
+	</div>
+	
+	<ul class="gnb">
+		<li class="sub-gnb">영화</li>
+		<li class="sub-gnb">여행</li>
+		<li class="sub-gnb">게임</li>
+	</ul>
+	
+	<script type="text/javascript">
+		// 1. h1 태그를 선택하는 방법
+		// 	  	1) getElmentsByTagNme('h1');
+		//		2) querySelectorAll('h1');
+		var h1 = document.getElementsByTagName('h1');	// Element's'-> 배열에 쓸수 있다. for문을 사용할 가능성이 있음. 
+		console.log(h1);				// 배열, HTMLCollection
+		console.log(h1[0]);				// <h1>안녕하세요.</h1>
+		console.log(h1[0].textContent);	// 안녕하세요.
+		
+		// 2. id속성으로 선택하는 방법
+		//		1) getElementById('box1')
+		//		2) querySelector('#box1')
+		
+		// 3. id="box1" 요소 삭제하기
+		//		1) 삭제할 요소의 부모요소를 알아낸다. (id="container"")
+		//		2) 삭제할 요소를 알아낸다. (id="box1")
+		//		3) 부모요소.removeChild(삭제할 요소)
+		var parent = document.querySelector('#container');
+		var child = document.querySelector('#box1');
+		parent.removeChild(child);
+		// 위와 같은 의미(?)     container.removeChild(box1);
+		
+		// 4. class 속성으로 선책하는 방법
+		//		1) getElementsByClassName()
+		//		2) querySelectorAll()
+		
+		var gnb = document.getElementsByClassName('gnb');
+		// 추가된 <ul class="gnb">는 gnb[0]이다.
+		var sub_gnb = document.getElementsByClassName('sub-gnb');
+		// var sub_gnb = document.querySelectorAll('.sub-gnb');  // 동일
+		// 삭제할 대상은 sub_gnb[2]이다. (자식요소)
+		gnb[0].removeChild(sub_gnb[2]);
+		
+		
+	</script>
+
+</body>
+</html>
