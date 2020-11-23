@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	table{
+		border-collapse: collapse;
+	}
+	th, td{
+		border: 1px solid black;
+		padding: 5px 10px;
+	}
+</style>
+</head>
+<body>
+	<script type="text/javascript">
+		var people = [
+			{
+				name: 'james',
+				age: 25
+			},
+			{
+				name: 'emily',
+				age: 26
+			}
+		];
+		
+		var aTable = document.createElement('table');
+		document.body.appendChild(aTable);
+		
+		var titles = ['name', 'age'];
+		
+		var aTr = document.createElement('tr');
+		aTable.appendChild(aTr);
+		for(var i = 0; i<titles.length; i++){
+			var aTh = document.createElement('th');
+			aTr.appendChild(aTh);
+			aTh.textContent = titles[i];
+		}
+		for(var i = 0; i<people.length; i++){
+			var aTr = document.createElement('tr');
+			aTable.appendChild(aTr);
+				
+			for(var p in people[i]){
+				var aTd = document.createElement('td');
+				aTr.appendChild(aTd);
+				aTd.textContent = people[i][p];
+				
+			}
+		}
+			
+		
+	</script>
+</body>
+</html>
