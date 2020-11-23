@@ -1,0 +1,32 @@
+drop table SQLD_21_01;
+create table SQLD_21_01(
+    N1 number,
+    V1 char(2)
+);
+
+insert into SQLD_21_01 VALUES(1, 'A');
+insert into SQLD_21_01 VALUES(2, '');
+insert into SQLD_21_01 VALUES(3, 'B');
+insert into SQLD_21_01 VALUES(4, '');
+
+drop table SQLD_21_02;
+create table SQLD_21_02(
+    N1 number,
+    V1 char(2)
+);
+
+insert into SQLD_21_02 VALUES(1, 'A');
+insert into SQLD_21_02 VALUES(2, '');
+insert into SQLD_21_02 VALUES(3, 'B');
+
+select * from sqld_21_01;
+select * from sqld_21_02;
+
+select sum(A.n1)
+from SQLD_21_01 A,
+     SQLD_21_02 B
+where A.v1 <> B.v1;
+
+select *
+from sqld_21_01 A
+where not exists (select 'x' from sqld_21_02 B where a.v1 = b.v1);
