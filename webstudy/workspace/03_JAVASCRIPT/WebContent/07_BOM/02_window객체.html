@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<!-- 일반 버튼 -->
+	<input type="button" value = "창 열기" onclick="openWindow()"/>
+	<input type="button" value = "창 닫기" onclick="closeWindow()"/>
+	<input type="button" value = "창 선택" onclick="focusWindow()"/>
+	
+	<script type="text/javascript">
+	// 전역 객체로 선언해야 모든 함수들이 사용할 수 있다.
+	var popup;
+	
+	// 1. 창 열기(openWindow)
+		function openWindow() {
+			popup = window.open('PopUp.html','','width=400, height=300');
+		}
+		
+	// 2. 창 닫기(closeWindow)
+		function closeWindow(){
+			if(popup)  // popup이 있으면(존재하면)  == (popup != null){}
+			window.close();
+		}
+	
+	// 3. 창 선택(focusWindow())
+		function focusWindow(){
+			window.focus();
+		}
+	
+	</script>
+	
+</body>
+</html>

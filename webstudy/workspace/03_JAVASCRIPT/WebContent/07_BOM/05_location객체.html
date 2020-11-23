@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+	/* 
+		1. 히스토리(history)를 남기며 이동하는 경우
+			1) location.href = "이동할 경로";
+			2) location.assign = ('이동할 경로');
+		2. 히스토리(history)를 남기지 않고 이동하는 경우
+			1) location.replace('이동할 경로');
+	*/		
+	
+	
+	// 1. 그냥 이동하기
+	function go1() {
+		location.href = 'https://www.google.com/';
+	}
+	
+	// 2. 파리미터 가지고 이동하기
+	// location.href = "URL?파리미터명=값&파라미터명=값"
+	function go2(){
+		location.href = "https://www.google.com/search?q=코로나";
+	} 
+	
+	// 3. 히스토리를 안 남기고 이동하면 '뒤로 가기'가 불가능하다.
+	function go3() {
+		location.replace('https://www.google.com/');
+	}
+
+	
+	// 문제. 입력 대화상자에 검색어를 입력하고 확인 버튼을 누르면
+	// 네이버로 이동하여 해당 검색어를 검색하시오.
+	function go4(){
+		var searchText = window.prompt('검색할 내용을 쓰시오.');
+		location.href = "https://search.naver.com/search.naver?query=" + searchText;
+	}	
+
+</script>
+</head>
+<body>
+
+	<input type = "button" value = "구글이동" onclick="go1()"/>
+	<input type = "button" value = "검색어:코로나" onclick="go2()"/>
+	<input type = "button" value = "히스토리없이구글이동" onclick="go3()"/>
+	<input type = "button" value = "네이버검색" onclick="go4()"/>
+	
+</body>
+</html>

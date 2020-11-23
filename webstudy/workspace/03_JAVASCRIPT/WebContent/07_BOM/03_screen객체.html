@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+
+	console.log('화면(screen) 너비 : ' + screen.width);
+	console.log('화면(screen) 높이 : ' + screen.height);
+
+	console.log('실제(screen) 너비 : ' + screen.availWidth);
+	console.log('실제(screen) 높이 : ' + screen.availHeight);
+	
+	// 너비 400, 높이 300인 창을 브라우저 중앙에 열자.
+	
+	//window.open('','','width = 400, height = 300, top=390, left = 760');  // 직접 지정
+	
+	var winWidth = 400;
+	var winHeight = 300;
+	var Mytop = (screen.availHeight - winHeight)/2;
+	var Myleft = (screen.availWidth - winWidth)/2;
+	open('','','width= ' + winWidth + ', height= ' + winHeight + ', top= ' + Mytop + ', left= ' + Myleft);
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>
