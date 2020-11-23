@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	#answer{
+		visibility: hidden;
+	}
+	#hiddenAns{
+		display: none;
+		visibility: none;
+	}
+</style>
+</head>
+<body>
+	<h3>다음 중 존재하지 않는 태그는?</h3>
+	<ol>
+		<li>div</li>
+		<li>p</li>
+		<li>mother</li>
+		<li>ul</li>
+	</ol>
+	<span>정답 : [<span id = "answer">3</span>]</span>
+	<input type="button" value="정답보기" onclick = "showA()" id="showAns"/> 
+	<input type="button" value="정답숨기기" onclick = "showB()" id="hiddenAns"/>
+	
+	<script type="text/javascript">
+/*
+	
+	function show(){
+		showAns.value = '정답숨기기';
+		answer.style.visibility = "visible";
+	}
+
+	function hidden(){
+		showAns.value = '정답보가ㅣ';
+		answer.style.visibility = "hidden";		
+	}
+
+	function showA(){
+		if(showAns.value == '정답보기'){
+			show();					
+		}else{
+			hidden();
+		}
+		
+	}
+*/
+		// 하나씩 style 주기
+		function showA() {
+			answer.style.color = "red";
+			answer.style.visibility = "visible";
+			hiddenAns.style.display = "inline";
+			showAns.style.display = "none";
+		}
+		function showB(){
+			answer.style.visibility = "hidden";
+			showAns.style.display = "inline";
+			hiddenAns.style.display = "none";
+		}
+	</script>
+</body>
+</html>

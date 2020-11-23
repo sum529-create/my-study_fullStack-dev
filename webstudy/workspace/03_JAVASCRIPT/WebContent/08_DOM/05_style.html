@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div id = "box">
+		BOX
+	</div>
+	
+	<script type="text/javascript">
+		var box = document.getElementById('box');
+		
+		// 1. 마침표 표기법
+		//		: 하이픈을 제거하고 camel case로 수정한다.
+		box.style.width = '400px';
+		box.style.height = '300px';
+		box.style.margin = '50px auto';
+		
+		box.style.textAlign = 'center';
+		box.style.borderRadius = '5px';
+		
+		// 2. 대괄호 표기법
+		//		: 문자열로 처리하여 원래 속성을 그대로 작성한다.
+		box.style['border'] = "1px solid black";
+		box.style['font-weight'] = '900';
+		
+		
+	</script>
+</body>
+</html>
