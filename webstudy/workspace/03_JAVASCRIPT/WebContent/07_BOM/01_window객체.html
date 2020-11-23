@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	/* 
+		BOM
+		1. Browser Object Model
+		2. 브라우저를 구성하는 요소를 객체로 처리한다.
+	*/
+	
+	/* 
+		window 객체
+		1. 브라우저 내장 객체 중에서 최상위 객체이다.
+		2. window.객체, window.변수, window.함수() 등과 같은 방식으로 사용된다.
+		3. 일반적으로 window 객체는 생략하고 작성한다.
+		4. 주요 메소드
+			1) open()  새창을 열 시
+			2) close() 창을 닫을 시
+			3) focus() 창의 선택시
+			4) moveBy()
+			5) moveTo()
+	*/
+	
+	// 새 창 열기
+	// window.open('URL', 'name', 'spec');
+	// url이 생략되면 빈 창이 열리게 된다. 작성하면 작성된 경로의 창이 열린다.
+	// name : _blank(디폴트, 새창), _self(현재 창), 임의의 name(지정한 name을 가진 새 창)
+			
+	var popup = window.open('','','width=400, height=300, top=300, left=400, resizable=no');	// 너비, 높이는 픽셀단위(px) 단, 단위로서 적어주지 않는다.
+																								// resizable=[yes, no] <- 창 고정
+	// 1) if 로 팝업 처리
+	/* 
+		if(!popup){		// 창이 열리지 않았다면
+			alert('팝업 차단을 해제해 주세요.');
+		}
+	*/
+	// 2) try -catch 로 팝업 처리
+	var isBlocked = false;
+	try {
+		var popup = window.open('', '', 'width=400, height=300, top=300, left=400, resizable=no');  // px 단위
+		if ( !popup ) {  // if (popup == null) {
+			isBlocked = true;
+		}
+		// 열렸을 때 처리할 코드 작성
+	} catch (e) {
+		isBlocked = true;
+	}
+	
+	if (isBlocked) {
+		alert('팝업 차단을 해제해 주세요.');
+	}
+
+	
+	window.write('<h1>안녕하세요.</h1>');
+	// 창에 내용 추가하기
+	popup.document.write('<h1>안녕하세요.</h1>');  // 새 창을 열어서 작성
+	
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

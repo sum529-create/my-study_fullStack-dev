@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	/* 
+		DOM
+		1. Document Object Modek
+		2. HTML의 구성 요소(태그, 속성 등)들을 획득, 추가 , 변경, 삭제 등의 작업을 수행한다.
+		3. HTML의 구성 요소 선택 방법
+			1) document.getElementById('아이디');
+			2) document.getElementsByClassName('클래스');
+			3) document.getElementsByFagName('태그')
+			4) document.querySelector('선택자')
+			5) document.querySelectorAll('선택자')
+		4. 주요 기능
+			1) textContent: 내부 텍스트
+			2) innerHTML: 내부 html태그
+			3) style: CSS
+			4) attribute: 속성
+				(1) setAttribute(속성, 값): 기존의 속성값을 변경
+				(2) getAttribute(속성): 기존의 속성값을 반환
+				
+	*/
+	
+	
+</script>
+</head>
+<body>
+	<a id="link"> </a>	<!-- 이후로 a태그 인식함 -->
+	<script type="text/javascript">
+		// var aLink = document.getElementById('link');	/* 수집 */
+		var aLink = document.querySelector('#link');	/* 선택자 */
+		
+		aLink.textContent = '클릭해 주세요.';	/* 내용 */
+		aLink.style.color = 'red';			/* CSS 작업 자바스크립트의 css가 우선순위이다.*/
+		aLink.style.fontWeight = 'bold';
+		aLink.style['font-size'] = '20px';
+		aLink.setAttribute('href', 'https://www.google.com');
+	</script>
+</body>
+</html>>
