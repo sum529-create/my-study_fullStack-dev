@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<!-- 검색어가 없으면 서버에 request를 보내지 않는 검색창 -->
+	
+	 <!--<form action="폼의 데이터를 보낼곳, submit 할 때 동작한다.
+	 			name = "폼을 식별할 때 사용한다"
+	 			onsubmit = "return goSearch()" goSearch 함수 결과가 false이면 submit을 하지않고 true이면 submit을 한다.
+	 -->
+		
+	<form action="#"  name="search-form" onsubmit = "return goSearch()">	
+	
+		<input type = "text" name = "query"/>	<!--text 타입은 사용자가 작성하는 것이 value이기에 따로 작성하지 않는다.-->
+		<input type = "submit" value="검색"/>
+		<button>검색</button>
+		
+	</form>
+
+	<script type="text/javascript">
+	
+		// 폼 표기법
+		// 1. 마침표 표기법 : document.forms.폼이름
+		// 2. 대괄호 표기법 : document.forms['폼이름']
+		
+		function goSearch() {
+			var f = document.forms['search-form']
+			// var f = document.forms.search-form;
+			// f.query 		 : <input name="query"> 태그 자체
+			// f.query.value : <input name="query"> 태그의 value 속성 값(입력된 값)
+			if(f.query.value == ''){
+				alert('검색어를 입력하세요.');
+				f.query.focus();	// <input name="query"> 태그에 포커스 옮겨주기
+				return false;		// submit을 하지 않겠다.
+			}
+			return true;	// submit을 하겠다.
+		}
+		
+		/* 			
+			function goSearch() {
+				if(confirm('서브밋할까요?')){
+					return true;
+				}else{
+					alert('서브밋이 취소되었습니다.');
+					return false;
+				} 
+			}*/
+	</script>
+
+</body>
+</html>

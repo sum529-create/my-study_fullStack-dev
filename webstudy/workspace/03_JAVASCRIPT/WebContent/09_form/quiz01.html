@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<form name="recommend-form" onsubmit="return goToSite()">
+		<select name="site">
+			<option value="">추천 사이트 선택</option>
+			<option value="https://www.google.com">구글</option>
+			<option value="https://www.naver.com">네이버</option>
+			<option value="https://www.daum.net">다음</option>
+		</select>
+		<button>GO</button>
+	</form>
+	
+	<script type="text/javascript">
+	
+		function goToSite() {
+			var f = document.forms['recommend-form'];
+			if (f.site.value == '') {
+				alert('추천 사이트를 선택하세요.');
+				f.site.focus();
+				return false;
+			}
+			
+			// 새 창 열기
+			// open('URL', 'name', 'spec');
+			open(f.site.value, '', '');
+			
+			// 기존 창으로 이동
+			// location.href = f.site.value;
+			
+			// submit 허용
+			return true;
+			
+		}
+	</script>
+	
+</body>
+</html>

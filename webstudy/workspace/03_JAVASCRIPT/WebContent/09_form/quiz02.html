@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="#">
+		<input type = "text" placeholder="NAME" name = "name">
+		<br/>
+		<select name= "subject">
+			<option value = "">과목선택</option>
+			<option value = "국어">국어</option>
+			<option value = "수학">수학</option>	
+			<option value = "영어">영어</option>
+		</select>
+		<input type = "text" placeholder="SCORE" name = "score">
+		<input type = "button" value = "전송" onclick="uSub(this.form)">
+	</form>
+	
+	<script type="text/javascript">
+		function uSub(f) {
+			if(f.name.value == ''){
+				alert('이름을 입력하세요.');
+				f.name.focus();
+				return;
+			}
+			
+			if(f.subject.value == ''){
+				alert('과목을 선택하세요.');
+				f.subject.focus();
+				return;
+			}
+			if(f.score.value == '' || parseInt(f.score.value)<0 || parseInt(f.score.value)>100 || isNaN ){
+				alert('점수를 확인하세요.');
+				f.score.focus();
+				return;
+			}
+			f.action = '#';
+			f.submit();
+		}
+	</script>
+
+</body>
+</html>

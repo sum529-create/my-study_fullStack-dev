@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<form>
+		구독할 이메일을 입력하세요<br/>
+		<input type = "text" name = "email"/>
+		<input type = "button" value="전송" onclick = "sendEmail(this.form)"/> <!-- this.form: 현재 폼 태그 전체 submit사용 시 onclick은 안됨 -->
+	</form>
+	<script type="text/javascript">
+		
+		function sendEmail(f) {
+			
+			var email = f.email
+			
+			if (email.value == ''){
+				alert('이메일을 입력하세요.');
+				email.focus();
+				return;		// sendEmail() 함수의 종료
+			}
+			if(email.value.indexOf('.') == -1 || email.value.indexOf('@') == -1){
+				alert('이메일을 확인하세요.');
+				email.focus();
+				return;
+			}
+			
+			// 서브밋을 한다.
+			f.action = "#";
+			f.submit();
+			
+		}
+	
+	</script>
+</body>
+</html>
