@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+	// 문제. replaceAll 함수를 구현하시오.
+	console.log(replaceAll('sqlsession', 's', ''));		// qleion
+
+	function replaceAll(all, remove, dCost) {
+		return all.split(remove).join(dCost);
+	}
+	
+	/* 
+		aazaazazaazaa -> aaoaaoaaoaaoaa
+		1) split('z')
+			['aa', 'aa', 'aa', 'aa', 'aa']
+		2) join('o')
+			'aa' + 'o' + 'aa' + 'o' + 'aa' + 'o' + 'aa' + 'o' + 'aa'
+			'aaoaaoaaoaaoaa'
+	*/
+	
+	// String에 replaceAll 함수를 추가하는 방법
+	// -> String의 prototype에 추가하면 된다.
+	String.prototype.replaceAll = function(before, after) {
+		return this.split(remove).join(dCost);
+	}
+	
+	var str = 'aazaazaazaazaa';
+	console.log(str.replaceAll('z', 'o'));
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>
