@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function fn(f) {
+		
+		var query = f.query.value;
+		
+		var reg = /^[a-z0-9]{5,}$/;
+		
+		// 1. 문자열에서 지원하는 함수
+		// 1) match 함수
+		//    정규식 패턴과 일치하는 문자열을 배열로 반환
+		//	   일치하지 않으면 null 반환 
+		var result1 = query.match(reg);
+		if(result1 != null){
+			console.log(result1);
+			console.log('일치합니다.');
+		}else{
+			console.log('일치하지 않습니다.');
+		}
+		
+		// 2) search 함수
+		//    정규식 패턴과 일치하는 문자열의 인덱스를 반환한다.
+		//    일치하지 않으면 -1 반환
+		var result2 = query.search(reg);
+		if(result2 != -1){
+			console.log(result2);
+			console.log('일치합니다.');
+		}else{
+			console.log('일치하지 않습니다.');
+		}
+		
+		// 2. 정규식에서 지원하는 함수
+		// 1) exec 함수
+		//    패턴과 일치하는 문자열을 배열로 반환한다.
+		//	   일치하지 않으면 null 반환
+		var result3 = reg.exec(query);
+		if(result3 != null){
+			console.log(result3);
+			console.log('일치합니다.');
+		}else{
+			console.log('일치하지 않습니다.');
+		}
+		
+		// 2) test 함수
+		//    정규식 패턴과 일치하는 문자열이 있으면  true 반환
+		//	   일치하지 않으면 false 반환
+		var result4 = reg.test(query);
+		if(result4){			// if(result4 != false), if(result4 = true) 
+			console.log(result4);
+			console.log('일치합니다.');
+		}else{
+			console.log('일치하지 않습니다.');
+		}
+		
+	}
+</script>
+</head>
+<body>
+	<form>
+		<input type = "text" name = "query"/>
+		<input type="button" value = "검사" onclick="fn(this.form)"/>
+	</form>
+</body>
+</html>
