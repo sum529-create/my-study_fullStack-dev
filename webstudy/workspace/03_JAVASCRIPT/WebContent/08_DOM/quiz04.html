@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<!-- 
+		문제. 1초 마다 무지개 색 순서로 변경되는 박스 만들기
+		무지개 색을 배열에 저장해 두고 사용하세요.
+	 -->
+	 
+	 
+	<div id = "box">
+		<span id ="content"></span>
+	</div>
+	
+	<script type="text/javascript">
+	
+		var rainbow = ["red", "orange", "yellow", "green", "blue", "navy", "purple"];
+		var rainbowText = ['빨', '주', '노', '초', '파', '남', '보'];
+		
+		box.style.height="200px";
+		box.style.width="200px";
+		box.style.textAlign = "center";
+		box.style.lineHeight = "200px";
+		content.style.fontsize = "30px";
+		
+		var i = 0;
+		(function timer(){
+			setTimeout(function () {
+			box.style.background = rainbow[i];
+			content.textContent = rainbowText[i];
+			i++;
+			i %= 7;
+			// 0~6으로 순환하는 방법
+			/* 
+				1) if(i==7) {i=0;}
+				2) i %= 7;
+			*/
+			timer();
+			}, 1000);
+		})();
+		
+	</script>
+</body>
+</html>

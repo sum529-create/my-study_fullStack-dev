@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<input type = "button" value="그림변경하기" onclick = "imageChange()"/>
+	<br/><br/><br/>
+	
+	<div id = "image-box"></div>
+	
+	<script type="text/javascript">
+		
+		// id = "image-box"인 곳에 <img> 태그 넣기
+		// img 태그 생성 후 추가
+		
+		var img = document.createElement('img');
+		// 부모요소.appendChild(//요소)
+		var image_box = document.getElementById('image-box');
+		image_box.appendChild(img);
+		
+		var images = ['dachshund.jpg', 'dachshund2.jpg', 'dog.jpg'];
+		var i = 0;
+		
+		function imageChange() {
+			// img.src = '이미지경로';
+			img.src = '../assets/images/' + images[i];
+			i++;
+			i %= 3;
+		}		
+	</script>
+
+</body>
+</html>
