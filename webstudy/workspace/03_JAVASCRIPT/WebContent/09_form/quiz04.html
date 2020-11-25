@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<style type="text/css">
+		.pw-check-result{
+			display:none;
+		}
+		.pw-check-result-ok{
+			display:block;
+			color:limegren;
+		}
+		.pw-check-result-not{
+			display:block;
+			color:red;
+		}
+	</style>
+	<script type="text/javascript">
+		function pwCheck(f) {
+			// 8 ~ 16자, 영문 대소문자 숫자(필수), 특수문자(선택) 
+			// 성공 : 사용 가능한 비밀번호입니다. + limegreen
+			// 실패 : 8 - 16자, 영문 대소문자와 숫자(필수), 특수문자(선택) + red
+			var check = f.pw.value;
+			var check2 = f.pw2.value;
+			var regExpPw = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])[A-Za-z0-9!@#%&*-_?]{8,16}$/;
+			var checkReg = check.match(regExpPw);
+			var result = document.getElementById('result');
+			var result2 = document.getElementById('result2');
+			
+			if(check == ''){
+				result.textContent="필수 정보입니다.";
+				result.setAttribute('class', 'pw-check-result-not');
+			}else{
+				if(checkReg != null){
+					result.textContent='사용 가능한 비밀번호입니다.';
+					result.setAttribute('class', 'pw-check-result-ok');
+				}else{
+					result.textContent='8 - 16자, 영문 대소문자와 숫자(필수), 특수문자(선택)';
+					result.setAttribute('class', 'pw-check-result-not');
+				}
+				if(checkReg == check2 && check2 != null){
+					result2.textContent='비밀번호가 확인되었습니다.';
+					result2.setAttribute('class', 'pw-check-result-ok');
+				}else{
+					result2.textContent='비밀번호를 확인하세요.';
+					result2.setAttribute('class', 'pw-check-result-not');
+				}
+			}
+			
+		}
+	</script>
+</head>
+<body>
+	<form>
+		<input type = "password" name="pw" placeholder="****"/>
+		<div id="result" class="pw-check-result"></div>
+		<input type = "password" name="pw2" placeholder="비밀번호 확인"/><br/>
+		<div id="result2" class="pw-check-result2"></div>
+		<input type="button" value="검사" onclick="pwCheck(this.form)"/>
+	</form>
+</body>
+</html>
