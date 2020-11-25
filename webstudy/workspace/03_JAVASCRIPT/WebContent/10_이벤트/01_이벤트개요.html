@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+	/*
+		이벤트 구성 요소
+		1. 이벤트 이름
+		2. 이벤트 속성
+		3. 이벤트 리스너
+	*/
+	/*
+		주요 이벤트 속성
+		1. onclick		클릭하면
+		2. ondblclick	더블클릭하면
+		3. onfocus		focus를 가지면
+		4. onblur		focus를 잃으면
+		5. onload		문서가 로드되면(문서를 모두 읽으면)
+		6. onmouseover	마우스가 올라가면
+		7. onmouseout	마우스가 나가면
+		8. onkeypress	키가 눌려 있는 동안
+		9. onkeydown	키가 내려갈 때
+		10. onkeyup		키가 올라올 때
+	*/
+	
+	/* 	
+		window.onload = 함수;
+		onload = 함수;
+
+		1. 이벤트 이름 : load
+		2. 이벤트 속성 : onload
+		3. 이벤트 리스너 : 함수
+	 */
+	
+	 /* 문서를 모두 읽은 뒤에 function(){}을 실행하라. */
+	 
+	 onload = function(){		// onload => {
+		var box = document.getElementById('box');
+		box.style.background='orange';
+	}
+	 
+</script>
+</head>
+<body>
+
+	<div id = "box">BOX</div>
+
+</body>
+</html>
