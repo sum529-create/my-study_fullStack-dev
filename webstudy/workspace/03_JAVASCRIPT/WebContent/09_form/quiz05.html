@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	.check-id-result {
+		display: none;
+	}
+	.check-id-result-ok {
+		display: block;
+		color: blue;
+	}
+	.check-id-result-not {
+		display: block;
+		color: red;
+	}
+</style>
+<script type="text/javascript">
+	
+	function idCheck(f) {
+	
+		// 첫 글자는 반드시 소문자이고,
+		// 나머지는 소문자와 숫자와 특수문자(_와 -)를 사용해서
+		// 전체 5 ~ 16자로 작성한다.
+		
+		// 성공: 사용 가능한 아이디입니다. + blue
+		// 실패: 사용할 수 없습니다. + red
+		
+		var id = f.id.value;
+		var result = document.getElementById('result');
+		var regExpID = /^[a-z][a-z0-9_-]{4,15}$/;
+		
+		if ( regExpID.test(id) ) {
+			result.textContent = '사용 가능한 아이디입니다.';
+			result.setAttribute('class', 'check-id-result-ok');
+			return true;   // 성공하면 true 반환
+		} else {
+			result.textContent = '사용할 수 없습니다.';
+			result.setAttribute('class', 'check-id-result-not');
+			return false;  // 실패하면 false 반환
+		}
+		
+	}
+	
+	function send(f) {
+		
+		// 아이디 검사가 ok이면 submit을 하고,
+		// 아니면 submit을 하지 못하도록 구현하시오.
+		
+		if ( !idCheck(f) ) {
+			alert('아이디를 체크하세요.');
+			f.id.focus();
+			return;
+		}
+		
+		f.action = '#';
+		f.submit();
+		
+	}
+	
+</script>
+</head>
+<body>
+	
+	<form>
+		<input type="text" name="id" placeholder="ID" onkeyup="idCheck(this.form)" /><br/>
+		<div id="result" class="check-id-result"></div>
+		<br/>
+		<input type="button" value="전송" onclick="send(this.form)" />
+	</form>
+	
+</body>
+</html>
+
