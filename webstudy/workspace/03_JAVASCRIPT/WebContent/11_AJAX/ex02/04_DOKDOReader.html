@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	var xhr = new XMLHttpRequest();
+	xhr.open('get', 'DOKDO.xml', true);
+	xhr.send();
+	xhr.onreadystatechange = function () {
+		if(xhr.readyState == 4 && xhr.status == 200){
+			var data = xhr.responseXML;
+			/* var emphList = data.getElementsByTagName('emph');
+			console.log(emphList[0].textContent.trim()); */
+			
+			/* var paragraphs = data.getElementsByTagName('paragraph');
+			console.log(paragraphs[0].innerHTML.split('<br/>')[1].trim()); */
+			var result = '<table border=1>';
+			var emphList = data.getElementsByTagName('emph');
+			var paragraphs = data.getElementsByTagName('paragraph');
+			for(let i = 0; i<emphList.length; i++){
+				result += '<tr>';
+				result += '<td>' + emphList[i].textContent.trim() + '</td>';
+				result += '<td>' + paragraphs[i].innerHTML.split('<br/>')[1] + '</td>';
+				result += '</tr>';
+			}
+			result += '</table>';
+			document.write(result);
+		}
+	}
+</script>
+</head>
+<body>
+
+</body>
+</html>
