@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	onload = function () {
+		
+		// 1. 전체 선택 -> 개별 선택
+		var chkAll = document.getElementById('chkAll');
+		chkAll.addEventListener('click', function() {
+			// chkAll의 chcked 속성 값을 class = "chk"들에게 그대로 전달한다.
+			// chkAll.checked 		vat chk_list = document.getElementsByClassName('chk');
+			var chk_list = document.getElementsByClassName('chk');
+			for(let i = 0;  i<chk_list.length; i++){
+				chk_list[i].checked = chkAll.checked;
+			}
+		});
+		
+		// 2. 개별 선택 -> 전체 선택
+		var chk_list = document.getElementsByClassName('chk');
+		for(let i = 0; i< chk_list.length; i++){
+			// 개별 선택을 하나 클릭하면
+			chk_list[i].addEventListener('click', function () {
+				var chkAll = document.getElementById('chkAll');
+				// 개별 선택 전체를 살펴봐서 하나라도 checked가 없는 객체가 있으면
+				// 전체 선택의 checked를 빼겠다.
+				for(let j = 0; j < chk_list.length; j++){
+					if(chk_list[j].checked == false){	// checked 속성이 없다.
+						chkAll.checked = false;			// 전체 선택의 checked 속성을 없앤다.
+						return; // 이벤트 리스너인 익명 함수 종료
+					}
+				}
+				// for(let j=0; j< chk_list.length; j++) {} 코드가 끝나느 경우
+				// 모두 체크되어 있는 경우 뿐이다.
+				chkAll.checked = true;	// 전체 선택의 checked 속성을 준다.
+				// chkAll.checked = 'checked';
+			});
+		}
+	}
+</script>
+</head>
+<body>
+
+	<input type="checkbox" id ="chkAll"/> 전체<br/><br/>
+	<input type="checkbox" class="chk"/>선택1<br/>
+	<input type="checkbox" class="chk"/>선택2<br/>
+	<input type="checkbox" class="chk"/>선택3<br/>
+	<input type="checkbox" class="chk"/>선택4<br/>
+	<input type="checkbox" class="chk"/>선택5<br/>
+
+</body>
+</html>
