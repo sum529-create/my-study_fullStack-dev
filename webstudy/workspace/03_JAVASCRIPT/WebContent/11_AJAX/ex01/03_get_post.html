@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	
+	onload = fn;
+	
+	function fn() {
+		// 1. GET 버튼
+		var getBtn = document.getElementById('get-btn');	
+		getBtn.addEventListener('click', function () {
+			var xhr = new XMLHttpRequest();
+			xhr.open('get', 'DATA.html', true);
+			xhr.send();
+			xhr.onreadystatechange = function () {
+				if(xhr.readyState == 4){
+					if(xhr.status == 200){
+						document.getElementById('personal').innerHTML = xhr.responseText;
+					}
+				}
+			}
+		});
+		
+		
+		// 2. POST 버튼
+		var postButton = document.getElementById('post-button');	
+			
+	}
+	
+</script>
+</head>
+<body>
+	<h3>개인정보 출력</h3>
+	<div id="personal">
+		
+	</div>
+	<br/>
+	
+	<input id="get-btn" type="button" value = "GET"/>
+	<input id="post-btn" type="button" value = "POST"/>
+	
+</body>
+</html>
