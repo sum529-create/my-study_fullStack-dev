@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	/* 
+		node: 태그 구성 요소
+		1. document 		   : 현재 문서
+		2. document.childNodes : 현재 문서의 자식 노드들
+	
+		<!DOCTYPE html>		document.childNodes[0]	: document의 첫 번째 자식
+		<html>				document.chlldNodes[1]  : document의 두 번째 자식
+			<head>			document.chlldNodes[1].childNodes[0]  : document의 두 번째 자식인 html의 첫 번째 자식(head)
+				<meta charset="UTF-8">		
+	*/
+	
+	var head = document.chlldNodes[1].childNodes[0];
+
+	document.write(head.nodeName);
+	document.write(head.nodeValue);
+	document.write(head.nodeType);
+	
+</script>
+</head>
+<body>
+	
+</body>
+</html>

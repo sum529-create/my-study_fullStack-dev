@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<people>
+	<person>
+		<name>에밀리</name>
+		<age>20</age>
+		<address>서울시 마포구 공덕동</address>
+		<phone>010-1234-5678</phone>
+	</person>
+	<person>
+		<name>제임스</name>
+		<age>21</age>
+		<address>서울시 마포구 서교동</address>
+		<phone>010-5678-1234</phone>
+	</person>
+	<person>
+		<name>나타샤</name>
+		<age>22</age>
+		<address>서울시 마포구 합정동</address>
+		<phone>010-6541-6987</phone>
+	</person>
+</people>
