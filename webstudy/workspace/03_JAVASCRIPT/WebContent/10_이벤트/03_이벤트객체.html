@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<div id="box">
+		BOX
+	</div>
+
+	<script type="text/javascript">
+		// 박스를 클릭하면 텍스트 수정
+		var box = document.getElementById('box');
+		box.onclick = function () {
+			// box를 이벤트 객체라고 한다. (이벤트가 등록되는 객체)
+			// box는 this라고 부를 수 있다.
+			this.textContent = '클릭한 BOX'; // 속성앞에 누가 있는지를 봐라. this -> box
+			
+		}
+		
+		// 이벤트 이름    : click
+		// 이벤트 속성	 : onclick
+		// 이벤트 리스너 : function(){}
+		// 이벤트 객체    : box
+		
+	</script>
+</body>
+</html>

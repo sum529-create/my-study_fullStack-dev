@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<input type="button" id = "btn"/>
+	
+	<script type="text/javascript">
+		
+		var btn = document.getElementById('btn');
+		
+		// btn에 이벤트 만들어 주기
+		/* btn.onclick = function() {
+			fn_a();
+			fn_b();
+		}
+		
+		function fn_a() {
+			alert('fn_a()');
+		}
+		function fn_b() {
+			alert('fn_b()');
+		} */
+		
+		btn.onclick = fn_c;		// 괄호 없이 함수이름만 연결한다.
+		function fn_c() {
+			function fn_a() {
+				alert('fn_a()');
+			}
+			function fn_b() {
+				alert('fn_b()');
+			}
+			fn_a();
+			fn_b();
+		}
+		
+	</script>
+	
+</body>
+</html>
