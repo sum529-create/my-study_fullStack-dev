@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	/* 
+		AJAX
+		
+		1. Asynchronous Javascript And XML
+		2. 자바스크립트와 XML(다른 데이터 타입도 가능)간의 비동기 통신을 의미한다.
+			* 비동기 통신
+			  1) 클라이언트가 서버에게 정보를 요청하면 서버가 응답할 때까지 기다려야 하는데	 * 클라이언트 - 서버를 사용하는 유저
+			  	 기다리지 않고 다른 업무를 처리할 수 있는 통신방식
+			  2) 페이지 단위로 로드하지 않고, 페이지의 일부 단위를 받아서
+			        그 부분만 동적으로 갱신하는 방식
+		3. 주고 받는 데이터 타입
+			1) 일반 텍스트
+			2) XML
+				(1) eXtensible Markup Language: 확장 마크업 언어
+				(2) 태그를 만들어서 사용할 수 있다.
+			3) JSON
+				(1) Java Script Object Notaion: 자바스크립트 객체 표기법
+				(2) {"프로퍼티": 값, ...}
+			4) CSV
+				(1) Comma Separated Value: 콤마로 분리된 데이터
+				(2) 데이터, 데이터, 데이터, ...
+		4. XMLHttpRequest 객체
+			1) AJAX 처리를 위해 사용하는 자바스크립트 객체이다.
+			2) new XMLHttpRequest()를 통해서 생성한다.
+			3) open(), send() 메소드를 호출해서 통신한다.
+	*/
+	
+	// 일반 데이터(텍스트) 통신
+	// 사용 데이터: DATA.html 
+	
+	// 동기통신 확인
+	// send()만 (정보요청)하고, 기다리면 된다.(작성할 코드가 없다.)
+	
+	onload = function () {
+		// 1.XMLHttpRequest 객체 생성
+		var xhr = new XMLHttpRequest();
+		
+		// 2. open()
+		// 	  open(전송방식, 전송할데이터, 비동기유무)
+		//	  1) 전송방식: GET 또는 POST
+		//	  2) 전송할데이터: 일반텍스트, XML, JSON 등
+		//	  3) 비동기유무: true(비동기), false(동기)
+		xhr.open('get', 'DATA.html', false);
+		
+		// 3. send()
+		//		서버에게 정보요청
+		xhr.send();
+		
+		// 4. 서버가 응답한(클라이언트가 받은)데이터 확인
+		// 		responseText
+		document.getElementById('personal').textContent = xhr.responseText;
+		document.getElementById('personal').innerHTML = xhr.responseText;	// 태그가 살아난다.
+	}
+	
+</script>
+</head>
+<body>
+	<h3>개인정보 출력</h3>
+	<div id="personal">
+		
+	</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	onload = function() {
+		
+		// 비동기통신
+		// 서버의 응답이 도착했는지 확인하는 코드가 필요하다.
+		// onreadystatechange 이벤트 속성으로 확인한다.
+		
+		/* 
+			onreadystatechange 이벤트 속성
+			 1. 각 진행단계를 확인하는 이벤트 속성이다.
+			 2. 비동기통신은 반드시 사용해야 한다.
+			 3. readyState 값
+				1) 서버의 응답(받은 데이터) 결과를 의미한다.
+				2) 종류
+					(1) 0 : XMLHttpRequest.UNSEND
+					(2) 1 : XMLHttpRequest.OPENED
+					(3) 2 : XMLHttpRequest.HEADERS_RECEIVED
+					(4) 3 : XMLHttpRequest.LOADING
+					(5) 4 : XMLHttpRequest.DONE (성공)
+			4. status 값
+				1) HTTP 요청에 관련된 값이다.
+				2) 종류
+					(1) 1XX : 요청되었고, 작업 중이다. 
+					(2) 2XX : 요청이 성공적으로 수행되었다. 200(성공)
+					(3) 3XX : 요청이 완료되었으나 화면을 다시보여주는 리다이렉트가 필요하다.
+					(4) 4XX : 사용자의 요청이 잘못되었다. (예: 404)
+					(5) 5XX : 서버에서 오류가 발생했다.
+		*/
+		
+		var xhr = new XMLHttpRequest();
+		xhr.open('get', 'DATA.html', true);		// true -> 비동기 통신을 의미
+		xhr.send();
+		
+		xhr.onreadystatechange = function () {
+			if(xhr.readyState == 4){		//xhr.readyState == XMLHttpRequest.DONE 동작은 같음  
+				if(xhr.state == 200){
+					document.getElementById('personal').innerHTML = xhr.responseText;
+				}
+			}
+			
+		}
+		
+	}
+</script>
+</head>
+<body>
+	<h3>개인정보 출력</h3>
+	<div id="personal">
+		
+	</div>
+</body>
+</html>
