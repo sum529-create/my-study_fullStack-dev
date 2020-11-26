@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	window.onload = function() {
+		// <body> 태그를 모두 읽은 후에 처리된다.
+		var image = document.getElementById('image');
+		
+		// 이벤트와 이벤트리스너를 동시에 추가하는 addEventListener() 함수를 사용한다.
+		// 이벤트객체.addEventListener(이벤트이름, 이벤트리스너);
+		image.addEventListener('click', function() {
+			this.setAttribute('src', '../assets/images/dog.jpg');
+		})
+	};
+</script>
+</head>
+<body>
+	
+	<img src="../assets/images/dachshund.jpg" id="image"/>
+	
+	<script type="text/javascript">
+		
+	</script>
+	
+</body>
+</html>
