@@ -1,0 +1,178 @@
+1. 테이블 추가 <tr><td>
+- thead
+- tbody
+- tfoot
+- tr, td, th
+- caption : 테이블 제목
+- colgroup
+	- col 	n열
+	- col span = "2" 	n1, n1열
+- colspan
+- rowspan
+
+
+
+2. CSS : 테두리, 폰트, 너비/높이, 정렬
+		어떤 Css를 줘야 하는지. 선긋고 색 입히고 글꼴.. 
+
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+	
+	폰트 - font-family: 'Nanum Gothic', sans-serif;
+
+
+
+
+----------------------------------------------------------
+
+3. semantic 태그 작성
+
+* 전체적인 모양을 잡는다. css파일을 외부로 넣어서.
+
+HTML 
+16_semantic -> header, nav[메뉴](ul, li), section[본문](article, p), 
+aside[사이드박스], footer[하단 박스](address)
+
+		수평 레이아웃 방법
+		
+		1. float과 clear이용
+			: 마지막 float뒤에 clear를 삽입한다.
+		2. overflow와 float 이용
+			1) 부모 태그는 overflow: hidden;
+			2) 자식 태그는 float: left;
+		3. display 이용
+			1) 부모 태그는 display: flex;
+			2) 자시 태그는 flex-direction: row; ()
+
+---------- header ----------
+|			|
+----------------------------
+---------- nav -------------
+|			|
+----------------------------
+---- section -------  -aside-
+|  ----article---	||	|
+| |	         |  ||	|
+|  -------------    ||	|
+-------------------   --------
+---------- footer -----------
+|			|
+----------------------------
+
+
+CSS
+전체 형식
+05_layout
+> QUIZ03.html
+
+
+4. 외부 CSS 작업: 레이아웃
+
+css파일 외부로 빼는것
+01_basic
+> 03_externalStyle.html
+<link style = "text/css" rel = "stylesheet" href = "../assets/style/external.css">
+
+
+------------------------------------------------------------
+java script   25점
+
+5. 대화상자 (confirm. alert)
+
+	/* 
+		1. 경고창: window.alert('경고메시지')
+		2. 입력창: window.prompt('입력메시지')
+			- 주의: 모든 입력은 '문자열'이다.
+		3. 확인창: window.confirm('확인메시지')
+			- 결과는 확인버튼(true), 취소버튼(false)
+	*/
+
+	// '계속 진행할까요?'
+	// 확인 버튼을 누르면 '진행합니다.'
+	// 취소 버튼을 누르면 '취소합니다.''
+	if(confirm('계속 진행할까요?')){
+		alert('진행합니다.');
+	}else{
+		alert('취소합니다.');
+	}
+
+
+6. 버튼  -> onclick -> function() -> 실행
+
+<input type = "button" value = "체크" onclick = "entryCheck()"/>
+	
+	<script type="text/javascript">
+		function entryCheck(){
+			return document.getElementById('count').textContent = increment();
+		}
+		var increment = function (){
+			visitNo = 0;		// 최초 선언 시에 한 번 접근된다. 이후에는 클로저의 visitNo를 사용한다.
+			return function(){
+				return ++visitNo;
+			}
+		}();
+	</script>
+
+
+
+	<!-- 일반 버튼 -->
+	<input type="button" value = "창 열기" onclick="openWindow()"/>
+	<input type="button" value = "창 닫기" onclick="closeWindow()"/>
+	<input type="button" value = "창 선택" onclick="focusWindow()"/>
+	
+	<script type="text/javascript">
+	// 전역 객체로 선언해야 모든 함수들이 사용할 수 있다.
+	var popup;
+	
+	// 1. 창 열기(openWindow)
+		function openWindow() {
+			popup = window.open('PopUp.html','','width=400, height=300');
+		}
+		
+	// 2. 창 닫기(closeWindow)
+		function closeWindow(){
+			if(popup)  // popup이 있으면(존재하면)  == (popup != null){}
+			window.close();
+		}
+	
+	// 3. 창 선택(focusWindow())
+		function focusWindow(){
+			window.focus();
+		}
+
+onclick="history.back(), onclick="history.go(-2)
+
+
+
+
+
+7. 페이지이동(파일 이동):location.href = 'a.html';
+
+	// 1. 그냥 이동하기
+	function go1() {
+		location.href = 'https://www.google.com/';
+	}
+	
+	// 2. 파리미터 가지고 이동하기
+	// location.href = "URL?파리미터명=값&파라미터명=값"
+	function go2(){
+		location.href = "https://www.google.com/search?q=코로나";
+	} 
+	
+	// 3. 히스토리를 안 남기고 이동하면 '뒤로 가기'가 불가능하다.
+	function go3() {
+		location.replace('https://www.google.com/');
+	}
+
+	
+	// 문제. 입력 대화상자에 검색어를 입력하고 확인 버튼을 누르면
+	// 네이버로 이동하여 해당 검색어를 검색하시오.
+	function go4(){
+		var searchText = window.prompt('검색할 내용을 쓰시오.');
+		location.href = "https://search.naver.com/search.naver?query=" + searchText;
+	}	
+
+
+
+8. 수정 문제..
+
+
