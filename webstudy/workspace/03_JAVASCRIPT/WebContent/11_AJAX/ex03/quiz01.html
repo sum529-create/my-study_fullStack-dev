@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+
+	
+	var xhr = new XMLHttpRequest;
+	xhr.open('get', 'CCTV.csv', true);
+	xhr.send();
+	
+	xhr.onreadystatechange = function () {
+		if( xhr.readyState == 4 && xhr.status == 200){
+			var data = xhr.responseText.split('\n');
+			var total=0;
+			for(let i = 1; i<data.length-1; i++){
+				// cctvList[i] : 한 지역의 cctv 정보, 여기서 10번째 데이터가 총 설치대수
+				// 따라서, 총 설치대수는 data[i][9];
+				var cctv = data[i].split(',');
+				// console.log(cctv[9]);
+				total += parseInt(cctv[9]);
+			}
+		}
+		alert('동작구  CCTV는 총 ' + total + '대 입니다.');
+	}
+		
+	
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

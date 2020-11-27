@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	onload = function () {
+		var xhr = new XMLHttpRequest;
+		xhr.open('get', 'DATA.csv', true);
+		xhr.send();
+		xhr.onreadystatechange = function () {
+			
+			if(xhr.readyState == 4 && xhr.status == 200){
+				var data = xhr.responseText;
+				/* 
+					data = '에밀리,20,서울시 마포구 공덕동,010-1234-5678
+							제임스,21,인천시 계양구 작전동,010-0987-5432'	
+				*/
+				
+				var people = data.split('\n');
+				/* 
+					people = ['에밀리,20,서울시 마포구 공덕동,010-1234-5678',
+							  '제임스,21,인천시 계양구 작전동,010-0987-5432']
+				*/
+				
+				var message = '';
+				for(let i=0; i <people.length; i++){
+					// people[i]: 각 person의 전체 대이터
+					var person = people[i].split(',');
+					/* 
+						person[0]의 person
+						person = ['에밀리','20','서울시 마포구 공덕동','010-1234-5678']
+					*/
+					message += '<tr>';
+					for(let j = 0; j<person.length; j++){
+						message += '<td>' + person[j] + '</td>';
+					}
+					message += '</tr>';
+					
+				}  // for(let i = 0;)
+					
+					document.getElementById('content').innerHTML = message;
+			
+			}	// if(xhr.readyState == 4 && xhr.status == 200)
+		}  // onreadystatechange = function(){
+	} // onload
+</script>
+</head>
+<body>
+	
+	<table border="1">
+		<thead>
+			<tr>
+				<td>이름</td>
+				<td>나이</td>
+				<td>주소</td>
+				<td>연락처</td>
+			</tr>
+		</thead>
+		<tbody id ="content">
+			
+		</tbody>
+		
+	</table>
+	
+</body>
+</html>
