@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>로그인</title>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+    .top-blank {
+        background-color: lightgray;
+    }
+    .top-blank-content {
+        width: 500px;
+        margin: auto;
+        padding: 100px;
+        text-align: center;
+    }
+    .content {
+        background-color: darkgray;
+        height: 70vh;
+        padding: 20px;
+    }
+    .login-form {
+        width: 350px;
+        padding: 20px;
+        margin: 0 auto;
+    }
+    .screen-out {
+        display: none;
+    }
+    .login-input {
+        width: 100%;
+        padding: 20px 10px;
+        box-sizing: border-box;
+        border: 0.5px solid lightgray;
+        margin-bottom: 5px;
+    }
+    .login-btn {
+        width: 100%;
+        padding: 20px 10px;
+        border-radius: 5px;
+        border: 2px solid darkgray;
+        background-color: lightgray;
+        font-size: 1.2em;
+        margin-top: 50px;
+    }
+    .login-btn:hover {
+        background-color: black;
+        color: white;
+        border: 2px solid black;
+    }
+    .login-append {
+        overflow: hidden;
+        margin-top: 20px;
+    }
+    .login-append .login-check {
+        float: left;
+        color: orangered;
+    }
+    .login-append .find-info {
+        float: right;
+    }
+    .find-info {
+        color: white;
+    }
+    .find-info .find-info-text {
+        color: white;
+        text-decoration: none;
+    }
+    .find-info .find-info-text:hover {
+        color: black;
+        font-weight: bold;
+    }
+</style>
+<script type="text/javascript">
+    fn_login = (function(f){
+      var idpw = document.getElementsByClassName('login-input');
+      if(idpw != null){
+        alert('23:00 ~ 23:30 사이 시스템 점검으로 로그인이 제한됩니다.');
+      }else{
+        alert('아이디와 비밀번호를 입력하세요.');
+      }
+    });
+</script>
+</head>
+<body>
+    <div class="top-blank">
+        <div class="top-blank-content">
+            <h1>로그인 화면</h1> 
+        </div>
+    </div>
+    <div class="content">
+        <form method="post">
+            <fieldset class="login-form">
+                <legend class="screen-out">로그인 정보 입력폼</legend>
+                <input type="email" class="login-input" placeholder="id" autofocus="on">
+                <input type="password" class="login-input" placeholder="password" autocomplete="off">
+                <input type="button" class="login-btn" value="로그인" onclick="fn_login(this.form)" />
+                <div class="login-append">
+                    <div class="login-check">
+                        <input type="checkbox" id="keep-login">
+                        <label for="keep-login">로그인 유지</label>
+                    </div>
+                    <div class="find-info">
+                        <a href="#" class="find-info-text">아이디</a> 
+                        &nbsp;/&nbsp;
+                        <a href="#" class="find-info-text">비밀번호 찾기</a>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+	</div>
+</body>
+</html>
