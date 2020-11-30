@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+	
+	$(document).ready(function () {
+		
+		var list = [];
+		list.push('HTML');
+		list.push('CSS');
+		list.push('JAVASCRIPT');
+		
+		// jQuery 배열 순회
+		// 1. $(선택).each(function(index, element) {});
+		// 2. $.each(array, function(index, element){});
+		
+		var result = '<ul>';
+		
+		// list 배경릐 각 요소가 순차적으로 function으로 넘어온다.
+		$.each(list, function (index, element) {
+			// index : 배열 인덱스 				0, 1, 2
+			// element : 배열 요소 (저장된 값) 	HTML, CSS, JAVASCRIPT
+			result += '<li>' + element + "(" + index +")" +"</li>";
+			result += '</ul>';
+		});
+		
+		// javaScript
+		document.getElementById('content').innerHTML = result;
+		
+		// jQuery
+		$('#content').html(result);
+	});
+	
+	
+</script>
+</head>
+<body>
+	<div id="content"></div>
+</body>
+</html>
