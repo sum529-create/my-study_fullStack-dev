@@ -1,0 +1,15 @@
+{
+	"model": "e-class",
+	"price": 7500,
+	"buyDate": "2020-11-20",
+	"company": {
+		"name": "benz",
+		"country": "germany"
+	},
+	"option": [
+		"HUD",
+		"CRUISE",
+		"NAVIGATION",
+		"AUTOHOLD"
+	]
+}

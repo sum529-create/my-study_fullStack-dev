@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	onload = function () {
+		var xhr = new XMLHttpRequest();
+		xhr.open('get', 'DATA.json', true);
+		xhr.send();
+		xhr.onreadystatechange = function () {
+			if(xhr.readyState == 4 && xhr.status == 200){
+				// JSON 데이터 가져오기
+				// 1. responseText로 가져온다.
+				//    : 가져온 JSON데이터는 타입이 String이다.
+				// 2. String타입의 JSON데이터를 자바스크립트 객체로 변환한다.
+				//	  : JSON.parse(String타입의 JSON데이터)
+				var people = JSON.parse(xhr.responseText);
+				var result = '';
+				for(let i=0; i<people.length; i++){
+					/* people[0]={
+							name:"에밀리",
+							age:20,
+							addr:"서울시 마초구 공덕동",
+							phone:"010-1234-5678"
+					} */
+					// person[i].name 또는 people["name"]
+					result += '<tr>';
+					result += '<td>' + people[i].name + '</td>';
+					result += '<td>' + people[i].age + '</td>';
+					result += '<td>' + people[i].addr + '</td>';
+					result += '<td>' + people[i].phone + '</td>';
+					result += '</tr>';
+					
+					/* 
+						for(var p in people[i]){
+							result += '<td>' + people[i][p] + '</td>';
+						}
+					*/
+					
+				}
+				document.getElementById('content').innerHTML = result;
+			}
+		}
+	}
+</script>
+<style type="text/css">
+	table{
+		border-collapse: collapse;
+	}
+</style>
+</head>
+<body>
+	<table border="1">
+		<thead>
+			<tr>
+				<td>이름</td>
+				<td>나이</td>
+				<td>주소</td>
+				<td>연락처</td>
+			</tr>
+		</thead>
+		<tbody id="content">
+		
+		</tbody>
+	</table>
+</body>
+</html>

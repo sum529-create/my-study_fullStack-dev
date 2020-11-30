@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function car() {
+		var xhr = new XMLHttpRequest();
+		xhr.open('get','DATA2.json', true);
+		xhr.send();
+		xhr.onreadystatechange = function () {
+			if(xhr.readyState == 4 && xhr.status == 200){
+				var car = JSON.parse(xhr.responseText);
+				var result = '';
+					result += '<tr>';
+					result += '<td>' + car.model +'</td>';
+					result += '<td>' + car.price +'</td>';
+					result += '<td>' + car.buyDate +'</td>';
+					result += '<td>' + car.company.name +'</td>';
+					result += '<td>' + car.company.country +'</td>';
+					var option = '<ul>';
+					for(let i = 0; i<car.option.length; i++){
+						option += '<li>' + car.option[i] + '</li>';
+					}
+					option += '</ul>';
+					result += '<td>' + option +'</td>';
+					result += '</tr>';
+					document.getElementById('content').innerHTML = result;
+			}else{
+				document.getElementById('content').innerHTML = '<tr><td colspan ="6">DATA.json을 가져올 수 없습니다.</td></tr>';
+			}
+		}
+	}
+</script>
+</head>
+<body>
+
+	<input type="button" value="자동차정보가져오기" onclick="car()"/>
+	<br/><br/>
+	
+	<table>
+		<thead>
+			<tr>
+				<td>자동차모델</td>
+				<td>가격</td>
+				<td>구입일자</td>
+				<td>제조사명</td>
+				<td>제조국가</td>
+				<td>옵션</td>
+			</tr>
+		</thead>
+		<tbody id="content"></tbody>
+	</table>
+</body>
+</html>
