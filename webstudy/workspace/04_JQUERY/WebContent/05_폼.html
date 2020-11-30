@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+	
+	// 페이지 로드 이벤트
+	$(document).ready(function () {
+		// <input>태그 중 type 속성을 가진 모든 태그 선택		
+		$('input[type]').css('font-size','30px');
+		
+		// <input type="text"> 선택
+		$('input[type="text"]').css('background', 'yellow');
+	
+	
+	// value 속성 함수
+	// val(값) : value 속성 값을 저장/바꾸는 setter로 사용
+	// val( ) : value 속성 값을 알아내는 getter로 사용
+	
+	// <input type="text" value="jQuery" />에서 value 속성 값 가져오기
+	var msg = $('input[type="text"]').val();
+	alert(msg);
+	
+	// 체크된 체크박스의 value 속성 값 가져오기
+	var check = $('input[type="radio"]:checked').val();
+	alert(check);
+		
+	// 특정 속성 작업하기
+	// attr(속성명, 값) : 속성 값을 저장/변경하는 setter로 사용
+	// attr(속성명) :속성 값을 알아내는 getter로 사용
+	
+	alert($('input:checked').attr('name'));
+	});
+</script>
+</head>
+<body>
+	
+	<form>
+		<input type="text" value="jQuery" /><br/>
+		<input type="radio" name = "gender" value="male" checked/>남자
+		<input type="radio" name = "gender" value="female"/>여자
+	</form>
+	
+</body>
+</html>
