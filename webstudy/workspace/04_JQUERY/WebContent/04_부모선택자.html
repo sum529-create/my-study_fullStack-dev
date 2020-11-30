@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+	
+	// 부모 선택 :parent()
+	
+	// 페이지 로드 이벤트
+	$(document).ready(function () {
+		
+		// li 태그로 부모인 ul 태그 선태하기
+		$('li').parent().css('list-style-type', 'none');	// ul
+		
+		
+	});
+	
+	
+</script>
+</head>
+<body>
+	<ul>
+		<li>HTML</li>
+		<li>CSS</li>
+		<li>JAVASCRIPT</li>
+	</ul>
+</body>
+</html>
