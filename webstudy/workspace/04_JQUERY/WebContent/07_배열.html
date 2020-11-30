@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+	var people = [
+		{name : 'james', age : 20},
+		{name : 'alice', age : 21},
+		{name : 'emily', age : 22}
+	];
+	
+	$(document).ready(function () {
+		
+		var result='';
+		$.each(people, function (index, element) {		// 배열순회
+			result += '<tr>';
+			result += '<td>' + (index+1) + '</td>';
+			result += '<td>' + element.name + '</td>';
+			result += '<td>' + element.age + '</td>';
+			result += '</tr>';
+		});
+		$('#content').append(result);	// 원래 있던 값에 추가.  기존 요소 뒤에 추가
+		$('#content').html(result);	// 원래 있던 값 지우고 삭제.   기존 요소 덮어쓰기
+	});
+	
+</script>
+</head>
+<body>
+	
+	<table border="1">
+		<thead>
+			<tr>
+				<td>순번</td>
+				<td>이름</td>
+				<td>나이</td>
+				
+			</tr>
+		</thead>
+		<tbody id="content">
+			
+		</tbody>
+	</table>
+	
+</body>
+</html>
