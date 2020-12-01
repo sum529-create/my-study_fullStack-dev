@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+	$.ajax({
+		url: "DATA2.xml",
+		dataType: 'xml',	// 데이터 타입을 잘 모르겠다면 적어주지 않는 것이 좋음
+		type:'get',			// 주소창에 띄움, 공개적 <-> post
+		success: function(data){
+			// data == responseXML
+			// 태그 찾는 메소드: find(태그)
+			var result = '<table border="1">';
+			$(data).find('person').each(function () {	
+				// $(data).find('person') == $(this)    
+				// $(this) == <person> ... </person>
+				
+				// $(this).find('name') == <name>에밀리<name>
+				// $(this).find('name').text() == 에밀리
+				result += '<tr>';
+				result += '<td> <input type="checkbox"/>' + '</td>';
+				result += '<td>' + $(this).find('name').text() + '</td>'
+				result += '<td>' + $(this).find('age').text() + '</td>'
+				result += '<td>' + $(this).find('address').text() + '</td>'
+				result += '<td>' + $(this).find('phone').text() + '</td>'
+				result += '</tr>'
+			});
+			result += '</table>';
+			
+			$('body').html(result);
+		},
+		error:function(){
+			alert('실패');
+		}
+	});
+</script>
+</head>
+<body>
+
+</body>
+</html>

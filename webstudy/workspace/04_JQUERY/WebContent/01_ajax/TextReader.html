@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+	
+	
+	$.ajax({	// javascript에서 .open(), send(), onreadystatechange, responseText와 같이 사용한 것들을
+				// jquery에서는 자동으로 해결해준다.
+		url:'DATA.html',	// 받아 올 데이터
+		dataType: 'text',	// 받아 올 데이터의 타입
+		type: 'get',		// 요청 방식
+		// async: true.							// 비동기통신 (디폴트)
+		// data: JSON.stringify(obj),			// 보낼 데이터
+		// contentType: 'application/json',		// 보낼 데이터의 타입
+		success:function(data) {	// ajax 통신 성공(정상적으로 데이터를 받음)
+			// data: responseText
+			$('#content').html(data);
+		},
+		error:function(){	// ajax 통신 실패
+			$('#content').html('실패했습니다.');
+		}
+	});
+	
+</script>
+</head>
+<body>
+	<div id="content"></div>
+</body>
+</html>
