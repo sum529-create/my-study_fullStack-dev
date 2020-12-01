@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+	
+	<button>버튼</button>
+	
+	<br/><br/>
+	<input type="text" id="input"/><br/>
+	<div id="down"></div>
+	<div id="up"></div>
+	
+<script type="text/javascript">
+	
+	// 마우스 관련 이벤트
+	// 1. hover : 마우스를 가져다대면
+	// 2. mouseenter : 마우스가  들어오면
+	// 3. mouseleave : 마우스가 떠나면
+	// 4. mousedown  : 마우스를 누르면
+	// 5. mouseup	 : 마우스가 올라오면
+	// 6. click		 : 마우스를 클릭하면
+	// 7. dblclick	 : 마우스를 더블클릭하면
+	
+	
+		$('button').click(function () {
+			// $('button') == $(this)
+			$(this).css("background-color","red");
+		});
+		
+		$('button').hover(function (e) {	// e에는 이벤트이름이 전달된다.
+			// 마우스가 들어올 때: mouseenter
+			// 마우스가 나갈 때 : mouseleave
+			if(e.type == 'mouseenter'){
+				$(this).css('background', 'yellow');
+			}else{
+				$(this).css('background', 'green');
+			}
+		});
+		
+		// 키보드 관련 이벤트
+		// 1. keyup		: 키보드가 올라올 때
+		// 2. keydown 	: 키보드가 내려갈 때
+		
+		$('#input').keyup(function(){
+			$('#up').text($(this).val());	
+		});
+		$('#input').keydown(function(){
+			$('#down').text($(this).val());	
+		});
+		
+
+</script>
+	
+</body>
+</html>
