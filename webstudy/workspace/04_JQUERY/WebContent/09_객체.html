@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+	
+/* 	onload = function () {
+		
+	}
+	
+	$(document).ready(funtion(){});
+	$(function () {}); */
+	
+	$(document).ready(function () {
+		
+		// 객체 생성
+		var book = {
+			title:"어린왕자",	
+			publisher:"좋은출판사",
+			price:15000
+		};
+		
+		// 프로퍼티 추가 [동적추가]
+		book.author = "생떽쥐베리";
+		
+		// extend를 이용한 프로퍼티 추가
+		//$.extend(객체, 추가할내용);
+		$.extend(book, {
+				pubDate:"2020-12-01"
+			}
+		);
+		
+		// 객체 프로퍼티 순회 
+		// $.each(객체, funtion(프로퍼티, 프로퍼티값){});
+		var result = '<ul>';
+		$.each(book, function (property, value) {
+			result += '<li>' + property + ': ' + value + '</li>';
+		})
+		result += '</ul>';
+		$('body').html(result);
+	});
+	
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>
