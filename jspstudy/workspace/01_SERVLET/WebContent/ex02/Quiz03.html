@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<form>
+		<fieldset>
+			<legend>성적관리</legend>
+			<table>
+				<tr>
+					<td>이름</td>
+					<td><input type="text" name="name" id="name"/></td>
+				</tr>
+				<tr>
+					<td>국어</td>
+					<td><input type="text" name="kor" id="kor"/></td>
+				</tr>
+				<tr>
+					<td>영어</td>
+					<td><input type="text" name="eng" id="eng"/></td>
+				</tr>
+				<tr>
+					<td>수학</td>
+					<td><input type="text" name="mat" id="mat"/></td>
+				</tr>
+			</table>
+			
+			<input type="hidden" value="85.5" name="lavg" id="lavg"/>
+			
+			<input type="button" value="성적확인" onclick="fn_check(this.form)">
+			<input type="button" value="다시작성" >
+			
+		</fieldset>
+	</form>
+	<script type="text/javascript">
+		function fn_check(f) {
+			f.action = "/01_SERVLET/Quiz03";
+			f.submit();
+		}
+		
+	</script>
+</body>
+</html>
