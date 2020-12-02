@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	label{
+		display : inline-bloack;
+		width: 150px;
+	}
+</style>
+<script type="text/javascript">
+	function fn_send(f) {	// this.form을 f가 저장합니다. 이 부분이 var f = document.forms.myForm; 부분을 의미합니다.
+	
+		
+		if(f.name.value == ''){		// f.요소name속성.value속성
+			alert('이름을 입력하세요');
+			f.name.focus();
+			return;		// onclick = "fn_send(this.form)"되어 있으므로 true또는 false를 반환할 필요가 없습니다.
+		}						// 더 이상 fn_send() 함수를 실행하지 않고 종료한다.
+		
+		// 나이가 0 ~ 150 사이인가? 숫자인가?ㅣ빈칸이 아닌가?
+		if(f.age.value <= 0 || f.age.value > 150 || f.age.value == '' || isNaN(f.age.value)){ // if
+			alert('나이가 올바르지 않습니다.');
+			f.age.focus();
+			return;
+		}
+		
+		// address가 선택 요소라고 가정하면 검사할 필요가 없다.
+		// submit을 허용하려면 폼의 submit() 함수를 호출하면 된다.
+		// 폼의 action 속성도 없는 상태이기 때문에 함께 작성해 줍니다.
+		f.action = '/01_SERVLET/Ex06_form';
+		f.submit();
+		
+	}
+</script>
+</head>
+<body>
+
+	<!-- 
+		1. <input type="button" value="전송"/>의 역할: submit을 한다.
+		   <input type="button"> 태그에 onclick 속성으로 submit()역할을 부여해야 한다.
+		   더 이상 <form>태그의 onsubmit 속성을 사용할 수 없다.
+		2. submit할 경로는 action에 작성한다. (action은 form태그의 속성이다.)
+			<input type="button"> 태그의 onclick 속성에서 action을 작성할 수도 있다. 
+		3. action 작성 방법 (url을 작성하면 된다.)
+		: /컴텍스트패스/URLMapping
+		4. submit전에 검사하고 싶으면 <input type="button"> 태그의 onclick 속성에서 submit() 전에 검사해야 한다. 
+	 -->
+	
+	<h3>폼 요소를 서버로 보내기</h3>
+	<form method="get">
+		<label for="name">이름</label>
+		<input type="text" id="name" name="name"/><br/>
+		<label for="age">나이</label>
+		<input type="text" id="age" name="age"/><br/>
+		<label for="address">주소</label>
+		<input type="text" id="address" name="address"/><br/><br/>
+		<input type="button" value="전송" onclick="fn_send(this.form)"/>
+		<!-- 
+			fn_send(this.form)에서 this.form이 현재 폼을 의미하므로
+			<form name="myForm">을 대신할 수 있습니다.
+			주의.
+			onsubmit 에서 this.form 사용이 안 됩니다.
+		-->
+	</form>
+	
+</body>
+</html>
