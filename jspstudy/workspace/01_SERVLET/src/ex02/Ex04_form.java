@@ -34,9 +34,6 @@ public class Ex04_form extends HttpServlet {
 		String age = request.getParameter("age");
 		String address = request.getParameter("address");
 		
-		// UTF-8로 설정하고 시작한다.
-		request.setCharacterEncoding("UTF-8");
-		
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
