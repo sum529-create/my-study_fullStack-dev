@@ -12,7 +12,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h3><%=num1 %> + <%=num2 %> + <%=num1+num2 %></h3>
+	<h3><%=num1 %> + <%=num2 %> = <%=num1+num2 %></h3>
 	<h3><a href="/02_JSP/ex02/Ex01_A.jsp">처음으로 이동</a></h3>
 </body>
 </html>
