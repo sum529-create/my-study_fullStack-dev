@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function fn_send() {
+		var f = document.forms.myForm;
+		if (f.name.value == '') {  // f.요소name속성.value속성
+			alert('이름을 입력하세요.');
+			f.name.focus();
+			return false;  // onsubmit="return false" 처리되면서 submit이 되지 않는다.
+		}
+		// 나이 0 ~ 150사이인가? 숫자인가? 빈 칸이 아닌가?
+		if (f.age.value == '' ||// if ($('#age').val() == '')
+			f.age.value <= 0  ||
+			f.age.value > 150 ||
+			isNaN(f.age.value)) { 
+			alert('나이가 올바르지 않습니다.');
+			f.age.focus();
+			return false;
+		}
+		return true;
+	}
+</script>
+</head>
+<body>
+	<h3>폼 요소를 서버로 보내기</h3>
+	<form action="/01_SERVLET/Ex04_form" method="get" name="myForm" onsubmit="return fn_send()">
+		<label for="name">이름</label>
+		<input type="text" id="name" name="name"><br/>
+		<label for="age">나이</label>
+		<input type="text" id="age" name="age"><br/>
+		<label for="address">주소</label>
+		<input type="text" id="address" name="address"/><br/>
+		<button>전송</button>		
+	</form>
+</body>
+</html>

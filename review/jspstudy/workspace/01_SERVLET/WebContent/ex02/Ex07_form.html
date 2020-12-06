@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+</head>
+<body>
+	<form method="get" onsubmit="fn_send(f)">
+		<input type="radio" name="check" id="check1" value="yes"/>예
+		<input type="radio" name="check" id="check2" value="no"/>아니오<br/>
+		<input type="checkbox" name="hobby" id="hobby1" value="게임"/>게임
+		<input type="checkbox" name="hobby" id=hobby2" value="책"/>책
+		<input type="checkbox" name="hobby" id="hobby3" value="여행"/>여행
+		<select name="alpha">
+			<option value="A">A</option>
+			<option value="B">B</option>
+			<option value="C">C</option>
+		</select><br/>
+		<select name="hangul" multiple>
+			<option value="가">가</option>
+			<option value="나">나</option>
+			<option value="다">다</option>
+		</select>
+		<input type="text" name="list" list="num"/>
+		<datalist id="num">
+			<option value="i"/>
+			<option value="ii"/>
+		</datalist><br/>
+		주소1 <input type="text" name="address" id="address"/><br/>
+		주소2 <input type="text" name="address" id="address"/><br/>
+		<input type="hidden" name="invisible" value="안보이지롱"/>
+		<textarea rows="5" cols="30" name="memo"></textarea><br/>
+		<button>전송</button>
+	</form>
+<script type="text/javascript">
+	function fn_send(f) {
+		f.action = "/01_SERVLET/Ex07_form";
+		f.submit();
+	}
+</script>	
+</body>
+</html>
