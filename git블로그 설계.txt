@@ -1,0 +1,19 @@
+
+전체적인 설명
+https://zoomkoding.github.io/gitblog/2019/08/15/git-blog-1.html
+
+
+블로그 만드신분
+https://github.com/aron-bordin/neo-hpstr-jekyll-theme
+
+템플릿 다운
+http://jekyllthemes.org/themes/neo-hpstr-jekyll-template/
+
+
+내꺼
+https://github.com/sum529-create/sum529-create.github.io
+
+ruby 설치할것.
+
+github desktop <- 다운로드함
+git bash <- 여기서 cmd하쇼
