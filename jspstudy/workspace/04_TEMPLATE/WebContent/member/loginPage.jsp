@@ -27,14 +27,11 @@
 	<jsp:param value="로그인" name="title"/>
 </jsp:include>
 
-	<div class="wrap">
-		<div class="main-wrap">
 			<div class="login-box">
 				<input type="text" name="id" placeholder="아이디"/><br>
 				<input type="password" name="pw" placeholder="*****"/><br><br/>
 				<button>로그인</button>
 			</div>
-		</div>
-	</div>
+
 	
 	<%@include file = "../template/footer.jsp" %>
