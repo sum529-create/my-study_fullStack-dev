@@ -8,11 +8,6 @@
 </head>
 <body>
 
-<%
-	request.setCharacterEncoding("UTF-8");
-	String[] singers = request.getParameterValues("singers");
-			
-%>
 
 	좋아하는 가수1:	${singers[0]}
 	좋아하는 가수2:	${singers[1]}
