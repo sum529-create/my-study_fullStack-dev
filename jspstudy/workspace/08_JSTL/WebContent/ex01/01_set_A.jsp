@@ -5,9 +5,9 @@
 
 	tablib를 사용하려면 taglib 지시어를 작성해야 한다.
 	1. 코어(core) 라이브러리: if, for
-		<%@ taglib url= "" %>
+		<%@ taglib uri= "" %>
 	2. 형식(fmt) 라이브러리: 숫자, 날짜 형식
-		<%@ taglib url="" prefix = "fmt" %>
+		<%@ taglib uri="" prefix = "fmt" %>
 	
  --%>
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
