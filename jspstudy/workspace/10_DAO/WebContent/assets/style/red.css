@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+
+	*{
+		padding: 0px;
+		margin: 0px;
+	}
+	a{
+		text-decoration: none;
+	}
+	div{
+		box-sizing: border-box;
+	}
+	form{
+		margin-left: 100px;
+	}
+	table{
+		border-collapse: collapse;
+	}
+	td{
+		border:1px solid black;
+		padding: 10px;
+	}
+	
+	.wrap{
+		width:800px;
+		margin:auto;
+		text-align: center;
+	}
+	.btn-wrap{
+		width: 600px;
+		margin:auto;
+		display: flex;
+	}
+	.btn{
+		width:250px;
+		height:250px;
+		line-height:250px;
+		background:green;
+		color:white;
+		border-radius: 10px;
+	}
+	.btn > a{
+		display:block;
+		width:100%;
+		height:100%;
+		font-size:50px;
+		color:white;
+		margin:10px;
+		padding:10px;
+	}
