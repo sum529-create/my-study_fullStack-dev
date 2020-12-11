@@ -1,10 +1,12 @@
 package dao;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import dto.RedDto;
 
 // DAO : Database Access Object
 // 데이터베이스 처리를 담당하는 클래스
@@ -71,6 +73,53 @@ public class RedDao {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	/***** 접속(Connection)은 무조건 메소드마다 열고 닫는다. *****/
+	
+	
+	/***** 3. 삽입하기 *****/
+	public int insert(RedDto redDto) {
+		int result = 0;
+		try {
+			// 접속
+			con = getConnection();
+			// ** 수동 커밋 처리 방법(한번만 해봅시다.)
+			con.setAutoCommit(false);
+			
+			// 미리 sql 준비 <- ps를 사용하기 때문
+			sql = "INSERT INTO RED VALUES(RED_SEQ.NEXTVAL, ?, ?, ?, ?, ?, SYSDATE)";	// ? -> 변수
+			// ps: SQL 전달 및 실행
+			// ps에게 SQL 전달
+			ps = con.prepareStatement(sql) ;
+			// 변수(?) 채우기
+			ps.setString(1, redDto.getId()); 	// 첫번째 ?에 아이디 채우기
+			ps.setString(2, redDto.getPw());
+			ps.setString(3, redDto.getName());
+			ps.setInt(4, redDto.getAge());
+			ps.setString(5, redDto.getEmail());
+			// SQL 실행
+			result = ps.executeUpdate();	// insert, update, delete 모두 사용
+			
+			// ** 커밋은 성공했을 때 실시
+			if(result == 1) {
+				con.commit(); 	// 수동으로 직접 커밋
+			}
+		}catch(Exception e) {
+			// ** catch 블록은 실패하면 도착
+			if (con != null) {
+				try {
+					con.rollback();
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		}finally {
+			// 접속해제
+			// ResultSet이 없는 경우는 insert, update, delete문 처리할 때
+			close(con, ps, null);		
+		}
+		return result;
 	}
 	
 	
