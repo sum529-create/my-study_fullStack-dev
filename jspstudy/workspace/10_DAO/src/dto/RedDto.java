@@ -1,83 +1,127 @@
-package dto;
+package dao;
 
-import java.sql.Date;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
-public class RedDto {
+import dto.RedDto;
+
+// DAO : Database Access Object
+// 데이터베이스 처리를 담당하는 클래스
+
+public class RedDao {
+
+	// 필드
+	private Connection con;
+	private PreparedStatement ps;
+	private ResultSet rs;
+	private String sql;
 	
-	private String id, pw, name, email;
-	private int no, age;
-	private Date regDate;
+	// 생성자 (Singleton Pattern)
+	// 1. RedDao 클래스 내부에서만 new RedDao()를 허용해서 외부에서는 RedDao를 생성할 수 없다.
+	// 2. RedDao 클래스 내부에서 1개의 인스턴스를 생성한다.
+	// 3. 생성된 인스턴스를 가져다 사용할 수 있는 메소드(getInstance)를 생성한다.
 	
-	public RedDto() {}
-
-	// no와 regDate는 자바로 넘기지 않는다. 시퀀스 작성
 	
-	public RedDto(String id, String pw, String name, String email, int age) {
-		super();
-		this.id = id;
-		this.pw = pw;
-		this.name = name;
-		this.email = email;
-		this.age = age;
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getPw() {
-		return pw;
-	}
-
-	public void setPw(String pw) {
-		this.pw = pw;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public int getNo() {
-		return no;
-	}
-
-	public void setNo(int no) {
-		this.no = no;
-	}
-
-	public int getAge() {
-		return age;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
-	}
-
-	public Date getRegDate() {
-		return regDate;
-	}
-
-	public void setRegDate(Date regDate) {
-		this.regDate = regDate;
+	private RedDao() {}
+	private static RedDao redDao = new RedDao();
+	public static RedDao getInstance() {	// new RedDao() 없이(객체, 인스턴스 없이)
+									//  호출할 수 있도록 클래스 메소드로 만든다.
+									// (static())
+		return redDao;	// 클래스메소드는 static만 포함할 수 있다. (시점의 문제)
+						// 따라서 redDao 역시 static 처리한다.
 	}
 	
 	
+	// 메소드 (CRUD) [create, read, use, delete]
+	
+	/***** 1. 접속 *****/
+	
+	public Connection getConnection() {
+		try {
+			// 접속 정보 준비
+			String url = "jdbc:oracle:thin:@localhost:1521:xe";
+			String user = "spring";
+			String password = "1111";
+			
+			// jdbc(OracleDriver)준비
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			
+			// 접속
+			con = DriverManager.getConnection(url, user, password);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return con;
+	}
+	
+	/***** 2. 접속해제 *****/
+	public void close(Connection con, PreparedStatement ps, ResultSet rs) {
+		try {
+			if(rs != null) {
+				rs.close();
+			}
+			if(ps != null) {
+				ps.close();
+			}
+			if(con != null) {
+				con.close();
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/***** 접속(Connection)은 무조건 메소드마다 열고 닫는다. *****/
+	
+	
+	/***** 3. 삽입하기 *****/
+	public int insert(RedDto redDto) {
+		int result = 0;
+		try {
+			// 접속
+			con = getConnection();
+			// ** 수동 커밋 처리 방법(한번만 해봅시다.)
+			con.setAutoCommit(false);
+			
+			// 미리 sql 준비 <- ps를 사용하기 때문
+			sql = "INSERT INTO RED VALUES(RED_SEQ.NEXTVAL, ?, ?, ?, ?, ?, SYSDATE)";	// ? -> 변수
+			// ps: SQL 전달 및 실행
+			// ps에게 SQL 전달
+			ps = con.prepareStatement(sql) ;
+			// 변수(?) 채우기
+			ps.setString(1, redDto.getId()); 	// 첫번째 ?에 아이디 채우기
+			ps.setString(2, redDto.getPw());
+			ps.setString(3, redDto.getName());
+			ps.setInt(4, redDto.getAge());
+			ps.setString(5, redDto.getEmail());
+			// SQL 실행
+			result = ps.executeUpdate();	// insert, update, delete 모두 사용
+			
+			// ** 커밋은 성공했을 때 실시
+			if(result == 1) {
+				con.commit(); 	// 수동으로 직접 커밋
+			}
+		}catch(Exception e) {
+			// ** catch 블록은 실패하면 도착
+			if (con != null) {
+				try {
+					con.rollback();
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		}finally {
+			// 접속해제
+			// ResultSet이 없는 경우는 insert, update, delete문 처리할 때
+			close(con, ps, null);		
+		}
+		return result;
+	}
 	
 	
 }
+
