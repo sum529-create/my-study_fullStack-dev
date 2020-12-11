@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core"  prefix = "c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +21,20 @@
 			alert('비밀번호를 확인하세요.');
 			return;
 		}
+		var chk = '${param.chk}';
+		if(!chk){
+			alert('아이디 중복 체크를 진행하세요.');
+		}
 		f.action = '/10_DAO/red/insert.jsp';
+		f.submit();
+	}
+	function fn_idCheck(f) {
+		if(f.id.value == ''){
+			alert('아이디를 먼저 입력하세요.');
+			f.id.focus();
+			return;
+		}
+		f.action = "/10_DAO/red/idCheck.jsp";
 		f.submit();
 	}
 </script>
@@ -37,7 +52,16 @@
 				<tbody>
 					<tr>
 						<td>아이디*</td>
-						<td><input type="text" name="id" autofocus /></td>
+						<td>
+							<c:if test="${param.id eq null }">
+								<input type="text" name="id" autofocus />
+							</c:if>
+							<c:if test="${param.id ne null }">
+								<input type="text" name="id" value="${param.id }" autofocus />
+							</c:if>
+							<input type="button" value="중복확인" onclick="fn_idCheck(this.form)">
+						</td>
+						
 					</tr>
 					<tr>
 						<td>비밀번호*</td>
