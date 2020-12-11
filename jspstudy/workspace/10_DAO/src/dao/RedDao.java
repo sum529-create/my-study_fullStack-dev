@@ -83,6 +83,13 @@ public class RedDao {
 	public int insert(RedDto redDto) {
 		int result = 0;
 		try {
+			// id, pw, name, age,email 찍어보기
+			/*
+			 * System.out.println(redDto.getId()); System.out.println(redDto.getPw());
+			 * System.out.println(redDto.getName()); System.out.println(redDto.getAge());
+			 * System.out.println(redDto.getEmail());
+			 */
+			
 			// 접속
 			con = getConnection();
 			// ** 수동 커밋 처리 방법(한번만 해봅시다.)
@@ -127,6 +134,7 @@ public class RedDao {
 	public ArrayList<RedDto> list(){
 		ArrayList<RedDto> list = new ArrayList<RedDto>();
 		try {
+			// 접속
 			con = getConnection();
 			sql = "SELECT * FROM  RED";
 			ps = con.prepareStatement(sql);
@@ -158,17 +166,26 @@ public class RedDao {
 		return list;
 	}
 	
+	/***** 5. 아이디 중복 체크 *****/
 	
+	public boolean idCheck(String id) {
+		boolean result = false;
+		try {
+			con = getConnection();
+			sql = "SELECT ID FROM RED WHERE ID =?";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, id);
+			rs = ps.executeQuery();
+			if(!rs.next()) {	// 검색결과가 없으면 해당 아이디를 가진 회원이 없다.
+				result = true;
+			}
+			// result = !rs.next()	// 그냥 이리 하면 됩니다. if문 쓰지 않아도 됨. 이해를 위해
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(con, ps, rs);
+		}
+		return result;
+	}
 }
-
-
-
-
-
-
-
-
-
-
-
 
