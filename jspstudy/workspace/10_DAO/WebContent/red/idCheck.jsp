@@ -13,7 +13,7 @@
 	out.println("<script>");
 	if(isPossible){
 		out.println("alert('사용 가능한 아이디입니다.')");
-		out.println("location.href='/10_DAO/red/insertPage.jsp?id='"+id + "&chk=true'");
+		out.println("location.href='/10_DAO/red/insertPage.jsp?id="+id + "&chk=true'");
 	}else{
 		out.println("alert('이미 사용중인 아이디입니다.')");
 		out.println("history.back()");
