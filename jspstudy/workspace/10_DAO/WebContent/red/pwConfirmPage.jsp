@@ -45,12 +45,12 @@
 			</tfoot>
 		</table>
 			<%-- 회원정보수정, 비밀번호변경 이동시 넘겨 줄 파라미터 --%>
-			<input type="hidden" name="no" value="${param.no} }">
-			<input type="hidden" name="id" value="${param.id} }">
-			<input type="hidden" name="name" value="${param.name} }">
-			<input type="hidden" name="age" value="${param.age} }">
-			<input type="hidden" name="email" value="${param.email} }">
-			<input type="hidden" name="regDate" value="${param.regDate} }">
+			<input type="hidden" name="no" value="${param.no}">
+			<input type="hidden" name="id" value="${param.id}">
+			<input type="hidden" name="name" value="${param.name}">
+			<input type="hidden" name="age" value="${param.age}">
+			<input type="hidden" name="email" value="${param.email}">
+			<input type="hidden" name="regDate" value="${param.regDate}">
 	</form>
 </body>
 </html>
