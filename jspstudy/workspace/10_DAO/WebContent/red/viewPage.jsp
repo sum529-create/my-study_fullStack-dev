@@ -70,7 +70,7 @@
 					</tr>
 					<tr>
 						<td>가입일</td>
-						<td>${redDto.email}</td>		
+						<td>${redDto.regDate}</td>		
 					</tr>
 				</tbody>
 						<!-- 이름, 나이, 이메일 만 form으로 이동됨 -->			
@@ -85,13 +85,13 @@
 				</tfoot>
 			</table>
 			<%-- 회원정보수정, 비밀번호변경 이동시 넘겨 줄 파라미터 --%>
-			<input type="hidden" name="no" value="${redDto.no} }">
-			<input type="hidden" name="id" value="${redDto.id} }">
-			<input type="hidden" name="pw" value="${redDto.pw} }">
-			<input type="hidden" name="name" value="${redDto.name} }">
-			<input type="hidden" name="age" value="${redDto.age} }">
-			<input type="hidden" name="email" value="${redDto.email} }">
-			<input type="hidden" name="regDate" value="${redDto.regDate} }">
+			<input type="hidden" name="no" value="${redDto.no}">
+			<input type="hidden" name="id" value="${redDto.id}">
+			<input type="hidden" name="pw" value="${redDto.pw}">
+			<input type="hidden" name="name" value="${redDto.name}">
+			<input type="hidden" name="age" value="${redDto.age}">
+			<input type="hidden" name="email" value="${redDto.email}">
+			<input type="hidden" name="regDate" value="${redDto.regDate}">
 		</form>
 	</c:if>
 </body>
