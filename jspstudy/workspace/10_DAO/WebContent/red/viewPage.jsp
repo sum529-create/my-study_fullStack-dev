@@ -26,7 +26,7 @@
 	//		: 실제로는 비밀번호 확인 페이지로 이동
 	function fn_pwConfirmPage(f){
 		f.action = '/10_DAO/red/pwConfirmPage.jsp';
-		s.submit();
+		f.submit();
 	}
 	
 </script>
