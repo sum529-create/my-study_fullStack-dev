@@ -6,8 +6,15 @@
 <%
 	// 1. 파라미터 처리
 	request.setCharacterEncoding("UTF-8");
-	int no = Integer.parseInt(request.getParameter("no"));	// no로 찾는다.
-	
+	int no = 0;
+	if(request.getParameter("no") == null ){
+		out.println("<script>");
+		out.println("alert('알 수 없는 회원정보입니다.')");
+		out.println("location.href='/10_DAO/red/listPage.jsp");
+		out.println("</script>");
+	}else{
+		no = Integer.parseInt(request.getParameter("no"));	// no로 찾는다.
+	}
 	// 2. DAO (DB로 가는 것은 DAO밖에 없음)
 	RedDto redDto = RedDao.getInstance().view(no);
 	
@@ -26,6 +33,10 @@
 	//		: 실제로는 비밀번호 확인 페이지로 이동
 	function fn_pwConfirmPage(f){
 		f.action = '/10_DAO/red/pwConfirmPage.jsp';
+		f.submit();
+	}
+	function fn_pwChange(f){
+		f.action = '/10_DAO/red/pwChange.jsp';
 		f.submit();
 	}
 	
@@ -78,7 +89,7 @@
 					<tr>
 						<td colspan="2">
 							<input type="button" value="회원정보수정하기" onclick="fn_pwConfirmPage(this.form)"/>
-							<input type="button" value="비밀번호변경하기" onclick=""/>
+							<input type="button" value="비밀번호변경하기" onclick="fn_pwChange(this.form)"/>
 							<input type="button" value="목록으로이동하기" onclick="location.href='/10_DAO/red/listPage.jsp'"/>
 						</td>
 					</tr>
