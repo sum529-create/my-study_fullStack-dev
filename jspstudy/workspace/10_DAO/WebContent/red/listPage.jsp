@@ -4,8 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
-<link rel="stylesheet" href="../assets/style/red.css"/>
+
 <%
 	// DB에서 RED 테이블 전체 목록을 가져온다.
 	ArrayList<RedDto> list = RedDao.getInstance().list();
@@ -18,6 +17,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+<link rel="stylesheet" href="../assets/style/red.css"/>
 </head>
 <body>
 
@@ -46,7 +47,8 @@
 					<c:forEach var = "redDto" items="${list}">
 						<tr>
 							<td>${redDto.no}</td>
-							<td>${redDto.id}</td>
+							<td><a href="/10_DAO/red/viewPage.jsp?no=${redDto.no}">${redDto.id}</a></td>
+							<!-- no, id, email => unique이기에 3중 하나 넣어도 됨 -->
 							<td>${redDto.name}</td>
 							<td>${redDto.age}</td>
 							<td>${redDto.email}</td>
