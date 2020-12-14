@@ -25,6 +25,7 @@
 	
 	<div class="wrap">
 		현재 등록인원은 ${size}명입니다. <br/><br/>
+		<input type="button" value="삽입하기" onclick = "location.href='/10_DAO/red/insertPage.jsp'"/><br/>
 		<table>
 			<thead>
 				<tr>
@@ -58,12 +59,13 @@
 									<button onclick="fn_delete(this.form)">
 										<i class="fas fa-trash-alt"></i>
 									</button>
+									<%-- 삭제 페이지로 넘겨 줄 파라미터 --%>
 									<input type="hidden" name="no" value="${redDto.no}" /> <!-- 삭제할 번호 받아준다. -->
 								</form>
 								<script type="text/javascript">
 									function fn_delete(f) {
 										if(confirm('삭제할까요?')){
-											f.action = '#';
+											f.action = '/10_DAO/red//delete.jsp';
 											f.submit();
 										}
 									}
