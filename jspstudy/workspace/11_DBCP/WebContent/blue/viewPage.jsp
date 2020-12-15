@@ -20,6 +20,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+	function fn_updatePage(f) {
+		f.action = '/11_DBCP/blue/updatePage.jsp';
+		f.submit();
+	}
+</script>
 </head>
 <body>
 
@@ -39,7 +45,16 @@
 	</div>
 	<br/><br/>
 	
-	<input type="button" value="목록으로 이동하기" onclick="location.href='/11_DBCP/blue/listPage.jsp'"/>
-	<input type="button" value="삭제하기" onclick="location.href='/11_DBCP/blue/delete.jsp'"/>
+	
+	<form action="/11_DBCP/blue/delete.jsp" method="post" onsubmit="return confirm('삭제하시겠습니까?')">
+		<input type="button" value="목록으로 이동하기" onclick="location.href='/11_DBCP/blue/listPage.jsp'"/>
+		<button>삭제하기</button>
+		<input type="hidden" value="수정하기" onclick = "fn_updatePage(this.form)"/>
+		<input type="hidden" name="no" value="${blueDto.no}"/>
+		<input type="hidden" name="writer" value="${blueDto.writer}"/>
+		<input type="hidden" name="title" value="${blueDto.title}"/>
+		<input type="hidden" name="content" value="${blueDto.content}"/>
+		<input type="hidden" name="postDate" value="${blueDto.postDate}"/>
+	</form>
 </body>
 </html>
