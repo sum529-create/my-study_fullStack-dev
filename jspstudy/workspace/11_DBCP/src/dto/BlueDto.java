@@ -9,6 +9,13 @@ public class BlueDto {
 	private String writer;
 	private String title;
 	private String content;
+	private String filename;
+	public String getFilename() {
+		return filename;
+	}
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
 	private Date postDate;
 	public int getNo() {
 		return no;
