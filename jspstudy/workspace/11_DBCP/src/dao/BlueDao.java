@@ -110,7 +110,7 @@ public class BlueDao {
 		int result = 0;
 		try {
 			con = dataSource.getConnection();
-			sql = "INSERT INTO BLUE VALUES(BLUE_SEQ.NEXETVAL, ?, ? , ?, SYSDATE)";
+			sql = "INSERT INTO BLUE VALUES(BLUE_SEQ.NEXTVAL, ?, ? , ?, SYSDATE)";
 			ps = con.prepareStatement(sql);
 			ps.setString(1, blueDto.getWriter());
 			ps.setString(2, blueDto.getTitle());
@@ -124,5 +124,31 @@ public class BlueDao {
 		}
 		
 		return result;
+	}
+	
+	/****** 5. 게시글 가져오기 ******/
+	public BlueDto view(int no) {
+		BlueDto blueDto = null;
+		try {
+			con = dataSource.getConnection();
+			sql = "SELECT * FROM BLUE WHERE NO = ?";
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, no);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				blueDto = new BlueDto();
+				blueDto.setNo(no); // blueDto.setNo(rs.getInt("NO"));
+				blueDto.setWriter(rs.getString("WRITER"));
+				blueDto.setTitle(rs.getString("TITLE"));
+				blueDto.setContent(rs.getString("CONTENT"));
+				blueDto.setPostDate(rs.getDate("POSTDATE"));
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(con, ps, null);
+		}
+		
+		return blueDto;
 	}
 }
