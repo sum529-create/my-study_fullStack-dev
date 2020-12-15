@@ -1,3 +1,5 @@
+<%@page import="java.io.File"%>
+<%@page import="dto.BlueDto"%>
 <%@page import="dao.BlueDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -9,7 +11,24 @@
 		no = Integer.parseInt(strNo);
 	}
 	
-	int result = BlueDao.getInstance().delete(no);
+	BlueDto blueDto = BlueDao.getInstance().view(no);
+	pageContext.setAttribute("blueDto", blueDto);
+	
+	String directory = "storage";
+	String realPath = request.getServletContext().getRealPath(directory);
+	pageContext.setAttribute("realPath", realPath);
+	String deleteFile = blueDto.getFilename();
+	realPath += deleteFile;
+	
+	File f = new File(realPath);
+	int result = 0;
+	if(f.exists()){
+		f.delete();
+		result = BlueDao.getInstance().delete(no);
+	}else{
+		result = BlueDao.getInstance().delete(no);
+	}
+	
 	
 %>    
 <script>
