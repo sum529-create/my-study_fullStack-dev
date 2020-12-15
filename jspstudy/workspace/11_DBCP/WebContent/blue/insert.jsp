@@ -1,19 +1,42 @@
+<%@page import="java.io.File"%>
+<%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
+<%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@page import="dao.BlueDao"%>
 <%@page import="dto.BlueDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%
-	request.setCharacterEncoding("UTF-8");
-	String writer = request.getParameter("writer");
-	String title = request.getParameter("title");
-	String content = request.getParameter("content");
+	String directory = "storage";
+	String realPath = request.getServletContext().getRealPath("/"+directory);
+	// application.setAttribute("realPath", realPath);
+	// session.setAttribute("realPath", realPath);
+	MultipartRequest multipart = new MultipartRequest(
+				request,
+				realPath,
+				1024 * 1024 * 10,
+				"UTF-8",
+				new DefaultFileRenamePolicy()
+			);
+	
+	String writer =  multipart.getParameter("writer");
+	String title =  multipart.getParameter("title");
+	String content =  multipart.getParameter("content");
 	
 	BlueDto blueDto = new BlueDto();
 	blueDto.setWriter(writer);
 	blueDto.setTitle(title);
 	blueDto.setContent(content);
+	if(multipart.getFile("filename") == null){
+		blueDto.setFilename("");
+	}else{
+		
+		blueDto.setFilename(multipart.getFilesystemName("filename"));
+	}
 	
 	int result = BlueDao.getInstance().insert(blueDto);
+	
+			
 	
 %>  
 
