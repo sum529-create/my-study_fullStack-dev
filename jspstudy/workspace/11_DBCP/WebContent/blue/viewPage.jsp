@@ -14,6 +14,10 @@
 	
 	BlueDto blueDto = BlueDao.getInstance().view(no);
 	pageContext.setAttribute("blueDto", blueDto);
+	
+	String directory = "storage";
+	String realPath = request.getServletContext().getRealPath(directory);
+	pageContext.setAttribute("realPath", realPath);
 %>    
 <!DOCTYPE html>
 <html>
@@ -42,6 +46,13 @@
 		
 		작성일<br/>
 		<pre>${blueDto.postDate}</pre>
+		
+		<c:if test="${not empty blueDto.filename }">
+			첨부 이미지<br/>
+			<img alt="이미지아님" src="${realPath}/${blueDto.filename}"/>
+			<!-- insertpage에서 session에 올려놓은 realPath -->
+			<pre>${blueDto.filename}</pre>
+		</c:if>
 	</div>
 	<br/><br/>
 	
@@ -49,7 +60,7 @@
 	<form action="/11_DBCP/blue/delete.jsp" method="post" onsubmit="return confirm('삭제하시겠습니까?')">
 		<input type="button" value="목록으로 이동하기" onclick="location.href='/11_DBCP/blue/listPage.jsp'"/>
 		<button>삭제하기</button>
-		<input type="hidden" value="수정하기" onclick = "fn_updatePage(this.form)"/>
+		<input type="button" value="수정하기" onclick = "fn_updatePage(this.form)"/>
 		<input type="hidden" name="no" value="${blueDto.no}"/>
 		<input type="hidden" name="writer" value="${blueDto.writer}"/>
 		<input type="hidden" name="title" value="${blueDto.title}"/>
