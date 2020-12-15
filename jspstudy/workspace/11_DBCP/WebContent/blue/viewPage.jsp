@@ -24,19 +24,19 @@
 <body>
 
 	<h3>${blueDto.no}번 게시글입니다.</h3>
-	<pre>
-		작성자
-		${blueDto.writer}
+	<div>
+		작성자<br/>
+		<pre>${blueDto.writer}</pre>
 		
-		제목
-		${blueDto.title }
+		제목<br/>
+		<pre>${blueDto.title }</pre>
 		
-		내용
-		${blueDto.content}
+		내용<br/>
+		<pre>${blueDto.content}</pre>
 		
-		작성일
-		${blueDto.postDate}
-	</pre>
+		작성일<br/>
+		<pre>${blueDto.postDate}</pre>
+	</div>
 	<br/><br/>
 	
 	<input type="button" value="목록으로 이동하기" onclick="location.href='/11_DBCP/blue/listPage.jsp'"/>
