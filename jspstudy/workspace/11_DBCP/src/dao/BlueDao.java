@@ -93,6 +93,7 @@ public class BlueDao {
 				blueDto.setWriter(rs.getString("WRITER"));
 				blueDto.setTitle(rs.getString("TITLE"));
 				blueDto.setContent(rs.getString("CONTENT"));
+				blueDto.setFilename(rs.getString("FILENAME"));
 				blueDto.setPostDate(rs.getDate("POSTDATE"));
 				list.add(blueDto);
 			}
@@ -110,11 +111,12 @@ public class BlueDao {
 		int result = 0;
 		try {
 			con = dataSource.getConnection();
-			sql = "INSERT INTO BLUE VALUES(BLUE_SEQ.NEXTVAL, ?, ? , ?, SYSDATE)";
+			sql = "INSERT INTO BLUE VALUES(BLUE_SEQ.NEXTVAL, ?, ? , ?, ?, SYSDATE)";
 			ps = con.prepareStatement(sql);
 			ps.setString(1, blueDto.getWriter());
 			ps.setString(2, blueDto.getTitle());
 			ps.setString(3, blueDto.getContent());
+			ps.setString(4, blueDto.getFilename());
 			result = ps.executeUpdate();
 			
 		}catch(Exception e) {
@@ -141,6 +143,7 @@ public class BlueDao {
 				blueDto.setWriter(rs.getString("WRITER"));
 				blueDto.setTitle(rs.getString("TITLE"));
 				blueDto.setContent(rs.getString("CONTENT"));
+				blueDto.setFilename(rs.getString("FILENAME"));
 				blueDto.setPostDate(rs.getDate("POSTDATE"));
 			}
 		}catch(Exception e) {
@@ -167,6 +170,27 @@ public class BlueDao {
 		}finally {
 			close(con, ps, null);
 		}
+		return result;
+	}
+	
+	
+	/****** 7. 게시글 수정하기 ******/
+	public int update(BlueDto blueDto) {
+		int result = 0;
+		try {
+			con = dataSource.getConnection();
+			sql = "UPDATE BLUE SET TITLE =?, CONTENT = ? WHERE NO =?";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, blueDto.getTitle());
+			ps.setString(2, blueDto.getContent());
+			ps.setInt(3, blueDto.getNo());
+			result = ps.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(con, ps, null);
+		}
+		
 		return result;
 	}
 }
