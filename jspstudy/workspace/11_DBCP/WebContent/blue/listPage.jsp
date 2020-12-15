@@ -40,7 +40,7 @@
 						<td>${blueDto.no}</td>	<!-- getNumber() 메소드 -->
 						<td>${blueDto.title}</td>
 						<td>${blueDto.writer}</td>
-						<td>${blueDto.postdate}</td>
+						<td>${blueDto.postate}</td>
 					</tr>
 				</c:forEach>
 			</c:if>
