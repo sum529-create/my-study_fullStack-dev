@@ -19,6 +19,28 @@
 		<input type="button" value="삼각형넓이요청하기" onclick="fn_triangle(this.form)"/>
 		<input type="button" value="사각형넓이요청하기" onclick="fn_rectangle(this.form)"/>
 	</form>
+	
+	<!-- 
+		input.jsp
+		버튼 3개를 생성합니다.
+		오늘의 아침메뉴	-> 오늘 아침은 콘푸로스트입니다.
+		오늘의 점심메뉴	-> 오늘 점심은 김치찌개입니다.
+		오늘의 저녁메뉴	-> 오늘 저녁은 치킨입니다.
+		
+		output.jsp
+		
+		MealController
+		
+		요청 : breakfast.meal
+			   lunch.meal
+			   dinner.meal
+	 -->
+	<h3>하나의 CONTROLL에게 요청하기</h3>
+	<input type="button" value="오늘의 아침메뉴" onclick="location.href='/13_MVC/breakfast.meal'"/>
+	<input type="button" value="오늘의 점심메뉴" onclick="location.href='/13_MVC/lunch.meal'"/>
+	<input type="button" value="오늘의 저녁메뉴" onclick="location.href='/13_MVC/dinner.meal'"/>
+	
+	
 	<script type="text/javascript">
 	<%--
 		triangle.do와 rectangle.do는 모두 .do로 끝난다.
