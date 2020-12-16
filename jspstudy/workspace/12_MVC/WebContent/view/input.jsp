@@ -18,5 +18,12 @@
 	<h3>MVC패턴으로 현재시간 요청하기</h3>
 	<input type="button" value="현재시간요청" onclick="location.href='/12_MVC/TimeController'"/>
 	
+	<h3>MVC패턴으로 구구단 요청하기</h3>
+	<form action = "/12_MVC/GugudanController">
+		시작 <input type="text" name="start"/><br/>
+		종료 <input type="text" name="end"/><br/><br/>
+		<button>구구단결과확인</button>
+	</form>
+	
 </body>
 </html>
