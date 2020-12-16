@@ -36,6 +36,10 @@ public class DateController extends HttpServlet {
 		// "request.setAttribute("result", result);" <- 요 부분에서 전달했으니 forward로 받음
 		request.getRequestDispatcher(path).forward(request, response);
 		
+		
+		/* 지금까지 요청을 확인하진 않았다, 
+		 * 10개의 작업에서 10개의 Controller가 아닌 1개의 Controller만 사용된다. 
+		 * 그러므로 누가 어떤 요청을 하는지에 대한 확인 요청이 필요하다. => "xx.do"  */
 	}
 
 
