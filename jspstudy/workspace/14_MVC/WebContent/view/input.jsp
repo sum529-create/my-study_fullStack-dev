@@ -22,9 +22,9 @@
 		<label><input type="radio" name="gender" value="여"/>여</label><br/><br/>
 		
 		관심사<br/>
-		<label><input type="checkbox" name="interest" value="주식"/>주식</label>
-		<label><input type="checkbox" name="interest" value="육아"/>육아</label>
-		<label><input type="checkbox" name="interest" value="취업"/>취업</label>><br/><br/>
+		<label><input type="checkbox" name="interests" value="주식"/>주식</label>
+		<label><input type="checkbox" name="interests" value="육아"/>육아</label>
+		<label><input type="checkbox" name="interests" value="취업"/>취업</label><br/><br/>
 		
 		<button>전송</button>
 	</form>
