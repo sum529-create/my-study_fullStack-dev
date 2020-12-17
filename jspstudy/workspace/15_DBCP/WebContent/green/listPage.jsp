@@ -31,7 +31,8 @@
 				<c:forEach var="greenDto" items="${list }">
 					<tr>
 						<td>${greenDto.no }</td>
-						<td>${greenDto.title }</td>
+						<td><a href="/15_DBCP/viewPage.do?no=${greenDto.no}">${greenDto.title }</a></td>
+						<!-- controller로 가야하기 때문 -->
 						<td>${greenDto.writer }</td>
 						<td>${greenDto.hit }</td>
 						<td>${greenDto.postDate }</td>

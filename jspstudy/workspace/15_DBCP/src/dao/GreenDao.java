@@ -105,4 +105,53 @@ public class GreenDao {
 		}
 		return result;
 	}
+	
+	/****** 4. 게시글 가져오기 ******/
+	public GreenDto view(int no) {
+		GreenDto greenDto = null;
+		
+		try {
+			con = dataSource.getConnection();
+			sql = "SELECT * FROM GREEN WHERE NO = ?";
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, no);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				greenDto = new GreenDto();
+				greenDto.setNo(rs.getInt(1));	// db순서대로 번호를 넣어서 사용가능함
+				greenDto.setWriter(rs.getString(2));
+				greenDto.setTitle(rs.getString(3));
+				greenDto.setContent(rs.getString(4));
+				greenDto.setHit(rs.getInt(5));
+				greenDto.setPostDate(rs.getDate(6));
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(con, ps, rs);
+		}
+		
+		return greenDto;
+	}
+	
+	/****** 5. 조회수 증가하기 ******/
+	
+	public int updateHit(int no) {
+		int result = 0;
+		try {
+			con = dataSource.getConnection();
+			sql = "UPDATE GREEN SET HIT = HIT+1 WHERE NO = ?";
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, no);
+			result = ps.executeUpdate();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(con, ps, null);
+		}
+		
+		return result;
+	}
+	
 }
