@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Context>
+	
+	<Resource 
+		auth="Container" 
+		name="jdbc/oracle" 
+		type="javax.sql.DataSource" 
+		driverClassName="oracle.jdbc.driver.OracleDriver"
+		url = "jdbc:oracle:thin:@localhost:1521:xe"
+		username = "spring"
+		password = "1111"
+		maxTotal="8"
+		maxIdle="2"
+		maxWaitMillis="5000"
+	/>
+	
+	<!-- 태그영역이 html이기에 html 주석 태그 사용이 가능하다.
+		주요 속성
+		1. name: 현재 Resource를 등록하는 이름이다. jdbc/ 뒤에 원하는 이름을 지정한다.
+		2. type: Connection Pool을 관리하는 클래스이다.
+		3. maxTotal: 최대 Connection의 개수이다.
+		4. maxIdle: 사용하지 않고 대기하는 최대 Connection의 개수이다. (음수면 모두 사용한다)
+		5. maxWaitMillis: Connection의 최대 대기시간이다. 밀리초 단위이다. (음수면 제한없다)
+		
+	 -->
+	
+</Context>
