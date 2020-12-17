@@ -171,4 +171,26 @@ public class GreenDao {
 		return result;
 	}
 	
+	
+	/****** 7. 게시글 수정하기 ******/
+	public int update(GreenDto greenDto) {
+		int result = 0;
+		try {
+			con = dataSource.getConnection();
+			sql = "UPDATE GREEN SET TITLE = ?, CONTENT = ? WHERE NO = ?";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, greenDto.getTitle());
+			ps.setString(2, greenDto.getContent());
+			ps.setInt(3, greenDto.getNo());
+			result = ps.executeUpdate();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(con, ps, null);
+		}
+		return result;
+	}
+	
+	
 }

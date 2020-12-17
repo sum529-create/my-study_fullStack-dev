@@ -11,6 +11,7 @@ import command.GreenCommand;
 import command.GreenDeleteCommand;
 import command.GreenInsertCommand;
 import command.GreenListCommand;
+import command.GreenUpdateCommand;
 import command.GreenViewCommand;
 
 @WebServlet("*.do")
@@ -47,7 +48,10 @@ public class GreenController extends HttpServlet {
 			command = new GreenDeleteCommand();
 			path = command.execute(request, response);
 			break;
-			
+		case "/update.do":
+			command = new GreenUpdateCommand();
+			path = command.execute(request, response);
+			break;
 			// 단순 이동
 		case "/insertPage.do":
 			path = "green/insertPage.jsp";

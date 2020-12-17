@@ -5,6 +5,22 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+	function fn_update(f) {
+		if(f.title.value == ''){
+			alert('제목은 필수입니다.');
+			f.title.focus();
+			return;
+		}
+		if('${patam.title}' == f.title.value && '${param.content}' == f.content.value){
+			alert('수정할 내용이 없습니다.');
+			 return;
+		}
+		f.action = "/15_DBCP/update.do";
+		f.submit();
+		
+	}
+</script>
 </head>
 <body>
 	
@@ -20,7 +36,7 @@
 		<input type="text" name="title" value="${param.title}"/><br/><br/>
 		
 		내용<br/>
-		<textarea rows="5" cols="50" name="content">${param.conten}</textarea><br/><br/>
+		<textarea rows="5" cols="50" name="content">${param.content}</textarea><br/><br/>
 		
 		조회수<br/>
 		${param.hit}<br/>
@@ -28,7 +44,9 @@
 		작성일<br/>
 		${param.postDate}<br/>
 		
-		<input type="button" value="수정하기" onclick = ""/>
+		<input type="hidden" name="no" value="${param.no}"/>
+		
+		<input type="button" value="수정하기" onclick = "fn_update(this.form)"/>
 		<input type="reset" value="다시작성하기"/>
 		<input type="button" value="취소하기" onclick = "alert('취소합니다.'); history.back();"/>
 		<input type="button" value="목록으로이동" onclick = "location.href='/15_DBCP/listPage.do'"/>
