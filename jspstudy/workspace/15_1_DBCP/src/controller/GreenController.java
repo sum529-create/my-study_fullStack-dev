@@ -62,13 +62,20 @@ public class GreenController extends HttpServlet {
 			break;
 		case "/updatePage.do":
 			pathNRedirect = new PathNRedirect();
-			// pathNRedirect.setPath("/green/insertPage.jsp");  // redirect는 전체 경로를 찾는 것이므로 /(슬래시)로 시작하면 /green이 contextPath인 줄 압니다.
-			// 위 방법은 http://localhost:9090/green/insertPage.jsp 로 이동하게 됩니다.
-			
 			pathNRedirect.setPath("green/insertPage.jsp");  // 시작이 슬래시(/)가 아니면 폴더로 인식됩니다.
-			// 위 방법은 http://localhost:9090/15_DBCP/green/insertPage.jsp  로 이동하게 됩니다.
 			pathNRedirect.setRedirect(false);	// forward 삽입시에는 false, select시 true
 			break;
+				
+			/** 폴더 앞 '/'(슬래시) 유무? **/
+			
+			// '/'  redirect는 전체 경로를 찾는 것이기 때문에 /(슬래시)로 시작하면 /green이 contextPath인 줄 안다.
+			// pathNRedirect.setPath("/green/insertPage.jsp");  
+			// 위 방법은 http://localhost:9090/green/insertPage.jsp 로 이동하게 됩니다.
+			
+			// ''   시작이 슬래시(/)가 아니면 폴더로 인식됩니다.
+			// pathNRedirect.setPath("green/insertPage.jsp");
+			// 위 방법은 http://localhost:9090/15_DBCP/green/insertPage.jsp  로 이동하게 됩니다.
+				
 		}
 		
 		// redirect를 사용할 건지 forward를 사용할것인지
