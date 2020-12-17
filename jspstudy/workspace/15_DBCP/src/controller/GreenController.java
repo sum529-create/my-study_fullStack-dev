@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import command.GreenCommand;
+import command.GreenInsertCommand;
 import command.GreenListCommand;
 
 @WebServlet("*.do")
@@ -23,12 +24,26 @@ public class GreenController extends HttpServlet {
 		String contextPath = request.getContextPath();
 		String cmd = requestURI.substring(contextPath.length());
 		GreenCommand command = null;
+		String path = null;
+		
 		switch(cmd) {
+		// Command 필요 (DB, 로직)
 		case "/listPage.do" :
 			command = new GreenListCommand();
+			path = command.execute(request, response);
+			break;
+			
+		// 단순 이동
+		case "/insertPage.do":
+			path = "green/insertPage.jsp";
+			break;
+			
+		case "/insert.do":
+			command = new GreenInsertCommand();
+			path = command.execute(request, response);
 			break;
 		}
-		String path = command.execute(request, response);
+		
 		request.getRequestDispatcher(path).forward(request, response);
 	}
 

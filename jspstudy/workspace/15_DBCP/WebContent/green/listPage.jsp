@@ -9,7 +9,7 @@
 </head>
 <body>
 	
-	<a href="">새 글 작성하기</a><br/><br/>
+	<a href="/15_DBCP/insertPage.do">새 글 작성하기</a><br/><br/>
 	
 	<table border="1">
 		<thead>
@@ -30,7 +30,7 @@
 			<c:if test="${not empty list }">
 				<c:forEach var="greenDto" items="${list }">
 					<tr>
-						<td>${greenDto.num }</td>
+						<td>${greenDto.no }</td>
 						<td>${greenDto.title }</td>
 						<td>${greenDto.writer }</td>
 						<td>${greenDto.hit }</td>
