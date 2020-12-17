@@ -154,4 +154,21 @@ public class GreenDao {
 		return result;
 	}
 	
+	/****** 6. 게시글 삭제하기 ******/
+	public int delete(int no) {
+		int result = 0;
+		try {
+			con = dataSource.getConnection();
+			sql = "DELETE FROM GREEN WHERE NO = ?";
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, no);
+			result = ps.executeUpdate(); 
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(con, ps, null);
+		}
+		return result;
+	}
+	
 }

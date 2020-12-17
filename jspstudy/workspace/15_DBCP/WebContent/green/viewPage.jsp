@@ -5,6 +5,21 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+	function fn_delete(f) {
+		if(confirm('게시글을 삭제할까요?')){
+			f.action = "/15_DBCP/delete.do";
+			f.submit();
+		}else{
+			alert('취소되었습니다.');
+			history.back();
+		}
+	}
+	function fn_updatePage(f) {
+		f.action = '/15_DBCP/updatePage.do';
+		f.submit();
+	}
+</script>
 </head>
 <body>
 	
@@ -20,8 +35,16 @@
 		<pre>${greenDto.hit }</pre><br/><br/>
 		작성일<br/>
 		<pre>${greenDto.postDate }</pre><br/><br/>
-		<input type="button" value="수정하기" onclick=""/>
-		<input type="button" value="삭제하기" onclick=""/>
+		
+		<input type="hidden" name="no" value="${greenDto.no }"/>
+		<input type="hidden" name="writer" value="${greenDto.writer }"/>
+		<input type="hidden" name="title" value="${greenDto.title }"/>
+		<input type="hidden" name="content" value="${greenDto.content }"/>
+		<input type="hidden" name="hit" value="${greenDto.hit }"/>
+		<input type="hidden" name="postDate" value="${greenDto.postDate }"/>
+		
+		<input type="button" value="수정하기" onclick="fn_updatePage(this.form)"/>
+		<input type="button" value="삭제하기" onclick="fn_delete(this.form)"/>
 		<input type="button" value="목록으로이동" onclick="location.href='/15_DBCP/listPage.do'"/>
 		
 	</form>
