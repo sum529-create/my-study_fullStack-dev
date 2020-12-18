@@ -30,7 +30,7 @@
 				<c:forEach var="limeDto" items="${list }">
 					<tr>
 						<td>${limeDto.no }</td>
-						<td>${limeDto.title }</td>
+						<td><a href="/16_MYBATIS/viewPage.lime?no=${limeDto.no }">${limeDto.title }</a></td>
 						<td>${limeDto.writer }</td>
 						<td>${limeDto.postDate }</td>
 					</tr>

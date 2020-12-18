@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import command.LimeCommand;
+import command.LimeInsertCommand;
 import command.LimeListCommand;
+import command.LimeViewCommand;
 import common.PathNRedirect;
 
 
@@ -33,6 +35,24 @@ public class LimeController extends HttpServlet {
 			command = new LimeListCommand();
 			pathNRedirect = command.execute(request, response);
 			break;
+		case "/insert.lime":
+			command = new LimeInsertCommand();
+			pathNRedirect = command.execute(request, response);
+			break;
+		case "/viewPage.lime":
+			command = new LimeViewCommand();
+			pathNRedirect = command.execute(request, response);
+			break;
+			// 단순이동
+		case "/insertPage.lime":
+			pathNRedirect = new PathNRedirect();
+			pathNRedirect.setPath("lime/insertPage.jsp");
+			pathNRedirect.setRedirect(true); // forward
+			// forward : http://localhost:9090/16_MYBATIS/insertPage.lime
+			// redirect : http://localhost:9090/16_MYBATIS/lime/insertPage.lime
+			// 처음부터 다시 찾아가서 가는 방식이기네 lime이 붙는다.
+			break;
+		
 		}
 		String path = pathNRedirect.getPath();
 		boolean isRedirect = pathNRedirect.isRedirect();

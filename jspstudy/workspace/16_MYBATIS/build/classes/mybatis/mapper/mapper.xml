@@ -23,8 +23,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			2) 결과가 LimeDto인 경우		<select resultType="LimeDto">
 			3) 결과가 0 또는 1인 경우		<insert>, <update>, <delete>태그는 resultType을 작성하지 않는다.
 	 -->												 
+	<!-- 세미콜론 불 필요 -->	
 	<select id="list" resultType="dto.LimeDto">
-		SELECT * FROM LIME	<!-- 세미콜론 불 필요 -->	
+		SELECT * FROM LIME	
 	</select>
+	
+	<insert id="insert" parameterType="dto.LimeDto">
+		INSERT INTO
+		  LIME (NO, WRITER, TITLE, CONTENT, POSTDATE)
+		VALUES (LIME_SEQ.NEXTVAL, #{writer}, #{title}, #{content}, SYSDATE)
+	</insert>														
+	<!-- limeDto가 가지고 있는 쿼리 timestamp로 사용했으나 상관없음 
+		위 timestamp로 바꾸게 된다면 2020-12-18 14:56:51.0 => 2020-12-18 14:56:51.268 로 된다.
+		실질적으로 사용하지 않음. sysdate를 권장. DB에서 timestamp를 사용하는 것은 시간을 Millisecond로 받기위함이다.	
+	 -->
+	
+	<select id="view" resultType="dto.LimeDto">
+		SELECT * FROM LIME WHERE NO = #{no}
+	</select>
+	
+	<!-- 게시글의 전체 갯수를 구할 때 int타입을 사용할 수도 있다.
+	<select id="view" resultType="int"></select> -->
 	
 </mapper>
