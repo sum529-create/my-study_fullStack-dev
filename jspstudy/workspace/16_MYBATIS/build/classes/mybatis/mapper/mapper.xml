@@ -45,4 +45,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 게시글의 전체 갯수를 구할 때 int타입을 사용할 수도 있다.
 	<select id="view" resultType="int"></select> -->
 	
+	<!-- parameterType 생략 가능 -->
+	<delete id="delete" parameterType="int">
+		DELETE FROM LIME WHERE NO = #{no}
+	</delete>
+	
 </mapper>

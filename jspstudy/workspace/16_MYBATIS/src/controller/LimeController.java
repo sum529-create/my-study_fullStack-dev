@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import command.LimeCommand;
+import command.LimeDeleteCommand;
 import command.LimeInsertCommand;
 import command.LimeListCommand;
 import command.LimeViewCommand;
@@ -43,6 +44,11 @@ public class LimeController extends HttpServlet {
 			command = new LimeViewCommand();
 			pathNRedirect = command.execute(request, response);
 			break;
+		case "/delete.lime":
+			command = new LimeDeleteCommand();
+			pathNRedirect = command.execute(request, response);
+			
+			break;
 			// 단순이동
 		case "/insertPage.lime":
 			pathNRedirect = new PathNRedirect();
@@ -52,7 +58,7 @@ public class LimeController extends HttpServlet {
 			// redirect : http://localhost:9090/16_MYBATIS/lime/insertPage.lime
 			// 처음부터 다시 찾아가서 가는 방식이기네 lime이 붙는다.
 			break;
-		
+			
 		}
 		String path = pathNRedirect.getPath();
 		boolean isRedirect = pathNRedirect.isRedirect();
