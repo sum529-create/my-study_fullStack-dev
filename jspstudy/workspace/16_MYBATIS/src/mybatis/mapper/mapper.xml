@@ -4,5 +4,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 <mapper namespace="mybatis.mapper.mapper">	<!-- mybatis.mapper -> package,
-												                        .mapper -> mapper.xml -->
+												 .mapper -> mapper.xml -->
+	<!-- 
+		1. 사용태그
+			1) <select>
+			2) <insert>
+			3) <update>
+			4) <delete>
+		2. 쿼리문에 전달할 파라미터가 있는 경우
+			: parameterType 속성
+			예시)
+			<select parameterType = "int">
+			<select parameterType = "dto.LimeDto">
+			<select parameterType = "Map">
+		3. 쿼리문의 결과
+			: resultType 속성
+			1) 결과가 List<LimeDto>인 경우	<select resultType="LimeDto">
+			2) 결과가 LimeDto인 경우		<select resultType="LimeDto">
+			3) 결과가 0 또는 1인 경우		<insert>, <update>, <delete>태그는 resultType을 작성하지 않는다.
+	 -->												 
+	<select id="list" resultType="dto.LimeDto">
+		SELECT * FROM LIME	<!-- 세미콜론 불 필요 -->	
+	</select>
+	
 </mapper>

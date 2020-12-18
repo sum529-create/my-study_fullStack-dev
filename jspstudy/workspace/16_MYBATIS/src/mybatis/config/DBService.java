@@ -18,7 +18,7 @@ public class DBService {
 		try {
 			String resource = "mybatis/config/sqlmap-config.xml";
 			InputStream inputStream = Resources.getResourceAsStream(resource);
-			SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+			factory = new SqlSessionFactoryBuilder().build(inputStream);
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
