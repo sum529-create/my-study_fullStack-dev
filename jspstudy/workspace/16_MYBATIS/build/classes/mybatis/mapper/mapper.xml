@@ -50,4 +50,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		DELETE FROM LIME WHERE NO = #{no}
 	</delete>
 	
+	<update id="update" parameterType="dto.LimeDto">
+		UPDATE LIME SET TITLE= #{title}, CONTENT = #{content} WHERE NO = #{no}
+	</update>
+	
 </mapper>

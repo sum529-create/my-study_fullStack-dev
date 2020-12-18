@@ -81,10 +81,20 @@ public class LimeDao {
 		return limeDto;
 	}
 	
-	/****** 3. 게시글 삭제하기 ******/
+	/****** 4. 게시글 삭제하기 ******/
 	public int delete(int no) {
 		SqlSession session = factory.openSession(false);
 		int result = session.insert("mybatis.mapper.mapper.delete", no);
+		if(result > 0) {
+			session.commit();
+		}
+		session.close();
+		return result;
+	}
+	/****** 5. 게시글 수정하기 ******/
+	public int update(LimeDto limeDto) {
+		SqlSession session = factory.openSession(false);
+		int result = session.update("mybatis.mapper.mapper.update", limeDto);
 		if(result > 0) {
 			session.commit();
 		}
