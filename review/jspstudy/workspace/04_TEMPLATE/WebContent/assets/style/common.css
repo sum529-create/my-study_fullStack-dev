@@ -1,0 +1,62 @@
+@charset "UTF-8";
+
+	*{
+		padding : 0px;
+		margin: 0px;
+	}
+	a {
+		text-decoration : none;
+		color:black;
+	}
+	ul, ol{
+		list-style-type: none;
+	}
+	table{
+		border-collapse : collapse;
+	}
+	div{
+		box-sizing:border-box;
+	}
+	.head-wrap{
+		height:300px;
+		background:skyblue;
+		position:relative;	/*자식 요소들이 position:absolute 가능해진다 */
+	}
+	.head-wrap > ul{
+		position: absolute;	/* 부모기준을 잡아 움직인다. position:abslut*/
+		bottom:0px;		/* 바닥에 붙인다 */
+		left:0px;		/* 왼쪽에 붙인다. */
+		overflow:hidden;	/* 자식요소 li태그에 float: left를 주면 자식 요소들이 수평 레이아웃이 된다. */
+		height:30px;
+	}
+	.head-wrap > ul > li{
+		float:left;
+		width:100px;
+		height:100%;
+		text-align:center;
+	}
+	
+	.wrap{
+		width:800px;
+		margin:auto;
+	}
+	
+	.main-wrap{
+		width:100%;
+		height:500px;
+		padding-top:30px;
+	}
+	
+	.main-wrap > .login-box{
+		width:400px;
+		margin:auto;
+		text-align : center;
+	}
+	.main-wrap > .login-box > input{
+		width:100%;
+		padding:5px;
+	}
+	.foot-wrap{
+		text-align : center;
+		background: skyblue;
+	}
