@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	table{
+		border-collapse : collapse;
+		border : 1px solid black;
+		margin-bottom : 30px;
+	}
+	tr, td{
+		 border : 1px solid black;
+	}
+</style>
+</head>
+<body>
+	<!-- 
+		테이블 만드는 태그 ㅣ <table>
+		
+		1. <thead></thead> : 테이블의 제목 영역
+		2. <tbody></tbody> : 테이블의 본문 영역
+		3. <tfoot></tfoot> : 테이블의 하단 영역
+		
+		-- 모두 생략할 수 있으나, 자동으로 <tbody> </tbody>는 무조건 추가된다.
+		-- 위 3개 태그는 작성하는 순서에 상관없이 <thead> -> <tbody> -> <tfoot> 순서로 표시된다.
+		
+		4. <tr></tr> : 행(row) 생성, 자식 태그로 <td>, <th>태그를 가진다.
+		5. <td></td> : 일반 열(column) 생성
+		6. <th></th> : 제목 열(column) 생성, 굵고 가운데 정렬되어 처리된다.
+		7. <caption></caption> : 테이블의 제목
+		8. <colgroup></colgroup> : 열(column) 단위로 묶는 태그
+		9. <col></col> : 내에서 어떤 열(column)인지 지정하는 태그
+	 -->
+	 
+	 <h3>테이블 연습 1</h3>
+	 <table> <!-- <table border="/"> -->
+	 	<thead>
+	 	<tr>
+	 	<th> 번호</th>
+	 	<th> 제품</th>
+	 	<th> 가격</th>
+	 	</tr>
+	 	</thead>
+	 	<tbody>
+	 	<tr>
+	 	<td>1</td>
+	 	<td>컴퓨터</td>
+	 	<td>100</td>
+	 	</tr>
+	 	<tr>
+	 	<td>2</td>
+	 	<td>세탁기</td>
+	 	<td>120</td>
+	 	</tr>
+	 	</tbody>
+	 	<tr>
+	 	<td rowspan = "2">a</td>
+	 	<td colspan = "2">b</td>
+	 	</tr>
+	 	<tr>
+	 	<td>b</td>
+	 	<td>c</td>
+	 	</tr>
+	 </table>
+	 
+	 <!-- 
+	 	셀 병랍
+	 	1. <td>, <th> 태그에서 설정한다.
+	 	2. rowspan 속성: 행 병합, 위 아래 셀 병합
+	 	3. colspan 속성: 열 병합, 좌우 셀 병합
+	  -->
+	  
+	  <h3>위아래가 병합된 테이블</h3>
+	 <table border="1">
+	 	<tbody>
+	 		<tr>
+	 			<td rowspan="2">A</td>
+	 			<td>B</td>
+	 		</tr>
+	 		<tr>
+	 			<td>C</td>
+	 		</tr>
+	 	</tbody>
+	 </table>
+	 
+	 <h3>좌우가 병합된 테이블</h3>
+	 <table border="1">
+	 	<tbody>
+	 		<tr>
+	 			<td colspan="2">A</td>
+	 		</tr>
+	 		<tr>
+	 			<td>B</td>
+	 			<td>C</td>
+	 		</tr>
+	 	</tbody>
+	 </table>
+	  
+	  <table>
+	  <thead>
+	  	<tr>
+	  		<th colspan = "2">인구조사</th>
+	  	</tr>
+	   </thead>
+	   <tbody>
+	  	<tr>
+	  		<td>지역</td>
+	  		<td>인구수</td>
+	  	</tr>
+	  	<tr>
+	  		<td>서울</td>
+	  		<td>1000만</td>
+	  	</tr>
+	  	<tr>
+	  		<td>인천</td>
+	  		<td>500만</td>
+	  	</tr>
+	 	</tbody>
+	  </table>
+	  
+	  
+	  <h3>&lt;colgroup&gt; 태그가 사용된 테이블</h3>
+	  <table border="1">
+	  	<!-- thead, tbody, tfoot 모두 생략 -->
+	  	<colgroup>
+	  		<col style = "background:yellow;"> <!-- 1열 -->
+	  		<col style = "background:orange;"> <!-- 2열 -->
+	  		<col span = "2" style = "background: limegreen"> <!-- 3, 4열 -->	  		
+	  	</colgroup>
+	  	<tr>
+	  		<td>A</td><td>B</td><td>C</td><td>D</td>
+	  	</tr>
+	  	<tr>
+	  		<td>A</td><td>B</td><td>C</td><td>D</td>
+	  	</tr>
+	  	<tr>
+	  		<td>A</td><td>B</td><td>C</td><td>D</td>
+	  	</tr>
+	  </table>
+	 
+</body>
+</html>

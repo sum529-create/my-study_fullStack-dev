@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	table{
+		border-collapse : collapse;
+		border : 1px solid black;
+		margin-bottom : 30px;
+		width : 400px;
+	}
+	tr, td{
+		 border : 1px solid black;
+	}
+	#a, #b, #c{
+		float : left;
+		margin-left : 1%;
+	}
+</style>
+</head>
+<body>
+	<div id = "a">
+	<h3>연습문제1</h3>
+	<table>
+		<thead>
+		<tr>
+			<td>이름</td>
+			<td>나이</td>
+			<td>주소</td>
+		</tr>
+		</thead>
+		<tr>
+			<td>홍길동</td>
+			<td>20세</td>
+			<td>서울시 마포구 노고산동</td>
+		</tr>
+		<tr>
+			<td>특기</td>
+			<td colspan = "2">먹기</td>
+		</tr>
+		<tr>
+			<td rowspan = "2">신체</td>
+			<td colspan = "2">180.0cm</td>
+		</tr>
+		<tr>
+			<td colspan = "2">83kg</td>
+		</tr>
+	</table>
+	
+	</div>
+	<div id ="b">
+	<h3>연습문제2</h3>
+	<table>
+		<tbody>
+			<tr>
+				<td rowspan = "5">1</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+				<td>5</td>
+			</tr>
+			<tr>
+				<td>6</td>
+				<td>7</td>
+				<td>8</td>
+				<td>9</td>
+			</tr>
+			<tr>
+				<td rowspan = "3">10</td>
+				<td>11</td>
+				<td>12</td>
+				<td rowspan = "2">13</td>
+			</tr>
+			<tr>
+				<td>14</td>
+				<td>15</td>
+			</tr>
+			<tr>
+				<td>16</td>
+				<td>17</td>
+				<td>18</td>
+			</tr>
+			<tr>
+				<td colspan = "5">19</td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+	<div id = "c">
+	<h3>연습문제3</h3>
+	<table>
+		<tbody>
+			<tr>
+				<td colspan = "4">1</td>
+				<td rowspan = "7">2</td>
+			</tr>
+			<tr>
+				<td rowspan = "5">3</td>
+				<td rowspan = "4">4</td>
+				<td colspan = "2">5</td>
+			</tr>
+			<tr>
+				<td>6</td>
+				<td rowspan = "4">7</td>
+			</tr>
+			<tr>
+				<td>8</td>
+			</tr>
+			<tr>
+				<td>9</td>
+			</tr>
+			<tr>
+				<td colspan = "2">10</td>
+			</tr>
+			<tr>
+				<td colspan = "4">11</td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+</body>
+</html>

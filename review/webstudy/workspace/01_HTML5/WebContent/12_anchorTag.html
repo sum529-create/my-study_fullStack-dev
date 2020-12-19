@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!-- 
+		링크 생성 태그 : <a>
+		1. href 속성: 링크할 경로를 작성한다.
+		2. title 속성: 링크에 마우스를 가져다대면 보여주는 풍선 도움말을 작성한다.
+		3. target 속성 : 어떤 창으로 이동할 것인지 결정한다.
+			1) _self: 현재 창으로 이동한다. (기본값)
+			2) _blank: 새 창을 열고 이동한다.
+	 -->
+	 
+	 <h3>비어 있는 링크(이동이 없는 링크)</h3>
+	 <ul>
+	 	<li><a href="#"> 클릭해도 이동이 없습니다.</a></li>
+	 	<li><a href="javasrcipt:void(0)"> 클릭해도 이동이 없습니다.</a>	</li>
+	 </ul>
+	 
+	 <h3>포털 링크</h3>
+	 <ul>
+	 	<li><a href="https://www.naver.com/" target="_self">N사</a> </li>
+	 	<li><a href="https://www.google.com" target="_blank">G사</a> </li>
+	 </ul>
+	 
+	 <h3>이미지 링크</h3>
+	 <a href="https://www.daum.net/"><img alt="다음로고" src="https://t1.daumcdn.net/daumtop_chanel/op/20200723055344399.png"></a>
+	 
+	 <!-- 같은 페이지의 다른 위치로 이동 -->
+	 <!-- 
+	 	1. 위치 정보를 지정하는 경우 id 속성을 사용한다. 
+	 	2. id속성은 한 페이지 내에서 중복이 없다.
+	 	3. id속성을 선책하는 경우 #id방식을 사용한다.	
+	 -->
+	 
+	 <!-- 네비게이션 메뉴(목차) -->
+	 <h3 id = "gnb">메뉴</h3>
+	 <ol>
+	 	<li><a href = "#overview">제품 개요</a></li>
+	 	<li><a href = "#main-content">본문</a></li>
+	 	<li><a href = "#question-answer">Q&amp;A</a></li>
+	 	<li><a href = "#user-opinion">사용자 의견</a></li>
+	 </ol>
+	 
+	 <h3 id = "overview">제품개요</h3>
+	 <div>
+	 <!-- 이런 dummy text를 만들어주는 Lorem Ipsum 사이트 -->
+	 	제품개요입니다.<br>
+	 	제품개요입니다.<br>
+	 	제품개요입니다.<br>
+	 	제품개요입니다.<br>
+	 	제품개요입니다.<br>
+	 	제품개요입니다.<br>
+	 	제품개요입니다.<br>
+	 	제품개요입니다.<br>
+	 	제품개요입니다.<br>
+	 	제품개요입니다.<br>
+	 	제품개요입니다.<br>
+	 </div>
+
+	<h3 id = "main-content">본문</h3>
+	 <div>
+	 	본문입니다.<br>
+	 	본문입니다.<br>
+	 	본문입니다.<br>
+	 	본문입니다.<br>
+	 	본문입니다.<br>
+	 	본문입니다.<br>
+	 	본문입니다.<br>
+	 	본문입니다.<br>
+	 	본문입니다.<br>
+	 	본문입니다.<br>
+	 </div>
+
+	<h3 id = "question-answer">Q&amp;A</h3> <!-- &의 엔티티 코드 &amp; -->
+	 <div>
+	 	Q&amp;A입니다.<br>
+	 	Q&amp;A입니다.<br>
+	 	Q&amp;A입니다.<br>
+	 	Q&amp;A입니다.<br>
+	 	Q&amp;A입니다.<br>
+	 	Q&amp;A입니다.<br>
+	 	Q&amp;A입니다.<br>
+	 	Q&amp;A입니다.<br>
+	 	Q&amp;A입니다.<br>
+	 	Q&amp;A입니다.<br>
+	 </div>
+	 
+	 <h3 id = "user-opinion">사용자 의견</h3>
+	 <div>
+	 	사용자 의견입니다.<br>
+	 	사용자 의견입니다.<br>
+	 	사용자 의견입니다.<br>
+	 	사용자 의견입니다.<br>
+	 	사용자 의견입니다.<br>
+	 	사용자 의견입니다.<br>
+	 	사용자 의견입니다.<br>
+	 	사용자 의견입니다.<br>
+	 	사용자 의견입니다.<br>
+	 	사용자 의견입니다.<br>
+	 	사용자 의견입니다.<br>
+	 	사용자 의견입니다.<br>
+	 	사용자 의견입니다.<br>
+	 </div>
+		
+</body>
+</html>
