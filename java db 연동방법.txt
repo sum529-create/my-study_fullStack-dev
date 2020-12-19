@@ -1,0 +1,29 @@
+*JDBC(Java Database Connectivity)는 자바에서 데이터베이스에 접속할 수 있도록 하는 자바 API
+
+오라클에서 만들어서 배포하는 것 : Ojdbc6.jar
+
+java project 우클릭 -> build path -> add archives
+		OR
+java project 우클릭 -> build path -> build path -> libraries -> add external JARs
+
+* 공통적으로 경로 설정
+=> -> C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib 경로 이동 -> Ojdbc6.jar 선택
+
+
+
+	private static String user = "HR";
+	private static String password = "1111";
+	private static String url = "jdbc:oracle:thin:@127.0.0.1:1521:xe";
+			 			경량	컴퓨터 위치 -> localhost  xe -> 서비스 번호
+
+	private static String jdbcDriver = "oracle.jdbc.driver.OracleDriver";
+						package	      / class	
+	// -> 어떤 클래스를 사용할 것인가? 접속을 담당하는 Oracle 클래스
+
+
+	public static Connection getConnection() throws Exception {
+		Class.forName(jdbcDriver);
+		return conn = DriverManager.getConnection(url, user, password); }
+
+
+classNotFoundException 오류 -> jdbcDriver 로드 오류, 빌드패스(경로) 잘못 잡음
