@@ -13,16 +13,14 @@
 	function fn_send() {
 		var f = ducement.forms.myForm;		// document.forms.폼name
 		
-		if (f.name.value == '') {  // f.요소name속성.value속성
-			alert('이름을 입력하세요.');
+		if(i.name.value == ''){		// f.요소name속성.value속성
+			alert('이름을 입력하세요');
 			f.name.focus();
-			return false;  // onsubmit="return false" 처리되면서 submit이 되지 않는다.
+			return false;		// onsubmit = "return false"처리되면서 submit이 되지않는다.
 		}
-		// 나이 0 ~ 150사이인가? 숫자인가? 빈 칸이 아닌가?
-		if (f.age.value == '' ||// if ($('#age').val() == '')
-			f.age.value <= 0  ||
-			f.age.value > 150 ||
-			isNaN(f.age.value)) { 
+		
+		// 나이가 0 ~ 150 사이인가? 숫자인가?ㅣ빈칸이 아닌가?
+		if(i.age.value <= 0 || i.age.value > 150 || i.age.value == '' || isNaN(f.age.value)){ // if
 			alert('나이가 올바르지 않습니다.');
 			f.age.focus();
 			return false;
@@ -38,22 +36,22 @@
 <body>
 
 	<!-- 
-		<button>전송</button>의 역할: submit을 한다.
-		submit할 경로는 action에 작성한다. (action은 form태그의 속성이다.)
-		action 작성 방법 (url을 작성하면 된다.)
+		1. <input type="submit" value="전송"/>의 역할: submit을 한다.
+		2. submit할 경로는 action에 작성한다. (action은 form태그의 속성이다.)
+		3. action 작성 방법 (url을 작성하면 된다.)
 		: /컴텍스트패스/URLMapping
-		submit전에 검사하고 싶으면 form태그의 onsubmit속성에 검사한다.
+		4. submit전에 검사하고 싶으면 form태그의 onsubmit속성에 검사한다.
 	 -->
 	
 	<h3>폼 요소를 서버로 보내기</h3>
-	<form name="myForm" method="get" action="/01_SERVLET/Ex04_form" onsubmit="return fn_send()">
+	<form name="myForm" method="get" action="/01_SERVLET/Ex05_form" onsubmit="return fn_send()">
 		<label for="name">이름</label>
 		<input type="text" id="name" name="name"/><br/>
 		<label for="age">나이</label>
 		<input type="text" id="age" name="age"/><br/>
 		<label for="address">주소</label>
 		<input type="text" id="address" name="address"/><br/><br/>
-		<button>전송</button>
+		<input type="submit" value="전송"/>
 	</form>
 	
 </body>

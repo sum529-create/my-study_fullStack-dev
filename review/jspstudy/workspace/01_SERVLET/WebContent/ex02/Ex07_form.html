@@ -3,41 +3,59 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
 </head>
 <body>
-	<form method="get" onsubmit="fn_send(f)">
-		<input type="radio" name="check" id="check1" value="yes"/>예
-		<input type="radio" name="check" id="check2" value="no"/>아니오<br/>
-		<input type="checkbox" name="hobby" id="hobby1" value="게임"/>게임
-		<input type="checkbox" name="hobby" id=hobby2" value="책"/>책
-		<input type="checkbox" name="hobby" id="hobby3" value="여행"/>여행
+
+	<h3>폼 요소를 서버로 보내기</h3>
+	<form method="get">
+		
+		<input type = "radio" name = "choice" id="choice1" value="yes">
+		<label for="choice1">예</label>
+		<input type = "radio" name = "choice" id="choice2" value="no">
+		<label for="choice2">아니오</label><br/>
+		
+		<input type="checkbox" name ="interest" id="interest1" value="game">
+		<label for="interest1">게임</label>
+		<input type="checkbox" name ="interest" id="interest2" value="book">
+		<label for="interest2">책</label>
+		<input type="checkbox" name ="interest" id="interest3" value="travel">
+		<label for="interest3">여행</label>
+		
 		<select name="alpha">
 			<option value="A">A</option>
 			<option value="B">B</option>
 			<option value="C">C</option>
 		</select><br/>
+		
 		<select name="hangul" multiple>
 			<option value="가">가</option>
 			<option value="나">나</option>
 			<option value="다">다</option>
 		</select>
-		<input type="text" name="list" list="num"/>
-		<datalist id="num">
-			<option value="i"/>
-			<option value="ii"/>
+		
+		<input type="text" list="romans" name="roman" />
+		<datalist id="romans">
+			<option value = "i"/>
+			<option value = "ii"/>
 		</datalist><br/>
-		주소1 <input type="text" name="address" id="address"/><br/>
-		주소2 <input type="text" name="address" id="address"/><br/>
-		<input type="hidden" name="invisible" value="안보이지롱"/>
-		<textarea rows="5" cols="30" name="memo"></textarea><br/>
-		<button>전송</button>
+		
+		주소1 <input type="text" name="address"/><br/>
+		주소2 <input type="text" name="address"/><br/>
+				
+		<input type="hidden" name="invisible" value="투명인간"/>
+		
+		<textarea rows="3" cols="50" name="memo"></textarea><br/><br/>
+		
+		<input type="button" value="전송" onclick="fn_send(this.form)"/>
+		
 	</form>
-<script type="text/javascript">
-	function fn_send(f) {
-		f.action = "/01_SERVLET/Ex07_form";
-		f.submit();
-	}
-</script>	
+	
+	<script type="text/javascript">
+		function fn_send(f) {
+			f.action = '/01_SERVLET/Ex07_form';
+			f.submit();
+		}
+	</script>
+
 </body>
 </html>

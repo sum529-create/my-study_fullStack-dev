@@ -2,6 +2,7 @@ package ex03;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,11 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/Ex03_C")
-public class Ex03_C extends HttpServlet {
+@WebServlet("/Ex02_B")
+public class Ex02_B extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public Ex03_C() {
+    public Ex02_B() {
         super();
     }
 
@@ -35,14 +36,13 @@ public class Ex03_C extends HttpServlet {
 		out.println("<html>");
 		out.println("<head>");
 		out.println("<title>request</title>");
+		out.println("<script>");
+		out.println("location.href = '/01_SERVLET/Ex02_C?name=" + name + "&age=" + age + "'");
+		out.println("</script>");
 		out.println("</head>");
 		out.println("<body>");
-		out.println("<h3>다시받은이름: " + name  + "</h3>");
-		out.println("<h3>다시받은 나이: " + age  + "</h3>");
 		out.println("</body>");
 		out.println("</html>");
-		
-		
 		
 	}
 

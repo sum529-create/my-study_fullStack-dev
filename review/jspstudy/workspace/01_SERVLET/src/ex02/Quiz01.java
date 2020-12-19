@@ -29,16 +29,18 @@ public class Quiz01 extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-
+		
+		response.setContentType("text/html");
+		response.setCharacterEncoding("UTF-8");
+		
+		// 2. response할 데이터를 만듭니다.
 		Calendar cal = Calendar.getInstance();
 		int year = cal.get(Calendar.YEAR);
-		int month = cal.get(Calendar.MONTH);
+		int month = cal.get(Calendar.MONTH) + 1;
 		int day = cal.get(Calendar.DATE);
-		String message = year + "년 " + month + "월 " + day + "일입니다.";
+		String message = year + "년" + month + "월" + day + "일입니다.";
 		
-		response.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html");
+		// 3. 출력스트림을 만들어서 데이터를 전달합니다.
 		
 		PrintWriter out = response.getWriter();
 		out.println("<!DOCTYPE.html>");
@@ -52,7 +54,6 @@ public class Quiz01 extends HttpServlet {
 		out.println("</body>");
 		out.println("</head>");
 		out.println("</html>");
-		
 	}
 
 	/**

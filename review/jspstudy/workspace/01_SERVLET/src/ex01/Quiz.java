@@ -10,25 +10,35 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Quiz
  * 
- * localhost:9090/01_SERVLET/korea ¸¦ ÀÔ·ÂÇÏ¸é
- * Quiz°¡ ½ÇÇàµÇµµ·Ï ¼³Á¤ÇÏ½Ã¿À.
+ * localhost:9090/01_SERVLET/korea ë¥¼ ì…ë ¥í•˜ë©´
+ * Quizê°€ ì‹¤í–‰ë˜ë„ë¡ ì„¤ì •í•˜ì‹œì˜¤.
  * 
  */
-
 @WebServlet("/korea")
 public class Quiz extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
     public Quiz() {
         super();
+        // TODO Auto-generated constructor stub
     }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

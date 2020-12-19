@@ -9,11 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/Ex03_C")
-public class Ex03_C extends HttpServlet {
+@WebServlet("/Ex04_C")
+public class Ex04_C extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public Ex03_C() {
+    public Ex04_C() {
         super();
     }
 
