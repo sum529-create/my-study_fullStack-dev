@@ -16,6 +16,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -53,9 +54,15 @@ public class GetImageCaptchaCommand implements Command {
 			e.printStackTrace();
 		}
         
+        // 입력값 비교(InputKeyCheckCommand)에서 캡차 키를 필요로 하므로,
+        // session에 올려둔다.
+        // session은 request에서 알아낸다.
+        HttpSession session = request.getSession();
+        session.setAttribute("key", (String)obj.get("key"));
         
         // 2) 캡차 이미지 요청하기
         String key = (String)obj.get("key"); // https://openapi.naver.com/v1/captcha/nkey 호출로 받은 키값
+        // 이미지 실패용 (아무거나 넘김) String key = "aldfakjlkajgj";
         String apiURL2 = "https://openapi.naver.com/v1/captcha/ncaptcha.bin?key=" + key;
 
         // requestHeaders는 1) 캡차 키 발급 요청에서 이미 생성했으므로 또 생성할 필요가 없다.
@@ -71,11 +78,13 @@ public class GetImageCaptchaCommand implements Command {
         // 2) 실패 : {"result":false, "errorMessage":"Invalid key.", "errorCode":"CT001"}
         // String responseBody2 = get2(apiURL2,requestHeaders);
         
-        // 성공했을 때는 
+        // 성공했을 때는 캡차 이미지 파일이 생성되므로 생성된 파일명을 알아야 한다. 
         String filename = get2(request, apiURL2, requestHeaders);
-        System.out.println(filename);
-        
-		return null;
+        // System.out.println(filename);
+        PathNRedirect pathNRedirect = new PathNRedirect();
+        pathNRedirect.setPath("login/loginPage.jsp");
+        pathNRedirect.setRedirect(false); // request에 realPath, filename 저장되어 있으므로 forward
+		return pathNRedirect;
 	}
 	
 	// 1) 캡차 키 발급 요청용 get() 메소드
@@ -189,10 +198,10 @@ public class GetImageCaptchaCommand implements Command {
             while ((read = is.read(bytes)) != -1) {
                 outputStream.write(bytes, 0, read);
             }
-            // realPath와 filename을 JSP(로그인화면)에서 확인할 수 있도록
+            // directory(상대경로)와 filename을 JSP(로그인화면)에서 확인할 수 있도록
             // request에 저장해 둔다.
-            request.setAttribute("realPath", realPath);
-            request.setAttribute("filename", filename);
+            request.setAttribute("filename", filename + ".jpg");
+            request.setAttribute("directory", directory);
             // GetImageCaptchaCommand의 execute() 메소드는 PathNRequest를 반환하는데,
             // 이 때 반환방법은 forward이다. (request의 데이터 유지를 위해서) 
             
