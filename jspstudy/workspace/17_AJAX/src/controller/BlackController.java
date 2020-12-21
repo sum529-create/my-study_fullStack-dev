@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import command.BlackCommand;
+import command.BlackJSONCommand;
 import command.BlackStringCommand;
 import common.PathNRedirect;
 
@@ -44,7 +45,10 @@ public class BlackController extends HttpServlet {
 			command = new BlackStringCommand();
 			result = command.execute(request, response);
 			break;
-		
+		case "/getJSON.black":
+			command = new BlackJSONCommand();
+			result = command.execute(request, response);
+			break;
 		}
 		
 		/* AJAX를 처리하는 Constroller는 PathNRedirect가 필요하지 않다. */

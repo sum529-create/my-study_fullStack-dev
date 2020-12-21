@@ -1,7 +1,11 @@
 package dao;
 
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import dto.BlackDto;
 import mybatis.config.DBService;
 
 public class BlackDao {
@@ -23,6 +27,11 @@ public class BlackDao {
 	
 	
 	// DB 처리 메소드
-	
+	public List<BlackDto> list(){
+		SqlSession ss = factory.openSession();
+		List<BlackDto> list = ss.selectList("mybatis.mapper.black.blackList");
+		ss.close();
+		return list;
+	}
 	
 }
