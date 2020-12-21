@@ -3,13 +3,14 @@ package command;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import common.PathNRedirect;
 import dao.GreenDao;
 import dto.GreenDto;
 
 public class GreenViewCommand implements GreenCommand {
 
 	@Override
-	public String execute(HttpServletRequest request, HttpServletResponse response) {
+	public PathNRedirect execute(HttpServletRequest request, HttpServletResponse response) {
 		String strNo = request.getParameter("no");
 		int no = 0;
 		if(strNo != null && !strNo.isEmpty()) {
@@ -23,15 +24,19 @@ public class GreenViewCommand implements GreenCommand {
 			result = true;
 		}
 		// boolean result = (greenDto != null);
-		String path = null;
+		PathNRedirect pathNRedirect = new PathNRedirect();
 		if(result) {	// result가 true이므로 성공
 			request.setAttribute("greenDto", greenDto);
-			path = "green/viewPage.jsp";
+			pathNRedirect.setPath("green/viewPage.jsp");
+			pathNRedirect.setRedirect(false); 	// forward   생략가능
 		}else { // 실패
-			path = "green/viewFail.jsp";
+			pathNRedirect.setPath("green/viewFail.jsp");
+			pathNRedirect.setRedirect(false); 	// forward   생략가능
 		}
+		/* 만약 setRedirect를 생략하면 
+		 * 기본값인 false인 forward방식이 된다.*/
 		
-		return path;
+		return pathNRedirect;
 	}
 
 }
