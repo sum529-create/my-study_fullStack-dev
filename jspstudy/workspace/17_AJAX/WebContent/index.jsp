@@ -54,14 +54,17 @@
 				url: '/17_AJAX/getJSON.black',
 				type: 'get',
 				dataType: 'json',  // 받는(응답) 결과의 타입(실제로는 JSON을 String으로 바꾼 결과를 받아온다.)
-				success: function(responseJSON) {
-					var result = '<tr>';
-					result += '<td>' + responseJSON.name + '</td>';
-					result += '<td>' + responseJSON.age + '</td>';
-					result += '<td>' + responseJSON.gender + '</td>';
-					result += '<td>' + responseJSON.phone + '</td>';
-					result += '<td>' + responseJSON.address + '</td>';
-					result += '</tr>';
+				success: function(responseJSONArray) {
+					var result = '';
+					$.each(responseJSONArray, function(index, responseJSON){
+						result += '<tr>';
+						result += '<td>' + responseJSON.name + '</td>';
+						result += '<td>' + responseJSON.age + '</td>';
+						result += '<td>' + responseJSON.gender + '</td>';
+						result += '<td>' + responseJSON.phone + '</td>';
+						result += '<td>' + responseJSON.address + '</td>';
+						result += '</tr>';						
+					});
 					$('#content').empty();
 					$('#content').append(result);
 				},
