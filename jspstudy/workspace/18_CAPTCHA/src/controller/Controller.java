@@ -38,6 +38,12 @@ public class Controller extends HttpServlet {
 			command = new InputKeyCheckCommand();
 			pathNRedirect = command.execute(request, response);
 			break;
+		// 간단 이동
+		case "/index.do":
+			pathNRedirect = new PathNRedirect();
+			pathNRedirect.setPath("index.jsp");
+			pathNRedirect.setRedirect(true);
+			break;
 		}
 		
 		
