@@ -13,7 +13,7 @@ import command.white.WhiteTitleCommand;
 import common.PathNRedirect;
 import common.Command;
 
-@WebServlet("*.white")
+@WebServlet("*.emp")
 public class EmpController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
