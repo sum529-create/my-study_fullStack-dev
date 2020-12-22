@@ -19,6 +19,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	
 	<mappers>
         <mapper resource="mybatis/mapper/white.xml"/> <!-- '.(콤마)'사용은 불가 -> '/' -->
+        <mapper resource="mybatis/mapper/emp.xml"/> <!-- '.(콤마)'사용은 불가 -> '/' -->
 	</mappers>
 	
 </configuration>

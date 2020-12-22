@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="mybatis.mapper.white">	<!-- mybatis.mapper -> package,
+												 .mapper -> mapper.xml -->
+	<select id="getList" resultType="dto.WhiteDto">
+		SELECT NO, TITLE, CONTENT, POSTDATE
+			FROM WHITE
+	</select>
+	<!-- 파라미터로 건네받은 값이 있으니 para~, 검색용이니 like 일부검색용-->
+	<select id="getTitleList" parameterType="String" resultType="dto.WhiteDto">
+		SELECT NO, TITLE, CONTENT, POSTDATE
+		  FROM WHITE
+		 WHERE TITLE LIKE '%' || #{query} || '%'
+	</select>
+	
+	<select id="getContentList" parameterType="String" resultType="dto.WhiteDto">
+		SELECT NO, TITLE, CONTENT, POSTDATE
+		  FROM WHITE
+		 WHERE CONTENT LIKE CONCAT('%', CONCAT(#{query}, '%'))	
+	</select>
+	<!--  CONCAT은 2개의 쿼리밖에 되지 않음 -->
+	
+		<select id="getBothList" parameterType="String" resultType="dto.WhiteDto">
+		SELECT NO, TITLE, CONTENT, POSTDATE
+		  FROM WHITE
+		 WHERE TITLE LIKE #{query}
+		 	OR CONTENT LIKE #{query}
+	</select>
+</mapper>
