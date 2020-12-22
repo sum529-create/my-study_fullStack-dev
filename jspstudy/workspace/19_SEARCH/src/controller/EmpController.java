@@ -1,17 +1,18 @@
 package controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import command.white.WhiteContentCommand;
-import command.white.WhiteListCommand;
-import command.white.WhiteTitleCommand;
-import common.PathNRedirect;
+import command.emp.SearchAllCommand;
+import command.emp.SearchDeptCommand;
+import command.emp.SearchDynamicCommand;
 import common.Command;
+import common.PathNRedirect;
 
 @WebServlet("*.emp")
 public class EmpController extends HttpServlet {
@@ -33,7 +34,18 @@ public class EmpController extends HttpServlet {
 		Command command = null;
 		
 		switch (cmd) {
-			
+		case "/listPage.emp":
+			command = new SearchAllCommand();
+			pathNRedirect = command.execute(request, response);
+			break;
+		case "/searchDept.emp":
+			command = new SearchDeptCommand();
+			pathNRedirect = command.execute(request, response);
+			break;
+		case "/searchDynamic.emp":
+			command = new SearchDynamicCommand();
+			pathNRedirect = command.execute(request, response);
+			break;
 		}
 		
 		String path = pathNRedirect.getPath();
@@ -43,6 +55,7 @@ public class EmpController extends HttpServlet {
 		} else {
 			request.getRequestDispatcher(path).forward(request, response);
 		}
+    
 		
 	}
 

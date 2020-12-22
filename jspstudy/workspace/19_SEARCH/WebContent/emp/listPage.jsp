@@ -30,7 +30,7 @@
 				</tr>
 			</c:if>
 			<c:if test="${not empty list }">
-				<c:forEach var="whiteDto" items="${list}">
+				<c:forEach var="empDto" items="${list}">
 					<tr>
 						<td>${empDto.employee_id }</td>
 						<td>${empDto.last_name }</td>

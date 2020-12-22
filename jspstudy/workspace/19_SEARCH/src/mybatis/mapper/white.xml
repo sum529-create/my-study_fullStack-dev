@@ -23,7 +23,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	<!--  CONCAT은 2개의 쿼리밖에 되지 않음 -->
 	
-		<select id="getBothList" parameterType="String" resultType="dto.WhiteDto">
+	<select id="getBothList" parameterType="String" resultType="dto.WhiteDto">
 		SELECT NO, TITLE, CONTENT, POSTDATE
 		  FROM WHITE
 		 WHERE TITLE LIKE #{query}

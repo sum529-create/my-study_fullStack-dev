@@ -5,5 +5,46 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="mybatis.mapper.emp">	<!-- mybatis.mapper -> package,
 												 .mapper -> mapper.xml -->
+   	<select id="allList" resultType="dto.EmpDto">
+		SELECT * 
+			FROM EMP
+	</select>												 
+												 
+												 
+	<select id="deptList" parameterType="Map" resultType="dto.EmpDto">
+		SELECT *
+		  FROM EMP
+		 WHERE DEPARTMENT_ID IN 
+		 <foreach item="department_id" collection="department_list" open="(" close=")" separator=",">
+		 	#{department_id}
+		 </foreach>
+	</select>
 	
+<!-- 	<select id="dynamicList" parameterType="Map" resultType="dto.EmpDto">
+		SELECT * FROM EMP
+		<if test="column == 'EMPLOYEE_ID'">
+		  WHERE EMPLOYEE_ID = #{query}</if>
+		<if test="column == 'LAST_NAME'">
+		  WHERE LAST_NAME = INITCAP(#{query})</if>
+	</select> -->
+	<select id="dynamicList" parameterType="Map" resultType="dto.EmpDto">
+		SELECT * 
+			FROM EMP
+		 WHERE ${column} = INITCAP(#{query})
+	</select>
+		<!-- WHERE ${column} LIKE '%' || #{query} || '%' -->
+	
+	<!-- ${} #{}의 차이 -> 문자 표기법과 숫자 표기법
+		$ -> 숫자, # -> 문자
+		칼럼 이름을 붙일때는 '$'를 붙인다. => ' '를 붙이지 않게 하기 위한 방법
+		
+		WHERE #{column} = #{query}
+		= where 'employee_id' = '102'
+		= where 'employee_id' =  to_number('102')
+		
+		WHERE ${column} = #{query}
+		= where employee_id = '102'
+		
+		=> ' '의 차이
+	 -->
 </mapper>
