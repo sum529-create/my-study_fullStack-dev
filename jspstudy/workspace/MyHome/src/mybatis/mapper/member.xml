@@ -3,18 +3,25 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
-<mapper namespace="mybatis.mapper.member">	<!-- mybatis.mapper -> package,
-												 .mapper -> mapper.xml -->
+<mapper namespace="mybatis.mapper.member">
+
 	<select id="selectBymIdmPw" parameterType="dto.MemberDto" resultType="dto.MemberDto">
 		SELECT *
-			FROM MEMBER
+		  FROM MEMBER
 		 WHERE MID = #{mId}
-		 	AND MPW = #{mPw}
+		   AND MPW = #{mPw}
 	</select>
+	
 	<select id="selectBymEmail" parameterType="String" resultType="dto.MemberDto">
 		SELECT *
-			FROM MEMBER
+		  FROM MEMBER
 		 WHERE MEMAIL = #{mEmail}
 	</select>
 	
+	<update id="updatemPw" parameterType="dto.MemberDto">
+		UPDATE MEMBER
+		   SET MPW = #{mPw}
+		 WHERE MNO = #{mNo}
+	</update>
+
 </mapper>

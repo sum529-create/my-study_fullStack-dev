@@ -44,10 +44,6 @@ public class MemberController extends HttpServlet {
 			command = new MemberLogoutCommand();
 			pathNRedirect = command.execute(request, response);
 			break;
-		/*case "/findId.member":
-			command = new MemberFindIdCommand();
-			pathNRedirect = command.execute(request, response);
-			break;*/
 		
 		// 단순 이동
 		case "/index.member":
@@ -61,6 +57,18 @@ public class MemberController extends HttpServlet {
 		case "/findIdPage.member":
 			pathNRedirect = new PathNRedirect();
 			pathNRedirect.setPath("member/findIdPage.jsp");
+			break;
+		case "/findPwPage.member":
+			pathNRedirect = new PathNRedirect();
+			pathNRedirect.setPath("member/findPwPage.jsp");
+			break;
+		case "/changePwPage.member":
+			pathNRedirect = new PathNRedirect();
+			pathNRedirect.setPath("member/changePwPage.jsp");
+			break;
+		case "/myPage.member":
+			pathNRedirect = new PathNRedirect();
+			pathNRedirect.setPath("member/myPage.jsp");
 			break;
 		}
 		

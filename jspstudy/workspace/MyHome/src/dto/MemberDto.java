@@ -10,7 +10,7 @@ public class MemberDto {
 	private String mEmail;
 	private String mPhone;
 	private String mAddress;
-	private Date mRegade;
+	private Date mRegDate;
 	public int getmNo() {
 		return mNo;
 	}
@@ -53,11 +53,11 @@ public class MemberDto {
 	public void setmAddress(String mAddress) {
 		this.mAddress = mAddress;
 	}
-	public Date getmRegade() {
-		return mRegade;
+	public Date getmRegDate() {
+		return mRegDate;
 	}
-	public void setmRegade(Date mRegade) {
-		this.mRegade = mRegade;
+	public void setmRegDate(Date mRegDate) {
+		this.mRegDate = mRegDate;
 	}
 	
 	

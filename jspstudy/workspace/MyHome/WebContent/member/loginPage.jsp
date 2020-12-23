@@ -25,7 +25,8 @@
 		<label for="mPw">비밀번호</label><br/>
 		<input type="password" name="mPw" id="mPw" /><br/><br/>
 		<input type="button" value="로그인" onclick="fn_login(this.form)" /><br/><br/>
-		<a href="/MyHome/findIdPage.member">아이디 찾기</a>
+		<a href="/MyHome/findIdPage.member">아이디 찾기</a>&nbsp;&nbsp;
+		<a href="/MyHome/findPwPage.member">비밀번호 찾기</a>
 	</form>
 </div>
 

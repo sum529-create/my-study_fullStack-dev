@@ -7,7 +7,7 @@ import dto.MemberDto;
 import mybatis.config.DBService;
 
 public class MemberDao {
-	
+
 	// 필드
 	private SqlSessionFactory factory;
 	
@@ -27,11 +27,26 @@ public class MemberDao {
 		ss.close();
 		return dto;
 	}
-	
 	public MemberDto selectBymEmail(String mEmail) {
 		SqlSession ss = factory.openSession();
-		MemberDto memberDto = ss.selectOne("mybatis.mapper.member.selectBymEmail", mEmail);
+		MemberDto dto = ss.selectOne("mybatis.mapper.member.selectBymEmail", mEmail);
 		ss.close();
-		return memberDto;
+		return dto;
 	}
+	public int updatemPw(MemberDto memberDto) {
+		SqlSession ss = factory.openSession(false);
+		int result = ss.update("mybatis.mapper.member.updatemPw", memberDto);
+		if (result > 0) {
+			ss.commit();
+		}
+		ss.close();
+		return result;
+	}
+	
+	
+	
+	
+	
+	
+	
 }

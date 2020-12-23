@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 .head-wrap{
-	height: 200px;
+	height: 100px;
 }
 
 .body-wrap{
@@ -9,5 +9,5 @@
 }
 
 .foot-wrap{
-	height: 100px;
+	height: 200px;
 }
