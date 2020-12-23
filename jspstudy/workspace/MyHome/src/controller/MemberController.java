@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import command.member.MemberCommand;
-import command.member.MemberFindIdCommand;
 import command.member.MemberLoginCommand;
 import command.member.MemberLogoutCommand;
 import common.PathNRedirect;

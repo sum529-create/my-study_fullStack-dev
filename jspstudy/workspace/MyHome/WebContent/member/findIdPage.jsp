@@ -44,7 +44,8 @@
 <form>
 	가입 당시 이메일을 입력하세요.<br/><br/>
 	<input type="text" name="mEmail" id = "mEmail"/>
-	<input type="button" value="아이디 찾기" id="findIdBtn" onclick="fn_findId()" /> <!-- onclick="fn_findId(this.form)" -->
+	<input type="button" value="아이디 찾기" id="findIdBtn"/> <!-- onclick="fn_findId(this.form)" -->
+	<input type="button" value="로그인 하러 가기" onclick="location.href='/MyHome/loginPage.member'"/>
 </form>	
 
 <%-- 아이디 찾기 결과가 나타날 위치 --%>
