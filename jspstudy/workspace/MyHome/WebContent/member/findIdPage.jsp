@@ -20,7 +20,7 @@
 	});
 	function fn_findId() {
 		$.ajax({
-			url : '/MyHome/findId.member',
+			url : '/MyHome//MemberFindId',		// 매핑(/MemberFindId)을 가진 별도 Servlet으로 간다.
 			type: 'post',
 			data: 'mEmail=' + $('#mEmail').val(), // url로 보내는 파라미터
 			dataType: 'text',	// 받아오는 데이터의 타입

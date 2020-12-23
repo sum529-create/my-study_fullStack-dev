@@ -45,10 +45,11 @@ public class MemberController extends HttpServlet {
 			command = new MemberLogoutCommand();
 			pathNRedirect = command.execute(request, response);
 			break;
-		case "/findId.member":
+		/*case "/findId.member":
 			command = new MemberFindIdCommand();
 			pathNRedirect = command.execute(request, response);
-			break;
+			break;*/
+		
 		// 단순 이동
 		case "/index.member":
 			pathNRedirect = new PathNRedirect();
