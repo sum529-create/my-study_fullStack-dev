@@ -5,6 +5,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="mybatis.mapper.member">	<!-- mybatis.mapper -> package,
 												 .mapper -> mapper.xml -->
-
+	<select id="selectBymIdmPw" parameterType="dto.MemberDto" resultType="dto.MemberDto">
+		SELECT *
+			FROM MEMBER
+		 WHERE MID = #{mId}
+		 	AND MPW = #{mPw}
+	</select>
 	
 </mapper>

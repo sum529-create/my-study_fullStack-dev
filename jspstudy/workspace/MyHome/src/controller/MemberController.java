@@ -10,9 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import command.member.MemberCommand;
+import command.member.MemberLoginCommand;
 import common.PathNRedirect;
 
-@WebServlet(".member")
+@WebServlet("*.member")
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -33,11 +34,19 @@ public class MemberController extends HttpServlet {
 		MemberCommand command = null;
 		
 		switch (cmd) {
-		case "":
-			
+		// 단순이동
+		case "/loginPage.member":
+			pathNRedirect = new PathNRedirect();
+			pathNRedirect.setPath("member/loginPage.jsp");
 			break;
-
-		default:
+		case "/index.member":
+			pathNRedirect = new PathNRedirect();
+			pathNRedirect.setPath("index.jsp");
+			break;
+		// command 필요
+		case "/login.member":
+			command = new MemberLoginCommand();
+			pathNRedirect = command.exequte(request, response);
 			break;
 		}
 		String path = pathNRedirect.getPath();

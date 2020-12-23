@@ -27,11 +27,23 @@
 <body>
 	<div class="wrap">
 		<div class="head-wrap">
+			<%-- 1. 로그인 안 된 상태 --%>
 			<input type="button" value="myHome 로그인" onclick="location.href='/MyHome/loginPage.member'"/>
 			<input type="button" value="myHome 회원가입" onclick="location.href='/MyHome/signUpPage.member'"/>
-			<input type="button" value="마이페이지" onclick="location.href='/MyHome/myPage.member'"/>
+			<input type="button" value="마이페이지" onclick="location.href='/MyHome/loginPage.member'"/>
 			<input type="button" value="방명록" onclick="location.href='/MyHome/ ... '"/>
 			<input type="button" value="BBS" onclick="location.href='/MyHome/ ... '"/>
 			<input type="button" value="BBS" onclick="location.href='/MyHome/ ... '"/>
 			<input type="button" value="게시판" onclick="location.href='/MyHome/ ... '"/>
+			<%-- 2. 로그인 상태 --%>
+			<c:if test="$[loginDto ne null]">
+				${loginDto.mName}님 반갑습니다.&nbsp;&nbsp;
+				<input type="button" value="로그아웃" onclick="fn_logout()'"/>
+				<input type="button" value="회원탈퇴" onclick="fn_signOut()'"/>
+				<input type="button" value="마이페이지" onclick="location.href='/MyHome/myPage.member'"/>
+				<input type="button" value="방명록" onclick="location.href='/MyHome/ ... '"/>
+				<input type="button" value="BBS" onclick="location.href='/MyHome/ ... '"/>
+				<input type="button" value="BBS" onclick="location.href='/MyHome/ ... '"/>
+				<input type="button" value="게시판" onclick="location.href='/MyHome/ ... '"/>
+			</c:if>
 		</div>

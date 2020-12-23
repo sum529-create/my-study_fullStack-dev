@@ -3,6 +3,8 @@ package command.member;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import common.PathNRedirect;
+
 public interface MemberCommand {
-	public String exequte(HttpServletRequest request, HttpServletResponse response);
+	public PathNRedirect exequte(HttpServletRequest request, HttpServletResponse response);
 }
