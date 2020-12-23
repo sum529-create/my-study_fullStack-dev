@@ -27,4 +27,11 @@ public class MemberDao {
 		ss.close();
 		return dto;
 	}
+	
+	public MemberDto selectBymEmail(String mEmail) {
+		SqlSession ss = factory.openSession();
+		MemberDto memberDto = ss.selectOne("mybatis.mapper.member.selectBymEmail", mEmail);
+		ss.close();
+		return memberDto;
+	}
 }

@@ -11,5 +11,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 WHERE MID = #{mId}
 		 	AND MPW = #{mPw}
 	</select>
+	<select id="selectBymEmail" parameterType="String" resultType="dto.MemberDto">
+		SELECT *
+			FROM MEMBER
+		 WHERE MEMAIL = #{mEmail}
+	</select>
 	
 </mapper>

@@ -1,10 +1,11 @@
+  
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+
+<jsp:include page="../template/header.jsp">
+	<jsp:param value="로그인" name="title" />
+</jsp:include>
+
 <script type="text/javascript">
 	function fn_login(f) {
 		// if ($('#mId').val() == '' || $('#mPw').val() == '') {
@@ -23,8 +24,9 @@
 		<input type="text" name="mId" id="mId" autofocus /><br/><br/>
 		<label for="mPw">비밀번호</label><br/>
 		<input type="password" name="mPw" id="mPw" /><br/><br/>
-		<input type="button" value="로그인" onclick="fn_login(this.form)" />
+		<input type="button" value="로그인" onclick="fn_login(this.form)" /><br/><br/>
+		<a href="/MyHome/findIdPage.member">아이디 찾기</a>
 	</form>
 </div>
-</body>
-</html>
+
+<%@ include file="../template/footer.jsp" %>
