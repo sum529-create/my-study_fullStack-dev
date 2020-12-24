@@ -39,6 +39,12 @@ public class MemberDao {
 		ss.close();
 		return dto;
 	}
+	public MemberDto selectBymId (String mId) {
+		SqlSession ss = factory.openSession();
+		MemberDto dto = ss.selectOne("mybatis.mapper.member.selectBymId", mId);
+		ss.close();
+		return dto;
+	}
 	
 	
 	public int updatemPw(MemberDto memberDto) {
