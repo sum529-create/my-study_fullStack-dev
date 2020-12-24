@@ -9,6 +9,7 @@
 	
 	$(function(){
 		$('#updatePwBtn').click(fn_updatePw);
+		$('#updateBtn').click(fn_update);
 	});
 	
 	function fn_updatePw() {
@@ -50,6 +51,38 @@
 		});
 	}
 	
+	function fn_update() {
+		if('${loginDto.mName}' == $('#mName').val() && 
+				'${loginDto.mEmail}' == $('#mEmail').val() && 
+				'${loginDto.mPhone}' == $('#mPhone').val() && 
+				'${loginDto.mAddress}' == $('#mAddress').val()){
+			alert('변경할 회원 정보가 없습니다.');
+			return;
+		}
+		if($('#mEmail').val() == ''){
+			alert('이메일은 필수입니다.');
+			return;
+		}
+		$.ajax({
+			url : '/MyHome//MemberUpdate',
+			type: 'post',
+			data: $('#f').serialize(),
+			dataType: 'json',
+			success: function(responseObj) {
+				if(responseObj.result){
+					alert('회원 정보가 수정되었습니다.');
+					
+				}else{
+					alert('회언 정보가 수정되지 않았습니다.');
+				}
+			},
+			error: function() {
+				alert('실패');
+			}
+		
+		});
+	}
+	
 	
 </script>
 
@@ -70,16 +103,16 @@
 	<span id="updatePwResult"></span><br/><br/>
 	
 	성명<br/>
-	<input type="text" name="mName" value="${loginDto.mName}" /><br/><br/>
+	<input type="text" name="mName" id="mName" value="${loginDto.mName}" /><br/><br/>
 	
 	이메일<br/>
-	<input type="text" name="mEmail" value="${loginDto.mEmail}" /><br/><br/>
+	<input type="text" name="mEmail" id="mEmail" value="${loginDto.mEmail}" /><br/><br/>
 	
 	전화번호<br/>
-	<input type="text" name="mPhone" value="${loginDto.mPhone}" /><br/><br/>
+	<input type="text" name="mPhone" id="mPhone" value="${loginDto.mPhone}" /><br/><br/>
 	
 	주소<br/>
-	<input type="text" name="mAddress" value="${loginDto.mAddress}" /><br/><br/>
+	<input type="text" name="mAddress" id="mAddress" value="${loginDto.mAddress}" /><br/><br/>
 	
 	가입일<br/>
 	${loginDto.mRegDate}<br/><br/>
