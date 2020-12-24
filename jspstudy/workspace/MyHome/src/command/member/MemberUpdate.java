@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
 
@@ -45,6 +46,13 @@ public class MemberUpdate extends HttpServlet {
 		// {"result": false}
 		JSONObject responseObj = new JSONObject();
 		if (result > 0) {
+			// session에 올라간 loginDto를 제거하고 새 loginDto를 올린다.
+			HttpSession session = request.getSession();
+			if(session.getAttribute("loginDto")!=null) {
+				session.removeAttribute("loginDto");
+				MemberDto loginDto = MemberDao.getInstance().selectBymEmail(mEmail);
+				session.setAttribute("loginDto", loginDto);
+			}
 			responseObj.put("result", true);
 		} else {
 			responseObj.put("result", false);
