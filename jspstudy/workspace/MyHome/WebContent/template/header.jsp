@@ -32,6 +32,7 @@
 	<div class="wrap">
 		
 		<div class="head-wrap">
+			<a href="/MyHome/"><img src="assets/img/logo.png" style ="width:50px;margin-right:30px;float:left;"/></a>
 			
 			<%-- 1. 로그인 안 된 상태 --%>
 			<c:if test="${loginDto eq null}">
