@@ -1,0 +1,32 @@
+view[input]_JSP -> java_controller[DateController]_SERVLET
+ -> java_command[Today]_JAVA_class -> java_controller[DateController]_SERVLET
+	 -> view[today]_JSP
+
+JSP => SERVLET => JAVA => 
+     <=	          <=
+
+------- 오전 타임 복습 --------
+어떻게 자바로 넘어갈까
+
+JSP f.submit()
+     URI?a=10 	=> 파라미터로 전송됨 request
+
+파라미터를 받는 것은
+Controller	Servlet으로 (request전달됨)
+      protected void doGet(HttpServletRequest request, ...){
+	command = new Command();
+	String path = command.execute(request, ... );
+	request.getRequestDispatcher(path).foward(request, ...);	// path = "output.jsp"
+
+Model 		Java Class  (request전달됨)
+      public String execute(HttpServletRequest request, ...){
+	request.setAttribute("result", 111);	// 전달된 request와 동일함
+	return "output.jsp";		// path로 전달
+
+
+=> 위 모두가 참조변수이기에 가능함 (같은 변수를 공유한다)
+
+javascript -> jquery
+과 같이
+jsp -> Spring
+도 넘어가면서 코드가 짧아진다.
