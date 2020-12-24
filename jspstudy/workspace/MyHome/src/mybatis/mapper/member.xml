@@ -17,6 +17,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		  FROM MEMBER
 		 WHERE MEMAIL = #{mEmail}
 	</select>
+
+	<!-- mNo 설정할 때 String으로 해뒀었음 오라클이 알아서 변환해줌 그래서 따로 변환안함 -->
+	<select id="selectBymNo" parameterType="String" resultType="dto.MemberDto">
+		SELECT *
+		  FROM MEMBER
+		 WHERE MNO = #{mNo}
+	</select>
 	
 	<update id="updatemPw" parameterType="dto.MemberDto">
 		UPDATE MEMBER

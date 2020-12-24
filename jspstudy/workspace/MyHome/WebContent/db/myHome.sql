@@ -17,3 +17,6 @@ CREATE TABLE MEMBER
 );
 
 INSERT INTO MEMBER VALUES(MEMBER_SEQ.NEXTVAL, 'admin', '1111', '관리자', 'admin@myhome.com', '010-0000-0000', 'seoul', SYSDATE);
+
+
+SELECT * FROM MEMBER;
