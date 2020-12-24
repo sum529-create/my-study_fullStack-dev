@@ -10,7 +10,11 @@
 	
 	$(function(){
 		fn_idCheck();
-		
+		// fn_pwCheck();
+		// fn_pwCheck2();
+		// fn_emailCheck();
+		fn_signUp();
+		fn_clear();
 	});
 	
 	function fn_idCheck() {
@@ -36,6 +40,42 @@
 				}else{	// 정규식 패턴을 만족하지 않으면
 					$('#idCheckResult').text('5 ~ 20자 사이의 소문자나 숫자 사용, 소문자로 시작').css('color', 'red');					
 				}
+			});
+		});
+	}
+	
+	function fn_signUp() {
+		$('#signUpBtn').click(function(){
+			$.ajax({
+				url: '/MyHome/SignUp',
+				type: 'post',
+				data: $('#f').serialize(),
+				dataType: 'json',
+				success: function(responseObj) {
+					if (responseObj.result) {
+						alert('회원 가입에 성공했습니다.');
+						location.href = '/MyHome/loginPage.member';
+					} else {
+						alert('회원 가입에 실패했습니다.');
+					}
+				},
+				error: function() { alert('실패'); }
+			});
+		});
+	}
+	
+	function fn_clear() {
+		$('#clearBtn').click(function () {
+			$('input[type=text], intput[type="password"]').each(function () {
+				// 위 값 하나하나를 this로 칭한다. input만 val() 속성 사용 가능
+				$(this).val('');
+			});
+			$('span[id]').each(function name() {
+				$(this).text('');
+			});
+			$('#mId').focus();
+			$.ajax({
+				
 			});
 		});
 	}

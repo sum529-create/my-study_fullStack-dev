@@ -25,6 +25,10 @@
 			location.href = '/MyHome/logout.member';
 		}
 	}
+	
+	function fn_signOutPage() {
+		location.href='/MyHome/signOutPage.member';
+	}
 </script>
 </head>
 <body>
@@ -48,7 +52,7 @@
 			<c:if test="${loginDto ne null}">
 				${loginDto.mName} 님 반갑습니다&nbsp;&nbsp;
 				<input type="button" value="로그아웃" onclick="fn_logout()" />
-				<input type="button" value="회원탈퇴" onclick="fn_signOut()" />
+				<input type="button" value="회원탈퇴" onclick="fn_signOutPage()" />
 				<input type="button" value="마이페이지" onclick="location.href='/MyHome/myPage.member'" />
 				<input type="button" value="방명록" onclick="location.href='/MyHome/'" />
 				<input type="button" value="BBS" onclick="location.href='/MyHome/'" />
