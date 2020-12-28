@@ -7,6 +7,10 @@
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 <script type="text/javascript">
+
+
+<%-- $.ajax({}) -> 는 input 타입에서 보내주기도 하고 받기도 하겠다는 뜻. --%>
+
 	// 페이지 로드 이벤트 (페이지 다 읽어서 id 먼저 파악하기)
 	// 1. $(document).ready(function(){});
 	// 2. $(function(){});
