@@ -77,6 +77,11 @@ public class GuestController extends HttpServlet {
 			pathNRedirect.setPath("guest/guestDeletePage.jsp");
 			pathNRedirect.setRedirect(false);
 			break;
+		case "/guestUpdatePage.guest":
+			pathNRedirect = new PathNRedirect();
+			pathNRedirect.setPath("guest/guestUpdatePage.jsp");
+			pathNRedirect.setRedirect(false);
+			break;
 		}
 		
 		String path = pathNRedirect.getPath();

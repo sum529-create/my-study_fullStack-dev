@@ -15,6 +15,11 @@
 		f.action = '/MyHome/guestDeleteFile.guest';
 		f.submit();
 	}
+	function fn_guestUpdatePage(f) {
+		f.action = '/MyHome/guestUpdatePage.guest';
+		f.submit();
+	}
+	
 	function fn_guestDeletePage(f) {
 		f.action = '/MyHome/guestDeletePage.guest';
 		f.submit();

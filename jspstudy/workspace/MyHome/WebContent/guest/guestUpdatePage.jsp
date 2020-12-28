@@ -4,34 +4,44 @@
 	<jsp:param value="비밀번호변경" name="title" />
 </jsp:include>
 <script>
-	function fn_guestInsert(f) {
-		if (f.gTitle.value == '' || f.gPw.value == '') {
-			alert('제목과 비밀번호는 필수입니다.');
+	function fn_guestUpdatePage(f) {
+		if(f.gTitle.value == ''){
+			alert('제목은 필수입니다.');
+			f.gTitle.focus();
 			return;
 		}
-		f.action = '/MyHome/guestInsert.guest';
+		if('${param.gTitle}' == f.gTitle.value && 
+				'${param.gContent}' == f.gContent.value){
+			alert('수정할 내용이 없습니다.');
+			return;
+		}
+		f.action = '/MyHome/guestUpdate.guest';
 		f.submit();
 	}
 	
 </script>
 <form method = "post" enctype="multipart/form-data">
 	제목<br/>
-	<input type="text" name="gTitle" value="${guestDto.gTitle}"/><br/><br/>
+	<input type="text" name="gTitle" value="${param.gTitle}"/><br/><br/>
 	작성자<br/>
-	<input type="text" name="gWriter" value="${guestDto.gWriter }"/><br/><br/>
+	<input type="text" name="gWriter" value="${param.gWriter }"/><br/><br/>
 	파일첨부<br/>
-	<c:if test="${guestDto.gFilename eq null }">
-		없음
+	<input type="file" name="gFilename"/><br/><br/>
+	&nbsp;&nbsp;
+	<c:if test="${empty param.gFilename}">
+		[기존 첨부파일: 없음]<br/><br/>
 	</c:if>
-	<c:if test="${guestDto.gFilename ne null }">
-		<a href="/MyHome/download.guest?gFilename=${guestDto.gFilename}">${guestDto.gFilename }</a>
-		&nbsp;&nbsp;
-		<input type="button" value="삭제" onclick="fn_deleteFile(this.form)"/>
-	</c:if><br/><br/>
+	<c:if test="${not empty param.gFilename}">
+		[기존 첨부파일: ${param.gFilename}]<br/><br/>
+	</c:if>
 	내용<br/>
-	<textarea rows="10" cols="40" name="gContent">${guestDto.gContent }</textarea><br/><br/>
-	<input type="button" value="방명록수정하기" onclick="fn_guestUpdatePage(this.form)"/>
-	<input type="button" value="방명록삭제하기" onclick="fn_guestDeletePage(this.form)"/>
+	<textarea rows="10" cols="40" name="gContent">${param.gContent }</textarea><br/><br/>
+	
+	<%-- hidden --%>
+	<input type="hidden" name="gNo" value="${param.gNo}"/>
+	
+	<input type="button" value="변경내용수정하기" onclick="fn_guestUpdatePage(this.form)"/>
+	<input type="reset" value="다시작성하기"/>
 	<input type="button" value="방명록목록으로이동하기" onclick="location.href='/MyHome/guestListPage.guest'"/>
 </form>
 
