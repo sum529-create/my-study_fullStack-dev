@@ -37,7 +37,7 @@
 			<c:forEach var="guestDto" items="${list}">
 				<tr>
 					<td>${guestDto.gNo}</td>
-					<td>${guestDto.gTitle}</td>
+					<td><a href="/MyHome/guestViewPage.guest?gNo=${guestDto.gNo}">${guestDto.gTitle}</a></td>
 					<td>${guestDto.gWriter}</td>
 					<td>${guestDto.gPostDate}</td>
 					<td>

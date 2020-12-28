@@ -12,6 +12,7 @@ import command.guest.DownloadCommand;
 import command.guest.GuestCommand;
 import command.guest.GuestInsertCommand;
 import command.guest.GuestListCommand;
+import command.guest.GuestViewCommand;
 import command.member.MemberCommand;
 import command.member.MemberLoginCommand;
 import command.member.MemberLogoutCommand;
@@ -51,7 +52,10 @@ public class GuestController extends HttpServlet {
 		case "/download.guest":
 			DownloadCommand.download(request, response);
 			break;
-			
+		case "/guestViewPage.guest":
+			command = new GuestViewCommand();
+			pathNRedirect = command.execute(request, response);
+			break;
 		// 단순이동
 		case "/guestInsertPage.guest":
 			pathNRedirect = new PathNRedirect();

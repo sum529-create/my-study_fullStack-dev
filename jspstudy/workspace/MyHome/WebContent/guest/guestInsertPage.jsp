@@ -3,7 +3,16 @@
 <jsp:include page="../template/header.jsp">
 	<jsp:param value="비밀번호변경" name="title" />
 </jsp:include>
-
+<script>
+	function fn_guestInsert(f) {
+		if (f.gTitle.value == '' || f.gPw.value == '') {
+			alert('제목과 비밀번호는 필수입니다.');
+			return;
+		}
+		f.action = '/MyHome/guestInsert.guest';
+		f.submit();
+	}
+</script>
 <form method = "post" enctype="multipart/form-data">
 	<h3>방명록 작성하기</h3>
 	제목<br/>

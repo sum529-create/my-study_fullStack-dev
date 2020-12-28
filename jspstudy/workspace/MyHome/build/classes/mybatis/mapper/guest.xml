@@ -15,4 +15,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		VALUES (GUEST_SEQ.NEXTVAL, #{gWriter}, #{gTitle}, #{gContent}, #{gPw}, #{gFilename}, SYSDATE)
 	</insert>
 	
+	<select id="selectBygNo" parameterType="int" resultType="dto.GuestDto">
+		SELECT * FROM GUEST
+			WHERE GNO = #{gNo}
+	</select>
+	
 </mapper>
