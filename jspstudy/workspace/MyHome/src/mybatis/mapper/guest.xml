@@ -9,4 +9,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM GUEST
 	</select>
 	
+	<insert id="guestInsert" parameterType="dto.GuestDto">
+		INSERT INTO
+		 GUEST (GNO, GWRITER, GTITLE, GCONTENT, GPW, GFILENAME, GPOSTDATE)
+		VALUES (GUEST_SEQ.NEXTVAL, #{gWriter}, #{gTitle}, #{gContent}, #{gPw}, #{gFilename}, SYSDATE)
+	</insert>
+	
 </mapper>

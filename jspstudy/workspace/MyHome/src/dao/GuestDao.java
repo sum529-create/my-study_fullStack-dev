@@ -26,4 +26,14 @@ public class GuestDao {
 		return list;
 	}
 	
+	public int insert(GuestDto guestDto) {
+		SqlSession ss = factory.openSession(false);	// commit이 가능하게 하기 위해서 false처리
+		int result = ss.insert("mybatis.mapper.guest.guestInsert", guestDto);
+		if(result > 0) {
+			ss.commit();
+		}
+		ss.close();
+		return result;
+	}
+	
 }

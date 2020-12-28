@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import command.guest.DownloadCommand;
 import command.guest.GuestCommand;
+import command.guest.GuestInsertCommand;
 import command.guest.GuestListCommand;
 import command.member.MemberCommand;
 import command.member.MemberLoginCommand;
@@ -42,9 +44,21 @@ public class GuestController extends HttpServlet {
 			command = new GuestListCommand();
 			pathNRedirect = command.execute(request, response);
 			break;
+		case "/guestInsert.guest":
+			command = new GuestInsertCommand();
+			pathNRedirect = command.execute(request, response);
+			break;
+		case "/download.guest":
+			DownloadCommand.download(request, response);
+			break;
 			
 		// 단순이동
-			
+		case "/guestInsertPage.guest":
+			pathNRedirect = new PathNRedirect();
+			pathNRedirect.setPath("guest/guestInsertPage.jsp");
+			pathNRedirect.setRedirect(false);
+			break;
+		
 		}
 		
 		String path = pathNRedirect.getPath();
