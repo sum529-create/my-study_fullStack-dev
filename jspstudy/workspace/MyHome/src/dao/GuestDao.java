@@ -43,4 +43,22 @@ public class GuestDao {
 		return guestDto;
 	}
 	
+	public int guestDeleteFile(int gNo) {
+		SqlSession ss = factory.openSession();
+		int result = ss.update("mybatis.mapper.guest.guestDeleteFile", gNo);
+		if(result > 0) {
+			ss.commit();
+		}
+		ss.close();
+		return result;
+	}
+	public int guestDelete(int gNo) {
+		SqlSession ss = factory.openSession(false);
+		int result = ss.delete("mybatis.mapper.guest.guestDelete", gNo);
+		if(result > 0) {
+			ss.commit();
+		}
+		ss.close();
+		return result;
+	}
 }

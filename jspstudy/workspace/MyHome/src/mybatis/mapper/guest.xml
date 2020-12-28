@@ -20,4 +20,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			WHERE GNO = #{gNo}
 	</select>
 	
+	<update id="guestDeleteFile" parameterType="int">
+		UPDATE GUEST 
+			SET GFILENAME = NULL 
+		 WHERE GNO = #{gNo}
+	</update>
+	
+	<delete id="guestDelete" parameterType="int">
+		DELETE
+			FROM GUEST
+		 WHERE GNO = #{gNo}
+	</delete>
+	
 </mapper>

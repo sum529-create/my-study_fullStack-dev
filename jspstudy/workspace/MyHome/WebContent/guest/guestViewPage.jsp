@@ -4,35 +4,55 @@
 	<jsp:param value="비밀번호변경" name="title" />
 </jsp:include>
 <script>
-	function fn_guestInsert(f) {
-		if (f.gTitle.value == '' || f.gPw.value == '') {
-			alert('제목과 비밀번호는 필수입니다.');
+	function fn_deleteFile(f) {
+		if(f.gPw.value == ''){
+			alert('삭제비밀번호를 입력하세요.');
+			return;
+		}else if(f.gPw.value != '${guestDto.gPw}'){
+			alert('삭제비밀번호를 확인하세요.');
 			return;
 		}
-		f.action = '/MyHome/guestInsert.guest';
+		f.action = '/MyHome/guestDeleteFile.guest';
+		f.submit();
+	}
+	function fn_guestDeletePage(f) {
+		f.action = '/MyHome/guestDeletePage.guest';
 		f.submit();
 	}
 </script>
-<form method = "post" enctype="multipart/form-data">
-	제목<br/>
-	<input type="text" name="gTitle" value="${guestDto.gTitle}"/><br/><br/>
-	작성자<br/>
-	<input type="text" name="gWriter" value="${guestDto.gWriter }"/><br/><br/>
-	파일첨부<br/>
-	<c:if test="${guestDto.gFilename eq null }">
-		없음
-	</c:if>
-	<c:if test="${guestDto.gFilename ne null }">
-		<a href="/MyHome/download.guest?gFilename=${guestDto.gFilename}">${guestDto.gFilename }</a>
-		&nbsp;&nbsp;
-		<input type="button" value="삭제" onclick="fn_deleteFile(this.form)"/>
-	</c:if><br/><br/>
-	내용<br/>
-	<textarea rows="10" cols="40" name="gContent">${guestDto.gContent }</textarea><br/><br/>
-	<input type="button" value="방명록수정하기" onclick="fn_guestUpdatePage(this.form)"/>
-	<input type="button" value="방명록삭제하기" onclick="fn_guestDeletePage(this.form)"/>
-	<input type="button" value="방명록목록으로이동하기" onclick="location.href='/MyHome/guestListPage.guest'"/>
-</form>
+
+	<form method = "post">
+		제목<br/>
+		${guestDto.gTitle}<br/><br/>
+		작성자<br/>
+		${guestDto.gWriter }<br/><br/>
+		파일첨부<br/>
+		<c:if test="${guestDto.gFilename eq null }">
+			없음
+		</c:if>
+		<c:if test="${guestDto.gFilename ne null }">
+			<a href="/MyHome/download.guest?gFilename=${guestDto.gFilename}">${guestDto.gFilename}</a>
+			&nbsp;&nbsp;
+				<input type="password" name="gPw" placeholder="삭제비밀번호"/>
+				<input type="button" value="삭제" onclick="fn_deleteFile(this.form)"/>
+		</c:if><br/><br/>
+		내용<br/>
+		<pre>${guestDto.gContent }</pre><br/><br/>
+	</form>
+	
+	<%-- hidden에 담아 둘 것들 --%>
+	<form method="post">
+		<input type="hidden" name="gNo" value="${guestDto.gNo}"/> 
+		<input type="hidden" name="gWriter" value="${guestDto.gWriter}"/> 
+		<input type="hidden" name="gTitle" value="${guestDto.gTitle}"/> 
+		<input type="hidden" name="gContent" value="${guestDto.gContent}"/> 
+		<input type="hidden" name="gFilename" value="${guestDto.gFilename}"/>
+		<input type="hidden" name="gPw" value="${guestDto.gPw}"/>
+		 
+		<input type="button" value="방명록수정하기" onclick="fn_guestUpdatePage(this.form)"/>
+		<input type="button" value="방명록삭제하기" onclick="fn_guestDeletePage(this.form)"/>
+		<input type="button" value="방명록목록으로이동하기" onclick="location.href='/MyHome/guestListPage.guest'"/>
+	</form>
 
 
 <%@ include file="../template/footer.jsp" %>

@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import command.guest.DownloadCommand;
 import command.guest.GuestCommand;
+import command.guest.GuestDeleteCommand;
+import command.guest.GuestDeleteFileCommand;
 import command.guest.GuestInsertCommand;
 import command.guest.GuestListCommand;
 import command.guest.GuestViewCommand;
@@ -56,13 +58,25 @@ public class GuestController extends HttpServlet {
 			command = new GuestViewCommand();
 			pathNRedirect = command.execute(request, response);
 			break;
+		case "/guestDeleteFile.guest":
+			command = new GuestDeleteFileCommand();
+			pathNRedirect = command.execute(request, response);
+			break;
+		case "/guestDelete.guest":
+			command = new GuestDeleteCommand();
+			pathNRedirect = command.execute(request, response);
+			break;
 		// 단순이동
 		case "/guestInsertPage.guest":
 			pathNRedirect = new PathNRedirect();
 			pathNRedirect.setPath("guest/guestInsertPage.jsp");
 			pathNRedirect.setRedirect(false);
 			break;
-		
+		case "/guestDeletePage.guest":
+			pathNRedirect = new PathNRedirect();
+			pathNRedirect.setPath("guest/guestDeletePage.jsp");
+			pathNRedirect.setRedirect(false);
+			break;
 		}
 		
 		String path = pathNRedirect.getPath();
