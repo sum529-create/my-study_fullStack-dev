@@ -1,0 +1,29 @@
+package dao;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import dto.GuestDto;
+import mybatis.config.DBService;
+
+public class GuestDao {
+	private SqlSessionFactory factory;
+	
+	private GuestDao() {
+		factory = DBService.getInstance().getFactory();
+	}
+	private static GuestDao guestDao = new GuestDao();
+	public static GuestDao getInstance() {
+		return guestDao;
+	}
+	
+	public List<GuestDto> selectGuestList(){
+		SqlSession ss = factory.openSession();
+		List<GuestDto> list = ss.selectList("mybatis.mapper.guest.selectGuestList");
+		ss.close();
+		return list;
+	}
+	
+}

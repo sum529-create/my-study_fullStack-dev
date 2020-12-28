@@ -19,6 +19,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	
 	<mappers>
         <mapper resource="mybatis/mapper/member.xml"/> <!-- '.(콤마)'사용은 불가 -> '/' -->
+        <mapper resource="mybatis/mapper/guest.xml"/>
 	</mappers>
 	
 </configuration>
