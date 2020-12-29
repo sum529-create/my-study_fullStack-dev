@@ -32,4 +32,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 WHERE GNO = #{gNo}
 	</delete>
 	
+	<update id="guestUpdate" parameterType="dto.GuestDto">
+		UPDATE GUEST
+			<if test="gFilename == null">
+				SET GTITLE = #{gTitle}, GCONTENT = #{gContent}
+			</if>
+			<if test="gFilename != null">
+				SET GTITLE = #{gTitle}, GCONTENT = #{gContent}, GFILENAME = #{gFilename}
+			</if>
+			WHERE GNO = #{gNo}
+	</update>
+	
+	<select id="queryList" parameterType="String" resultType="dto.GuestDto">
+		SELECT *
+			FROM GUEST
+		  WHERE GTITLE LIKE '%' || #{query} || '%'
+		  	OR GCONTENT LIKE '%' || #{query} || '%'
+	</select>
+	
 </mapper>
