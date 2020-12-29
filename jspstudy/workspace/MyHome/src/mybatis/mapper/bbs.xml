@@ -5,6 +5,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="mybatis.mapper.bbs">
 
-
+	<select id="getTotalRecord" resultType="int">
+		SELECT COUNT(*)
+		  FROM BBS
+	</select>
+	
+	<select id="bbsList" parameterType="common.PageVo" resultType="dto.BBSDto">
+		SELECT B.*
+		  FROM (SELECT ROWNUM AS RN, A.* FROM ((SELECT * FROM BBS ORDER BY BBS_NO DESC) A)) B
+		 WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}
+	</select>
+	
+	<insert id="bbsInsert"  parameterType="common.PageVo">
+		INSERT INTO
+			BBS (BBS_NO, BBS_WRITER, BBD_TITLE, BBS_CONTENT, BBS_PW, BBS_HIT, BBS_IP, BBS_DATE)
+		 VALUES(BBS_SEQ.NEXTVAL, #{bbs_writer), #{bbs_title}, #{bbs_content}, #{bbs_pw}, 0, #{bbs_ip}, SYSDATE;
+	</insert>
 	
 </mapper>

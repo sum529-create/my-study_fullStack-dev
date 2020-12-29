@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import command.bbs.BBSCommand;
+import command.bbs.BBSInsertCommand;
 import command.bbs.BBSListCommand;
 import common.PathNRedirect;
 
@@ -39,8 +40,16 @@ public class BBSController extends HttpServlet {
 				command = new BBSListCommand();
 				pathNRedirect = command.execute(request, response);
 				break;
+			case "/bbsInsert.bbs":
+				command = new BBSInsertCommand();
+				pathNRedirect = command.execute(request, response);
+				break;
 			// 단순 이동
-			
+			case "/bbsInsertPage.bbs":
+				pathNRedirect = new PathNRedirect();
+				pathNRedirect.setPath("bbs/bbsInsertPage.jsp");
+				pathNRedirect.setRedirect(false);
+				break;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
