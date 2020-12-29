@@ -12,7 +12,7 @@
 <h1>방명록</h1>
 <a href="/MyHome/guestInsertPage.guest">방명록 작성하기</a>
 <br/><br/><br/>
-<form action="">
+<form action="/MyHome/queryList.guest">
 	<input type="text" name="query" placeholder="제목 + 내용"/>
 	<button>검색</button>
 </form>
