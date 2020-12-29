@@ -25,7 +25,7 @@
 	비밀번호<br/>
 	<input type="password" name="bbs_pw"/> <br/><br/>
 	내용<br/>
-	<textarea rows="10" cols="40" name="bbs_content"></textarea>
+	<textarea rows="10" cols="40" name="bbs_content"></textarea> <br/><br/>
 	<input type="button" value="작성완료" onclick="fn_bbsInsert(this.form)"/>
 	<input type="reset" value="다시작성"/>
 	<input type="button" value="목록으로이동" onclick="location.href='/MyHome/bbsListPage.bbs'"/>

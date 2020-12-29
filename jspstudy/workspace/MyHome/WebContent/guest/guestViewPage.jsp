@@ -39,6 +39,9 @@
 			<a href="/MyHome/download.guest?gFilename=${guestDto.gFilename}">${guestDto.gFilename}</a>
 			&nbsp;&nbsp;
 				<input type="password" name="gPw" placeholder="삭제비밀번호"/>
+				<%-- hidden --%>
+				<input type="hidden" name="gNo" value="${guestDto.gNo}"/>
+				<input type="hidden" name="gFilename" value="${guestDto.gFilename}"/>
 				<input type="button" value="삭제" onclick="fn_deleteFile(this.form)"/>
 		</c:if><br/><br/>
 		내용<br/>
