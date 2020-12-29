@@ -14,7 +14,9 @@ import command.guest.GuestDeleteCommand;
 import command.guest.GuestDeleteFileCommand;
 import command.guest.GuestInsertCommand;
 import command.guest.GuestListCommand;
+import command.guest.GuestUpdateCommand;
 import command.guest.GuestViewCommand;
+import command.guest.QueryListCommand;
 import command.member.MemberCommand;
 import command.member.MemberLoginCommand;
 import command.member.MemberLogoutCommand;
@@ -31,6 +33,7 @@ public class GuestController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
 		String requestURI = request.getRequestURI();
@@ -64,6 +67,14 @@ public class GuestController extends HttpServlet {
 			break;
 		case "/guestDelete.guest":
 			command = new GuestDeleteCommand();
+			pathNRedirect = command.execute(request, response);
+			break;
+		case "/guestUpdate.guest":
+			command = new GuestUpdateCommand();
+			pathNRedirect = command.execute(request, response);
+			break;
+		case "/queryList.guest":
+			command = new QueryListCommand();
 			pathNRedirect = command.execute(request, response);
 			break;
 		// 단순이동

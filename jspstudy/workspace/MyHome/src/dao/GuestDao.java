@@ -19,6 +19,7 @@ public class GuestDao {
 		return guestDao;
 	}
 	
+	// 메소드
 	public List<GuestDto> selectGuestList(){
 		SqlSession ss = factory.openSession();
 		List<GuestDto> list = ss.selectList("mybatis.mapper.guest.selectGuestList");
@@ -60,5 +61,21 @@ public class GuestDao {
 		}
 		ss.close();
 		return result;
+	}
+	public int guestUpdate(GuestDto guestDto) {
+		SqlSession ss = factory.openSession(false);	// update commit을 위한 false
+		int result = ss.update("mybatis.mapper.guest.guestUpdate", guestDto);
+		if(result > 0) {
+			ss.commit();
+		}
+		ss.close();
+		return result;
+	}
+	
+	public List<GuestDto> queryList(String query){
+		SqlSession ss = factory.openSession();
+		List<GuestDto> list = ss.selectList("mybatis.mapper.guest.queryList", query);
+		ss.close();
+		return list;
 	}
 }
