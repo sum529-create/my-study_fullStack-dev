@@ -33,6 +33,7 @@ public class BBSController extends HttpServlet {
 		PathNRedirect pathNRedirect = null;
 		
 		BBSCommand command = null;
+		
 		try {
 			switch (cmd) {
 			// command 필요

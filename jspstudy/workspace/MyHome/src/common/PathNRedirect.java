@@ -1,7 +1,7 @@
 package common;
 
 public class PathNRedirect {
-	
+
 	private String path;
 	private boolean isRedirect;
 	
@@ -17,7 +17,5 @@ public class PathNRedirect {
 	public void setRedirect(boolean isRedirect) {
 		this.isRedirect = isRedirect;
 	}
-	
-	
 	
 }

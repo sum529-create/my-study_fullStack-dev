@@ -10,6 +10,7 @@ import dto.BBSDto;
 import mybatis.config.DBService;
 
 public class BBSDao {
+
 	// 필드
 	private SqlSessionFactory factory;
 	
@@ -38,10 +39,17 @@ public class BBSDao {
 	public int bbsInsert(BBSDto bbsDto) {
 		SqlSession ss = factory.openSession(false);
 		int result = ss.insert("mybatis.mapper.bbs.bbsInsert", bbsDto);
-		if(result > 0) {
+		if (result > 0) {
 			ss.commit();
 		}
 		ss.close();
 		return result;
 	}
+	
+	
+	
+	
+	
+	
+	
 }

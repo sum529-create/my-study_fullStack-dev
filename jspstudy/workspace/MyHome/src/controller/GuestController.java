@@ -17,9 +17,6 @@ import command.guest.GuestListCommand;
 import command.guest.GuestUpdateCommand;
 import command.guest.GuestViewCommand;
 import command.guest.QueryListCommand;
-import command.member.MemberCommand;
-import command.member.MemberLoginCommand;
-import command.member.MemberLogoutCommand;
 import common.PathNRedirect;
 
 @WebServlet("*.guest")
@@ -33,7 +30,6 @@ public class GuestController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		request.setCharacterEncoding("UTF-8");
-		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
 		String requestURI = request.getRequestURI();
@@ -77,7 +73,7 @@ public class GuestController extends HttpServlet {
 			command = new QueryListCommand();
 			pathNRedirect = command.execute(request, response);
 			break;
-		// 단순이동
+		// 단순 이동
 		case "/guestInsertPage.guest":
 			pathNRedirect = new PathNRedirect();
 			pathNRedirect.setPath("guest/guestInsertPage.jsp");

@@ -7,8 +7,8 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 public class DBService {
-	
-	// DBService : SqlSessionFactory 만들어서 반환하는 클래스
+
+	// DBService: SqlSessionFactory 만들어서 반환하는 클래스
 	
 	// 필드
 	private SqlSessionFactory factory;
@@ -19,7 +19,7 @@ public class DBService {
 			String resource = "mybatis/config/sqlmap-config.xml";
 			InputStream inputStream = Resources.getResourceAsStream(resource);
 			factory = new SqlSessionFactoryBuilder().build(inputStream);
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -27,11 +27,9 @@ public class DBService {
 	public static DBService getInstance() {
 		return service;
 	}
-
 	
 	// 메소드
 	public SqlSessionFactory getFactory() {
-		
 		return factory;
 	}
 	

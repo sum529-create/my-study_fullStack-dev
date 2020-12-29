@@ -14,6 +14,7 @@ public class BBSListCommand implements BBSCommand {
 
 	@Override
 	public PathNRedirect execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
 		// 1. PageVo 객체 생성
 		PageVo pageVo = new PageVo();
 		
@@ -71,6 +72,7 @@ public class BBSListCommand implements BBSCommand {
 		pathNRedirect.setPath("bbs/bbsListPage.jsp");
 		pathNRedirect.setRedirect(false);
 		return pathNRedirect;
+		
 	}
 
 }

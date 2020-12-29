@@ -16,10 +16,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}
 	</select>
 	
-	<insert id="bbsInsert"  parameterType="common.PageVo">
+	<insert id="bbsInsert" parameterType="dto.BBSDto">
 		INSERT INTO
-			BBS (BBS_NO, BBS_WRITER, BBD_TITLE, BBS_CONTENT, BBS_PW, BBS_HIT, BBS_IP, BBS_DATE)
-		 VALUES(BBS_SEQ.NEXTVAL, #{bbs_writer), #{bbs_title}, #{bbs_content}, #{bbs_pw}, 0, #{bbs_ip}, SYSDATE;
+		   BBS (BBS_NO, BBS_WRITER, BBS_TITLE, BBS_CONTENT, BBS_PW, BBS_HIT, BBS_IP, BBS_DATE)
+		VALUES (BBS_SEQ.NEXTVAL, #{bbs_writer}, #{bbs_title}, #{bbs_content}, #{bbs_pw}, 0, #{bbs_ip}, SYSDATE)
 	</insert>
-	
+
 </mapper>

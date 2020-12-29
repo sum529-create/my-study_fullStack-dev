@@ -25,11 +25,12 @@ public class BBSInsertCommand implements BBSCommand {
 		bbsDto.setBbs_ip(request.getRemoteAddr());
 		
 		int result = BBSDao.getInstance().bbsInsert(bbsDto);
-		
+
 		PathNRedirect pathNRedirect = new PathNRedirect();
-		pathNRedirect.setPath("bbs/bbsInsertResult.jsp?result="+result);
+		pathNRedirect.setPath("bbs/bbsInsertResult.jsp?result=" + result);
 		pathNRedirect.setRedirect(true);
 		return pathNRedirect;
+		
 	}
 
 }
