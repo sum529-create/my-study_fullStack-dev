@@ -28,21 +28,22 @@ public class ReplyInsertCommand implements ReplyCommand {
 		
 		int result = ReplyDao.getInstance().replyInsert(replyDto);
 		
-		PathNRedirect pathNRedirect = null; 
-		if(result > 0) {
+		PathNRedirect pathNRedirect = null;
+		if (result > 0) {
 			pathNRedirect = new PathNRedirect();
-			pathNRedirect.setPath("/MyHome/bbsViewPage.bbs");
-			// bbsViewPage에 댓글창이 있음
-			pathNRedirect.setRedirect(true);	// redirect
-		}else {
+			pathNRedirect.setPath("/MyHome/bbsViewPage.bbs?bbs_no=" + bbs_no + "&page=" + request.getParameter("page"));
+			pathNRedirect.setRedirect(true);  // redirect
+		} else {
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
 			out.println("alert('댓글이 작성되지 않았습니다.')");
 			out.println("history.back()");
 			out.println("</script>");
+			out.close();
 		}
 		
 		return pathNRedirect;
+		
 	}
 
 }

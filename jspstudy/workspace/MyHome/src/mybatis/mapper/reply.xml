@@ -11,4 +11,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			REPLY(RNO, RWRITER, RCONTENT, RPW, RIP, RDATE, BBS_NO) 
 		 VALUES(REPLY_SEQ.NEXTVAL, #{rWriter}, #{rContent}, #{rPw}, #{rIp}, SYSDATE, #{bbs_no})
 	</insert>
+	
+	<select id="replyList" parameterType="int" resultType="dto.ReplyDto">
+		SELECT RNO, RWRITER, RCONTENT, RPW, RIP, RDATE, BBS_NO
+			FROM REPLY
+		  WHERE BBS_NO = #{bbs_no}
+		 ORDER BY RNO
+	</select>
+	
+	<delete id="replyDelete" parameterType="int">
+		DELETE FROM REPLY WHERE RNO=#{rNo}
+	</delete>
+	
 </mapper>
