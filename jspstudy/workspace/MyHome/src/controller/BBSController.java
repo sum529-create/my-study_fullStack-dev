@@ -66,6 +66,11 @@ public class BBSController extends HttpServlet {
 				pathNRedirect.setPath("bbs/bbsDeletePage.jsp");
 				pathNRedirect.setRedirect(false);
 				break;
+			case "/bbsUpdatePage.bbs":
+				pathNRedirect = new PathNRedirect();
+				pathNRedirect.setPath("bbs/bbsUpdatePage.jsp");
+				pathNRedirect.setRedirect(false);
+				break;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

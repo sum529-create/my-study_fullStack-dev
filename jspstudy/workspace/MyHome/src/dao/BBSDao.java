@@ -62,6 +62,15 @@ public class BBSDao {
 		ss.close();
 		return result;
 	}
+	public int bbsDelete(int bbs_no) {
+		SqlSession ss = factory.openSession(false);	// false) insert, update, delete들의 commit을 직접 처리하겠다.
+		int result = ss.delete("mybatis.mapper.bbs.bbsDelete", bbs_no);
+		if(result > 0) {
+			ss.commit();
+		}
+		ss.close();
+		return result;
+	}
 	
 	
 	

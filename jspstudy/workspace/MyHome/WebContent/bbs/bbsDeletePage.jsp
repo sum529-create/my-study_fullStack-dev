@@ -17,9 +17,12 @@
 	}
 </script>
 
-<form>
+<form method="post">
 	삭제 비밀번호<br/>
 	<input type="password" name="bbs_pw"/><br/><br/>
+	
+	<%-- hidden --%>
+	<input type="hidden" name="page" value="${param.page}"/>
 	<input type="button" value="삭제하기" onclick="fn_bbsDelete(this.form)"/>
 </form>
 

@@ -13,8 +13,8 @@
 <%-- 2. ${sessionScope.bbsDto} --%>
 
 <div>
-	<input type="button" value="수정하기" onclick="location.href='/MyHome/'"/>
-	<input type="button" value="삭제하기" onclick="location.href='/MyHome/bbsDeletePage.bbs'"/>
+	<input type="button" value="수정하기" onclick="location.href='/MyHome/bbsUpdatePage.bbs?page=${param.page}'"/>
+	<input type="button" value="삭제하기" onclick="location.href='/MyHome/bbsDeletePage.bbs?page=${param.page}'"/>
 	<input type="button" value="목록으로이동하기" onclick="location.href='/MyHome/bbsListPage.bbs?page=${param.page}'"/>
 	<br/><br/>
 	
