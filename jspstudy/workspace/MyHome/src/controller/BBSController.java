@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import command.bbs.BBSCommand;
+import command.bbs.BBSDeleteCommand;
 import command.bbs.BBSInsertCommand;
 import command.bbs.BBSListCommand;
 import command.bbs.BBSViewCommand;
@@ -50,10 +51,19 @@ public class BBSController extends HttpServlet {
 				command = new BBSViewCommand();
 				pathNRedirect = command.execute(request, response);
 				break;
+			case "/bbsDelete.bbs":
+				command = new BBSDeleteCommand();
+				pathNRedirect = command.execute(request, response);
+				break;
 			// 단순 이동
 			case "/bbsInsertPage.bbs":
 				pathNRedirect = new PathNRedirect();
 				pathNRedirect.setPath("bbs/bbsInsertPage.jsp");
+				pathNRedirect.setRedirect(false);
+				break;
+			case "/bbsDeletePage.bbs":
+				pathNRedirect = new PathNRedirect();
+				pathNRedirect.setPath("bbs/bbsDeletePage.jsp");
 				pathNRedirect.setRedirect(false);
 				break;
 			}

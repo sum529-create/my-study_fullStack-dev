@@ -46,4 +46,11 @@ public class ReplyDao {
 		ss.close();
 		return result;
 	}
+	
+	public int replyCount(int bbs_no){
+		SqlSession ss = factory.openSession();
+		int replyCount = ss.selectOne("mybatis.mapper.reply.replyCount", bbs_no);
+		ss.close();
+		return replyCount;
+	}
 }
