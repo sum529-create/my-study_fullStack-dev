@@ -6,5 +6,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="mybatis.mapper.reply">
 
 
-	
+	<insert id="replyInsert" parameterType="dto.ReplyDto">
+		INSERT INTO 
+			REPLY(RNO, RWRITER, RCONTENT, RPW, RIP, RDATE, BBS_NO) 
+		 VALUES(REPLY_SEQ.NEXTVAL, #{rWriter}, #{rContent}, #{rPw}, #{rIp}, SYSDATE, #{bbs_no})
+	</insert>
 </mapper>

@@ -1,7 +1,9 @@
 package dao;
 
+import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import dto.ReplyDto;
 import mybatis.config.DBService;
 
 public class ReplyDao {
@@ -16,5 +18,13 @@ public class ReplyDao {
 	}
 	
 	// 메소드
-
+	public int replyInsert(ReplyDto replyDto) {
+		SqlSession ss = factory.openSession(false);
+		int result = ss.insert("mybatis.mapper.reply.replyInsert", replyDto);
+		if(result > 0) {
+			ss.commit();
+		}
+		ss.close();
+		return result;
+	}
 }

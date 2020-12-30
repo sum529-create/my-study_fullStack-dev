@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import command.reply.ReplyCommand;
+import command.reply.ReplyInsertCommand;
 import common.PathNRedirect;
 
 @WebServlet("*.reply")
@@ -33,7 +34,10 @@ public class ReplyController extends HttpServlet {
 		try {
 			switch (cmd) {
 			// command 필요
-			
+			case "/replyInsert.reply":
+				command = new ReplyInsertCommand();
+				pathNRedirect = command.execute(request, response);
+				break;
 			// 단순 이동
 			
 			}

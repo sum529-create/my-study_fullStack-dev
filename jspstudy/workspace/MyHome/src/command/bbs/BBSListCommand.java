@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import common.PageVo;
 import common.PathNRedirect;
@@ -63,14 +64,21 @@ public class BBSListCommand implements BBSCommand {
 		endPage = endPage < pageVo.getTotalPage() ? endPage : pageVo.getTotalPage();
 		pageVo.setEndPage(endPage);
 		
+		// 8. session에 저장된 "open" 속성을 제거하기
+		// 목록 보기는 게시물 보기가 끝난 것으로 보낟.
+		HttpSession session = request.getSession();
+		if (session.getAttribute("open")!= null) {
+			session.removeAttribute("open");
+		}
 		
+		// 9. bbs/bbsListPage.jsp로 전달할 데이터 저장하기
 		request.setAttribute("list", list);
 		request.setAttribute("pageVo", pageVo);
 		
-		
+		// 10. bbs/bbsListPage.jsp로 이동
 		PathNRedirect pathNRedirect = new PathNRedirect();
 		pathNRedirect.setPath("bbs/bbsListPage.jsp");
-		pathNRedirect.setRedirect(false);
+		pathNRedirect.setRedirect(false);	// forward
 		return pathNRedirect;
 		
 	}
