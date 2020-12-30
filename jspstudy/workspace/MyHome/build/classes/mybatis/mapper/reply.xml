@@ -23,4 +23,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		DELETE FROM REPLY WHERE RNO=#{rNo}
 	</delete>
 	
+	<select id="replyCount" parameterType="int">
+		SELECT COUNT(*)
+			FROM REPLY
+ 		  WHERE BBS_NO = #{bbs_no}
+	</select>
+	
 </mapper>
