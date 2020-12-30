@@ -32,6 +32,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 WHERE BBS_NO = #{bbs_no}
 	</update>
 	
+	<delete id="bbsDelete" parameterType="int">
+		DELETE FROM BBS WHERE BBS_NO = #{bbs_no}
+	</delete>
 	
 	
 </mapper>
