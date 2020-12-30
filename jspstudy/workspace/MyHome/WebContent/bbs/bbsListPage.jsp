@@ -10,11 +10,11 @@
 	tfoot.paging {
 		color: silver;
 	}
-	a {
+	tfoot > a {
 		text-decoration: none;
 		color: silver;
 	}
-	a:hover {
+	tfoot > a:hover {
 		color: limegreen;
 	}
 	span.disable {
@@ -46,7 +46,7 @@
 			<c:forEach var="bbsDto" items="${list}" varStatus="k">
 				<tr>
 					<td>${pageVo.totalRecord - ((pageVo.page - 1) * pageVo.recordPerPage + k.index)}</td>
-					<td>${bbsDto.bbs_title}</td>
+					<td><a href="/MyHome/bbsViewPage.bbs?bbs_no=${bbsDto.bbs_no }">${bbsDto.bbs_title}</a></td>
 					<td>${bbsDto.bbs_writer}</td>
 					<td>${bbsDto.bbs_date}</td>
 					<td>${bbsDto.bbs_hit}</td>

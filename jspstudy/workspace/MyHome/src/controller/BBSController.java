@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import command.bbs.BBSCommand;
 import command.bbs.BBSInsertCommand;
 import command.bbs.BBSListCommand;
+import command.bbs.BBSViewCommand;
 import common.PathNRedirect;
 
 @WebServlet("*.bbs")
@@ -43,6 +44,10 @@ public class BBSController extends HttpServlet {
 				break;
 			case "/bbsInsert.bbs":
 				command = new BBSInsertCommand();
+				pathNRedirect = command.execute(request, response);
+				break;
+			case "/bbsViewPage.bbs":
+				command = new BBSViewCommand();
 				pathNRedirect = command.execute(request, response);
 				break;
 			// 단순 이동

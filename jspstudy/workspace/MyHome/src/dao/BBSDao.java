@@ -46,9 +46,22 @@ public class BBSDao {
 		return result;
 	}
 	
+	public BBSDto bbsView(int bbs_no) {
+		SqlSession ss = factory.openSession();
+		BBSDto bbsDto = ss.selectOne("mybatis.mapper.bbs.bbsView", bbs_no);
+		ss.close();
+		return bbsDto;
+	}
 	
-	
-	
+	public int bbsUpdateHit(int bbs_no) {
+		SqlSession ss = factory.openSession(false);	// false) insert, update, delete들의 commit을 직접 처리하겠다.
+		int result = ss.update("mybatis.mapper.bbs.bbsUpdateHit", bbs_no);
+		if(result > 0) {
+			ss.commit();
+		}
+		ss.close();
+		return result;
+	}
 	
 	
 	
