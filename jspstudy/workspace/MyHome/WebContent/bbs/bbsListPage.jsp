@@ -46,8 +46,8 @@
 			<c:forEach var="bbsDto" items="${list}" varStatus="k">
 				<tr>
 					<td>${pageVo.totalRecord - ((pageVo.page - 1) * pageVo.recordPerPage + k.index)}</td>
-					<td><a href="/MyHome/bbsViewPage.bbs?bbs_no=${bbsDto.bbs_no }">${bbsDto.bbs_title}</a></td>
-					<td>${bbsDto.bbs_writer}</td>
+					<td><a href="/MyHome/bbsViewPage.bbs?bbs_no=${bbsDto.bbs_no }&page=${PageVo.page}">${bbsDto.bbs_title}</a></td>
+					<td>${bbsDto.bbs_writer}</td>							<!-- pageVo에 들어있음 -->
 					<td>${bbsDto.bbs_date}</td>
 					<td>${bbsDto.bbs_hit}</td>
 				</tr>
