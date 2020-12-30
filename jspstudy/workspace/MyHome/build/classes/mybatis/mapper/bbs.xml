@@ -22,4 +22,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		VALUES (BBS_SEQ.NEXTVAL, #{bbs_writer}, #{bbs_title}, #{bbs_content}, #{bbs_pw}, 0, #{bbs_ip}, SYSDATE)
 	</insert>
 
+	<select id="bbsView" parameterType="int" resultType="dto.BBSDto">
+		SELECT * FROM BBS WHERE BBS_NO = #{bbs_no}
+	</select>
+	
+	<update id="bbsUpdateHit" parameterType="int">
+		UPDATE BBS 
+			SET BBS_HIT = BBS_HIT + 1
+		 WHERE BBS_NO = #{bbs_no}
+	</update>
+		
 </mapper>
