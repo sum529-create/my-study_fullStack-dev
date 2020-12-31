@@ -32,9 +32,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		  		 SYSDATE, 
 		  		 0, 			<!-- 삭제여부 | 정상 게시글 : 0, 삭제된 게시글 : -1 -->
 		  		 BOARD_SEQ.CURRVAL,	<!-- 현재값과 같은 값 부여, BOARD_SEQ.NEXTVAL로 생성한 번호(bNo와 같다) --> 
-		  		 0, 
-		  		 0
+		  		 0, 			<!-- 게시글 순서(같은 그룹 내에서 표시되는 순서) -->
+		  		 0				<!-- (게시글:0, 댓글 1 이상) -->
 		  )
 	</insert>
+	
+	<select id="boardView" parameterType="int" resultType="dto.BoardDto">
+		SELECT *
+			FROM BOARD
+		 WHERE BNO = #{bNo}
+	</select>
+	
+	<update id="boardUpdateHit" parameterType="int">
+		UPDATE BOARD SET BHIT = BHIT + 1 WHERE BNO = #{bNo}
+	</update>
 	
 </mapper>

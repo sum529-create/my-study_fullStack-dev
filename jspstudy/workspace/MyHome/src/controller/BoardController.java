@@ -16,6 +16,7 @@ import command.bbs.BBSViewCommand;
 import command.board.BoardCommand;
 import command.board.BoardInsertCommand;
 import command.board.BoardListCommand;
+import command.board.BoardViewCommand;
 import common.PathNRedirect;
 
 @WebServlet("*.board")
@@ -48,6 +49,10 @@ public class BoardController extends HttpServlet {
 				break;
 			case "/boardInsert.board":
 				command = new BoardInsertCommand();
+				pathNRedirect = command.execute(request, response);
+				break;
+			case "/boardViewPage.board":
+				command = new BoardViewCommand();
 				pathNRedirect = command.execute(request, response);
 				break;
 			// 단순 이동
