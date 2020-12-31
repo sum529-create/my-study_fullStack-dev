@@ -4,9 +4,37 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 <mapper namespace="mybatis.mapper.board">
+
 	<select id="getTotalRecord" resultType="int">
-		SELECT COUNT(*) 
-			FROM BOARD
+		SELECT COUNT(*)
+		  FROM BOARD
 	</select>
+
+	<select id="boardList" parameterType="Map" resultType="dto.BoardDto">
+		SELECT B.*
+		  FROM (SELECT ROWNUM AS RN, A.*
+		  		  FROM (SELECT	*
+		  		   		  FROM BOARD
+		  		   	  ORDER BY BGROUP DESC) A) B
+		 WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}
+	</select>
+	
+	<insert id="boardInsert" parameterType="dto.BoardDto">
+		INSERT INTO 
+			BOARD 
+		  VALUES(BOARD_SEQ.NEXTVAL,
+		  		 #{mId}, 
+		  		 #{bTitle}, 
+		  		 #{bContent}, 
+		  		 #{bIp}, 
+		  		 0, 			<!-- 조회수 -->
+		  		 SYSDATE, 
+		  		 SYSDATE, 
+		  		 0, 			<!-- 삭제여부 | 정상 게시글 : 0, 삭제된 게시글 : -1 -->
+		  		 BOARD_SEQ.CURRVAL,	<!-- 현재값과 같은 값 부여, BOARD_SEQ.NEXTVAL로 생성한 번호(bNo와 같다) --> 
+		  		 0, 
+		  		 0
+		  )
+	</insert>
 	
 </mapper>
