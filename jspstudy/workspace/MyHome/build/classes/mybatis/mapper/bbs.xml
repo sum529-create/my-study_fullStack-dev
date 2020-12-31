@@ -36,5 +36,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		DELETE FROM BBS WHERE BBS_NO = #{bbs_no}
 	</delete>
 	
+	<update id="bbsUpdate" parameterType="dto.BBSDto">
+		UPDATE BBS 
+			SET BBS_TITLE = #{bbs_title}, 
+					BBS_CONTENT = #{bbs_content}
+		  WHERE BBS_NO = #{bbs_no}	
+	</update>
 	
 </mapper>
