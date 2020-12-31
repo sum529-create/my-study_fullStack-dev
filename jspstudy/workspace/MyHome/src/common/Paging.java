@@ -63,9 +63,29 @@ public class Paging {
 		// 페이징 (< 1 2 3 4 5 >) 만들기
 		StringBuffer sb = new StringBuffer();
 		
+		// bbsListPage와 비슷하게
+		// 1) 이전 버튼
+		if(beginPage <= pagePerBlock) {
+			sb.append("이전&nbsp;");
+		}else {
+			sb.append("<a href=\"" + path + "?page=" + (beginPage-1) + "\">이전&nbsp;</a>");
+		}
 		
+		// 2) 페이지 번호
+		for(int p = beginPage; p <= endPage; p++) {
+			if(p == page) {
+				sb.append("<span class=\"disable\">" + p + "");
+			}else {
+				sb.append("<a href=\"" + path + "?page=" + p + "\">" + p + "&nbsp;</a>");
+			}
+		}
 		
-		
+		// 3) 다음 버튼
+		if(endPage >= totalPage) { // endPage == totalPage
+			sb.append("다음");
+		}else {
+			sb.append("<a href=\"" + path + "?page=" + (endPage + 1) + "\">다음&nbsp;</a>");
+		}
 		return sb.toString();
 	}
 }

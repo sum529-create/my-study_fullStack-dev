@@ -40,7 +40,10 @@ public class BoardController extends HttpServlet {
 		try {
 			switch (cmd) {
 			// command 필요
-			
+			case "/boardListPage.board":
+				
+				pathNRedirect = command.execute(request, response);
+				break;
 			
 			// 단순 이동
 			

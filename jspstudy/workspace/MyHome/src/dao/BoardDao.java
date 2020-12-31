@@ -1,5 +1,6 @@
 package dao;
 
+import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import mybatis.config.DBService;
@@ -19,6 +20,11 @@ public class BoardDao {
 	}
 	
 	// 메소드
-	
+	public int getTotalRecord() {
+		SqlSession ss = factory.openSession();
+		int totalRecord = ss.selectOne("mybatis.mapper.board.getTotalRecord");
+		ss.close();
+		return totalRecord;
+	}
 	
 }
