@@ -55,7 +55,16 @@
 				<c:forEach var="boardDto" items="${list}" varStatus="k">
 					<tr>
 						<td>${totalRecord - ((page - 1) * recordPerPage + k.index)}</td>
-						<td>${boardDto.bTitle}</td>
+						<td>
+							<%-- 삭제된 게시글은 링크를 제공하지 않는다. --%>
+							<c:if test="${boardDto.bDelete eq 0}">
+								<a href="/MyHome/boardViewPage.board?bNo=${boardDto.bNo}&page=${page}">${boardDto.bTitle}</a>
+							</c:if>
+							<c:if test="${boardDto.bDelete eq -1}">
+								삭제된 게시글입니다.
+							</c:if>
+							
+						</td>
 						<td>${boardDto.mId}</td>
 						<td>${boardDto.bLastModify}</td>
 						<td>${boardDto.bHit}</td>

@@ -36,6 +36,6 @@
 	<input type="button" value="작성완료" onclick="fn_boardInsert(this.form)"/>
 	<input type="reset" value="다시작성"/>
 	<input type="button" value="목록으로이동" onclick="location.href='/MyHome/boardListPage.board?page=${param.page}'">
-
+</form>
 
 <%@ include file="../template/footer.jsp" %>
