@@ -15,7 +15,7 @@ public class PageVo {
 	
 	private int page = 1;			// 현재 페이지 번호(기본 1페이지 사용)
 	private int beginRecord = 0;	// 한 페이지에 표시되는 시작 게시물의 번호
-	private int endRecord = 0;		// 한 페이지에 표시되는 시작 게시물의 번호
+	private int endRecord = 0;		// 한 페이지에 표시되는 종료 게시물의 번호
 	
 	private int pagePerBlock = 5;	// 한 블록당 페이지 5개
 	private int beginPage = 0;		// 한 블록에 표시되는 시작 페이지의 번호
