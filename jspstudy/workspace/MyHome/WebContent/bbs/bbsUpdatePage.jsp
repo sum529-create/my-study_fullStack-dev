@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <jsp:include page="../template/header.jsp">
-	<jsp:param value="BBS게시판" name="title" />
+	<jsp:param value="게시물수정" name="title" />
 </jsp:include>
 
 <script>
@@ -15,7 +15,7 @@
 	}
 </script>
 
-<form method="post">
+<form method="get">
 	
 	작성자<br>
 	${bbsDto.bbs_writer}<br/><br/>
@@ -30,7 +30,7 @@
 	<input type="text" name="bbs_title" value="${bbsDto.bbs_title}"/><br/><br/>
 
 	내용<br/>
-	<textarea rows="3" cols="40" name="bbs_content">${bbsDto.bbs_title}</textarea><br/><br/>
+	<textarea rows="3" cols="40" name="bbs_content">${bbsDto.bbs_content}</textarea><br/><br/>
 	
 	수정비밀번호
 	<input type="password" name="bbs_pw"/>
@@ -39,7 +39,7 @@
 	<input type="hidden" name="bbs_no" value="${bbsDto.bbs_no}"/>
 	<input type="hidden" name="page" value="${param.page}"/>
 	
-	<input type="button" value="게시물수정하기" onclick="">
+	<input type="button" value="게시물수정하기" onclick="fn_bbsUpdate(this.form)">
 		<input type="button" value="목록으로이동하기" onclick="location.href='/MyHome/bbsListPage.bbs?page=${param.page}'"/>
 </form>
 
