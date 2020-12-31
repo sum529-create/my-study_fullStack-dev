@@ -14,6 +14,8 @@ import command.bbs.BBSListCommand;
 import command.bbs.BBSUpdateCommand;
 import command.bbs.BBSViewCommand;
 import command.board.BoardCommand;
+import command.board.BoardInsertCommand;
+import command.board.BoardListCommand;
 import common.PathNRedirect;
 
 @WebServlet("*.board")
@@ -41,13 +43,19 @@ public class BoardController extends HttpServlet {
 			switch (cmd) {
 			// command 필요
 			case "/boardListPage.board":
-				
+				command = new BoardListCommand();
 				pathNRedirect = command.execute(request, response);
 				break;
-			
+			case "/boardInsert.board":
+				command = new BoardInsertCommand();
+				pathNRedirect = command.execute(request, response);
+				break;
 			// 단순 이동
-			
-			
+			case "/boardInsertPage.board":
+				pathNRedirect = new PathNRedirect();
+				pathNRedirect.setPath("board/boardInsertPage.jsp");
+				pathNRedirect.setRedirect(false);
+				break;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

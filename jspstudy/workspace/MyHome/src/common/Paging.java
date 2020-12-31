@@ -24,16 +24,16 @@ public class Paging {
 		// ex) totalRecord = 20 , recordPerPage = 3
 		// totalPage - > 7 이 된다.
 		// 전체 페이지 개수는 받아오지 않고 스스로 계산한다.
-		int totalPage;			// 전체 페이지의 개수
+		int totalPage;	// 전체 페이지의 개수
 		totalPage = totalRecord / recordPerPage;
 		if (totalRecord % recordPerPage != 0) {
 			totalPage++;
 		}
-		totalPage = (totalPage > page) ? totalPage : page;
+		totalPage = (totalPage >= page) ? totalPage : page;
 		
 		// ListCommand에서 필요하다.
-		int beginRecord = 0;	// 한 페이지에 표시되는 시작 게시물의 번호
-		int endRecord = 0;		// 한 페이지에 표시되는 종료 게시물의 번호
+		// int beginRecord = 0;	// 한 페이지에 표시되는 시작 게시물의 번호
+		// int endRecord = 0;		// 한 페이지에 표시되는 종료 게시물의 번호
 		// BBSListCommand에서 계산 beginRecord를 계산한 
 		// 변수(int totalRecord, int recordPerPage, int page)가 모두 담겨 잇다.
 		// 하지만 Paging에서 beginRecord값과 endRecord값이 필요가 없다.
@@ -65,27 +65,28 @@ public class Paging {
 		
 		// bbsListPage와 비슷하게
 		// 1) 이전 버튼
-		if(beginPage <= pagePerBlock) {
+		if (beginPage <= pagePerBlock) {
 			sb.append("이전&nbsp;");
-		}else {
-			sb.append("<a href=\"" + path + "?page=" + (beginPage-1) + "\">이전&nbsp;</a>");
+		} else {
+			sb.append("<a href=\"" + path + "?page=" + (beginPage - 1) + "\">이전&nbsp;</a>");
 		}
 		
 		// 2) 페이지 번호
-		for(int p = beginPage; p <= endPage; p++) {
-			if(p == page) {
-				sb.append("<span class=\"disable\">" + p + "");
-			}else {
+		for (int p = beginPage; p <= endPage; p++) {
+			if (p == page) {
+				sb.append("<span class=\"disable\">" + p + "&nbsp;</span>");
+			} else {
 				sb.append("<a href=\"" + path + "?page=" + p + "\">" + p + "&nbsp;</a>");
 			}
 		}
 		
 		// 3) 다음 버튼
-		if(endPage >= totalPage) { // endPage == totalPage
+		if (endPage >= totalPage) {  // endPage == totalPage
 			sb.append("다음");
-		}else {
-			sb.append("<a href=\"" + path + "?page=" + (endPage + 1) + "\">다음&nbsp;</a>");
+		} else {
+			sb.append("<a href=\"" + path + "?page=" + (endPage + 1) + "\">다음</a>");
 		}
+		
 		return sb.toString();
 	}
 }
