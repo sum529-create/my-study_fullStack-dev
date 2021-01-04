@@ -63,6 +63,7 @@
 							</c:if>
 							<c:if test="${boardDto.bDelete eq 0}">
 								<td><a href="/MyHome/boardViewPage.board?bNo=${boardDto.bNo}&page=${page}">${boardDto.bTitle}</a></td>
+								<td>${boardDto.mId}</td>
 								<td>${boardDto.bLastModify}</td>
 								<td>${boardDto.bHit}</td>
 							</c:if>
