@@ -36,7 +36,7 @@
 <form>
 	<input type="button" value="전체목록보기" onclick="location.href='/MyHome/boardListPage.board?page=${page}'" />
 	<c:if test="${loginDto ne null}">
-		<input type="button" value="내 게시글 보기" onclick="" />
+		<input type="button" value="내 게시글 보기" onclick="location.href='/MyHome/myBoardListPage.board?page=${page}'" />
 		<input type="button" value="새 게시글 작성하기" onclick="location.href='/MyHome/boardInsertPage.board?page=${page}'" />
 	</c:if>
 </form>
