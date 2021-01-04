@@ -18,6 +18,7 @@ import command.board.BoardDeleteCommand;
 import command.board.BoardInsertCommand;
 import command.board.BoardListCommand;
 import command.board.BoardViewCommand;
+import command.board.QueryBoardListCommand;
 import command.board.ReplyInsertCommand;
 import common.PathNRedirect;
 
@@ -63,6 +64,10 @@ public class BoardController extends HttpServlet {
 				break;
 			case "/replyInsert.board":
 				command = new ReplyInsertCommand(); // board 용 reply는 x
+				pathNRedirect = command.execute(request, response);
+				break;
+			case "/queryBoardListPage.board":
+				command = new QueryBoardListCommand();
 				pathNRedirect = command.execute(request, response);
 				break;
 			// 단순 이동

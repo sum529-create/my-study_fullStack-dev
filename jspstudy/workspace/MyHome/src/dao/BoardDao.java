@@ -89,4 +89,17 @@ public class BoardDao {
 		ss.close();
 		return result;
 	}
+	public int getTotalQueryRecord(Map<String, String>map) {
+		SqlSession ss = factory.openSession();
+		int totalRecord = ss.selectOne("mybatis.mapper.board.getTotalQueryRecord", map);
+		ss.close();
+		return totalRecord;
+	}
+	
+	public List<BoardDto> queryBoardList(Map<String, String> map) {
+		SqlSession ss = factory.openSession();
+		List<BoardDto> list = ss.selectList("mybatis.mapper.board.queryBoardList", map);
+		ss.close();
+		return list;
+	}
 }

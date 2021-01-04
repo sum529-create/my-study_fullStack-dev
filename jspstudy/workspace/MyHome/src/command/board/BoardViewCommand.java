@@ -26,6 +26,9 @@ public class BoardViewCommand implements BoardCommand {
 		request.setAttribute("result", boardDto != null); // null이 아니면 값이 있다
 		request.setAttribute("page", page);
 
+		// boardViewPage.jsp에서 전체목록으로 이동할 때 사용할 주소 정보를 저장한다.
+		String referer = request.getHeader("refer");
+		
 		PathNRedirect pathNRedirect = new PathNRedirect();
 		pathNRedirect.setPath("board/boardViewPage.jsp");
 		pathNRedirect.setRedirect(false);	// forward

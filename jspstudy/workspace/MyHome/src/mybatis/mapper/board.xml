@@ -97,4 +97,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 	AND BGROUPORD != 0 <!-- AND BGROUPORD <> 0, AND BGROUPORD > 0-->
 		 	 
 	</update>
+	
+	<select id="getTotalQueryRecord" parameterType="Map" resultType="int">
+		SELECT COUNT(*)
+			FROM BOARD
+		  WHERE BDELETE = 0	
+		  		AND <if test="column!='BOTH'">${column} LIKE '%' || #{query} || '%'</if>
+		 	        <if test="column=='BOTH'">(BTITLE LIKE '%' || #{query} || '%' OR BCONTENT LIKE '%' || #{query} || '%')</if>
+	</select>
+	
+		<!-- 1단 댓글만 허용 + 검색 결과 리스트 목록 -->
+	<select id="queryBoardList" parameterType="Map" resultType="dto.BoardDto">
+		SELECT B.*
+		  FROM (SELECT ROWNUM AS RN, A.*
+		  		  FROM (SELECT	*
+		  		   		   FROM BOARD
+						  WHERE BDELETE = 0		<!-- 정상인 값만 출력(삭제되지 않은 값) -->
+						  AND   <if test="column!='BOTH'">${column} LIKE '%' || #{query} || '%'</if>
+						 		<if test="column=='BOTH'">(BTITLE LIKE '%' || #{query} || '%' OR BCONTENT LIKE '%' || #{query} || '%')</if>
+		  		   	  ORDER BY BGROUP DESC,
+		  		   	  		   BDEPTH ASC,
+		  		   	  		   BGROUPORD DESC) A) B
+		 WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}
+	</select>
 </mapper>
