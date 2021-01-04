@@ -14,6 +14,7 @@ import command.bbs.BBSListCommand;
 import command.bbs.BBSUpdateCommand;
 import command.bbs.BBSViewCommand;
 import command.board.BoardCommand;
+import command.board.BoardDeleteCommand;
 import command.board.BoardInsertCommand;
 import command.board.BoardListCommand;
 import command.board.BoardViewCommand;
@@ -53,6 +54,10 @@ public class BoardController extends HttpServlet {
 				break;
 			case "/boardViewPage.board":
 				command = new BoardViewCommand();
+				pathNRedirect = command.execute(request, response);
+				break;
+			case "/boardDelete.board":
+				command = new BoardDeleteCommand();
 				pathNRedirect = command.execute(request, response);
 				break;
 			// 단순 이동
