@@ -31,11 +31,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		  		 SYSDATE, 
 		  		 SYSDATE, 
 		  		 0, 			<!-- 삭제여부 | 정상 게시글 : 0, 삭제된 게시글 : -1 -->
-		  		 BOARD_SEQ.CURRVAL,	<!-- 현재값과 같은 값 부여, BOARD_SEQ.NEXTVAL로 생성한 번호(bNo와 같다) --> 
-		  		 0, 			<!-- 게시글 순서(같은 그룹 내에서 표시되는 순서) -->
-		  		 0				<!-- (게시글:0, 댓글 1 이상) -->
+		  		 BOARD_SEQ.CURRVAL,	<!--[bGroup] 현재값과 같은 값 부여, BOARD_SEQ.NEXTVAL로 생성한 번호(bNo와 같다) --> 
+		  		 0, 			<!-- [bGroupOrd] 게시글 순서(같은 그룹 내에서 표시되는 순서, 그룹 내부 순서 : 먼저 달린 댓글 판단용) -->
+		  		 0				<!-- [bDepth] (게시글:0, 댓글 1 이상) -->
 		  )
 	</insert>
+	
+	<!-- bNo	 bTitle		 bGroup		 bGroupOrd		 bDepth 
+		10		게시글10	10				0				0 (게시글)
+		11		ㄴ 댓글1	10				3				1 (댓글)
+		12		ㄴ 댓글2	10				2				1 (댓글)
+		13		 ㄴ 대댓	10				1				2 (대댓글)
+		
+		/* 댓글 삽압 시 */
+		1. bGroup: 게시글 bNo와 같다.
+		2. bGroupOrd
+			1) 1을 가진다.
+			2) 기존 댓글들의 bGroupOrd를 1씩 증가시킨다.
+		3. bDepth: 게시글의 bDepth
+		 
+	-->
 	
 	<select id="boardView" parameterType="int" resultType="dto.BoardDto">
 		SELECT *

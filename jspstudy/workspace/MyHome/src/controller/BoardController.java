@@ -60,10 +60,19 @@ public class BoardController extends HttpServlet {
 				command = new BoardDeleteCommand();
 				pathNRedirect = command.execute(request, response);
 				break;
+			case "/replyInsert.board":
+				
+				pathNRedirect = command.execute(request, response);
+				break;
 			// 단순 이동
 			case "/boardInsertPage.board":
 				pathNRedirect = new PathNRedirect();
 				pathNRedirect.setPath("board/boardInsertPage.jsp");
+				pathNRedirect.setRedirect(false);
+				break;
+			case "/replyInsertPage.board":
+				pathNRedirect = new PathNRedirect();
+				pathNRedirect.setPath("board//replyInsertPage.jsp");
 				pathNRedirect.setRedirect(false);
 				break;
 			}
