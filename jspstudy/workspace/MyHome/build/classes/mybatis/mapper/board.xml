@@ -106,7 +106,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 	        <if test="column=='BOTH'">(BTITLE LIKE '%' || #{query} || '%' OR BCONTENT LIKE '%' || #{query} || '%')</if>
 	</select>
 	
-		<!-- 1단 댓글만 허용 + 검색 결과 리스트 목록 -->
+	<!-- 1단 댓글만 허용 + 검색 결과 리스트 목록 -->
 	<select id="queryBoardList" parameterType="Map" resultType="dto.BoardDto">
 		SELECT B.*
 		  FROM (SELECT ROWNUM AS RN, A.*
@@ -116,6 +116,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 						  AND   <if test="column!='BOTH'">${column} LIKE '%' || #{query} || '%'</if>
 						 		<if test="column=='BOTH'">(BTITLE LIKE '%' || #{query} || '%' OR BCONTENT LIKE '%' || #{query} || '%')</if>
 		  		   	  ORDER BY BGROUP DESC,
+		  		   	  		   BDEPTH ASC,
+		  		   	  		   BGROUPORD DESC) A) B
+		 WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}
+	</select>
+	
+	<select id="getTotalMyRecord" parameterType="Map" resultType="int">
+		SELECT COUNT(*)
+			FROM BOARD
+		  WHERE MID = #{mId}
+	</select>
+
+	<!-- 1단 댓글만 허용 + 검색 결과 리스트 목록 -->
+	<select id="myBoardList" parameterType="Map" resultType="dto.BoardDto">
+		SELECT B.*
+		  FROM (SELECT ROWNUM AS RN, A.*
+		  		  FROM (SELECT	*
+		  		   		   FROM BOARD
+						  WHERE MID = #{mId}
+						  ORDER BY BGROUP DESC,
 		  		   	  		   BDEPTH ASC,
 		  		   	  		   BGROUPORD DESC) A) B
 		 WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}
