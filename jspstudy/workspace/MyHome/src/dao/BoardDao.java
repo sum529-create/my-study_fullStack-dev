@@ -71,4 +71,22 @@ public class BoardDao {
 		ss.close();
 		return result;
 	}
+	public int replyInsert(BoardDto replyDto) {
+		SqlSession ss = factory.openSession(false);
+		int result = ss.insert("mybatis.mapper.board.replyInsert", replyDto);
+		if(result > 0) {
+			ss.commit();
+		}
+		ss.close();
+		return result;
+	}
+	public int replyUpdateGroupOrd(int bNo) {
+		SqlSession ss = factory.openSession(false);
+		int result = ss.update("mybatis.mapper.board.replyUpdateGroupOrd", bNo);
+		if(result > 0) {
+			ss.commit();
+		}
+		ss.close();
+		return result;
+	}
 }
