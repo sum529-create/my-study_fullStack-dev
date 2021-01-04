@@ -11,6 +11,13 @@
 		alert('게시글의 정보를 확인할 수 없습니다.');
 		history.back();
 	}
+	// 게시글 삭제
+	function fn_boardDelete(f) {
+		if(confirm('삭제할까요?')){
+			f.action= '/MyHome/boardDelete.board';
+			f.submit();
+		}
+	}
 </script>
 
 ${boardDto.bNo}번 게시글입니다. <br/>
@@ -31,4 +38,16 @@ ${boardDto.bIp}<br/><br/>
 <pre>${boardDto.bContent}</pre><br/><br/>
 
 <input type="button" value="전체목록으로이동"  onclick="location.href='/MyHome/boardListPage.board?page=${page}'"/>
+
+<form method="post">	<!-- method 상관없음 -->
+
+	<%-- hidden --%>
+	<input type="hidden" name="bNo" value="${boardDto.bNo}"/>
+	<input type="hidden" name="page" value="${page}"/>
+
+	<%-- 작성자만 삭제 할 수 있다. --%>
+	<c:if test="${boardDto.mId eq loginDto.mId}">
+		<input type="button"/ value="삭제하기" onclick="fn_boardDelete(this.form)"/>
+	</c:if>
+</form>
 <%@ include file="../template/footer.jsp" %>
