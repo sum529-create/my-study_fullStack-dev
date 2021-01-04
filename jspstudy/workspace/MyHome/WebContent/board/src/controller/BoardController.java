@@ -66,7 +66,7 @@ public class BoardController extends HttpServlet {
 				command = new ReplyInsertCommand(); // board 용 reply는 x
 				pathNRedirect = command.execute(request, response);
 				break;
-			case "queryBoardListPage":
+			case "/queryBoardListPage.board":
 				command = new QueryBoardListCommand();
 				pathNRedirect = command.execute(request, response);
 				break;

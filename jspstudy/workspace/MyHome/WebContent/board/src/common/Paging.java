@@ -68,15 +68,28 @@ public class Paging {
 		if (beginPage <= pagePerBlock) {
 			sb.append("이전&nbsp;");
 		} else {
-			sb.append("<a href=\"" + path + "?page=" + (beginPage - 1) + "\">이전&nbsp;</a>");
+			if(path.indexOf("?") > 0) {	// 경로에 ?가 있을 때(파라미터가 있을 때)
+				sb.append("<a href=\"" + path + "&page=" + (beginPage - 1) + "\">이전&nbsp;</a>");
+			}else {						// 경로에 ?가 없을 때(파라미터가 없을 때)
+				sb.append("<a href=\"" + path + "?page=" + (beginPage - 1) + "\">이전&nbsp;</a>");
+			}
 		}
+		
+		/*
+		 * /MyHome/boardListPage.board ?page=1
+		 * /MyHome/queryBoardListPage.board? column=BTITLE&query=검색어 &page=1 	
+		 */
 		
 		// 2) 페이지 번호
 		for (int p = beginPage; p <= endPage; p++) {
 			if (p == page) {
 				sb.append("<span class=\"disable\">" + p + "&nbsp;</span>");
 			} else {
-				sb.append("<a href=\"" + path + "?page=" + p + "\">" + p + "&nbsp;</a>");
+				if(path.indexOf("?")>0) {
+					sb.append("<a href=\"" + path + "&page=" + p + "\">" + p + "&nbsp;</a>");
+				}else {
+					sb.append("<a href=\"" + path + "?page=" + p + "\">" + p + "&nbsp;</a>");
+				}
 			}
 		}
 		
@@ -84,7 +97,11 @@ public class Paging {
 		if (endPage >= totalPage) {  // endPage == totalPage
 			sb.append("다음");
 		} else {
-			sb.append("<a href=\"" + path + "?page=" + (endPage + 1) + "\">다음</a>");
+			if(path.indexOf("?")>0) {
+				sb.append("<a href=\"" + path + "&page=" + (endPage + 1) + "\">다음</a>");
+			}else {
+				sb.append("<a href=\"" + path + "?page=" + (endPage + 1) + "\">다음</a>");
+			}
 		}
 		
 		return sb.toString();

@@ -95,4 +95,11 @@ public class BoardDao {
 		ss.close();
 		return totalRecord;
 	}
+	
+	public List<BoardDto> queryBoardList(Map<String, String> map) {
+		SqlSession ss = factory.openSession();
+		List<BoardDto> list = ss.selectList("mybatis.mapper.board.queryBoardList", map);
+		ss.close();
+		return list;
+	}
 }
