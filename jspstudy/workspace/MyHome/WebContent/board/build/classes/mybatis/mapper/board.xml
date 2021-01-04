@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="mybatis.mapper.board">
+
+	<select id="getTotalRecord" resultType="int">
+		SELECT COUNT(*)
+		  FROM BOARD
+	</select>
+
+	<!-- 1단 댓글만 허용되는 리스트 목록 -->
+	<select id="boardList" parameterType="Map" resultType="dto.BoardDto">
+		SELECT B.*
+		  FROM (SELECT ROWNUM AS RN, A.*
+		  		  FROM (SELECT	*
+		  		   		  FROM BOARD
+		  		   	  ORDER BY BGROUP DESC,
+		  		   	  		   BDEPTH ASC,
+		  		   	  		   BGROUPORD DESC) A) B
+		 WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}
+	</select>
+	
+	<insert id="boardInsert" parameterType="dto.BoardDto">
+		INSERT INTO 
+			BOARD 
+		  VALUES(BOARD_SEQ.NEXTVAL,
+		  		 #{mId}, 
+		  		 #{bTitle}, 
+		  		 #{bContent}, 
+		  		 #{bIp}, 
+		  		 0, 			<!-- 조회수 -->
+		  		 SYSDATE, 
+		  		 SYSDATE, 
+		  		 0, 			<!-- 삭제여부 | 정상 게시글 : 0, 삭제된 게시글 : -1 -->
+		  		 BOARD_SEQ.CURRVAL,	<!--[bGroup] 현재값과 같은 값 부여, BOARD_SEQ.NEXTVAL로 생성한 번호(bNo와 같다) --> 
+		  		 0, 			<!-- [bGroupOrd] 게시글 순서(같은 그룹 내에서 표시되는 순서, 그룹 내부 순서 : 먼저 달린 댓글 판단용) -->
+		  		 0				<!-- [bDepth] (게시글:0, 댓글 1 이상) -->
+		  )
+	</insert>
+	
+	<!-- bNo	 bTitle		 bGroup		 bGroupOrd		 bDepth 
+		10		게시글10	10				0				0 (게시글)
+		11		ㄴ 댓글1	10				3				1 (댓글)
+		12		ㄴ 댓글2	10				2				1 (댓글)    +
+		13		 ㄴ 대댓	10				1				2 (대댓글)
+		
+		/* 댓글 삽압 시 */
+		1. bGroup: 게시글 bNo와 같다.
+		2. bGroupOrd
+			1) 1을 가진다.
+			2) 기존 댓글들의 bGroupOrd를 1씩 증가시킨다.
+		3. bDepth: 게시글의 bDepth + 1이다.
+		
+		/* 목록 정렬 방식 */
+		ORDER BY bGroup DESC, bDepth ASC, bGroupOrd DESC
+				 => 0을 가장 먼저 올리고, 나머지 거꾸로 순
+	-->
+	
+	<select id="boardView" parameterType="int" resultType="dto.BoardDto">
+		SELECT *
+			FROM BOARD
+		 WHERE BNO = #{bNo}
+	</select>
+	
+	<update id="boardUpdateHit" parameterType="int">
+		UPDATE BOARD SET BHIT = BHIT + 1 WHERE BNO = #{bNo}
+	</update>
+
+	<update id="boardDelete" parameterType="int">
+		UPDATE BOARD SET BDELETE = -1 WHERE BNO = #{bNo}
+	</update>
+	
+	<insert id="replyInsert" parameterType="dto.BoardDto">
+		INSERT INTO 
+			BOARD 
+		  VALUES(BOARD_SEQ.NEXTVAL,
+		  		 #{mId}, 
+		  		 #{bTitle}, 
+		  		 #{bContent}, 
+		  		 #{bIp}, 
+		  		 0, 			<!-- 조회수 -->
+		  		 SYSDATE, 
+		  		 SYSDATE, 
+		  		 0, 			<!-- 삭제여부 | 정상 게시글 : 0, 삭제된 게시글 : -1 -->
+		  		 #{bGroup},		<!-- 게시글의 bNo와 같다 --> 
+		  		 #{bGroupOrd}, 			<!-- [bGroupOrd] 게시글 순서(같은 그룹 내에서 표시되는 순서, 그룹 내부 순서 : 먼저 달린 댓글 판단용) -->
+		  		 #{bDepth}				<!-- [bDepth] (게시글:0, 댓글 1 이상) -->
+		  )
+	</insert>
+	<!-- 게시글의 번호(bNo)는 게시글과 댓글들의 그룹번호(bGroup)와 같다. -->
+	<update id="replyUpdateGroupOrd" parameterType="int">
+		UPDATE BOARD
+			SET BGROUPORD = BGROUPORD + 1
+		 WHERE BGROUP = #{bNo}
+		 	AND BGROUPORD != 0 <!-- AND BGROUPORD <> 0, AND BGROUPORD > 0-->
+		 	 
+	</update>
+	
+	<select id="getTotalQueryRecord" parameterType="Map" resultType="int">
+		SELECT COUNT(*)
+			FROM BOARD
+		  WHERE <if test="column=='BTITLE'">BTITLE LIKE '%' || #{query} || '%'</if>
+		 		<if test="column=='BCONTENT'">BCONTENT LIKE '%' || #{query} || '%'</if>
+		 		<if test="column=='MID'">BMID LIKE '%' || #{query} || '%'</if>
+		 		<if test="column=='BOTH'">BTITLE LIKE '%' || #{query} || '%' OR BCONTENT LIKE '%' || #{query} || '%'</if>
+	</select>
+</mapper>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="mybatis.mapper.reply">
+
+
+	<insert id="replyInsert" parameterType="dto.ReplyDto">
+		INSERT INTO 
+			REPLY(RNO, RWRITER, RCONTENT, RPW, RIP, RDATE, BBS_NO) 
+		 VALUES(REPLY_SEQ.NEXTVAL, #{rWriter}, #{rContent}, #{rPw}, #{rIp}, SYSDATE, #{bbs_no})
+	</insert>
+	
+	<select id="replyList" parameterType="int" resultType="dto.ReplyDto">
+		SELECT RNO, RWRITER, RCONTENT, RPW, RIP, RDATE, BBS_NO
+			FROM REPLY
+		  WHERE BBS_NO = #{bbs_no}
+		 ORDER BY RNO
+	</select>
+	
+	<delete id="replyDelete" parameterType="int">
+		DELETE FROM REPLY WHERE RNO=#{rNo}
+	</delete>
+	
+	<select id="replyCount" parameterType="int" resultType="int">
+		SELECT COUNT(*)
+			FROM REPLY
+ 		  WHERE BBS_NO = #{bbs_no}
+	</select>
+	
+</mapper>

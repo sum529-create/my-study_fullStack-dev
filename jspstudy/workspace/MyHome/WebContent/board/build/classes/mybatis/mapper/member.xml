@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="mybatis.mapper.member">
+
+	<select id="selectBymIdmPw" parameterType="dto.MemberDto" resultType="dto.MemberDto">
+		SELECT *
+		  FROM MEMBER
+		 WHERE MID = #{mId}
+		   AND MPW = #{mPw}
+	</select>
+	
+	<select id="selectBymEmail" parameterType="String" resultType="dto.MemberDto">
+		SELECT *
+		  FROM MEMBER
+		 WHERE MEMAIL = #{mEmail}
+	</select>
+
+	<!-- mNo 설정할 때 String으로 해뒀었음 오라클이 알아서 변환해줌 그래서 따로 변환안함 -->
+	<select id="selectBymNo" parameterType="String" resultType="dto.MemberDto">
+		SELECT *
+		  FROM MEMBER
+		 WHERE MNO = #{mNo}
+	</select>
+
+	<select id="selectBymId" parameterType="String" resultType="dto.MemberDto">
+		SELECT *
+		  FROM MEMBER
+		 WHERE MID = #{mId}
+	</select>
+	
+	<update id="updatemPw" parameterType="dto.MemberDto">
+		UPDATE MEMBER
+		   SET MPW = #{mPw}
+		 WHERE MNO = #{mNo}
+	</update>
+
+	<update id="update" parameterType="dto.MemberDto">
+		UPDATE MEMBER
+		   SET MNAME = #{mName},
+		   		MEMAIL = #{mEmail},
+		   		MPHONE = #{mPhone},
+		   		MADDRESS = #{mAddress}
+		 WHERE MNO = #{mNo}
+	</update>
+	
+	<insert id="insert" parameterType="dto.MemberDto">
+		INSERT INTO
+		MEMBER (MNO, MID, MPW, MNAME, MEMAIL, MPHONE, MADDRESS, MREGDATE)
+		VALUES (MEMBER_SEQ.NEXTVAL, #{mId}, #{mPw}, #{mName}, #{mEmail}, #{mPhone}, #{mAddress}, SYSDATE)
+	</insert>
+	
+	<delete id="delete" parameterType="String">
+		DELETE
+			FROM MEMBER
+		  WHERE MNO = #{mNo}
+	</delete>
+	
+</mapper>
