@@ -18,6 +18,7 @@ import command.board.BoardDeleteCommand;
 import command.board.BoardInsertCommand;
 import command.board.BoardListCommand;
 import command.board.BoardViewCommand;
+import command.board.MyBoardListCommand;
 import command.board.QueryBoardListCommand;
 import command.board.ReplyInsertCommand;
 import common.PathNRedirect;
@@ -68,6 +69,10 @@ public class BoardController extends HttpServlet {
 				break;
 			case "/queryBoardListPage.board":
 				command = new QueryBoardListCommand();
+				pathNRedirect = command.execute(request, response);
+				break;
+			case "/myBoardListPage.board":
+				command = new MyBoardListCommand();
 				pathNRedirect = command.execute(request, response);
 				break;
 			// 단순 이동
