@@ -59,8 +59,13 @@ ${boardDto.bIp}<br/><br/>
 	</c:if>
 	
 	<%-- 1단 댓글만 가능한 경우 --%>
-	<%-- 로그인을 해야만 댓글을 작성할 수 있다. --%>
+	<%-- 로그인을 해야만 댓글을 작성할 수 있다. 
 	<c:if test="${loginDto ne null and boardDto.bDepth eq 0}">
+		<input type="button" value="댓글달기" onclick="fn_replyInsertPage(this.form)"/>
+	</c:if>--%>
+	
+	<%-- 대댓글이 가능한 경우 --%>
+	<c:if test="${loginDto ne null}">
 		<input type="button" value="댓글달기" onclick="fn_replyInsertPage(this.form)"/>
 	</c:if>
 </form>

@@ -5,10 +5,16 @@
 <jsp:include page="template/header.jsp"/>
 <c:if test="${loginDto.mId eq 'admin'}">
 	<h1>관리자님 환영합니다.</h1>
-	<a href="/MyHome/memberList.admin">회원관리</a><br/>
+	<!-- 따로 만들려 할 때 -->
+	<a href="/MyHome/adminMemberListPage.admin">회원관리</a><br/>
 	<a href="/MyHome/guestList.admin">방명록관리</a><br/>
 	<a href="/MyHome/bbsList.admin">BBS관리</a><br/>
 	<a href="/MyHome/boardList.admin">게시판관리</a><br/>
+	<!-- 본래 코드에서 더 추가해서 할 때 -->
+	<a href="/MyHome/adminMemberList.member">회원관리</a><br/>
+	<a href="/MyHome/guestList.guest">방명록관리</a><br/>
+	<a href="/MyHome/bbsList.bbs">BBS관리</a><br/>
+	<a href="/MyHome/boardList.board">게시판관리</a><br/>
 </c:if>
 			<h1>MyHome에 오신 걸 환영합니다.</h1>
 			
