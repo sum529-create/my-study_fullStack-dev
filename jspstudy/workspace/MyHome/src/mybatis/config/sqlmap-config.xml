@@ -23,6 +23,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         <mapper resource="mybatis/mapper/bbs.xml"/>
         <mapper resource="mybatis/mapper/reply.xml"/>
         <mapper resource="mybatis/mapper/board.xml"/>
+        <mapper resource="mybatis/mapper/admin.xml"/>
 	</mappers>
 	
 </configuration>
