@@ -29,25 +29,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		  		  FROM (SELECT	*
 		  		   		  FROM BOARD
 		  		   	  ORDER BY BGROUP DESC,
-		  		   	  		   BGROUPORD ASC) A) B
+		  		   	           BGROUPORD ASC) A) B
 		 WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}
-	</select>	
+	</select>
 	
 	<insert id="boardInsert" parameterType="dto.BoardDto">
-		INSERT INTO 
-			BOARD 
-		  VALUES(BOARD_SEQ.NEXTVAL,
-		  		 #{mId}, 
-		  		 #{bTitle}, 
-		  		 #{bContent}, 
-		  		 #{bIp}, 
-		  		 0, 			<!-- 조회수 -->
-		  		 SYSDATE, 
-		  		 SYSDATE, 
-		  		 0, 			<!-- 삭제여부 | 정상 게시글 : 0, 삭제된 게시글 : -1 -->
-		  		 BOARD_SEQ.CURRVAL,	<!--[bGroup] 현재값과 같은 값 부여, BOARD_SEQ.NEXTVAL로 생성한 번호(bNo와 같다) --> 
-		  		 0, 			<!-- [bGroupOrd] 게시글 순서(같은 그룹 내에서 표시되는 순서, 그룹 내부 순서 : 먼저 달린 댓글 판단용) -->
-		  		 0				<!-- [bDepth] (게시글:0, 댓글 1 이상) -->
+		INSERT INTO
+		 BOARD
+		VALUES (BOARD_SEQ.NEXTVAL,
+				#{mId},
+				#{bTitle},
+				#{bContent},
+				#{bIp},
+				0,  <!-- 조회수 -->
+				SYSDATE,
+				SYSDATE,
+		  		SYSDATE, 
+		  		0, 			<!-- 삭제여부 | 정상 게시글 : 0, 삭제된 게시글 : -1 -->
+		  		BOARD_SEQ.CURRVAL,	<!--[bGroup] 현재값과 같은 값 부여, BOARD_SEQ.NEXTVAL로 생성한 번호(bNo와 같다) --> 
+		  		0, 			<!-- [bGroupOrd] 게시글 순서(같은 그룹 내에서 표시되는 순서, 그룹 내부 순서 : 먼저 달린 댓글 판단용) -->
+		  		0				<!-- [bDepth] (게시글:0, 댓글 1 이상) -->
 		  )
 	</insert>
 	
@@ -100,13 +101,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		  		 #{bDepth}				<!-- [bDepth] (게시글:0, 댓글 1 이상) -->
 		  )
 	</insert>
-	<!-- 게시글의 번호(bNo)는 게시글과 댓글들의 그룹번호(bGroup)와 같다. -->
+	<!-- 게시글의 번호(bNo)는 게시글과 댓글들의 그룹번호(bGroup)와 같다. 
 	<update id="replyUpdateGroupOrd" parameterType="int">
 		UPDATE BOARD
 			SET BGROUPORD = BGROUPORD + 1
 		 WHERE BGROUP = #{bNo}
-		 	AND BGROUPORD != 0 <!-- AND BGROUPORD <> 0, AND BGROUPORD > 0-->
+		 	AND BGROUPORD != 0 < AND BGROUPORD <> 0, AND BGROUPORD > 0
 		 	 
+	</update>-->
+	
+		<!-- 대댓글 -->
+	<update id="replyUpdatebGroupOrd" parameterType="dto.BoardDto">
+		UPDATE BOARD
+		   SET BGROUPORD = BGROUPORD + 1
+		 WHERE BGROUP = #{bGroup}
+		   AND BGROUPORD > #{bGroupOrd}
 	</update>
 	
 	<select id="getTotalQueryRecord" parameterType="Map" resultType="int">
@@ -177,14 +186,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		  		   	  		   BGROUPORD ASC) A) B
 		 WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}
 	</select>
-	
-	
-	<update id="replyUpdatebGroupOrd" parameterType="dto.BoardDto " >
-		UPDATE REPLY
-			SET BGROUPORD = BGROUPORD + 1
-		 WHERE BGROUP = #{bGroup}
-		 	AND BGROUPORD > #{bGroupOrd}
-	</update>
 	
 	
 </mapper>

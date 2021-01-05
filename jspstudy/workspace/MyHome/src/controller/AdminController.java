@@ -9,20 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import command.admin.AdminCommand;
+import command.admin.AdminMemberDeleteCommand;
 import command.admin.AdminMemberListCommand;
-import command.bbs.BBSDeleteCommand;
-import command.bbs.BBSInsertCommand;
-import command.bbs.BBSListCommand;
-import command.bbs.BBSUpdateCommand;
-import command.bbs.BBSViewCommand;
-import command.board.BoardCommand;
-import command.board.BoardDeleteCommand;
-import command.board.BoardInsertCommand;
-import command.board.BoardListCommand;
-import command.board.BoardViewCommand;
-import command.board.MyBoardListCommand;
-import command.board.QueryBoardListCommand;
-import command.board.ReplyInsertCommand2;
 import common.PathNRedirect;
 
 @WebServlet("*.admin")
@@ -53,8 +41,12 @@ public class AdminController extends HttpServlet {
 				command = new AdminMemberListCommand();
 				pathNRedirect = command.execute(request, response);
 				break;
+			case "/adminMemberDelete.admin":
+				command = new AdminMemberDeleteCommand();
+				pathNRedirect = command.execute(request, response);
+				break;
 			// 단순 이동
-			
+
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

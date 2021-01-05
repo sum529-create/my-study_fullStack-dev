@@ -37,4 +37,24 @@ public class AdminDao {
 		ss.close();
 		return list; 
 	}
+	
+	public int adminMemberBoardDelete(String mId) {
+		SqlSession ss = factory.openSession(false);
+		int result = ss.delete("mybatis.mapper.admin.adminMemberBoardDelete",mId);
+		if(result > 0) {
+			ss.commit();
+		}
+		ss.close();
+		return result;
+	}
+
+	public int adminMemberDelete(int mNo) {
+		SqlSession ss = factory.openSession(false);
+		int result = ss.delete("mybatis.mapper.admin.adminMemberDelete",mNo);
+		if(result > 0) {
+			ss.commit();
+		}
+		ss.close();
+		return result;
+	}
 }
