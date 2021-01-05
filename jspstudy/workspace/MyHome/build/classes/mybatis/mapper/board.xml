@@ -10,7 +10,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		  FROM BOARD
 	</select>
 
-	<!-- 1단 댓글만 허용되는 리스트 목록 -->
+	<!-- 1단 댓글만 허용되는 리스트 목록 
 	<select id="boardList" parameterType="Map" resultType="dto.BoardDto">
 		SELECT B.*
 		  FROM (SELECT ROWNUM AS RN, A.*
@@ -20,7 +20,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		  		   	  		   BDEPTH ASC,
 		  		   	  		   BGROUPORD DESC) A) B
 		 WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}
-	</select>
+	</select>-->
+	
+	<!-- 대댓글이 가능한 리스트 목록 -->
+	<select id="boardList" parameterType="Map" resultType="dto.BoardDto">
+		SELECT B.*
+		  FROM (SELECT ROWNUM AS RN, A.*
+		  		  FROM (SELECT	*
+		  		   		  FROM BOARD
+		  		   	  ORDER BY BGROUP DESC,
+		  		   	  		   BGROUPORD ASC) A) B
+		 WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}
+	</select>	
 	
 	<insert id="boardInsert" parameterType="dto.BoardDto">
 		INSERT INTO 
@@ -106,13 +117,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 	        <if test="column=='BOTH'">(BTITLE LIKE '%' || #{query} || '%' OR BCONTENT LIKE '%' || #{query} || '%')</if>
 	</select>
 	
-	<!-- 1단 댓글만 허용 + 검색 결과 리스트 목록 -->
+	<!-- 1단 댓글만 허용 + 검색 결과 리스트 목록 
 	<select id="queryBoardList" parameterType="Map" resultType="dto.BoardDto">
 		SELECT B.*
 		  FROM (SELECT ROWNUM AS RN, A.*
 		  		  FROM (SELECT	*
 		  		   		   FROM BOARD
-						  WHERE BDELETE = 0		<!-- 정상인 값만 출력(삭제되지 않은 값) -->
+						  WHERE BDELETE = 0		(정상인 값만 출력(삭제되지 않은 값) )
 						  AND   <if test="column!='BOTH'">${column} LIKE '%' || #{query} || '%'</if>
 						 		<if test="column=='BOTH'">(BTITLE LIKE '%' || #{query} || '%' OR BCONTENT LIKE '%' || #{query} || '%')</if>
 		  		   	  ORDER BY BGROUP DESC,
@@ -120,6 +131,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		  		   	  		   BGROUPORD DESC) A) B
 		 WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}
 	</select>
+	-->
+	<!-- 대댓글 허용 + 마이 리스트 목록 -->
+	<select id="queryBoardList" parameterType="Map" resultType="dto.BoardDto">
+		SELECT B.*
+		  FROM (SELECT ROWNUM AS RN, A.*
+		  		  FROM (SELECT	*
+		  		   		   FROM BOARD
+						  WHERE BDELETE = 0		(정상인 값만 출력(삭제되지 않은 값) )
+						  AND   <if test="column!='BOTH'">${column} LIKE '%' || #{query} || '%'</if>
+						 		<if test="column=='BOTH'">(BTITLE LIKE '%' || #{query} || '%' OR BCONTENT LIKE '%' || #{query} || '%')</if>
+		  		   	  ORDER BY BGROUP DESC,
+		  		   	  		   BGROUPORD ASC) A) B
+		 WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}
+	</select>
+	
 	
 	<select id="getTotalMyRecord" parameterType="Map" resultType="int">
 		SELECT COUNT(*)
@@ -127,7 +153,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		  WHERE MID = #{mId}
 	</select>
 
-	<!-- 1단 댓글만 허용 + 검색 결과 리스트 목록 -->
+	<!-- 1단 댓글만 허용 + 검색 결과 리스트 목록 
 	<select id="myBoardList" parameterType="Map" resultType="dto.BoardDto">
 		SELECT B.*
 		  FROM (SELECT ROWNUM AS RN, A.*
@@ -138,5 +164,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		  		   	  		   BDEPTH ASC,
 		  		   	  		   BGROUPORD DESC) A) B
 		 WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}
+	</select>-->
+	
+	<!-- 대댓글 허용 + 마이 리스트 목록 -->
+	<select id="myBoardList" parameterType="Map" resultType="dto.BoardDto">
+		SELECT B.*
+		  FROM (SELECT ROWNUM AS RN, A.*
+		  		  FROM (SELECT	*
+		  		   		   FROM BOARD
+						  WHERE MID = #{mId}
+						  ORDER BY BGROUP DESC,
+		  		   	  		   BGROUPORD ASC) A) B
+		 WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}
 	</select>
+	
+	
+	<update id="replyUpdatebGroupOrd" parameterType="dto.BoardDto " >
+		UPDATE REPLY
+			SET BGROUPORD = BGROUPORD + 1
+		 WHERE BGROUP = #{bGroup}
+		 	AND BGROUPORD > #{bGroupOrd}
+	</update>
+	
+	
 </mapper>
