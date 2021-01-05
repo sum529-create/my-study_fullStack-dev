@@ -20,7 +20,7 @@ import command.board.BoardListCommand;
 import command.board.BoardViewCommand;
 import command.board.MyBoardListCommand;
 import command.board.QueryBoardListCommand;
-import command.board.ReplyInsertCommand;
+import command.board.ReplyInsertCommand2;
 import common.PathNRedirect;
 
 @WebServlet("*.board")
@@ -64,7 +64,7 @@ public class BoardController extends HttpServlet {
 				pathNRedirect = command.execute(request, response);
 				break;
 			case "/replyInsert.board":
-				command = new ReplyInsertCommand(); // board 용 reply는 x
+				command = new ReplyInsertCommand2(); // board 용 reply는 x
 				pathNRedirect = command.execute(request, response);
 				break;
 			case "/queryBoardListPage.board":

@@ -80,6 +80,7 @@ public class BoardDao {
 		ss.close();
 		return result;
 	}
+	/*
 	public int replyUpdateGroupOrd(int bNo) {
 		SqlSession ss = factory.openSession(false);
 		int result = ss.update("mybatis.mapper.board.replyUpdateGroupOrd", bNo);
@@ -88,7 +89,7 @@ public class BoardDao {
 		}
 		ss.close();
 		return result;
-	}
+	}*/
 	public int getTotalQueryRecord(Map<String, String>map) {
 		SqlSession ss = factory.openSession();
 		int totalRecord = ss.selectOne("mybatis.mapper.board.getTotalQueryRecord", map);
@@ -115,5 +116,15 @@ public class BoardDao {
 		List<BoardDto> list = ss.selectList("mybatis.mapper.board.myBoardList", map);
 		ss.close();
 		return list;
+	}
+	
+	public int replyUpdatebGroupOrd(BoardDto BoardDto) {
+		SqlSession ss = factory.openSession(false);
+		int result = ss.update("mybatis.mapper.board.replyUpdatebGroupOrd", BoardDto);
+		if(result > 0) {
+			ss.commit();
+		}
+		ss.close();
+		return result;
 	}
 }
