@@ -21,26 +21,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		   BBS (BBS_NO, BBS_WRITER, BBS_TITLE, BBS_CONTENT, BBS_PW, BBS_HIT, BBS_IP, BBS_DATE)
 		VALUES (BBS_SEQ.NEXTVAL, #{bbs_writer}, #{bbs_title}, #{bbs_content}, #{bbs_pw}, 0, #{bbs_ip}, SYSDATE)
 	</insert>
-
+	
 	<select id="bbsView" parameterType="int" resultType="dto.BBSDto">
-		SELECT * FROM BBS WHERE BBS_NO = #{bbs_no}
+		SELECT *
+		  FROM BBS
+		 WHERE BBS_NO = #{bbs_no}
 	</select>
 	
 	<update id="bbsUpdateHit" parameterType="int">
-		UPDATE BBS 
-			SET BBS_HIT = BBS_HIT + 1
+		UPDATE BBS
+		   SET BBS_HIT = BBS_HIT + 1
 		 WHERE BBS_NO = #{bbs_no}
 	</update>
 	
 	<delete id="bbsDelete" parameterType="int">
-		DELETE FROM BBS WHERE BBS_NO = #{bbs_no}
+		DELETE
+		  FROM BBS
+		 WHERE BBS_NO = #{bbs_no}
 	</delete>
 	
 	<update id="bbsUpdate" parameterType="dto.BBSDto">
-		UPDATE BBS 
-			SET BBS_TITLE = #{bbs_title}, 
-					BBS_CONTENT = #{bbs_content}
-		  WHERE BBS_NO = #{bbs_no}	
+		UPDATE BBS
+		   SET BBS_TITLE = #{bbs_title},
+		       BBS_CONTENT = #{bbs_content}
+		 WHERE BBS_NO = #{bbs_no}
 	</update>
-	
+
 </mapper>
