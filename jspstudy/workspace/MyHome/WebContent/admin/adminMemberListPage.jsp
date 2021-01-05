@@ -41,6 +41,24 @@
 			f.submit();
 		}
 	}
+	function fn_selectMemberDelete() {
+		var chkList = document.getElementsByName('chk');
+		// chkList = [1, 2, 3, 4]
+		var target = '';
+		for (var i = 0; i < chkList.length; i++) {
+			if (chkList[i].checked) {
+				target = (target + chkList[i].value + ',');				
+			}
+		}
+		// target = '1,2,3,4,'
+		if (target != '') {
+			location.href='/MyHome/adminCheckDelete.admin?target='+target + '&page=${page}';
+		}
+	}
+	function fn_adminMemberUpdate(f) {
+		f.action = '/MyHome/adminMemberUpdate.admin';
+		f.submit();
+	}
 	
 </script>
 
@@ -48,7 +66,7 @@
 
 <%-- 2. 관리자 버튼 --%>
 <input type="button" value="신규회원추가" onclick=""/>
-<input type="button" value="선택회원삭제" onclick=""/> <br/><br/>
+<input type="button" value="선택회원삭제" onclick="fn_selectMemberDelete()"/> <br/><br/>
 
 <%-- 3. 회원 목록 --%>
 전체 회원 수: ${totalMemberCount}명<br/><br/>
@@ -59,8 +77,11 @@
 			<td>전체 <input type="checkbox" name="checkAll" id="checkAll" /></td>
 			<td>순번</td>
 			<td>아이디</td>
+			<td>비밀번호</td>
 			<td>성명</td>
 			<td>연락처</td>
+			<td>이메일</td>
+			<td>주소</td>
 			<td>회원가입일</td>
 			<td>비고</td>
 			
@@ -69,35 +90,38 @@
 	<tbody>
 		<c:forEach var="memberDto" items="${list}" varStatus="k">
 			<%-- 각 회원별로(tr) 처리할 수 있도록 form 태그 내부에 tr 태그를 배치한다. --%>
+			<form method="post">
 				<tr>
 					<td>
-					<form method="post">
+					
 						<%-- 체크박스는 각 회원의 회원번호를 가진다. --%>
 						<input type="checkbox" name="chk" value="${memberDto.mNo}" />
-					</form>
 					</td>
 					<td>${totalMemberCount - ((page - 1) * recordPerPage + k.index)}</td>
 					<td>${memberDto.mId}</td>
-					<td>${memberDto.mName}</td>
-					<td>${memberDto.mPhone}</td>
+					<td><input type="password" name="mPw"/></td>
+					<td><input type="text" name="mName" value="${memberDto.mName }"/></td>
+					<td><input type="text" name="mPhone" value="${memberDto.mPhone }"/></td>
+					<td><input type="text" name="mEmail" value="${memberDto.mEmail }"/></td>
+					<td><input type="text" name="mAddress" value="${memberDto.mAddress }"/></td>
 					<td>${memberDto.mRegDate}</td>
 					<td>
-					<form method="post">
 						<%-- hidden --%>
 						<input type="hidden" name="mNo" value="${memberDto.mNo}"/>
 						<input type="hidden" name="mId" value="${memberDto.mId}"/>
 						<input type="hidden" name="page" value="${page}"/>
 
-						<input type="button" value="수정" onclick=""/>
+						<input type="button" value="수정" onclick="fn_adminMemberUpdate(this.form)"/>
+						<input type="button" value="비밀번호수정" onclick=""/>
 						<input type="button" value="삭제" onclick="fn_memberDelete(this.form)"/>
-					</form>
 					</td>
 				</tr>
+					</form>
 		</c:forEach>
 	</tbody>
 	<tfoot>
 		<tr>
-			<td colspan="6">${paging}</td>
+			<td colspan="10">${paging}</td>
 		</tr>
 	</tfoot>
 </table>

@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <script>
 	if('${param.result}'){
-		alert('삭제되었습니다.');
+		alert('수정되었습니다.');
 		location.href='/MyHome/adminMemberListPage.admin?page=${param.page}';
 	}else{
 		alert('실패했습니다.');
