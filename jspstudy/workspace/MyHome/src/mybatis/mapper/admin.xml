@@ -30,6 +30,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			FROM MEMBER
 		 WHERE MNO = #{mNo}
 	</delete>
+	
+	<select id="selectMemberBymNo" parameterType="int" resultType="dto.MemberDto">
+		SELECT * 
+			FROM MEMBER
+		 WHERE MNO = #{mNo} 
+	</select>
+	
+	<update id="adminMemberUpdate" parameterType="dto.MemberDto">
+		UPDATE MEMBER
+		   SET MNAME = #{mName},
+		       MPHONE = #{mPhone},
+		       MEMAIL = #{mEmail},
+		       MADDRESS = #{mAddress}
+		 WHERE MID = #{mId}
+	</update>
 
 </mapper>
 

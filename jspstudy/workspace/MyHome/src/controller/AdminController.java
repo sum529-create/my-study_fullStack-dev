@@ -8,9 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import command.admin.AdminCheckDeleteCommand;
 import command.admin.AdminCommand;
 import command.admin.AdminMemberDeleteCommand;
 import command.admin.AdminMemberListCommand;
+import command.admin.AdminMemberUpdateCommand;
 import common.PathNRedirect;
 
 @WebServlet("*.admin")
@@ -45,6 +47,15 @@ public class AdminController extends HttpServlet {
 				command = new AdminMemberDeleteCommand();
 				pathNRedirect = command.execute(request, response);
 				break;
+			case "/adminCheckDelete.admin":
+				command = new AdminCheckDeleteCommand();
+				pathNRedirect = command.execute(request, response);
+				break;
+			case "/adminMemberUpdate.admin":
+				command = new AdminMemberUpdateCommand();
+				pathNRedirect = command.execute(request, response);
+				break;
+			
 			// 단순 이동
 
 			}

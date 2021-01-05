@@ -57,4 +57,21 @@ public class AdminDao {
 		ss.close();
 		return result;
 	}
+
+	public MemberDto selectMemberBymNo(int mNo) {
+		SqlSession ss = factory.openSession();
+		MemberDto memberDto = ss.selectOne("mybatis.mapper.admin.selectMemberBymNo", mNo);
+		ss.close();
+		return memberDto;
+	}
+
+	public int adminMemberUpdate(MemberDto  memberDto) {
+		SqlSession ss = factory.openSession(false);
+		int result = ss.update("mybatis.mapper.admin.adminMemberUpdate",memberDto);
+		if(result > 0) {
+			ss.commit();
+		}
+		ss.close();
+		return result;
+	}
 }
