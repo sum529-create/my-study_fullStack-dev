@@ -1,10 +1,10 @@
 package common;
 
 public class PageVo {
-	
-	// 게시물 : record
-	// 페이지 : page
-	// 블록   : block
+
+	// 게시물: record
+	// 페이지: page
+	// 블록  : block
 	
 	// 게시물 3개를 한 페이지에 배치
 	// 페이지 5개를 한 블록에 배치
@@ -32,6 +32,7 @@ public class PageVo {
 			totalPage++;
 		}
 	}
+	
 	public int getTotalRecord() {
 		return totalRecord;
 	}
