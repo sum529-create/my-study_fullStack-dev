@@ -13,14 +13,16 @@
 	function fn_send() {
 		var f = ducement.forms.myForm;		// document.forms.폼name
 		
-		if(i.name.value == ''){		// f.요소name속성.value속성
-			alert('이름을 입력하세요');
+		if (f.name.value == '') {  // f.요소name속성.value속성
+			alert('이름을 입력하세요.');
 			f.name.focus();
-			return false;		// onsubmit = "return false"처리되면서 submit이 되지않는다.
+			return false;  // onsubmit="return false" 처리되면서 submit이 되지 않는다.
 		}
-		
-		// 나이가 0 ~ 150 사이인가? 숫자인가?ㅣ빈칸이 아닌가?
-		if(i.age.value <= 0 || i.age.value > 150 || i.age.value == '' || isNaN(f.age.value)){ // if
+		// 나이 0 ~ 150사이인가? 숫자인가? 빈 칸이 아닌가?
+		if (f.age.value == '' ||// if ($('#age').val() == '')
+			f.age.value <= 0  ||
+			f.age.value > 150 ||
+			isNaN(f.age.value)) { 
 			alert('나이가 올바르지 않습니다.');
 			f.age.focus();
 			return false;

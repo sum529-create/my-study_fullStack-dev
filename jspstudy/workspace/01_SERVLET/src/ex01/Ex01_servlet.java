@@ -71,7 +71,7 @@ public class Ex01_servlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 * 4. doGet()
-	 * 		1) GET 방식의 요청인 경우에 자동으로 호출되는 메소드이다. (service() 메소드가 없으면(service가 먼저 수행))
+	 * 		1) GET 방식의 요청인 경우에 자동으로 호출되는 메소드이다. (service() 메소드가 없으면),(service가 먼저 수행))
 	 * 		2) GET 방식의 요청 방법
 	 * 			(1) <form method="get">
 	 * 			(2) $.ajax({type:'get', })
@@ -85,7 +85,7 @@ public class Ex01_servlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 * 
 	 * 5. doPost()
-	 * 		1) POST 방식의 요청인 경우에 자동으로 호출되는 메소드이다. (service() 메소드가 없으면(service가 먼저 수행))
+	 * 		1) POST 방식의 요청인 경우에 자동으로 호출되는 메소드이다. (service() 메소드가 없으면), (service가 먼저 수행))
 	 * 		2) 요청(request)과 응답(request)을 모두 doGet() 메소드로 넘기고 자신은 아무 일도 하지 않는다. [같은 코드를 두번 사용방지, 할 일은 같음]
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -57,7 +57,7 @@
 		<ul>
 			<li><b>다른 아이디/사이트에서 사용한 적 없는 비밀번호</b></li>
 			<li><b>이전에 사용한 적 없는 비밀번호</b>가 안전합니다.</li>
-			<li>비밀번호는 <b>8~16자의 대문자, 소문자, 특수문자(?=.*)</b>가 포함되어야 합니다.</li>
+			<li>비밀번호는 <b>8~16자의 대문자, 소문자, 특수문자(!@#$%^&*-_?)</b>가 포함되어야 합니다.</li>
 		</ul>
 		<input type="password" name="cpw" placeholder="현재 비밀번호" /><br>
 		<input type="password" name="npw" placeholder="새 비밀번호"/><br>

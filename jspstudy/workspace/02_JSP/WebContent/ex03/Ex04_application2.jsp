@@ -1,7 +1,6 @@
 <%@page import="java.io.FileWriter"%>
 <%@page import="java.io.BufferedWriter"%>
 <%@page import="java.io.IOException"%>
-<%@page import="jdk.jfr.events.FileWriteEvent"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 

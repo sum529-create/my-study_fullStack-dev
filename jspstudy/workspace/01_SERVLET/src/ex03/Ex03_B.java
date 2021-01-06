@@ -31,6 +31,8 @@ public class Ex03_B extends HttpServlet {
 		// 서버 내부에 있는 유저들은 이동을 했는지를 모른다. 최초 요청한 위치만 알수 있다.
 		// http://localhost:9090/01_SERVLET/Ex03_B?~~~
 		// 여기서 오히려 C로 고치면 포워드로 인식하여 에러가 난다.
+		
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

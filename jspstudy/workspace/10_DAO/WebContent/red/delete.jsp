@@ -17,7 +17,7 @@
 		out.println("location.href='/10_DAO/red/listPage.jsp'");
 	}else{
 		out.println("alert('회원 정보 삭제가 실패하였습니다.')");
-		out.println("location.href='/10_DAO/red/listPage.jsp'");
+		out.println("location.href='/10_DAO/red/listPage.jsp'");	// out.println("history.back()")
 	}
 	
 	out.println("</script>");

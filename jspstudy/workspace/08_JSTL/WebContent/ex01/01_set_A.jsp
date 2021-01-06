@@ -11,6 +11,7 @@
 	
  --%>
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+ <!-- web-inf => lib => 3개 jar파일 넣어놓기 -->
 <!DOCTYPE html>
 <html>
 <head>

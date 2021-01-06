@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 import dto.RedDto;
@@ -140,6 +139,9 @@ public class RedDao {
 			ps = con.prepareStatement(sql);
 			// SQL 실행: select문은 executeQuery(), 반환타입은 ResultSet
 			rs = ps.executeQuery();
+
+			/* rs -> select문일 때 사용한다. */
+			
 			// ResultSet은 그냥 사용할 수 없다.
 			// ResultSet -> ArrayList<RedDto>
 			// rs.next()는 ResultSet에 저장된 데이터 한 개
@@ -187,5 +189,107 @@ public class RedDao {
 		}
 		return result;
 	}
+	
+	/***** 6. 회원 정보 가져오기 *****/
+	
+	public RedDto view(int no) {
+		
+		RedDto redDto = null;
+		try {
+			con = getConnection();
+			sql = "SELECT * FROM RED WHERE NO = ?";
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, no);
+			rs = ps.executeQuery();
+			if(rs.next()) {	// next가 boolean 타입이다. 있으면 true, 없으면 false
+				redDto = new RedDto();
+				redDto.setNo(rs.getInt(1));		// 첫번째 칼렁이기에 rs.getInt(1)도 가능,
+												//rs.getInt("NO") 가능
+				redDto.setId(rs.getString("ID")); // rs.getString(2)
+				redDto.setPw(rs.getString("PW"));
+				redDto.setName(rs.getString("NAME"));
+				redDto.setAge(rs.getInt("AGE"));
+				redDto.setEmail(rs.getString("EMAIL"));
+				redDto.setRegDate(rs.getDate("REGDATE"));
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(con, ps, rs);
+			
+		}
+		
+		return redDto;
+		
+	}
+	
+	/***** 7. 회원 정보 수정하기 *****/
+	
+	public int update(RedDto redDto) {
+		int result = 0;
+		try {
+			con = getConnection();
+			sql = "UPDATE RED SET NAME = ?, AGE = ?, EMAIL = ? WHERE NO = ?";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, redDto.getName());
+			ps.setInt(2, redDto.getAge());
+			ps.setString(3, redDto.getEmail());
+			ps.setInt(4, redDto.getNo());
+			result = ps.executeUpdate();			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(con, ps, null);
+		}
+		
+		return result;
+	}
+	
+	/***** 8. 비밀 번호 수정하기 *****/
+	public int change(RedDto redDto) {
+		int result = 0;
+		try {
+			con = getConnection();
+			sql = "UPDATE RED SET PW = ? WHERE NO = ?";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, redDto.getPw());
+			ps.setInt(2, redDto.getNo());
+			result = ps.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(con, ps, null);
+		}
+		return result;
+	}
+	
+	/***** 9. 회원 정보 삭제하기 *****/
+	public int delete(RedDto redDto) {
+		int result = 0;
+		try {
+			con = getConnection();
+			sql = "DELETE FROM RED WHERE NO = ?";
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, redDto.getNo());
+			result = ps.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(con, ps, null);
+		}
+		return result;
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
 

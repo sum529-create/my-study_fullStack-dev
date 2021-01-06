@@ -12,7 +12,7 @@
 <!-- 
 	JSP 개요
 	1. Java Server Page
-	2. HTML 문서내에서 JAVA 코드를 사용할 수 있는 서블릿(Servlet) 기반의 서버특 스크립트 언어이다.
+	2. HTML 문서내에서 JAVA 코드를 사용할 수 있는 서블릿(Servlet) 기반의 서버측 스크립트 언어이다.
 	3. 모든 JSP 페이지는 모두 서블릿(Servlet)으로 변환된 뒤 처리된다.
 	4. 동작 순서
 		abc.jsp -> 서블릿명 abc_jsp.java -> abc_jsp.class -> run

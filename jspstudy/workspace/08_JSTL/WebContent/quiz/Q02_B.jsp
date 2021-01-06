@@ -13,7 +13,7 @@
 		<font size="${i}">폰트 사이즈:${i}</font><br/>
 	</c:forEach>
 	<h3>향상 forEach 연습</h3>
-	<c:forEach var="food" items="${paramValues.food}" varStatus="k">
+	<c:forEach var="food" items="${paramValues.foodwjen}" varStatus="k">
 		<ul>
 			<li>${k.count}번째 음식:${food}</li>
 		</ul>

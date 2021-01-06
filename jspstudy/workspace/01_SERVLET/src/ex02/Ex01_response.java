@@ -46,7 +46,7 @@ public class Ex01_response extends HttpServlet {
 		// 참고, Reader와 Writer로 끝나면 모두 문자스트림입니다.
 		
 		// 출력 스트림
-		//		1. FileWritrr
+		//		1. FileWriter
 		//		2. PrintWriter
 		//		3. BufferedWriter
 		

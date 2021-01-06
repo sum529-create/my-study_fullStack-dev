@@ -30,12 +30,12 @@
 		pageContext.setAttribute("people", people);
 	%>
 
-	${peopel[0].name }<br/>
+<%-- 	${peopel[0].name }<br/>
 	${peopel[0].age }<br/>
 	${peopel[0].gender }<br/>
 	${peopel[1].name }<br/>
 	${peopel[1].age }<br/>
-	${peopel[1].gender }<br/> <!-- 아래 형식 -->
+	${peopel[1].gender }<br/> --%> <!-- 아래 형식 -->
 	
 	<%
 		String result = "";

@@ -51,6 +51,10 @@
 		
 		// 서버에서 읽기
 		bis.read(array, 0, (int)file.length());
+		// 읽은 내용을 array배열 0번 인덱스부터 길이만큼 영역에 저장해라.
+		// (int)file.length() -> 길이가 10이라면
+		// bis.read(array, 0, 10) : array배열의 0번인덱스부터 10개 공간 사용해서 저장해라.
+		
 		
 		// 사용자에게 쓰기
 		bos.write(array);

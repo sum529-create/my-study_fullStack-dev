@@ -22,9 +22,9 @@
 	MultipartRequest multipart = new MultipartRequest(
 			request,
 			realPath,
-			1024 * 1024 * 10, 	// 업로드 크기 (10MB)
+			1024 * 1024 * 10,  // 업로드 크기 (10MB)
 			"UTF-8",
-			new DefaultFileRenamePolicy() // 동일한 파일이 업로드되면 기존 파일명을 수정하는 방법이다.(원래 파일명에 숫자 붙이기)
+			new DefaultFileRenamePolicy()  // 동일한 파일이 업로드되면 기존 파일명을 수정하는 방법이다.(원래 파일명에 숫자 붙이기)
 			);
 	// 1024 -> KB
 	// 1024 1024 -> MB
@@ -53,7 +53,7 @@
 			// file을 통해서 필요한 정보를 얻어낸다.
 			String filename = file.getName();	// 파일명
 			long filesize = file.length() / 1024;	// file.length(): 바이트이므로 / 1024를 통해서 KB로 변환
-			pageContext.setAttribute("filesize", filesize);
+			pageContext.setAttribute("filesize", filesize); // <=filename >쓰기 위해서
 			String lastModifiedDate = new SimpleDateFormat("yyyy-MM-dd a h:mm").format(file.lastModified());
 			
 		%>

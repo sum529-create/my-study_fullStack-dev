@@ -19,7 +19,7 @@
 		<servlet-name>MyServlet</servlet-name>
 		<url-pattern>/Ex02</url-pattern>
 	</servlet-mapping>
-  
+
   
   
 </web-app>

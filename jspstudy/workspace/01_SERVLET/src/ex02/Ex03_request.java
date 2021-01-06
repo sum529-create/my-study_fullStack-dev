@@ -37,7 +37,7 @@ public class Ex03_request extends HttpServlet {
 		 * 		2) String[] list = request.getParameters("parameter")
 		 * 4. request를 이용해서 정보를 요청하는 방법
 		 * 		1) <form> 태그의 모든 폼 요소들은 submit하면 정보가 요청된다.
-		 * 			사용자 : <input tyep="text" name="id"  name="id/> submit화면
+		 * 			사용자 : <input type="text" name="id"  name="id/> submit화면
 		 * 			서버   : <String id="request.getParameter("id");
 		 * 		2) URL에 파라미터를 포함한다.
 		 * 			 URL : 호스트:포트번호/컨텍스트패스/URLMapping?파라미터=값&파라미터=값

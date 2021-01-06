@@ -27,6 +27,7 @@
 	<jsp:param value="로그인" name="title"/>
 </jsp:include>
 
+
 			<div class="login-box">
 				<input type="text" name="id" placeholder="아이디"/><br>
 				<input type="password" name="pw" placeholder="*****"/><br><br/>

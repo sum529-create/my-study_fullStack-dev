@@ -24,20 +24,18 @@ public class HomeController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String cmd = request.getParameter("cmd");
-		String path = null;
 		Command command = null;
 		switch (cmd) {
 		case "korean":
 			/* KoreanCommand command1 = new KoreanCommand(); */
 			command = new KoreanCommand();
-			path = command.execute(request, response);
 			break;
 		case "english":
 			/* EnglishCommand command2 = new EnglishCommand(); */
 			command = new EnglishCommand();
-			path = command.execute(request, response);
 			break;
 		}
+		String path = command.execute(request, response);
 		request.getRequestDispatcher(path).forward(request, response);
 	}
 

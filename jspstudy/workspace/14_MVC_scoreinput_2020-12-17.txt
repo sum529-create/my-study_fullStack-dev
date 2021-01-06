@@ -1,0 +1,6 @@
+JSP : /process.score
+
+Servlet
+@WebServlets("/process.score")
+@WebServlets("*.score")
+둘 중 하나를 써도 무관
