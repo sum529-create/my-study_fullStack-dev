@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- spring bean configuration file -->
+	<!-- 안녕, 나는 빈을 만들어 주는 xml 파일이야. -->
+	<!--  -->
+	
+	<!-- 1. 디폴트 생성자 + setter -->
+	<!-- 
+		1) 디폴트 생성
+		<bean id = "객체명" class=-"클래스명" >
+	 -->
+	 
+	 <!-- 
+	 	지금부터 아래 빈을 만들거에요.
+	 	Calculator calculator1 = new Calculator();
+	 	Calculator calculator2 = new Calculator();
+	  -->
+	  
+	  <bean id="calculator1" class="com.koreait.spring.Calculator"/>
+	  <bean id="calculator2" class="com.koreait.spring.Calculator"/>
+
+</beans>
