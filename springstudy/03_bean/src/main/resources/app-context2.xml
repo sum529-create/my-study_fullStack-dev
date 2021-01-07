@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- app-context2.xml 에서는 Person만 생성합니다. -->
+	
+	<!--
+		Person person = new Person();
+		person.setName("제임스");
+		person.setMyCar(car);
+	-->
+	<bean id="person" class="com.koreait.spring.Person" p:name="제임스" p:myCar-ref="car" />
+	
+</beans>
