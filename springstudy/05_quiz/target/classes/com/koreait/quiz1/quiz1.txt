@@ -1,0 +1,22 @@
+app-context1.xml 이용합니다.
+
+Calculator.java
+	// Field
+	없음
+	
+Gugudan.java
+	// Field
+	private int startDan;
+	private int endDan;
+	private int startNum;
+	private int endNum;
+	private Calculator calculator;
+	
+GugudanMain.java
+	// 다음과 같은 출력을 생성한다.
+	// 3 X 5 = 15
+	// 3 X 6 = 18
+	// 3 X 7 = 21
+	// 4 X 5 = 20
+	// 4 X 6 = 24
+	// 4 X 7 = 28

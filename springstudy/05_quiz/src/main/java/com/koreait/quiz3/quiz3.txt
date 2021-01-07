@@ -1,0 +1,21 @@
+app-context3.xml 이용합니다.
+
+Exam.java
+	// Field
+	private double average;
+	private char grade;
+Student.java
+	// Field
+	private String name;
+	private int age;
+	private HashMap<String, String> homeInfo;
+	private ArrayList<Integer> scoreList;
+	private Exam exam;
+StudentMain.java
+	// 다음과 같은 출력을 생성한다.
+	name: david
+	home's address: seoul
+	home's phone: 02-555-5555
+	scoreList: [50, 60, 70, 80, 90]
+	average: 70.0
+	grade: C
