@@ -37,6 +37,20 @@ public class SpringMainClass {
 		cal2.multiply(10, 3);
 		cal2.divide(10, 3);
 		
+		EngineerCalculator eCal1 = ctx.getBean("eCalculator1", EngineerCalculator.class);	
+		// getBean에서 가지고 올 name은 bean의 id와 같다.requiredType은 클래스명을 적어준다.
+		eCal1.add();
+		eCal1.subtract();
+		eCal1.multiply();
+		eCal1.divide();
+		
+		EngineerCalculator eCal2 = ctx.getBean("eCalculator2", EngineerCalculator.class);
+		
+		eCal2.add();
+		eCal2.subtract();
+		eCal2.multiply();
+		eCal2.divide();
+		
 		ctx.close();
 	}
 

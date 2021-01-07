@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- 
+		** List 계열은 <list> 태그와 <value>태그로 처리합니다.
+	
+		ListHandler listHandler = new ListHandler();
+		
+		List<String> foods = new ArrayList<String>();
+		foods.add("떡볶이");
+		foods.add("김밥");
+		foods.add("순대");
+		foods.add("튀김");
+		foods.add("어묵");
+		
+		listHandler.setList(foods);
+	 -->
+	<bean id="listHandler" class="com.koreait.spring.ListHandler">
+		<property name="list">	<!-- name은 필드명, setList의 list사용 -->
+			<list>
+				<value>떡볶이</value>
+				<value>김밥</value>
+				<value>순대</value>
+				<value>튀김</value>
+				<value>어묵</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- 
+		** Set 계열은 <set>태그와 <value>태그로 처리합니다.
+		
+		SetHandler setHandler = new SetHandler();
+		
+		Set<String> courses = new HashSet<String>();
+		courses.add("자바");
+		courses.add("자바");
+		courses.add("파이썬");
+		courses.add("파이썬");
+		courses.add("스프링");
+		courses.add("스프링");
+		
+		setHandler.setSet(courses);
+	 -->
+	 <bean id="setHandler" class="com.koreait.spring.SetHandler">
+	 	<property name="set">
+	 		<set>
+	 			<value>자바</value>
+	 			<value>자바</value>
+	 			<value>파이썬</value>
+	 			<value>파이썬</value>
+	 			<value>스프링</value>
+	 			<value>스프링</value>
+	 		</set>
+	 	</property>
+	 </bean>
+</beans>
