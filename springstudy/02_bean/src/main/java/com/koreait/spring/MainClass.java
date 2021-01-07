@@ -1,8 +1,10 @@
 package com.koreait.spring;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class MainClass {
@@ -32,6 +34,17 @@ public class MainClass {
 		
 		setHandler.setSet(courses);
 		setHandler.setInfo();
+		
+		MapHandler mapHandler = new MapHandler();
+		
+		Map<String, String> dict = new HashMap<String, String>();
+		dict.put("spring", "봄");
+		dict.put("summer", "여름");
+		dict.put("fall", "가을");
+		dict.put("winter", "겨울");
+		
+		mapHandler.setMap(dict);
+		mapHandler.mapInfo();
 		
 	}
 }

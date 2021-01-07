@@ -56,4 +56,28 @@
 	 		</set>
 	 	</property>
 	 </bean>
+<!--
+		** Map 계열은 <map>태그와 <entry>태그로 처리합니다.
+		
+		MapHandler mapHandler = new MapHandler();
+		
+		Map<String, String> dict = new HashMap<String, String>();
+		dict.put("spring", "봄");
+		dict.put("summer", "여름");
+		dict.put("fall", "가을");
+		dict.put("winter", "겨울");
+		
+		mapHandler.setMap(dict);
+		mapHandler.mapInfo();
+	-->
+	<bean id="mapHandler" class="com.koreait.spring.MapHandler">
+		<property name="map">
+			<map>
+				<entry key="spring" value="봄" />
+				<entry key="summer" value="여름" />
+				<entry key="fall" value="가을" />
+				<entry key="winter" value="겨울" />
+			</map>
+		</property>
+	</bean>
 </beans>
