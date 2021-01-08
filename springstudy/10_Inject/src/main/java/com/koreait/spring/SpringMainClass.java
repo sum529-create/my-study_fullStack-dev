@@ -8,7 +8,7 @@ public class SpringMainClass {
 		AbstractApplicationContext ctx = new GenericXmlApplicationContext("classpath:app-context.xml");
 		
 		EngineerCalculator eCal = ctx.getBean("eCalculator", EngineerCalculator.class);
-		
+		// app-context.xml -> <bean id="eCalculator" class="com.koreait.spring.EngineerCalculator"/>
 		eCal.add(10, 3);
 		eCal.subtract(10, 3);
 		eCal.multiply(10, 3);

@@ -10,7 +10,7 @@ public class EngineerCalculator {
 	// @autowired
 	// private Calculator calculator;
 
-	// 수동으로 주입해 볼께요.
+	// 수동으로 주입(inject)해 볼께요.
 	// 1. Calculator 클래스로 가서 이름을 하나 지어줍니다.
 	// 		@Component("이름")
 	// 2. EngineerCalculator 클래스로 가서 Bean을 생성해야할 객체 선언부에(private Calculator calculator;)
@@ -25,7 +25,7 @@ public class EngineerCalculator {
 	// maven project는 jar를 모두 자동으로 받아옵니다. (https://mvnrepository.com/)
 	// 어떤 jar를 받아와야 하는지는 pom.xml에 작성해 둡니다. (pom.xml에 가 봅니다)
 	
-	@Qualifier("calc") 	// calculator라는 이름을 가진 Bean을 찾아서(@Component 보고 찾)
+	@Qualifier("calculator") 	// calculator라는 이름을 가진 Bean을 찾아서(@Component 보고 찾아요.)
 	@Inject				// 주입해 주세요. https://mvnrepository.com/artifact/javax.inject/javax.inject/1
 	private Calculator calculator;
 	
