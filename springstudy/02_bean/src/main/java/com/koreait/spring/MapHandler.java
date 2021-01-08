@@ -28,6 +28,9 @@ public class MapHandler {
 		// 	System.out.println(key + ": " + map.get(key));
 		// }
 		// entrySet() : key와 value를 동시에 빼는 방식
+		
+		// entrySet() 메서드는 key와 value의 값이 모두 필요한 경우 사용하고, 
+		// keySet() 메서드는 key의 값만 필요한 경우 사용
 		for (Map.Entry<String, String> entry : map.entrySet()) {
 			System.out.println(entry.getKey() + ": " + entry.getValue());
 		}

@@ -7,7 +7,9 @@ public class SpringMainClass {
 
 	public static void main(String[] args) {
 		
-		
+		/* 애너테이션 (Annotation)
+		 * 자바 소스 코드에 추가하여 사용할 수 있는 메타데이터의 일종이다. 
+		 * 보통 @ 기호를 앞에 붙여서 사용한다 */
 		// @Configuration 애너테이션을 추가한 AppContext.java를 
 		// 처리하는 클래스는 AnnotationConfigApplicationContext입니다.
 		
@@ -16,7 +18,7 @@ public class SpringMainClass {
 		
 		AbstractApplicationContext ctx = new AnnotationConfigApplicationContext(AppContext.class);
 		
-		Song s1 = ctx.getBean("song1", Song.class);
+		Song s1 = ctx.getBean("song1", Song.class);	// public Song song1() {...}
 		Song s2 = ctx.getBean("song2", Song.class);
 		
 		s1.songInfo();

@@ -28,5 +28,4 @@
 		car.setPrice(7000);
 	-->
 	<bean id="car" class="com.koreait.spring.Car" p:model="520d" p:price="7000" />
-
 </beans>

@@ -16,7 +16,7 @@ public class SpringMainClass {
 		AbstractApplicationContext ctx = new GenericXmlApplicationContext(resourceLocations);
 		
 		// cal1과 cal2의 생성을 app-context.xml에서 처리합니다.
-		// 개발자가 직접 생성하지 않고, app-context.xml에게 반을 요청하는 방식입니다. (getBean)
+		// 개발자가 직접 생성하지 않고, app-context.xml에게 빈을 요청하는 방식입니다. (getBean)
 		
 		// 빈의 생성 권한을 스프링프레임워크가 가져갑니다.
 		// 개발자가 빈을 생성하지 않습니다. => 스프링이 만들어서 context에 저장해서 요청시 사용해줌

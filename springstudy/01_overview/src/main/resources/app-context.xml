@@ -16,7 +16,7 @@
 				<value>값</value>	// 문자, 숫자 상관 없이 따옴표 없이 그냥 적어요.
 			</property>
 			<property name="필드명">
-				<ref bean="객체명"/>	// 참조 타입묭, 다른 빈(bean)을 필드로 가지는 경우에 써요.
+				<ref bean="객체명"/>	// 참조 타입명, 다른 빈(bean)을 필드로 가지는 경우에 써요.
 				(reference, bean값을 넣고 싶을 때)
 				// 일반 값들은 value태그 사용하고, bean값은 ref를 사용한다.
 			</property>
@@ -63,22 +63,21 @@
 		} 자바에서는 이거
 		 -->
 		<!-- 
-			<bean id="객제명" class="클래스명">
+			<bean id="객체명" class="클래스명">
 				<constructor-arg>
-					<value>첫번째인수값</value>	 // 순서대로만 작업가능(두번째인수x)
+					<value>첫번째인수값</value>	// constructor-arg는 반드시 매개변수의 순서대로 작성해요.
 				</constructor-arg>
 				<constructor-arg>
-ㄴ					<value>두번째인수값</value>
+					<value>두번째인수값</value>
 				</constructor-arg>
 				<constructor-arg>
-					<ref bean="객체명"/>		// 다른 빈(bean)을 필드로 가지는 경우에 써요
+					<ref bean="객체명" />	// 다른 빈(bean)을 필드로 가지는 경우에 써요.
 				</constructor-arg>
 			</bean>
-			<bean id="객제명" class="클래스명">
-				<constructor-arg value="첫번째인수값">			// constructor-arg는 반드시 매개변수
-				<constructor-arg value="두번째인수값">
-				<constructor-arg ref="객체명"/>	// 다른 빈(bean)을 빌드로 가지는 경우에 짜요.
-				</constructor-arg>
+			<bean id="객체명" class="클래스명">
+				<constructor-arg value="첫번째인수값" />	// constructor-arg는 반드시 매개변수의 순서대로 작성해요.
+				<constructor-arg value="두번째인수값" />
+				<constructor-arg ref="객체명" />			// 다른 빈(bean)을 필드로 가지는 경우에 써요.
 			</bean>
 			
 		 -->

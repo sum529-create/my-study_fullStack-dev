@@ -19,6 +19,7 @@
 	 -->
 	<bean id="listHandler" class="com.koreait.spring.ListHandler">
 		<property name="list">	<!-- name은 필드명, setList의 list사용 -->
+								<!-- // private List<String> list; -->
 			<list>
 				<value>떡볶이</value>
 				<value>김밥</value>
@@ -45,7 +46,7 @@
 		setHandler.setSet(courses);
 	 -->
 	 <bean id="setHandler" class="com.koreait.spring.SetHandler">
-	 	<property name="set">
+	 	<property name="set">	<!-- private Set<String> set; -->
 	 		<set>
 	 			<value>자바</value>
 	 			<value>자바</value>

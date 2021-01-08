@@ -4,6 +4,8 @@ public class MainClass {
 	
 	public static void main(String[] args) {
 		
+		// 개발자가 직접 new를 이용해서 각종 객체(인스턴스, 빈)을 생성한다.
+		
 		Calculator calculator1 = new Calculator();
 		Calculator calculator2 = new Calculator();
 		
