@@ -1,4 +1,4 @@
-20210108_spring
+20210108_spring	(06_bean)
 * IoC
 제어권을 spring이 가져가고 있다.
 new -> Spring : IoC
