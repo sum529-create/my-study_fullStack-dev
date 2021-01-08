@@ -2,8 +2,8 @@ package com.koreait.spring;
 
 import org.springframework.stereotype.Component;
 
-// 안녕, 나는 calc라고 해
-@Component("calc")
+// 안녕, 나는 calculator라고 해
+@Component("calculator")	// <bean id="calculator">로 이름을 주었어요.
 
 public class Calculator {
 	
