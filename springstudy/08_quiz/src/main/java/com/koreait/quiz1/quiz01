@@ -1,0 +1,17 @@
+Gun.java
+	private String model;
+	private int bullet;
+Soldier.java
+	private String name;
+	private HashMap<String, String> armyInfo;
+	private Gun gun;
+	
+1. 2명의 Soldier를 만듭니다.
+2. 1명은 app-context.xml에 만들고, 1명은 AppContext.java에 만듭니다.
+3. app-context1.xml에서 AppContext1.java를 가져옵니다.
+
+이름: 김상사
+부대명: 1사단
+부대위치: 산속
+총기모델: K1
+총알: 10발
