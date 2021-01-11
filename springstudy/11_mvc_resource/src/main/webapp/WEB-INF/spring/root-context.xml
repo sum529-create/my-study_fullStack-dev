@@ -9,4 +9,5 @@
 		root-context.xml
 		: 안녕, 난 app-context.xml 역할을 하고 있어.
 	 -->	
+	 
 </beans>

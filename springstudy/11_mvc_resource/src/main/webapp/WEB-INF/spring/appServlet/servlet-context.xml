@@ -7,6 +7,8 @@
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
+	<!-- XML을 수정하고나면 서버 재시작이 원칙입니다. -->
+
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
@@ -14,6 +16,8 @@
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
+	<resources mapping="/assets/**" location="/assets/" />	<!-- resources의 추가가 가능합니다. -->
+	<!-- resources 폴더 -> 이미지 저장소용 -->
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<!-- 
@@ -31,10 +35,26 @@
 		controller 	-> com.koreait.mvc01.controller
 		command 	-> com.koreait.mvc01.command
 		...
-		여기서 mvc01에 
+		여기서 mvc01은 컨텍스트 패스를 의미합니다.
 	 -->
 	<context:component-scan base-package="com.koreait.mvc01" />
 	
-	
+	<!--
+		root-context와는 다른 구문 
+		servlet -> 	beans:beans ...   
+		root	->	beans..
+		 
+		안녕, 나도 app-context.xml의 역할을 수행할 수 있어. 
+	-->
+	<!-- 
+	servlet~.xml
+		<beans:bean id="" class="">
+			
+		</beans:bean>
+	root~.xml
+		<bean id="" class="">
+		 	
+		 </bean>
+	  -->
 	
 </beans:beans>
