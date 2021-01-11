@@ -71,7 +71,8 @@ public class Controller {
 	
 	// 4. PersonDto 2개를 ArrayList에 담아서 넘기기
 	
-	// Autowired는 필드, 메소드에 추가할 수 있어요.
+	// @Autowired는 필드, 메소드에 추가할 수 있어요.
+	// @Autowired는 지역변수에는 추가할 수 없어요.
 	
 	// PersonDto p1 = ctx.getBean("person1", PersonDto.class);
 	@Autowired		// id가 person1이고, class가 PersonDto인 Bean을 자동으로 만들어 주세요.
