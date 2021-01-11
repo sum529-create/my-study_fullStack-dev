@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("board")
@@ -38,7 +39,7 @@ public class BoardController {
 		// forward로 view01.jsp로 이동합니다. (기존 request 정보가 넘어갑니다.)
 	}
 	// 연습
-	// http://localhost:9090/board/v02?title=공지사항&hit=1
+	// http://localhost:9090/mvc06/board/v02?title=공지사항&hit=1
 	
 	// view02.jsp
 	// 제목 : 공지사항
@@ -49,12 +50,46 @@ public class BoardController {
 		model.addAttribute("title", request.getParameter("title"));
 		model.addAttribute("hit", Integer.parseInt(request.getParameter("hit")));
 		
-		model.addAttribute("date", new SimpleDateFormat("yyyy-mm-dd").format(new Date(System.currentTimeMillis())));
+		model.addAttribute("date", new SimpleDateFormat("yyyy-MM-dd").format(new Date(System.currentTimeMillis())));
 		
-		return "view02";
+		return "view02";	// return "/WEB-INF/views/view02.jsp";
 	}
 	
 	// 2. @RequestParam
 	// request로 전달되는 파라미터를 처리하는 애너테이션
+	@RequestMapping("v03")
+	public String goView03(@RequestParam("name") String name,
+							@RequestParam("age") int age,
+							Model model) {
+		// @RequestParam("name") String name : 파라미터 name을 String name에 저장하세요.
+		// @RequestParam("age") int age : 파라미터 age를 int age에 저장하세요.
+		
+		// moodel에 속성으로 저장합니다.
+		model.addAttribute("name", name);
+		model.addAttribute("age", age);
+		
+		return "view03";	// return "/WEB-INF/views/view03.jsp";
+	}
 	
+	// 연습
+	// http://localhost:9090/mvc06/board/v04?title=공지사항&hit=1
+		
+	// view04.jsp
+	// 제목 : 공지사항
+	// 조회수: 1
+	// 작성일 2021-01-11
+	@RequestMapping("v04")
+	public String goView04(@RequestParam("title") String title,
+							@RequestParam("hit") int hit,
+							Model model) {
+		// @RequestParam("name") String name : 파라미터 name을 String name에 저장하세요.
+		// @RequestParam("age") int age : 파라미터 age를 int age에 저장하세요.
+		
+		// moodel에 속성으로 저장합니다.
+		model.addAttribute("title", title);
+		model.addAttribute("hit", hit);
+		model.addAttribute("date", new SimpleDateFormat("yyyy-MM-dd").format(new Date(System.currentTimeMillis())));
+		
+		return "view04";	// return "/WEB-INF/views/view04.jsp";
+	}
 }
