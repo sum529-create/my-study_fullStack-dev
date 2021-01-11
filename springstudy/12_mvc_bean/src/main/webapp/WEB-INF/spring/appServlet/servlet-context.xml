@@ -23,6 +23,19 @@
 	
 	<context:component-scan base-package="com.koreait.mvc02" />
 	
-	
+	<!-- servlet-context.xml도 Bean을 생성할 수 있습니다. -->
+	<!--
+		WebApplicationContext 클래스로 생성하지는 않습니다.
+		@Autowired 애너테이션을 사용하면 정상적으로 Bean이 생성됩니다.
+	-->
+	<beans:bean id="contact3" class="com.koreait.mvc02.dto.ContactDto">
+		<beans:property name="phone" value="010-3333-3333" />
+		<beans:property name="address" value="서울시 강남구" />
+	</beans:bean>
+	<beans:bean id="person3" class="com.koreait.mvc02.dto.PersonDto">
+		<beans:property name="name" value="패트릭" />
+		<beans:property name="age" value="40" />
+		<beans:property name="contact" ref="contact3" />
+	</beans:bean>
 	
 </beans:beans>
