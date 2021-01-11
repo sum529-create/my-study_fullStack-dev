@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<!-- bean을 만드는 곳. -->
+	
+	<!-- setter injection -->
+	<!-- "에밀리", 20, "010-1111-1111", "서울시 마포구" -->
+	<bean id="contact1" class="com.koreait.mvc02.dto.ContactDto">
+		<property name="phone" value="010-1111-1111"/>
+		<property name="address" value="서울시 마포구"/>
+	</bean>
+	<bean id="person1" class="com.koreait.mvc02.dto.PersonDto">
+		<property name="name" value="에밀리"/>
+		<property name="age" value="20"/>
+		<property name="contact" ref="contact1"/>
+	</bean>
+	
+	<!-- constructor injection -->
+	<!-- "앨리스", 30, "010-2222-2222", "서울시 종로구" -->
+	<bean id="contact2" class="com.koreait.mvc02.dto.ContactDto">
+		<constructor-arg value="010-2222-2222"/>
+		<constructor-arg value="서울시 종로구"/>
+	</bean>
+	
+	<bean id="person2" class="com.koreait.mvc02.dto.PersonDto">
+		<constructor-arg value="앨리스"/>
+		<constructor-arg value="30"/>
+		<constructor-arg ref="contact2"/>
+	</bean>
+</beans>
