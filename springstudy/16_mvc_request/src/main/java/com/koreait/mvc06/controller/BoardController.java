@@ -10,15 +10,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.koreait.mvc06.dto.PersonDto;
+
 @Controller
 @RequestMapping("board")
 public class BoardController {
-	
-	@RequestMapping("/")
-	public String goIndex() {
-		return "index";
-	}
-	
+
 	// 1. JSP에서 사용하던 방식으로 request를 처리해도 전펴 문제가 없습니다.
 	
 	@RequestMapping("v01")
@@ -73,7 +70,7 @@ public class BoardController {
 	
 	// 연습
 	// http://localhost:9090/mvc06/board/v04?title=공지사항&hit=1
-		
+	// host/contextpath(회사마다 여기까진 정해져있음)/URLmapping
 	// view04.jsp
 	// 제목 : 공지사항
 	// 조회수: 1
@@ -92,4 +89,69 @@ public class BoardController {
 		
 		return "view04";	// return "/WEB-INF/views/view04.jsp";
 	}
+	
+	
+	// 3. @RequestParam,의 추가 속성
+	/* 
+	 * 모두 다 같은 내용
+		@RequestMapping(value="v05")
+		@RequestMapping(value="/v05")
+		@RequestMapping("v05")
+		@RequestMapping("/v05")
+	*/
+	@RequestMapping("v05")	// 필수가 아니다. -> required 
+							// String = null, int = ? 
+							// int는 직접 지정해야함 => defaultValue, defaultValue = 0
+	public String goView05(@RequestParam(value="name", required=false)String name,
+							@RequestParam(value="age", required=false, defaultValue="0")int age,
+							Model model) {
+		// 받은 파라미터를 model에 다시 저장한다.
+		model.addAttribute("name", name == null ? "이름없음" : name);
+		model.addAttribute("age", age);
+		
+		return "view05";
+	}
+	
+	// 연습
+	// http://localhost:9090/mvc06/board/v06?title=공지사항&hit=1
+	// view06.jsp
+	// 제목 : 공지사항
+	// 조회수: 1
+	// 작성일 2021-01-11
+	@RequestMapping("v06")
+	public String goView06(@RequestParam(value="title", required=false)String title,
+							@RequestParam(value="hit", required=false, defaultValue="0")int hit,
+							Model model) {
+		model.addAttribute("title", title);
+		model.addAttribute("hit", hit);
+		model.addAttribute("date", new SimpleDateFormat("yyyy-MM-dd").format(new Date(System.currentTimeMillis())));
+		return "view06";
+	}
+	
+	
+	// 4. Dto
+	@RequestMapping("v07")
+	public String goView06(PersonDto personDto,
+							Model model) {
+		
+		// 파라미터 name과 age가 PersonDto에 저장된다.
+		model.addAttribute("name", personDto.getName());
+		model.addAttribute("age", personDto.getAge());
+		
+		return "view07";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
