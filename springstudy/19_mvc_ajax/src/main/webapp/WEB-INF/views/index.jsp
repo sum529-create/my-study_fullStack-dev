@@ -11,8 +11,10 @@
 	// 페이지 로드 이벤트
 	$(function () {
 		fn_send1();
+		fn_send2();
 	});
 	
+	// controller에서 받아오는 text
 	function fn_send1() {
 		$('#btn1').click(function() {
 			$.ajax({
@@ -26,12 +28,42 @@
 				/*
 					$('#content1') == <div id "content1"></div>
 					$('#content1').text(responseText) == <div id="content1">responseText<div>
+					$('#content1').text() == responseText
 				*/
 				error: function () {
 					alert('실패');
 				}
 			});
 		});
+	}
+	
+	// controller에서 받아오는 json
+	function fn_send2() {
+		$('#btn2').click(function() {
+			$.ajax({
+				url: 'getJson',
+				type: 'post',
+				data: 'send=' + $('#send').val(),	// send=가 날라가면 파라미터가 날라간다.
+				dataType: 'json',	// return되는 데이터가 json이다.
+				success: function (responseObj) {
+					// responseObj는 json데이터이므로,
+					// 자바스크립트는 객체로 처리하면 됩니다.
+					// 1) 객체.프로퍼티   OR
+					// 2) 객체['프로퍼티'] 방법
+					
+					// html 태그추가방법
+					// 1) .html(): 새로 추가
+					// 2) .append() : 원래 있던것에 추가
+					$('#content2').empty();	// 창 비우기
+					$('#content2').append('<ul><li>' + responseObj.send + '</li>');
+					$('#content2').append('<li>' + responseObj.exist + '</li></ul>');
+				},
+				error: function () {
+					alert('실패');
+				}
+			});
+		});
+		
 	}
 	
 </script>
@@ -43,10 +75,13 @@
 	<form action="">
 		
 		보내는 값<br/>
-		<input type="text" id="send"/>
+		<input type="text" id="send"/><br/><br/>
 		
 		<input type="button" id="btn1" value="일반텍스트"/><br/>
-		<div id="content1"></div>
+		<div id="content1"></div><br/>
+
+		<input type="button" id="btn2" value="JSON"/><br/>
+		<div id="content2"></div><br/>
 	</form>
 </body>
 </html>
