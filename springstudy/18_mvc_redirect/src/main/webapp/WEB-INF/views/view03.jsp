@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 	<h3>view03.jsp</h3>
 	
 	<ul>
