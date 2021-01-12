@@ -7,9 +7,11 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.koreait.mvc06.dto.BoardDto;
 import com.koreait.mvc06.dto.PersonDto;
 
 @Controller
@@ -131,27 +133,61 @@ public class BoardController {
 	
 	// 4. Dto
 	@RequestMapping("v07")
-	public String goView06(PersonDto personDto,
+	public String goView07(PersonDto personDto,
 							Model model) {
 		
 		// 파라미터 name과 age가 PersonDto에 저장된다.
 		model.addAttribute("name", personDto.getName());
 		model.addAttribute("age", personDto.getAge());
 		
+		model.addAttribute("personDto", personDto);
+		
 		return "view07";
 	}
 	
 	
+	// 연습
+	// http://localhost:9090/mvc06/board/v06?title=공지사항&hit=1
+	// view06.jsp
+	// 제목 : 공지사항
+	// 조회수: 1
+	// 작성일 2021-01-11
+	@RequestMapping("v08")
+	public String goView08(BoardDto boardDto, Model model) {
+		model.addAttribute("title", boardDto.getTitle());
+		model.addAttribute("hit", boardDto.getHit());
+		model.addAttribute("date", new Date(System.currentTimeMillis()));
+		return "view08";
+	}
 	
+	// 5. @ModelAttribute
+	// 파라미터를 받아서 Model에 저장해 줍니다.
+	// Model model의 선언이 없음
+	// model의 attribute가 없음. => 직접 저장해 준다.
 	
+	@RequestMapping("v09")
+	public String goView09(@ModelAttribute("name") String name, @ModelAttribute("age") int age) {
+		
+		return "view09";
+	}
+
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	// 더 짧게 Dto에 싣어버림
+	@RequestMapping("v10")
+	public String goView10(@ModelAttribute("personDto") PersonDto personDto) {
+		
+		return "view10";
+	}
+
+	// 연습
+	// http://localhost:9090/mvc06/board/v11?title=공지사항&hit=1
+	// view11.jsp
+	// 제목 : 공지사항
+	// 조회수: 1
+	// 작성일 2021-01-11
+	@RequestMapping("v11")
+	public String goView11(@ModelAttribute("title") String title, @ModelAttribute("hit") int hit, Model model) {
+		model.addAttribute("date", new Date(System.currentTimeMillis()));
+		return "view11";
+	}
 }

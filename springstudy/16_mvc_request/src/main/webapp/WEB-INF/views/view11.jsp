@@ -7,13 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h3>view07.jsp</h3>
+	<h3>view11.jsp</h3>
 	
 	<ul>
-		<li>이름: ${name}</li>
-		<li>나이: ${age}살</li>
-		<li>이름: ${personDto.name}</li>
-		<li>나이: ${personDto.age}살</li>
+		<li>제목: ${title}</li>
+		<li>조회수: ${hit}</li>
+		<li>작성일: ${date}</li>
 	</ul>
 </body>
 </html>
