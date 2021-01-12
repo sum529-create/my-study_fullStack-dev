@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%-- <form action="<%=request.getContextPath()>/member/login.do" method="post"> --%>
+	<%-- <form action="<%=request.getContextPath()%>/member/login.do" method="post"> --%>
 	
 	<%--
 		주의사항
@@ -15,7 +15,7 @@
 		< action="/member/login.do" method="post">
 	 --%>
 	
-	<form action="member/login.do" method="post">
+	<form action="<%=request.getContextPath()%>/member/login.do" method="post">
 		아이디<br/>
 		<input type="text" name="id"/><br/><br/>
 		비밀번호<br/>
