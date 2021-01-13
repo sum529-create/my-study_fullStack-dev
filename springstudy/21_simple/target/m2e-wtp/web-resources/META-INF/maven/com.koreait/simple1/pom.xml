@@ -13,6 +13,19 @@
 		<org.aspectj-version>1.9.2</org.aspectj-version>
 		<org.slf4j-version>1.7.25</org.slf4j-version>
 	</properties>
+	
+	
+	<!-- ojdbc6.jar가 저장된 repository 설정 -->
+	<repositories>
+		<repository>
+			<id>oracle</id>
+			<name>ORACLE JDBC Repository</name>
+			<url>http://maven.jahia.org/maven2</url>
+		</repository>
+	</repositories>
+	
+	
+	
 	<dependencies>
 		<!-- Spring -->
 		<dependency>
@@ -123,7 +136,19 @@
 			<artifactId>junit</artifactId>
 			<version>4.7</version>
 			<scope>test</scope>
-		</dependency>        
+		</dependency>
+		
+		
+		
+		<!-- ojdbc6.jar 디팬던시 -->
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc6</artifactId>
+			<version>12.1.0.2</version>
+		</dependency>   
+		
+		
+		     
 	</dependencies>
     <build>
         <plugins>
