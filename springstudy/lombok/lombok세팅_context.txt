@@ -1,0 +1,81 @@
+21_simple
+
+DBCP 방식을 이용한 CRUD처리
+1. Package Explorer에서 Servers - Tomcat v8.5 - context.xml을 연다.
+
+2. 다음 <Resource> 태그를 추가한다.
+<!-- Oracle XE -->
+    <Resource 
+		auth="Container" 
+		name="jdbc/oracle" 
+		type="javax.sql.DataSource" 
+		driverClassName="oracle.jdbc.driver.OracleDriver"
+		url = "jdbc:oracle:thin:@localhost:1521:xe"
+		username = "spring"
+		password = "1111"
+		maxTotal="8"
+		maxIdle="2"
+		maxWaitMillis="5000"
+	/>
+
+3. 인코딩을 위해 web.xml을 열고 아래를 작성한다.
+	<!-- 인코딩 -->
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>import org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>	
+			<param-value>UTF-8</param-value>	
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>	
+			<param-value>true</param-value>	
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern><!-- 모두 다 인코딩하라  -->
+	</filter-mapping>
+
+4. ojdbc6.jar를 준비한다. (둘 중 하나)
+	1) pom.xml에 디펜던시를 추가한다.
+	   : 현재 프로젝트에서만 사용하겠습니다.
+	   (1) <dependencied> 위에 <repositories>를 추가합니다.
+	<!-- ojdbc6.jar가 저장된 repository 설정 -->
+		<repositories>
+			<repository>
+				<id>oracle</id>
+				<name>ORACLE JDBC Repository</name>
+				<url>http://maven.jahia.org/maven2</url>
+			</repository>
+		</repositories>
+
+	    (2) 아래 디펜던시를 추가합니다.
+		<!-- ojdbc6.jar 디팬던시 -->
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc6</artifactId>
+			<version>12.1.0.2</version>
+		</dependency>   
+	2) apache-tomcat-8.5.59\lib 디렉토리에 ojdbc6.jar를 복사해둔다.
+	   : 현재 톰캣을 사용하는 모든 프로젝트에서 사용하겠습니다.
+
+https://mvnrepository.com/artifact/com.oracle/ojdbc6/12.1.0.1-atlassian-hosted
+아래 Atlassion.3rdParty는 외부에서 가져왔다는 뜻.
+repository가 여기에 저장되어 있지 않음.
+아래 주소에 있음 (https://packages.atlassian.com/maven-3rdparty/)
+
+<!-- https://mvnrepository.com/artifact/com.oracle/ojdbc6 -->
+<dependency>
+    <groupId>com.oracle</groupId>	// com폴더밑에 oracle로 이동. but 외부 저장소라 사용 가능할지?
+    <artifactId>ojdbc6</artifactId>
+    <version>12.1.0.1-atlassian-hosted</version>
+</dependency>
+
+강사님이 애용하는 maven
+https://maven.jahia.org/maven2
+
+https://devtools.jahia.com/nexus/content/groups/maven-jahia-org/com/oracle/
+
+
