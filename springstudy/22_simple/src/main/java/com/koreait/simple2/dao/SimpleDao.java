@@ -95,6 +95,28 @@ public class SimpleDao {
 	}
 	
 	/****** 3. view ******/
+	public SimpleDto simpleView(int no) {
+		SimpleDto simpleDto = null;
+		try {
+			con = dataSource.getConnection();
+			sql = "SELECT * FROM SIMPLE2 WHERE NO = ?";
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, no);
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				String writer = rs.getString("WRITER");
+				String title = rs.getString("TITLE");
+				String content = rs.getString("CONTENT");
+				Date regDate = rs.getDate("REGDATE");
+				simpleDto = new SimpleDto(no, writer, title, content, regDate);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(con, ps, rs);
+		}
+		return simpleDto;
+	}
 	
 	
 	/****** 4. delete ******/
@@ -110,6 +132,15 @@ public class SimpleDao {
 			e.printStackTrace();
 		}finally {
 			close(con, ps, null);
+		}
+	}
+	
+	/****** 5. update ******/	
+	public void simpleUpdate(SimpleDto simpleDto) {
+		try {
+			
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
 	}
 }
