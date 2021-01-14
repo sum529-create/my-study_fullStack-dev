@@ -45,10 +45,3 @@
 
 </body>
 </html>
-
-				</td>
-			</tr>
-		</tfoot>
-	</table>
-</body>
-</html>
