@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.koreait.simple1.command.SimpleCommand;
 import com.koreait.simple1.command.SimpleInsertCommand;
 import com.koreait.simple1.command.SimpleListCommand;
+import com.koreait.simple1.command.SimpleViewCommand;
+import com.koreait.simple1.dto.SimpleDto;
 
 @Controller
 public class SimpleController {
@@ -65,6 +67,20 @@ public class SimpleController {
 		
 	}
 	
-
+	@RequestMapping(value="simpleViewPage.do")
+	public String simpleViewPage(HttpServletRequest request, Model model) {
+		// SimpleViewCommand에 전달을 위해서
+		// request를 model에 저장합니다.
+		model.addAttribute("request", request);
+		command = new SimpleViewCommand();
+		command.execute(model);
+		return "simple/simpleViewPage";
+	}
+	
+	@RequestMapping(value="simpleUpdatePage.do", method=RequestMethod.POST)
+	public String simpleUpdatePage(SimpleDto simpleDto, Model model) {
+		model.addAttribute("simpleDto", simpleDto);
+		return "simple/simpleUpdatePage";
+	}
 	
 }
