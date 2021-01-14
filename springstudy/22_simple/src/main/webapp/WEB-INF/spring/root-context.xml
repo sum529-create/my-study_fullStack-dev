@@ -4,5 +4,22 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-		
+	
+	<!-- DI 를 위한 Bean을 생성해 둡니다. -->
+	<!-- 모든 command를 Bean으로 생성해 둡니다. -->
+	<!-- command를 사용하는 곳은 controller이기에 controller에서 만든다. 
+	  	 개발자가 하지않음.  private static SimpleDao simpleDao = new SimpleDao(); 이런거 안함-->
+	
+	<!-- 스프링은 모든 Bean을 기본적으로 scope="singleton"로 생성합니다. (하나만 만들어 둔다는 뜻입니다.) -->
+	<bean id="simpleListCommand" class="com.koreait.simple2.command.SimpleListCommand"/>
+	<bean id="simpleViewCommand" class="com.koreait.simple2.command.SimpleViewCommand"/>
+	<bean id="simpleInsertCommand" class="com.koreait.simple2.command.SimpleInsertCommand"/>
+	<bean id="simpleUpdateCommand" class="com.koreait.simple2.command.SimpleUpdateCommand"/>
+	<bean id="simpleDeleteCommand" class="com.koreait.simple2.command.SimpleDeleteCommand"/>
+	
+	<!-- SimpleDao의 생성을 Spring에게 맡깁니다. -->
+	<!-- SimpleDao가 singleton이라면 굳이 맡길 필요는 없습니다. -->
+	<bean id="simpleDao" class="com.koreait.simple2.dao.SimpleDao"/>
+	
+	
 </beans>
