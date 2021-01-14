@@ -8,11 +8,14 @@
 </head>
 <body>
 	<h3>수정페이지입니다.</h3>
-	번호 : ${simpleDto.no}<br/>
-	제목: <br/>
-	<input type="text" name="title" value="${simpleDto.title}"/><br/>
-	내용: <br/>
-	<input type="text" name="content" value="${simpleDto.content}"/><br/>
-	
+	<form action="simpleUpdate.do" method="post">
+		번호 : ${simpleDto.no}<br/>
+		제목: <br/>
+		<input type="text" name="title" value="${simpleDto.title}"/><br/>
+		내용: <br/>
+		<input type="text" name="content" value="${simpleDto.content}"/><br/>
+		<input type="hidden" name="no" value="${simpleDto.no}"/>
+		<button>수정하기</button>
+	</form>
 </body>
 </html>

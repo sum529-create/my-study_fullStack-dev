@@ -20,12 +20,19 @@
 		<input type="hidden" name="content"	value="${simpleDto.content}"/>
 													<!-- location은 파라미터값을 가져가지않는다. 사용하려면 action값을 두개를 써야함 -->
 		<input type="button" value="수정하러가기" onclick="fn_simpleUpdatePage(this.form)"/>
+		<input type="button" value="삭제하기" onclick="fn_simpleDelete(this.form)"/>
 	</form>
 	
 	<script type="text/javascript">
 		function fn_simpleUpdatePage(f) {
 			f.action = "simpleUpdatePage.do";
 			f.submit();
+		}
+		function fn_simpleDelete(f) {
+			if(confirm('삭제할까요?')){			
+				f.action="simpleDelete.do";
+				f.submit();
+			}
 		}
 	</script>
 </body>
