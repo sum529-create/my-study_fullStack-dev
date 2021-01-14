@@ -21,6 +21,17 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+		<!-- 스프링은 모든 Bean을 기본적으로 scope="singleton"로 생성합니다.(하나만 만들어 둔다는 뜻입니다.) -->
+	<beans:bean id="simpleListCommand" class="com.koreait.simple2.command.SimpleListCommand" />
+	<beans:bean id="simpleViewCommand" class="com.koreait.simple2.command.SimpleViewCommand" />
+	<beans:bean id="simpleInsertCommand" class="com.koreait.simple2.command.SimpleInsertCommand" />
+	<beans:bean id="simpleUpdateCommand" class="com.koreait.simple2.command.SimpleUpdateCommand" />
+	<beans:bean id="simpleDeleteCommand" class="com.koreait.simple2.command.SimpleDeleteCommand" />
+	
+	<!-- SimpleDao의 생성을 Spring에게 맡깁니다. -->
+	<!-- SimpleDao가 singleton이라면 굳이 맡길 필요는 없습니다. -->
+	<beans:bean id="simpleDao" class="com.koreait.simple2.dao.SimpleDao" />
+	
 	<context:component-scan base-package="com.koreait.simple2" />
 	
 	

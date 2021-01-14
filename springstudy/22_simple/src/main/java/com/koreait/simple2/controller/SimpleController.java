@@ -2,6 +2,9 @@ package com.koreait.simple2.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.koreait.simple2.command.SimpleDeleteCommand;
 import com.koreait.simple2.command.SimpleInsertCommand;
@@ -42,26 +45,37 @@ public class SimpleController {
 	 * }
 	 */
 	
-	 // field
-	private SimpleListCommand simpleListCommand;
-	private	SimpleViewCommand simpleViewCommand;
-	private	SimpleInsertCommand simpleInsertCommand;
-	private	SimpleUpdateCommand simpleUpdateCommand;
-	private	SimpleDeleteCommand simpleDeleteCommand;
+	// field
+		private SimpleListCommand simpleListCommand;
+		private SimpleViewCommand simpleViewCommand;
+		private SimpleInsertCommand simpleInsertCommand;
+		private SimpleUpdateCommand simpleUpdateCommand;
+		private SimpleDeleteCommand simpleDeleteCommand;
+		
+		
+		// Bean을 자동으로 생성해 주는 메소드
+		@Autowired
+		public void setCommand(SimpleListCommand simpleListCommand,
+		                       SimpleViewCommand simpleViewCommand,
+		                       SimpleInsertCommand simpleInsertCommand,
+		                       SimpleUpdateCommand simpleUpdateCommand,
+		                       SimpleDeleteCommand simpleDeleteCommand) {
+		    this.simpleListCommand = simpleListCommand;
+		    this.simpleViewCommand = simpleViewCommand;
+		    this.simpleInsertCommand = simpleInsertCommand;
+		    this.simpleUpdateCommand = simpleUpdateCommand;
+		    this.simpleDeleteCommand = simpleDeleteCommand;
+		}  
 	
-	// Bean을 자동으로 생성해 주는 메소드
-	@Autowired
-	public void setCommand(SimpleListCommand simpleListCommand,
-								SimpleViewCommand simpleViewCommand,
-								SimpleInsertCommand simpleInsertCommand,
-								SimpleUpdateCommand simpleUpdateCommand,
-								SimpleDeleteCommand simpleDeleteCommand){
-				this.simpleListCommand = simpleListCommand;
-				this.simpleViewCommand = simpleViewCommand;
-				this.simpleInsertCommand = simpleInsertCommand;
-				this.simpleUpdateCommand = simpleUpdateCommand;
-				this.simpleDeleteCommand = simpleDeleteCommand;
-	
+	@RequestMapping(value="/")
+	public String index() {
+		return "index";
 	}
 	
+	
+	@RequestMapping(value="simpleList.do")
+	public String simpleList(Model model) {
+		simpleListCommand.execute(model);
+		return "simple/simpleListPage";
+	}
 }

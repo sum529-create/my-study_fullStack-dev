@@ -6,9 +6,6 @@ import org.springframework.ui.Model;
 import com.koreait.simple2.dao.SimpleDao;
 
 public class SimpleListCommand implements SimpleCommand {
-	// field
-	@Autowired
-	private SimpleDao simpleDao;
 	/*
 		private SimpleDao simpleDao;
 		
@@ -16,12 +13,21 @@ public class SimpleListCommand implements SimpleCommand {
 		public void SetDao(SimpleDao simpleDao) {
 			this.simpleDao = simpleDao;
 		}
-	*/
+	 */
+	// field
+	@Autowired
+	private SimpleDao simpleDao;
+	
+	@Autowired
+	public void SetDao(SimpleDao simpleDao) {
+		this.simpleDao = simpleDao;
+	}
 	
 	// method
 	@Override
 	public void execute(Model model) {
 		// simpleDao.xxx();
+		model.addAttribute("list", simpleDao.simpleList());
 	}
 
 }

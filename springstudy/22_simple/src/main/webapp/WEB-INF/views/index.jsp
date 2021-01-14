@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<a href="simpleList.do">간단게시판으로 이동</a>
 </body>
 </html>
