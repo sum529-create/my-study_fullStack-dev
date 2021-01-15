@@ -63,7 +63,7 @@ https://mvnrepository.com/artifact/org.springframework/spring-jdbc
 
 
 6. common 패키지에 JdbcTemplate template을 선언해 둔다.
-  (controller, dao에서 공동으로 사용할 수 있도록)
+  (dao에서 공동으로 사용할 수 있도록)
 
 	// public : 어디서든 접근가능하도록
 	// static : new가 없어도 접근가능하도록
@@ -71,7 +71,7 @@ https://mvnrepository.com/artifact/org.springframework/spring-jdbc
 
 
 7. controller에서 @Autowired를 이용해서 JdbcTemplate template를 생성한다.
-   (생성된 template은 controller에서도 사용하고, common패키지에도 등록해 둔다.)
+   (생성된 template은 common패키지의 SpringJdbc 클레스에 등록해 둔다.)
 
 	// field (컨트롤러에서 사용할 template)
 	private JdbcTemplate template;
@@ -82,5 +82,5 @@ https://mvnrepository.com/artifact/org.springframework/spring-jdbc
 		this.template = template;
 		// 컨트롤러에세 사용할 수 있도록 넘겨 주고,
 		SpringJdbc.template = template;
-		// 다른 곳에서도 사용할 수 있도록 넘겨 줍니다.
+		// 다른 곳(dao)에서도 사용할 수 있도록 넘겨 줍니다.
 	}
