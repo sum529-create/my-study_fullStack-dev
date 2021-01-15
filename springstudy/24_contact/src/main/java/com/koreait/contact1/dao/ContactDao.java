@@ -1,10 +1,13 @@
 package com.koreait.contact1.dao;
 
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementSetter;
 
 import com.koreait.contact1.common.SpringJdbc;
 import com.koreait.contact1.dto.ContactDto;
@@ -39,5 +42,25 @@ public class ContactDao {
 																			//<contact type>
 		// * .query 매핑되는것 알아서 가지고 옴
 		return list;
+	}
+	
+	/***** 2.  *****/
+	
+	/***** 3. insert *****/
+	public void contactInsert() {
+		// INSERT, UPDATE, DELETE문은 모두 template.update()를 사용합니다.
+		sql = "INSERT INTO CONTACT VALUES(CONTACT_SEQ.NEXTVAL, ?, ?, ?, ?, ?)";
+		template.update(sql, new PreparedStatementSetter() {
+			
+			@Override
+			public void setValues(PreparedStatement ps) throws SQLException {
+				ps.setString(1, x);
+				ps.setString(2, x);
+				ps.setString(3, x);
+				ps.setString(4, x);
+				ps.setString(5, x);
+			}
+		});  
+		// insert, delete, update는 모두 update를 사용한다.
 	}
 }
