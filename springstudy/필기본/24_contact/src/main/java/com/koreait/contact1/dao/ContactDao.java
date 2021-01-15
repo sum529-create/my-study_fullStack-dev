@@ -1,6 +1,7 @@
 package com.koreait.contact1.dao;
 
 
+import java.beans.Statement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -27,6 +28,28 @@ public class ContactDao {
 	
 	// common 패키지의 SpringJdbc.template을 불러와서 사용하면 됩니다.
 	
+	
+	/*
+	 * 예전에 parameter들은 해킹하려는 시도가 있었습니다.
+	 * 그래서 스프링에서는 매개변수를 final처리를 요구할 수 있습니다.
+	 * 
+	 * 이렇게 전달되지 않는다면,
+		public ContactDto contactView(int no) {
+			sql = "SELECT * FROM CONTACT WHERE NO = ?";
+			ContactDto contactDto = template.queryForObject(sql, new BeanPropertyRowMapper<ContactDto>(ContactDto.class));
+			// BeanPropertyRowMapper -> bean의 property의 row에 하나씩 가져와라.
+			return contactDto;
+		}
+	 * 
+	 * 이렇게 표시될 수 있습니다.
+	 * 	public ContactDto contactView(final int no) {
+			sql = "SELECT * FROM CONTACT WHERE NO = " + no;
+			ContactDto contactDto = template.queryForObject(sql, new BeanPropertyRowMapper<ContactDto>(ContactDto.class));
+			// BeanPropertyRowMapper -> bean의 property의 row에 하나씩 가져와라.
+			return contactDto;
+		}
+	 */
+	
 	// field
 	private JdbcTemplate template;
 	
@@ -44,6 +67,31 @@ public class ContactDao {
 																			//<contact type>
 		// * .query 매핑되는것 알아서 가지고 옴
 		return list;
+	}
+	
+	
+	/***** 2. view *****/
+	public ContactDto contactView1(final int no) {
+		sql = "SELECT * FROM CONTACT WHERE NO = " + no;
+		ContactDto contactDto = template.queryForObject(sql, new BeanPropertyRowMapper<ContactDto>(ContactDto.class));
+		// BeanPropertyRowMapper -> bean의 property의 row에 하나씩 가져와라.
+		return contactDto;
+	}
+	
+	// + no 방식보다는 ?형식이 좋다. 보안상의 이유 
+	// + 방식은 자칫하다가는 로그인시 id만 맞으면 로그인이 되는 경우가 생길 수 있다.
+	
+	public ContactDto contactView2(int no) {
+		sql = "SELECT * FROM CONTACT WHERE NO = ?";
+		ContactDto contactDto = template.queryForObject(sql, new BeanPropertyRowMapper<ContactDto>(ContactDto.class));
+		// BeanPropertyRowMapper -> bean의 property의 row에 하나씩 가져와라.
+		return contactDto;
+	}
+	public ContactDto contactView(int no) {
+		sql = "SELECT * FROM CONTACT WHERE NO = " + no;
+		ContactDto contactDto = template.queryForObject(sql, new BeanPropertyRowMapper<ContactDto>(ContactDto.class));
+		// BeanPropertyRowMapper -> bean의 property의 row에 하나씩 가져와라.
+		return contactDto;
 	}
 	
 	
@@ -99,8 +147,32 @@ public class ContactDao {
 		}); // psc -> preparestament creater
 	}
 	
+	/***** 4. update *****/
+	public void contactUpdate(ContactDto contactDto) {
+		sql = "UPDATE CONTACT SET NAME = ?, PHONE = ?, ADDRESS = ?, EMAIL = ?, NOTE = ? WHERE NO = ?";
+		template.update(sql, new PreparedStatementSetter() {
+			@Override
+			public void setValues(PreparedStatement ps) throws SQLException {
+				ps.setString(1, contactDto.getName());
+				ps.setString(2, contactDto.getPhone());
+				ps.setString(3, contactDto.getAddress());
+				ps.setString(4, contactDto.getEmail());
+				ps.setString(5, contactDto.getNote());
+				ps.setInt(6, contactDto.getNo());
+			}
+		});
+	}
 	
-	
-	
-	
+	/***** 5. delete *****/
+	public void contactDelete(int no) {
+		sql = "DELETE FROM CONTACT WHERE NO = ?";
+		template.update(sql, new PreparedStatementSetter() {
+			
+			@Override
+			public void setValues(PreparedStatement ps) throws SQLException {
+				ps.setInt(1, no);
+				
+			}
+		});
+	}
 }
