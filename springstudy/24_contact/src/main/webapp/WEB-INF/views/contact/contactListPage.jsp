@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="contactListPage.do">연락처로 이동하기</a>
+
 </body>
 </html>
