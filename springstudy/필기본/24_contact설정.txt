@@ -1,0 +1,86 @@
+24_contact 설정
+
+1. 버전최신화
+캡처본참조
+
+2. lombok 디펜던시
+<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<dependency>
+		    <groupId>org.projectlombok</groupId>
+		    <artifactId>lombok</artifactId>
+		    <version>1.18.12</version>
+		    <scope>provided</scope>
+		</dependency>
+
+
+3. web.xml에 인코딩을 추가한다.
+	<!-- 인코딩 -->
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>import org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>	
+			<param-value>UTF-8</param-value>	
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>	
+			<param-value>true</param-value>	
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern><!-- 모두 다 인코딩하라  -->
+	</filter-mapping>
+
+
+4. mvnrepository에서 spring-jdbc 디펜던시 추가한다.
+https://mvnrepository.com/artifact/org.springframework/spring-jdbc
+4.1.4 버전
+	<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-jdbc</artifactId>
+	    <version>4.1.4.RELEASE</version>
+	</dependency>
+
+
+
+5. root-context.xml에 JdbcTemplate template Bean을 정의해 둔다.
+  ( Servers에 등록한 context.xml의 설정을 사용하지 않겠다는 의미입니다.)
+
+	<!-- 톰캣에 설정해 둔 context.xml 정보를 사용하지 않고, 아래 Bean을 사용합니다. -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+		<property name="username" value="spring"/>
+		<property name="password" value="1111"/>
+	</bean>
+	<bean id="template" class="org.springframework.jdbc.core.JdbcTemplate"> <!-- template이 dataSource를 사용한다. -->
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+
+
+
+6. common 패키지에 JdbcTemplate template을 선언해 둔다.
+  (controller, dao에서 공동으로 사용할 수 있도록)
+
+	// public : 어디서든 접근가능하도록
+	// static : new가 없어도 접근가능하도록
+	public static JdbcTemplate template;
+
+
+7. controller에서 @Autowired를 이용해서 JdbcTemplate template를 생성한다.
+   (생성된 template은 controller에서도 사용하고, common패키지에도 등록해 둔다.)
+
+	// field (컨트롤러에서 사용할 template)
+	private JdbcTemplate template;
+	
+	@Autowired				// JdbcTemplate template의 new 작업을 처리한다.
+	public void setTemplate(JdbcTemplate template) {
+		// @Autowired로 injection된 매개변수 JdbcTemplate template를
+		this.template = template;
+		// 컨트롤러에세 사용할 수 있도록 넘겨 주고,
+		SpringJdbc.template = template;
+		// 다른 곳에서도 사용할 수 있도록 넘겨 줍니다.
+	}
