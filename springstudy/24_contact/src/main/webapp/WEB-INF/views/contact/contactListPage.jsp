@@ -30,7 +30,7 @@
 				<c:forEach var="contactDto" items="${list}">
 					<tr>
 						<td>${contactDto.no }</td>
-						<td>${contactDto.name }</td>
+						<td><a href="contactViewPage.do?no=${contactDto.no}">${contactDto.name }</a></td>
 						<td>${contactDto.phone }</td>
 						<td>${contactDto.address }</td>
 						<td>${contactDto.email}</td>

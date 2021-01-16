@@ -1,6 +1,9 @@
 package com.koreait.contact1.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,7 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.koreait.contact1.command.ContactCommand;
+import com.koreait.contact1.command.ContactDeleteCommand;
+import com.koreait.contact1.command.ContactInsertCommand;
 import com.koreait.contact1.command.ContactListCommand;
+import com.koreait.contact1.command.ContactUpdateCommand;
+import com.koreait.contact1.command.ContactViewCommand;
 import com.koreait.contact1.common.SpringJdbc;
 
 @Controller
@@ -48,6 +55,42 @@ public class ContactController {
 	@RequestMapping(value = "contactInsertPage.do", method=RequestMethod.GET)
 	public String insertPage() {
 		return "contact/ContactInsertPage";
+	}
+	
+	// 전달해야 할 값이 5개 있다. request값으로 전달받아야한다.
+	@RequestMapping(value="contactInsert.do", method=RequestMethod.POST)
+	public String insert(HttpServletRequest request, Model model) {
+		// request: contactInsertPage.jsp에서 전달된 5개 파라미터 (name, phone..)
+		// model : ContactInsertCommand에 전달하는 파라미터
+		model.addAttribute("request", request);
+		command = new ContactInsertCommand();
+		command.execute(model);
+		return "redirect:contactListPage.do";	// redirect로 보낼거기 때문
+	}
+	
+	@RequestMapping(value="contactViewPage.do", method=RequestMethod.GET)
+	public String viewPage(HttpServletRequest request, Model model) {
+		model.addAttribute("request", request);
+		command = new ContactViewCommand();
+		command.execute(model);
+		return "contact/contactViewPage";
+	}
+	
+	@RequestMapping(value="contactUpdate.do",  method=RequestMethod.POST)
+	public String update(HttpServletRequest request, Model model) {
+		model.addAttribute("request", request);
+		command = new ContactUpdateCommand();
+		command.execute(model);
+		return "redirect:contactListPage.do?no="+request.getParameter("no");
+		
+	}
+	
+	@RequestMapping(value="contactDelete.do", method=RequestMethod.POST)
+	public String delete(HttpServletRequest request, Model model) {
+		model.addAttribute("request", request);
+		command = new ContactDeleteCommand();
+		command.execute(model);
+		return "redirect:contactListPage.do";
 	}
 	
 }
