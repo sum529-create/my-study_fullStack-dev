@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 
+	UserDao와 user.xml을 연결하기 위해서
+	mapper namespace를 UserDao로 설정해 둡니다.
+ -->
+
+<!-- jsp에서 배웠던 스타일 -->
+<!-- 
+	<mapper namespace="com.koreait.mybatis1.dao.mapper.users">
+		
+	</mapper> 
+-->
+
+<!-- 
+	UserDao와 users.xml을 연결하기 위해서
+	mapper namespace를 연결해서 사용합니다.
+ -->
+
+<!-- Spring에서 새로 배우는 스타일 -->
+<mapper namespace="com.koreait.mybatis1.dao.UsersDao">
+	
+	<select id="usersList" resultType="com.koreait.mybatis1.dto.UsersDto">
+		SELECT NO, NAME, PHONE
+			FROM USERS
+	</select>
+</mapper>
