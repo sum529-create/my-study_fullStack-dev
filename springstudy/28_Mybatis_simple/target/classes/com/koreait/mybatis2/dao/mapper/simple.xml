@@ -25,4 +25,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM SIMPLE WHERE NO = #{no} 
 	</select> <!-- ${no}도 가능함 but 숫자라고 $쓸필요는 없다. -->
 	
+	<update id="simpleUpdate">
+		UPDATE SIMPLE SET TITLE = #{param1}, CONTENT = #{param2} WHERE NO = #{param3}
+	</update>
+	
+	<delete id="simpleDelete" parameterType="int">
+		DELETE FROM SIMPLE WHERE NO = #{no}
+	</delete>
+	
 </mapper>

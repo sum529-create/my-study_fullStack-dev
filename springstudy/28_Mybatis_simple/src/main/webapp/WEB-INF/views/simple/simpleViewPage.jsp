@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+
 </head>
 <body>
 
@@ -12,7 +13,7 @@
 	작성자 : ${simpleDto.writer }<br/>
 	제목: ${simpleDto.title }<br/>
 	내용: ${simpleDto.content}<br/>
-	작성일: ${simpleDto.regDate}<br/>
+	작성일: ${simpleDto.regDate}<br/><br/>
 	
 	<form method="post">
 		<input type="hidden" name="no"	value="${simpleDto.no}"/>

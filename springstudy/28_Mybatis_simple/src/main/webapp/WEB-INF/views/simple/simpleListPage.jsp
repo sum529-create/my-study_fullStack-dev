@@ -7,14 +7,37 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
-	if(${afterInsert}){	// 삽입 후에만 알림을 띄움
-		if (${insertResult} > 0){
+	var afterInsert = '${afterInsert}'; 
+	if(afterInsert) {	// 삽입 후에만 알림을 띄움
+		if ('${insertResult}' > 0){
 			alert('삽입되었습니다.');
 		}else{
 			alert('실패하였습니다.');
 			// history 하지말것
 		}
 	}
+
+	
+	var afterDelete = '${afterDelete}';
+	if(afterDelete){
+		var deleteResult = '${deleteResult}';
+		if(deleteResult > 0){
+			alert('삭제되었습니다.');
+		}else{
+			alert('삭제되지 않았습니다.');
+		}
+	}
+	
+	var afterUpdate = '${afterUpdate}';
+	if (afterUpdate) {
+		var updateResult = '${updateResult}';
+		if (updateResult > 0) {
+			alert('수정되었습니다.');
+		} else {
+			alert('수정되지 않았습니다.');
+		}
+	}
+
 </script>
 </head>
 <body>

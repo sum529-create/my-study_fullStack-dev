@@ -14,7 +14,7 @@
 		<input type="text" name="title" value="${simpleDto.title}"/><br/>
 		내용: <br/>
 		<input type="text" name="content" value="${simpleDto.content}"/><br/>
-		<input type="hidden" name="no" value="${simpleDto.no}"/>
+		<input type="hidden" name="no" value="${simpleDto.no}"/><br/>
 		<button>수정하기</button>
 	</form>
 </body>
