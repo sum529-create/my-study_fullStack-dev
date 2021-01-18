@@ -7,15 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-	<form action="usersInsert.do" method="post">
-		이름<br/>
-		<input type="text" name="name" autofocus /><br/><br/>
-		전화<br/>
-		<input type="text" name="phone" /><br/><br/>
+	<form action="simpleInsert.do">
+		작성자<br/>
+		<input type="text" name="writer"/><br/><br/>
+		제목<br/>
+		<input type="text" name="title"/><br/><br/>
+		내용<br/>
+		<input type="text" name="content"/><br/><br/>
 		<button>작성완료</button>
-		<input type="button" value="목록보기" onclick="location.href='usersListPage.do'" />
 	</form>
-
 </body>
 </html>

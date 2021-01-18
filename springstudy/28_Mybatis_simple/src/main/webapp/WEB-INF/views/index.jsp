@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="usersListPage.do">사용자목록</a>
+	<a href="simpleListPage.do">이동</a>
 </body>
 </html>

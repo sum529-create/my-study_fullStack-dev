@@ -115,12 +115,13 @@
 			<artifactId>junit</artifactId>
 			<version>4.7</version>
 			<scope>test</scope>
-		</dependency>   
+		</dependency>
 		
 		
-		<!-- ojdb6.jar 톰캣에 배치했으므로 dependency를 추가히지 않습니다. -->
+		<!-- ojdbc6.jar 톰캣에 배치했으므로 dependency를 추가하지 않습니다. -->
 		
 		<!-- Mybatis dependency 3개 : mybatis + mybatis-spring + spring-jdbc -->
+		
 		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
 		<dependency>
 		    <groupId>org.mybatis</groupId>
@@ -141,7 +142,6 @@
 		    <artifactId>spring-jdbc</artifactId>
 		    <version>${org.springframework-version}</version>
 		</dependency>
-		<!-- <version>5.1.4.RELEASE</version> -->
 		
 		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
 		<dependency>
@@ -152,7 +152,6 @@
 		</dependency>
 		
 		
-		     
 	</dependencies>
     <build>
         <plugins>

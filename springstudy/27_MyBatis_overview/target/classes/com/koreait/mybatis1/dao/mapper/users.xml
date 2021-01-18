@@ -25,6 +25,40 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="usersList" resultType="com.koreait.mybatis1.dto.UsersDto">
 		SELECT NO, NAME, PHONE
-			FROM USERS
+		  FROM USERS
 	</select>
+	
+	<!-- 파라미터가 여러 개 존재해도 상관이 없습니다. parameterType을 생략합니다. -->
+	<insert id="usersInsert1">
+		INSERT INTO
+		 USERS (NO, NAME, PHONE)
+		VALUES (USERS_SEQ.NEXTVAL, #{param1}, #{param2})
+	</insert>
+	
+	<!-- 파라미터가 한 개여도 상관이 없습니다. -->
+	<insert id="usersInsert2" parameterType="com.koreait.mybatis1.dto.UsersDto">
+		INSERT INTO
+		 USERS (NO, NAME, PHONE)
+		VALUES (USERS_SEQ.NEXTVAL, #{name}, #{phone})
+	</insert>
+	
+	<select id="usersView" parameterType="int" resultType="com.koreait.mybatis1.dto.UsersDto">
+		SELECT NO, NAME, PHONE
+		  FROM USERS
+		 WHERE NO = #{no}
+	</select>
+	
+	<update id="usersUpdate" parameterType="com.koreait.mybatis1.dto.UsersDto">
+		UPDATE USERS
+		   SET NAME = #{name},
+		       PHONE = #{phone}
+		 WHERE NO = #{no}
+	</update>
+	
+	<delete id="usersDelete" parameterType="int">
+		DELETE
+		  FROM USERS
+		 WHERE NO = #{no}
+	</delete>
+	
 </mapper>
