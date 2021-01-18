@@ -14,4 +14,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT COUNT(*)
 		  FROM SIMPLE
 	</select>
+	<!-- dao이름 -->
+	<insert id="simpleInsert">
+		INSERT INTO
+			SIMPLE (NO, WRITER, TITLE, CONTENT, REGDATE) 
+			VALUES(SIMPLE_SEQ.NEXTVAL, #{param1}, #{param2}, #{param3}, SYSDATE)
+	</insert>
+	
+	<select id="simpleView" parameterType="int"  resultType="com.koreait.mybatis2.dto.SimpleDto">
+		SELECT * FROM SIMPLE WHERE NO = #{no} 
+	</select> <!-- ${no}도 가능함 but 숫자라고 $쓸필요는 없다. -->
+	
 </mapper>

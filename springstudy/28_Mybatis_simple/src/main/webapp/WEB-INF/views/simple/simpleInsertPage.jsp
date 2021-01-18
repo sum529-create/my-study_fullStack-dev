@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="simpleInsert.do">
+	<form action="simpleInsert.do" method="post">
 		작성자<br/>
 		<input type="text" name="writer"/><br/><br/>
 		제목<br/>
