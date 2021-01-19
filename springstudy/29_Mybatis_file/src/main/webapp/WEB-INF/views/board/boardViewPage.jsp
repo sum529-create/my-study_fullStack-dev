@@ -9,14 +9,15 @@
 <body>
 	
 	<!-- 첨부시에 필요한 form -->
-	<form action="">	
+	<form action="/">	
 		작성자<br/>
 		<input type="text" name="writer" value="${boardDto.writer}" readonly/><br/><br/>
 		제목<br/>
 		<input type="text" name="title" value="${boardDto.title}"/><br/><br/>
 		내용<br/>
 		<input type="text" name="content" value="${boardDto.content}"/><br/><br/>
-		첨부 이미지<br/>
+		첨부 이미지 <a href="download.do?filename=${boardDto.filename}">첨부파일 다운로드</a>
+		<br/><br/>
 		<img alt="${boardDto.filename}" src="resources/storage/${boardDto.filename}"><br/><br/>
 		
 		<button>작성완료</button>
