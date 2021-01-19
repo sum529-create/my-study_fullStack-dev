@@ -7,9 +7,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
+	<script>
+		function fn_boardDelete(f) {
+			if(confirm('삭제할까요?')){
+				f.action = 'boardDelete.do';
+				f.submit();
+			}
+		}
+	</script>
 	<!-- 첨부시에 필요한 form -->
-	<form action="/">	
+	<form method="post">	
 		작성자<br/>
 		<input type="text" name="writer" value="${boardDto.writer}" readonly/><br/><br/>
 		제목<br/>
@@ -20,7 +27,11 @@
 		<br/><br/>
 		<img alt="${boardDto.filename}" src="resources/storage/${boardDto.filename}"><br/><br/>
 		
-		<button>작성완료</button>
+		<%-- hidden --%>
+		<input type="hidden" name="no" value="${boardDto.no}"/>
+		<input type="hidden" name="filename" value="${boardDto.filename}"/>
+		
+		<input type="button" value="삭제하기" onclick="fn_boardDelete(this.form)"/>
 		
 	</form>
 	

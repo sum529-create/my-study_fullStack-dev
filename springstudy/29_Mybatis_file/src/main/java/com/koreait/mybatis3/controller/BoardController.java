@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.koreait.mybatis3.command.BoardDeleteCommand;
 import com.koreait.mybatis3.command.BoardInsertCommand;
 import com.koreait.mybatis3.command.BoardListCommand;
 import com.koreait.mybatis3.command.BoardViewCommand;
@@ -27,17 +28,20 @@ public class BoardController {
 	private BoardInsertCommand boardInsertCommand;
 	private BoardViewCommand boardViewCommand;
 	private DownloadCommand downloadCommand;
+	private BoardDeleteCommand boardDeleteCommand;
 	
 	// root-context.xml
 	@Autowired								// 여기서 Autowired하고 위 필드로 보내준다.
 	public void setCommand(BoardListCommand boardListCommand,
 						BoardInsertCommand boardInsertCommand,
 						BoardViewCommand boardViewCommand,
-						DownloadCommand downloadCommand) {
+						DownloadCommand downloadCommand,
+						BoardDeleteCommand boardDeleteCommand) {
 		this.boardListCommand = boardListCommand;
 		this.boardInsertCommand = boardInsertCommand;
 		this.boardViewCommand = boardViewCommand;
 		this.downloadCommand = downloadCommand;
+		this.boardDeleteCommand = boardDeleteCommand;
 	}
 	
 	
@@ -87,5 +91,12 @@ public class BoardController {
 		model.addAttribute("response", response);
 		
 		downloadCommand.execute(sqlSession, model);
+	}
+	
+	@RequestMapping(value="boardDelete.do", method=RequestMethod.POST)
+	public String boardDelete(HttpServletRequest request, Model model) {
+		model.addAttribute("request", request);
+		boardDeleteCommand.execute(sqlSession, model);
+		return "redirect:boardListPage.do";
 	}
 }

@@ -93,7 +93,7 @@ public class BoardInsertCommand implements BoardCommand {
 		}// if(files != null) {
 		
 		else { // 첨부가 없는 데이터를 테이블에 저장합니다.
-			boardDao.boardInsert(writer, title, content, "");
+			boardDao.boardInsert(writer, title, content, "첨부없음");
 		}
 	}
 

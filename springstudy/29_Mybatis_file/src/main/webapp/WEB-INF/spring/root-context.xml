@@ -36,4 +36,5 @@
 	<bean id="boardInsertCommand" class="com.koreait.mybatis3.command.BoardInsertCommand"/>
 	<bean id="boardViewCommand" class="com.koreait.mybatis3.command.BoardViewCommand"/>
 	<bean id="downloadCommand" class="com.koreait.mybatis3.command.DownloadCommand"/>
+	<bean id="deleteCommand" class="com.koreait.mybatis3.command.BoardDeleteCommand"/>
 </beans>

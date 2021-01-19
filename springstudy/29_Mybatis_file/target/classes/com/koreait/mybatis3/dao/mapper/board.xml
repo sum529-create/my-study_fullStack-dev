@@ -19,4 +19,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			FROM BOARD
 		 WHERE NO = #{no}
 	</select>
+	<!-- parameter 타입은 필수가 아니다. -->
+	<!-- 404시 xml을 보라 -->
+	<delete id="boardDelete" parameterType="int">
+		DELETE FROM BOARD WHERE NO = #{no}
+	</delete>
 </mapper>
