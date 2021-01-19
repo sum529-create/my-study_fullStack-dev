@@ -21,7 +21,6 @@
 			</tr>
 		</thead>
 		<tbody>
-		<!-- 
 			<c:if test="${empty list }">
 				<tr>
 					<td colspan="5">없음</td>
@@ -38,7 +37,6 @@
 					</tr>
 				 </c:forEach>
 			</c:if>
-		 -->
 		</tbody>
 		<tfoot>
 			<tr>

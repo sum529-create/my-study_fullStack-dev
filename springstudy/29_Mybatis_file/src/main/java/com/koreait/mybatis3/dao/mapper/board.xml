@@ -7,4 +7,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="boardList" resultType="com.koreait.mybatis3.dto.BoardDto">
 		SELECT * FROM BOARD
 	</select>
+	
+	<insert id="boardInsert">
+		INSERT INTO
+			BOARD (NO, WRITER, TITLE, CONTENT, FILENAME, REGDATE) 
+			VALUES (BOARD_SEQ.NEXTVAL, #{param1}, #{param2}, #{param3}, #{param4}, SYSDATE)
+	</insert>
+	
 </mapper>

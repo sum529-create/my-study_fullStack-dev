@@ -8,20 +8,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.koreait.mybatis3.command.BoardInsertCommand;
 import com.koreait.mybatis3.command.BoardListCommand;
 
 @Controller
 public class BoardController {
 	
-	
+	@Autowired
 	SqlSession sqlSession;
 	
 	private BoardListCommand boardListCommand;
+	private BoardInsertCommand boardInsertCommand;
 	
 	// root-context.xml
 	@Autowired								// 여기서 Autowired하고 위 필드로 보내준다.
-	public void setCommand(BoardListCommand boardListCommand) {
+	public void setCommand(BoardListCommand boardListCommand,
+						BoardInsertCommand boardInsertCommand) {
 		this.boardListCommand = boardListCommand;
+		this.boardInsertCommand = boardInsertCommand;
 	}
 	
 	
@@ -51,6 +55,7 @@ public class BoardController {
 		// 현재는 jar가 content-io와 fileupload를 사용했다.
 		// 조금 다르다.
 		model.addAttribute("multipartRequest", multipartRequest);
-		return "";
+		boardInsertCommand.execute(sqlSession, model);
+		return "redirect:boardListPage.do";
 	}
 }
