@@ -24,6 +24,7 @@ public class BoardInsertCommand implements BoardCommand {
 		String title = multipartRequest.getParameter("title");
 		String content = multipartRequest.getParameter("content");
 		
+		BoardDao boardDao = sqlSession.getMapper(BoardDao.class);
 		// 1. multipartRequest에 저장된 첨부가 1개일 때는 getFile()을 씁니다.
 		/* <input type="file" name="filename"/>
 			MultipartFile file = multipartRequest.getFile("filename");
@@ -44,7 +45,7 @@ public class BoardInsertCommand implements BoardCommand {
 			for(MultipartFile file : files) {
 				
 				// 꺼낸 첨부가 있는지 검사
-				if(file != null) {
+				if(file != null && !file.isEmpty()) {
 					
 					// MultipartFile file에서 첨부하는 파일명을 알아냅니다.
 					String originalFilename = file.getOriginalFilename();
@@ -84,12 +85,15 @@ public class BoardInsertCommand implements BoardCommand {
 					}
 					
 					// 테이블에 데이터를 저장합니다.
-					BoardDao boardDao = sqlSession.getMapper(BoardDao.class);
+					
 					boardDao.boardInsert(writer, title, content, uploadFilename);
-				}
+				}	// if(file != null) {
 				
-				
-			}
+			} // for(MultipartFile file : files) {
+		}// if(files != null) {
+		
+		else { // 첨부가 없는 데이터를 테이블에 저장합니다.
+			boardDao.boardInsert(writer, title, content, "");
 		}
 	}
 

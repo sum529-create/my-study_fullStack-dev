@@ -14,4 +14,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			VALUES (BOARD_SEQ.NEXTVAL, #{param1}, #{param2}, #{param3}, #{param4}, SYSDATE)
 	</insert>
 	
+	<select id="boardView" parameterType="int" resultType="com.koreait.mybatis3.dto.BoardDto">
+		SELECT *
+			FROM BOARD
+		 WHERE NO = #{no}
+	</select>
 </mapper>
