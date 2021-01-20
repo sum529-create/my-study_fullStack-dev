@@ -12,7 +12,9 @@
 		$('#btn1').click(fn_getText);	// btn1을 클릭하면 fn_getText 함수가 실행됩니다.
 		$('#btn2').click(fn_getJSON);
 		$('#btn3').click(fn_getXML);
-		$('#btn3').click(fn_getJSONList);
+		$('#btn4').click(fn_getJSONList);
+		$('#btn5').click(fn_getXMLList);
+		$('#btn6').click(fn_sendJSON);
 		
 	});
 	
@@ -80,12 +82,81 @@
 					 responseList = [
 						{"name" : '사용자', "age" : 20},
 						{"name" : '사용자', "age" : 21},
-						{"name" : '사용자', "age" : 22}
+						{"name" : '사용자', "age" : 22} -> 하나하나가 person 
 					 	...
 					 ]
 				*/
+				$('#content4').empty();
+				$.each(responseList, function (idx, person) {
+					$('<tr>')
+					.append($('<td>').html(idx + 1))
+					.append($('<td>').html(person.name))
+					.append($('<td>').html(person.age))
+					.appendTo('tbody') //어디에 넣을까요
+				}); // 반복문 알아서 반복됨 idx로  |  person -> json -> person.name, person.age
 			},
 			error: function() {
+				alert('실패');
+			}
+		});
+	}
+	
+	function fn_getXMLList() {
+		$.ajax({
+			url : 'getXMLList',
+			type: 'get',
+			dateType: 'xml',
+			success: function(responseList) {
+				/*                                                                                        
+					responseList는 아래와 같습니다.
+					확인하려면 "http://localhost:9090/rest/getXMLList" 실행 후 주소를 입력합니다..
+					
+					<item>
+						<name>사용자1</name><age>20</age>
+					</item>
+					<item>
+						<name>사용자2</name><age>21</age>
+					</item>
+					<item>
+						<name>사용자3</name><age>22</age>
+					</item>
+						...
+				*/
+				$('#content5').empty();	// 반복문
+				$(responseList).find('item').each(function(idx) {
+					// $(responseList).find('item') == $(this)
+					$('<tr>')
+					.append($('<td>').html(idx + 1))
+					.append($('<td>').html(person.find('name').text()))
+					.append($('<td>').html(person.find('age').text()))
+					.appendTo('tbody');
+				})
+			},
+			error: function () {
+				alert('실패');
+			}
+		});
+	}
+	
+	function fn_sendJSON() {
+		var name = $('#name').val();
+		var age = $('#age').val();
+		var sendObj = {
+				'name':name,
+				'age' : age
+				// 아직은 자바스크립트의 객체입니다. JSON이 아닙니다.
+		};
+		$.ajax({
+			url : 'sendJSON',
+			type: 'post', // @PostMapping
+			// 자바스크립트는 제이쿼리를 직접 처리할 수 있다.
+			data: JSON.stringify(sendObj), // 컨트롤러로 보내는 데이터 (JSON문자열로 바꿔서 보냅니다.)
+			contentType: 'application/json',	// 컨트롤러로 보내는 데이터의 타입입니다.
+			dataType: 'json',				// 컨트롤러에서 받아오는 데이터의 타입입니다. type과는 다른 것임 
+			success: function (responseObj) {
+				$('#content6').text('이름: ' + responseObj.name + ', 나이: ' + responseObj.age + '살');
+			},
+			error: function () {
 				alert('실패');
 			}
 		});
@@ -112,6 +183,42 @@
 	<br/>
 	
 	<input type="button" value="JSON list 가져오기" id="btn4"/><br/>
-	<div id="content4"></div>
+	<table border="1">
+		<thead>
+			<tr>
+				<td>번호</td>
+				<td>성명</td>
+				<td>나이</td>
+			</tr>
+		</thead>
+		<tbody id="content4">
+			
+		</tbody>
+	</table>
+
+	<br/>
+
+	<input type="button" value="XML list 가져오기" id="btn5"/><br/>
+	<table border="1">
+		<thead>
+			<tr>
+				<td>번호</td>
+				<td>성명</td>
+				<td>나이</td>
+			</tr>
+		</thead>
+		<tbody id="content5">
+			
+		</tbody>
+	</table>
+	
+	<br/>
+	
+	<form>
+		<input type="text" id="name" placeholder = "이름" /> <br/>
+		<input type="text" id="age" placeholder = "나이" /> <br/>
+		<input type="button" value="정보보내기" id="btn6" /><br/>
+	</form>
+	<div id="content6"></div>
 </body>
 </html>

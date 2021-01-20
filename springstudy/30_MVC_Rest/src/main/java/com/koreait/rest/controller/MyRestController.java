@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -76,5 +78,21 @@ public class MyRestController {
 			list.add(new PersonDto("사용자" + (i+1), 20 + i)); // 나이를 2n살씩 줌
 		}
 		return list;
+	}
+	
+	@GetMapping(value="getXMLList", produces="application/xml; charset=utf-8")
+	public List<PersonDto> getXMLList(){
+		List<PersonDto> list = new ArrayList<PersonDto>();
+		for (int i = 0; i < 10; i++) {
+			list.add(new PersonDto("사용자" + (i+1), 20 + i)); // 나이를 2n살씩 줌
+		}
+		return list;
+	}
+	@PostMapping(value="sendJSON",
+			produces="application/json; charset=utf-8")
+	public PersonDto sendJSON(@RequestBody PersonDto personDto){ // data 타입을 받아야한다.
+		// @RequestBody
+		// 전달 받은 데이터가 JSON/XML인 경우 이를 자동으로 Bean으로 변환한다.
+		return personDto; // 주고받기 받아서 바로 보냄
 	}
 }
