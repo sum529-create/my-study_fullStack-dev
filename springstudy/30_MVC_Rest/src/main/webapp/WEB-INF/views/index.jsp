@@ -15,7 +15,7 @@
 		$('#btn4').click(fn_getJSONList);
 		$('#btn5').click(fn_getXMLList);
 		$('#btn6').click(fn_sendJSON);
-		
+		$('#btn7').click(fn_sendPath);
 	});
 	
 	// 함수
@@ -127,12 +127,12 @@
 					// $(responseList).find('item') == $(this)
 					$('<tr>')
 					.append($('<td>').html(idx + 1))
-					.append($('<td>').html(person.find('name').text()))
-					.append($('<td>').html(person.find('age').text()))
+					.append($('<td>').html($(this).find('name').text()))
+					.append($('<td>').html($(this).find('age').text()))
 					.appendTo('tbody');
 				})
 			},
-			error: function () {
+			error: function() {
 				alert('실패');
 			}
 		});
@@ -145,22 +145,39 @@
 				'name':name,
 				'age' : age
 				// 아직은 자바스크립트의 객체입니다. JSON이 아닙니다.
+				// 자바스크립트는 제이쿼리를 직접 처리할 수 있다.
 		};
 		$.ajax({
 			url : 'sendJSON',
 			type: 'post', // @PostMapping
-			// 자바스크립트는 제이쿼리를 직접 처리할 수 있다.
+			// stringify -> JSON 객체를 String 메소드로 변환시켜 준다.
 			data: JSON.stringify(sendObj), // 컨트롤러로 보내는 데이터 (JSON문자열로 바꿔서 보냅니다.)
 			contentType: 'application/json',	// 컨트롤러로 보내는 데이터의 타입입니다.
 			dataType: 'json',				// 컨트롤러에서 받아오는 데이터의 타입입니다. type과는 다른 것임 
-			success: function (responseObj) {
+			success: function(responseObj) {
 				$('#content6').text('이름: ' + responseObj.name + ', 나이: ' + responseObj.age + '살');
 			},
-			error: function () {
+			error: function() {
 				alert('실패');
 			}
 		});
 	}
+	
+	function fn_sendPath() {
+		var name = $('#name2').val();
+		var age = $('#age2').val();
+		$.ajax({	// parameter 보내는 url방식
+			url : 'name/' + name + '/age/' + age,	// @GetMapping(value="name/{name}/age/{age}") 경로의 일부가 데이터인 방식
+			type: 'get',	// request방식(get, post) -> request(get, post, ?, ?)가 더있음
+			dataType: 'json',
+			success: function(responseObj) {
+				$('#content7').text('이름: ' + responseObj.name + ', 나이: ' + responseObj.age + '살');
+			},
+			error: function() {
+				alert('실패');
+			}
+		});
+	}// http://localhost:9090/rest/name/coco/age/7 해도 값이 넘어감
 	
 </script>
 <title>Insert title here</title>
@@ -220,5 +237,17 @@
 		<input type="button" value="정보보내기" id="btn6" /><br/>
 	</form>
 	<div id="content6"></div>
+
+	<br/>
+	
+	<form>
+		<input type="text" id="name2" placeholder = "이름" /> <br/>
+		<input type="text" id="age2" placeholder = "나이" /> <br/>
+		<input type="button" value="정보보내기" id="btn7" /><br/>
+	</form>
+	<div id="content7"></div>
+	
+	
+	
 </body>
 </html>

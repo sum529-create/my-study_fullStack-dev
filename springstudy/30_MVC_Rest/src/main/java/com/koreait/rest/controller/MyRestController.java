@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -94,5 +95,23 @@ public class MyRestController {
 		// @RequestBody
 		// 전달 받은 데이터가 JSON/XML인 경우 이를 자동으로 Bean으로 변환한다.
 		return personDto; // 주고받기 받아서 바로 보냄
+	}
+	
+	// REST : URI + Method(GET, POST, PUT, DELETE)
+	// 주소가 같은데 메소드에 따라 달라질 수 있다.
+	// 요청 파라미터를 URI에 포함시킬 수 있습니다.
+	
+	// 기존 : simpleView?no=1
+	// REST : simple/1
+	
+	// @PathVariable (경로변수) uri에 포함된 변수
+	// 1. 주로 @RestController에서 사용됩니다.
+	// 2. URI의 일부를 '{파라미터}'로 처리해서 변수에 저장할 수 있습니다.
+	
+	@GetMapping(value="name/{name}/age/{age}",	// URI에 {name}과 {age}는 요청 파라미터입니다. 
+				produces="Application/json; charset=utf-8")
+	public PersonDto sendPath(@PathVariable("name") String name, @PathVariable("age") int age) {// 파라미터 받는 것이 경로에 들어있음 
+								// 파라미터가 URI에 포함된 경우 @PathVariable을 사용합니다.
+		return new PersonDto(name, age);
 	}
 }
