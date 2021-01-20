@@ -29,7 +29,8 @@
 	
 	<!-- HikariDataSource  아래 dataSource와 이름을 맞춘다. -->
 	<!-- config값을 가지고 있다. constructor-arg를 사용 -->
-	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource">
+	<!--  destroy 컨넥션 닫는다. -->
+	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
 		<constructor-arg ref="hikariConfig"/>
 	</bean>
 	
