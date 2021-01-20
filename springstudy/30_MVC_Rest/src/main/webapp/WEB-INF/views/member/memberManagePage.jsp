@@ -97,6 +97,7 @@
 			<input type="radio" name="gender" value="여"/>여<br/><br/>
 			주소<br/>
 			<select name="address">
+				<option value="">지역 선택</option>
 				<option value="서울">서울</option>
 				<option value="인천">인천</option>
 				<option value="부산">부산</option>
