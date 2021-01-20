@@ -14,6 +14,7 @@
 		memberInsert();
 		memberUpdate();
 		memberDelete();
+		init();
 	});
 	
 	/***** 1. 회원 목록 *****/
@@ -41,6 +42,18 @@
 		
 	}
 	
+	/***** 6. 초기화 *****/
+	function init() {
+		$('#btnInit').click(function () {
+			$('input:text[name="id"]').val(''); // 빈 문자를 채워준다. input 태그의 name이 id인거
+			$('input:text[name="name"]').val('');
+			// $('input:radio[name="gender"]').prop('checked'); // checked 같은 것을 property라고 하며
+			// $('input:radio[name="gender"]').prop('checked', 'dddd'); // 내용을 바꿔주려면 뒤에 추가한다.
+			$('input:radio[name="gender"]').prop('checked', false);	// 빈칸처리
+			$('select[name="address"]').val('');
+			memberList();	// 목록 새로 고침. 다시 불러온다.
+		});
+	}
 	
 </script>
 <title>Insert title here</title>
@@ -80,16 +93,16 @@
 			이름<br/>
 			<input type="text" name="name"/><br/><br/>
 			성별<br/>
-			<input type="radio" name="gender" value="남"/>남
+			<input type="radio" name="gender" value="남" checked/>남
 			<input type="radio" name="gender" value="여"/>여<br/><br/>
 			주소<br/>
-			<section name="address">
+			<select name="address">
 				<option value="서울">서울</option>
 				<option value="인천">인천</option>
 				<option value="부산">부산</option>
 				<option value="제주">제주</option>
 				<option value="강원">강원</option>
-			</section><br/><br/>
+			</select><br/><br/>
 			<input type="button" value="등록" id="btnInsert"/>
 			<input type="button" value="수정" id="btnUpdate"/>
 			<input type="button" value="초기화" id="btnInit"/> <!-- reset안하고 직접구현 -->
@@ -102,12 +115,12 @@
 			<table>
 				<thead>
 					<tr>
-						<td>회원번호</td>
-						<td>아이디</td>
-						<td>이름</td>
-						<td>성별</td>
-						<td>주소</td>
-						<td>비고</td>
+						<th>회원번호</th>
+						<th>아이디</th>
+						<th>이름</th>
+						<th>성별</th>
+						<th>주소</th>
+						<th>비고</th>
 					</tr>
 				</thead>
 				<tbody id="memberList"></tbody>
