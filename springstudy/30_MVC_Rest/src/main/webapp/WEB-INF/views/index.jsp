@@ -16,6 +16,7 @@
 		$('#btn5').click(fn_getXMLList);
 		$('#btn6').click(fn_sendJSON);
 		$('#btn7').click(fn_sendPath);
+		$('#btn8').click(fn_getJSONByMap);
 	});
 	
 	// 함수
@@ -92,7 +93,7 @@
 					.append($('<td>').html(idx + 1))
 					.append($('<td>').html(person.name))
 					.append($('<td>').html(person.age))
-					.appendTo('tbody') //어디에 넣을까요
+					.appendTo('#content4') //어디에 넣을까요
 				}); // 반복문 알아서 반복됨 idx로  |  person -> json -> person.name, person.age
 			},
 			error: function() {
@@ -129,7 +130,7 @@
 					.append($('<td>').html(idx + 1))
 					.append($('<td>').html($(this).find('name').text()))
 					.append($('<td>').html($(this).find('age').text()))
-					.appendTo('tbody');
+					.appendTo('#content5');
 				})
 			},
 			error: function() {
@@ -179,10 +180,26 @@
 		});
 	}// http://localhost:9090/rest/name/coco/age/7 해도 값이 넘어감
 	
+	function fn_getJSONByMap() {
+		$.ajax({
+			url: 'getJSONByMap',
+			type: 'get',
+			dataType: 'json',
+			success: function(responseObj) {
+				$('#content8').text('이름: ' + responseObj.name + ', 나이: ' + responseObj.age + '살');
+			},
+			error: function() {
+				alert('실패');
+			}
+		});
+	}
+	
 </script>
 <title>Insert title here</title>
 </head>
 <body>
+
+	<a href="memberManagePage.do">테이블 예제로이동하기</a> <br/><br/>
 	
 	<input type="button" value="텍스트가져오기" id="btn1"/><br/>
 	<div id="content1"></div>
@@ -247,7 +264,12 @@
 	</form>
 	<div id="content7"></div>
 	
+	<br/>
 	
+	<input type="button" value="Map을 JSON으로 가져오기" id="btn8"/><br/>
+	<div id="content8"></div>
+	
+	<br/>
 	
 </body>
 </html>

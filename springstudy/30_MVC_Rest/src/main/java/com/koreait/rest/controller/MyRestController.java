@@ -1,7 +1,9 @@
 package com.koreait.rest.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -113,5 +115,14 @@ public class MyRestController {
 	public PersonDto sendPath(@PathVariable("name") String name, @PathVariable("age") int age) {// 파라미터 받는 것이 경로에 들어있음 
 								// 파라미터가 URI에 포함된 경우 @PathVariable을 사용합니다.
 		return new PersonDto(name, age);
+	}
+	
+	@GetMapping(value="getJSONByMap",
+				produces="Application/json; charset=utf-8")
+	public Map<String, Object> getJSONByMap(){
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("name", "제시카");
+		map.put("age", 40);
+		return map;
 	}
 }
