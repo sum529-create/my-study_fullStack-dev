@@ -96,6 +96,7 @@
 	
 	/***** 2. 회원 정보 *****/
 	function memberView() {
+		
 		// jquery의 append() 등의 메소드를 이용해서 생성한 버튼은
 		// $('#btnView').click(function(){}) 와 같은 click 이벤트 처리가 불가능합니다.
 		
@@ -109,8 +110,75 @@
 			// 현재는 6개 데이터가 있다는 가정하에 6개의 값이 나온다.
 			// $('input:hidden[name="no"]).val()로 쓰면 6개 값을 어떻게 알아낼수없음
 			// 이거는 사용 못함
+			
+			/*
+				<tr>
+					<td><input type="hidden" name="no" value="1"/></td>
+					<td><input type="button" id="btnView"/></td>
+				</tr>
+
+				<tr>
+					<td><input type="hidden" name="no" value="2"/></td>
+					<td><input type="button" id="btnView"/></td>
+				</tr>
+			*/
+			
+			// 이벤트 객체는 #btnView입니다.
+			// 이벤트 객체는 $(this)라고 부를 수 있습니다.
+			// 1. $(this)와 같은 위치( 수준: <tr>에 있는 hidden 찾기)
+			// 		$(this)의 부모 요소 중에서 (td -> tr -> tbody) <tr> 태그를 찾는다.
+			// 		tag를 찾아야하는데 찾는 jquery메소드는  ★find()
+			// 	 1) $(this).parents('tr')				//  parents : 부모요소 찾는것
+			//   2) $(this).closest('tr') : 같은 id가 많을 경우에 유용		// 가장 가까운 tr찾기
+			// 2. 거기서 (<tr>) find()메소드로 <input type="hidden" name="no"/>를 찾는다.
+			//		$(this).parents('tr').find('input:hidden[name="no"]')
+			//		$(this).closest('tr').find('input:hidden[name="no"]')
+			// 3. 거기서 (<input type="hidden">)값을 가져온다. -> value
+			//		$(this).parents('tr').find('input:hidden[name="no"]').val()
+			//		$(this).closest('tr').find('input:hidden[name="no"]').val()
+			
+			
+					
+			// URI : member/{no}, method=GET
+		
+			var no = $(this).parents('tr').find('input:hidden[name="no"]').val();
+			$.ajax({
+				url: 'member/' + no,	// controller에서 @RequestMapping(value="member/{no}")이렇게 들어감
+				type: 'get',
+				dateType: 'json',
+				success: function(responseObj) {
+					// responseObj : (command)resultMap -> 
+					// 				(controller)memberCommand.~ -> 
+					//				responseObj
+					
+					/*
+						responseObj = {
+							"memberDto":{
+									"no" : 1,
+									"id" : "user1",
+									"name" : "제임스",
+									"gender" : "남",
+									"address" : "서울"
+							},
+							"reuslt" : "true"
+						}
+					*/
+					// $() -> 선택자
+					if(responseObj.result == true){
+						$('input:text[name="id"]').val(responseObj.memberDto.id);
+						$('input:text[name="name"]').val(responseObj.memberDto.name);
+						$('input:radio[name="gender"][value="'+responseObj.memberDto.gender + '"]').prop('checked', true); // 누구를 true처리? -> value
+						$('select[name="address"]').val(responseObj.memberDto.address);
+					}
+					
+				},
+				error: function() {
+					alert('실패');
+				}
+			});
 		});
 	}
+	
 	
 	/***** 3. 회원 삽입 *****/
 	function memberInsert() {

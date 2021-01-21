@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.koreait.rest.command.MemberCommand;
 import com.koreait.rest.command.MemberInsertCommand;
 import com.koreait.rest.command.MemberListCommand;
+import com.koreait.rest.command.MemberViewCommand;
 import com.koreait.rest.dto.MemberDto;
 
 @Controller
@@ -44,6 +46,16 @@ public class MemberController {						// 실제로는 JSON으로 보내준다. ->
 		return memberCommand.execute(sqlSession, model); // map타입이므로 바로 return가능
 		// memberCommand.execute(sqlSession, model); 결과가 resultMap이므로 곧바로 반환합니다.
 		
+	}
+	
+	@RequestMapping(value="member/{no}",	// 경로에 포함된 변수는 @PathVariable로 받습니다
+					method=RequestMethod.GET, 
+					produces="application/json; charset=utf-8")
+	@ResponseBody
+	public Map<String, Object> memberView(@PathVariable("no")int no, Model model){ // model -> command	
+		model.addAttribute("no", no);
+		memberCommand = new MemberViewCommand();
+		return memberCommand.execute(sqlSession, model);
 	}
 	
 }
