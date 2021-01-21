@@ -232,12 +232,57 @@
 	
 	/***** 4. 회원 수정 *****/
 	function memberUpdate() {
-		
+		$('#btnUpdate').click(function() {
+			var no = $(this).parents('tr').find('input:hidden[name="no"]').val();
+			var id = $('input:text[name="id"]').val();
+			var name = $('input:text[name="name"]').val();
+			var gender = $('input:text[name="gender"]:checked').val();
+			var address = $('input:text[name="id"]').val();
+			var sendObj = { 
+					"no" : no,
+					"id" : id,
+					"name" : name,
+					"gender" : gender,
+					"address" : address
+			};
+			$.ajax({
+				url : 'member',
+				type: 'put',
+				data: JSON.stringify(sendObj),
+				contentType: 'application/json',
+				dataType: 'json',
+				success: function(responseObj) {
+					if(responseObj.result == 1){
+						alert('수정되었습니다.');
+						memberList();
+					}
+				},
+				error: function () {
+					alert('실패');
+				}
+			});
+		});
 	}
 	
 	/***** 5. 회원 삭제 *****/
 	function memberDelete() {
-		
+		$('#btnDelete').click(function() {
+			var no = $(this).parents('tr').find('input:hidden[name="no"]').val();
+			$.ajax({
+				url:'member/'+no,
+				type:'delete',
+				dataType: 'json',
+				success: function(resonseObj) {
+					if(responseObj.result == true){
+						alert('삭제되었습니다.');
+						memberList();
+					}
+				},
+				error: function() {
+					alert('실패');
+				}
+			});
+		});
 	}
 	
 	/***** 6. 초기화 *****/
