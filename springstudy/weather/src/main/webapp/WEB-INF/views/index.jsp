@@ -34,17 +34,17 @@
                     $.each(locationList, function(idx, location){
                         // 문제. 도시(city) 이름을 5칸을 합쳐서 <tbody id="weather"></tbody>에 표시하는 코드를 작성하시오.
                         $('<tr>')
-                        .append($('td[colspan=5]').html($(this).location.find('city').text()))
+                        .append($('td[colspan=5]').html($(this).find('city').text()))
                         .appendTo('#weather');
                         var dataList = $(location).find('data');
                         $.each(dataList, function(idx, data){
                             // 문제. 일시, 날씨, 최저기온, 최고기온, 습도를 <tbody id="weather"></tbody>에 표시하는 코드를 작성하시오.
                         $('<tr>')
-                        .append($('<td>').html($(this).data.find('tmEf').text()))
-                        .append($('<td>').html($(this).data.find('wf').text()))
-                        .append($('<td>').html($(this).data.find('tmn').text()))
-                        .append($('<td>').html($(this).data.find('tmx').text()))
-                        .append($('<td>').html($(this).data.find('rnSt').text()))
+                        .append($('<td>').html($(this).find('tmEf').text()))
+                        .append($('<td>').html($(this).find('wf').text()))
+                        .append($('<td>').html($(this).find('tmn').text()))
+                        .append($('<td>').html($(this).find('tmx').text()))
+                        .append($('<td>').html($(this).find('rnSt').text()))
                         .appendTo('#weather');
                         });
                     });
