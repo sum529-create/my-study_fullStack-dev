@@ -1,0 +1,29 @@
+JavaMail API (compat) » 1.4.7
+https://mvnrepository.com/artifact/javax.mail/mail/1.4.7
+
+<!-- https://mvnrepository.com/artifact/javax.mail/mail -->
+<dependency>
+    <groupId>javax.mail</groupId>
+    <artifactId>mail</artifactId>
+    <version>1.4.7</version>
+</dependency>
+
+
+
+Spring Context Support » 5.1.4.RELEASE
+https://mvnrepository.com/artifact/org.springframework/spring-context-support/5.1.4.RELEASE
+
+
+<!-- https://mvnrepository.com/artifact/org.springframework/spring-context-support -->
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-context-support</artifactId>
+    <version>5.1.4.RELEASE</version>
+</dependency>
+
+version에서 ${org.springframework-version}쓰는 것을 권장
+-> spring에서 version을 가져옴
+
+
+https://myaccount.google.com/lesssecureapps?pli=1&rapt=AEjHL4NTmP4QPQv-dZrwAfTVmkkY_APGBM3u-5GWVqmM4zar0q5lfwzR4f3V9qIJOaz6fHTZI7pbbsCuDtf9tW4olXSjPHRIsg
+보안 수준이 낮은 앱의 액세스 - 허용
