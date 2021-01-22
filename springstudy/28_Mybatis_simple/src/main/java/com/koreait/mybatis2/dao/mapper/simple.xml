@@ -5,12 +5,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.koreait.mybatis2.dao.SimpleDao">
 
+
+	<!-- 최신 NO가 위로 올라오는 순서로 정렬한 테이블 : A -->
+	<!-- 정렬된 테이블에 행 번호(beginRecord와 endRecord의 조건으로 사용)를 추가한 테이블 : B -->
 	<select id="simpleList" resultType="com.koreait.mybatis2.dto.SimpleDto">
-		SELECT *
-		  FROM SIMPLE
+		SELECT B.*
+		  FROM ((SELECT ROWNUM AS RN, A.*
+		  			FROM (SELECT *
+		  					FROM SIMPLE
+		  				   ORDER BY NO DESC)A )B )
+		  	WHERE B.RN BETWEEN #{param1} AND #{param2}
 	</select>
 	
-	<select id="totalCount" resultType="int">
+	<select id="totalRecord" resultType="int">
 		SELECT COUNT(*)
 		  FROM SIMPLE
 	</select>

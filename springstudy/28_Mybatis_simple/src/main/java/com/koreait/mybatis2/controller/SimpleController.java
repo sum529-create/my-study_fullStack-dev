@@ -48,7 +48,8 @@ public class SimpleController {
 	}
 	
 	@RequestMapping(value="simpleListPage.do", method=RequestMethod.GET)
-	public String simpleListPage(Model model) {
+	public String simpleListPage(HttpServletRequest request, Model model) {
+		model.addAttribute("request", request);
 		command = new SimpleListCommand();
 		command.execute(sqlSession, model);
 		return "simple/simpleListPage";
