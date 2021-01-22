@@ -6,6 +6,7 @@ import javax.xml.ws.Response;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,7 @@ import com.koreait.mybatis3.command.BoardInsertCommand;
 import com.koreait.mybatis3.command.BoardListCommand;
 import com.koreait.mybatis3.command.BoardViewCommand;
 import com.koreait.mybatis3.command.DownloadCommand;
+import com.koreait.mybatis3.command.EmailAuthCommand;
 
 @Controller
 public class BoardController {
@@ -29,6 +31,7 @@ public class BoardController {
 	private BoardViewCommand boardViewCommand;
 	private DownloadCommand downloadCommand;
 	private BoardDeleteCommand boardDeleteCommand;
+	private EmailAuthCommand emailAuthCommand;
 	
 	// root-context.xml
 	@Autowired								// 여기서 Autowired하고 위 필드로 보내준다.
@@ -36,12 +39,14 @@ public class BoardController {
 						BoardInsertCommand boardInsertCommand,
 						BoardViewCommand boardViewCommand,
 						DownloadCommand downloadCommand,
-						BoardDeleteCommand boardDeleteCommand) {
+						BoardDeleteCommand boardDeleteCommand,
+						EmailAuthCommand emailAuthCommand) {
 		this.boardListCommand = boardListCommand;
 		this.boardInsertCommand = boardInsertCommand;
 		this.boardViewCommand = boardViewCommand;
 		this.downloadCommand = downloadCommand;
 		this.boardDeleteCommand = boardDeleteCommand;
+		this.emailAuthCommand = emailAuthCommand;
 	}
 	
 	
@@ -99,4 +104,17 @@ public class BoardController {
 		boardDeleteCommand.execute(sqlSession, model);
 		return "redirect:boardListPage.do";
 	}
+	
+	/***** 이메일 인증 *****/
+	@Autowired
+	private JavaMailSender mailSender;
+	
+	@RequestMapping(value="emailAuth.do", method=RequestMethod.POST)
+	public String emailAuth(HttpServletRequest request, Model model) {
+		model.addAttribute("request", request);
+		model.addAttribute("mailSender", mailSender);
+		emailAuthCommand.execute(sqlSession, model);
+		return "board/emailAuthCofirm";
+	}
+	
 }
