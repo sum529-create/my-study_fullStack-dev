@@ -266,22 +266,32 @@
 	
 	/***** 5. 회원 삭제 *****/
 	function memberDelete() {
-		$('#btnDelete').click(function() {
-			var no = $(this).parents('tr').find('input:hidden[name="no"]').val();
-			$.ajax({
-				url:'member/'+no,
-				type:'delete',
-				dataType: 'json',
-				success: function(resonseObj) {
-					if(responseObj.result == true){
-						alert('삭제되었습니다.');
-						memberList();
+	$('body').on('click', '#btnDelete', function(){
+	        
+	        var no = $(this).parents('tr').find('input:hidden[name="no"]').val();
+	        
+	        // 삭제할 회원의 id를 먼저 보여주기 위해서 회원 목록을 표시할 때 회원 아이디를 추가해 주었습니다. (memberList() 함수)
+	        var id = $(this).parents('tr').find('input:hidden[name="id"]').val();
+	        
+	        var check = confirm(id + '님 정보를 삭제할까요?');
+	        if (check) {
+		        $.ajax({
+		        	url: 'member/' + no,
+		        	type: 'delete',
+		        	dataType: 'json',
+		        	success: function(responseObj) {
+		        		if (responseObj.result == 1) {
+							alert('회원 정보가 삭제되었습니다.');
+							memberList();
+						} else {
+							alert('회원 정보 삭제가 실패했습니다.');
+						}
+		        	},
+		        	error: function(){
+						alert('실패');
 					}
-				},
-				error: function() {
-					alert('실패');
-				}
-			});
+		        });
+	        }
 		});
 	}
 	
