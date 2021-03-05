@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.koreait.classick.dao.TabsDao">
+<!-- 인기 작품 페이지 -->
+	<select id="deserts" resultType="com.koreait.classick.dto.TabsDto">
+		SELECT Y.ANAME, P.PNO, P.PNAME, P.PIMAGE, P.RCONTENT, P.RRATING, P.PCATEGORY
+		FROM(SELECT D.ANO AS NO, D.PNO, D.ANO, D.PNAME,D.PCATEGORY, D.PIMAGE, R.RCONTENT, R.RRATING
+		    FROM(SELECT C.PNO, P.PNAME, P.PIMAGE, P.ANO, P.PCATEGORY
+		        FROM (SELECT ROWNUM RN,B.PNO 
+		            FROM(SELECT A.PNO, COUNT(A.PNO) C
+		                FROM (SELECT PNO FROM PRODUCT
+		                WHERE PCATEGORY = '디저트,베이커리,떡') A, ORDERS O
+		            WHERE A.PNO = O.PNO
+		            GROUP BY A.PNO
+		            ORDER BY C DESC)B) C, PRODUCT P
+		        WHERE C.PNO = P.PNO
+		        AND C.RN BETWEEN 1 AND 10) D, (SELECT *
+		                                        FROM(SELECT PNO, RCONTENT, RRATING, ROW_NUMBER() OVER (PARTITION BY PNO ORDER BY RREGDATE) AS RN
+		                                                FROM REVIEW)
+		                                    WHERE RN = 1)R
+		    WHERE D.PNO = R.PNO) P, ARTIST Y
+		WHERE P.NO = Y.ANO
+	</select>
+	<select id="drinks" resultType="com.koreait.classick.dto.TabsDto">
+		SELECT Y.ANAME, P.PNO, P.PNAME, P.PIMAGE, P.RCONTENT, P.RRATING, P.PCATEGORY
+		FROM(SELECT D.ANO AS NO, D.PNO, D.ANO, D.PNAME,D.PCATEGORY, D.PIMAGE, R.RCONTENT, R.RRATING
+		    FROM(SELECT C.PNO, P.PNAME, P.PIMAGE, P.ANO, P.PCATEGORY
+		        FROM (SELECT ROWNUM RN,B.PNO 
+		            FROM(SELECT A.PNO, COUNT(A.PNO) C
+		                FROM (SELECT PNO FROM PRODUCT
+		                WHERE PCATEGORY = '음료(커피,차 등)') A, ORDERS O
+		            WHERE A.PNO = O.PNO
+		            GROUP BY A.PNO
+		            ORDER BY C DESC)B) C, PRODUCT P
+		        WHERE C.PNO = P.PNO
+		        AND C.RN BETWEEN 1 AND 10) D, (SELECT *
+		                                        FROM(SELECT PNO, RCONTENT, RRATING, ROW_NUMBER() OVER (PARTITION BY PNO ORDER BY RREGDATE) AS RN
+		                                                FROM REVIEW)
+		                                    WHERE RN = 1)R
+		    WHERE D.PNO = R.PNO) P, ARTIST Y
+		WHERE P.NO = Y.ANO
+	</select>
+	<select id="ingredients" resultType="com.koreait.classick.dto.TabsDto">
+		SELECT Y.ANAME, P.PNO, P.PNAME, P.PIMAGE, P.RCONTENT, P.RRATING, P.PCATEGORY
+		FROM(SELECT D.ANO AS NO, D.PNO, D.ANO, D.PNAME,D.PCATEGORY, D.PIMAGE, R.RCONTENT, R.RRATING
+		    FROM(SELECT C.PNO, P.PNAME, P.PIMAGE, P.ANO, P.PCATEGORY
+		        FROM (SELECT ROWNUM RN,B.PNO 
+		            FROM(SELECT A.PNO, COUNT(A.PNO) C
+		                FROM (SELECT PNO FROM PRODUCT
+		                WHERE PCATEGORY = '농축수산물') A, ORDERS O
+		            WHERE A.PNO = O.PNO
+		            GROUP BY A.PNO
+		            ORDER BY C DESC)B) C, PRODUCT P
+		        WHERE C.PNO = P.PNO
+		        AND C.RN BETWEEN 1 AND 10) D, (SELECT *
+		                                        FROM(SELECT PNO, RCONTENT, RRATING, ROW_NUMBER() OVER (PARTITION BY PNO ORDER BY RREGDATE) AS RN
+		                                                FROM REVIEW)
+		                                    WHERE RN = 1)R
+		    WHERE D.PNO = R.PNO) P, ARTIST Y
+		WHERE P.NO = Y.ANO
+	</select>
+	<select id="foods" resultType="com.koreait.classick.dto.TabsDto">
+		SELECT Y.ANAME, P.PNO, P.PNAME, P.PIMAGE, P.RCONTENT, P.RRATING, P.PCATEGORY
+		FROM(SELECT D.ANO AS NO, D.PNO, D.ANO, D.PNAME,D.PCATEGORY, D.PIMAGE, R.RCONTENT, R.RRATING
+		    FROM(SELECT C.PNO, P.PNAME, P.PIMAGE, P.ANO, P.PCATEGORY
+		        FROM (SELECT ROWNUM RN,B.PNO 
+		            FROM(SELECT A.PNO, COUNT(A.PNO) C
+		                FROM (SELECT PNO FROM PRODUCT
+		                WHERE PCATEGORY = '그 외 수제먹거리') A, ORDERS O
+		            WHERE A.PNO = O.PNO
+		            GROUP BY A.PNO
+		            ORDER BY C DESC)B) C, PRODUCT P
+		        WHERE C.PNO = P.PNO
+		        AND C.RN BETWEEN 1 AND 10) D, (SELECT *
+		                                        FROM(SELECT PNO, RCONTENT, RRATING, ROW_NUMBER() OVER (PARTITION BY PNO ORDER BY RREGDATE) AS RN
+		                                                FROM REVIEW)
+		                                    WHERE RN = 1)R
+		    WHERE D.PNO = R.PNO) P, ARTIST Y
+		WHERE P.NO = Y.ANO
+	</select>
+	<select id="alcohols" resultType="com.koreait.classick.dto.TabsDto">
+		SELECT Y.ANAME, P.PNO, P.PNAME, P.PIMAGE, P.RCONTENT, P.RRATING, P.PCATEGORY
+		FROM(SELECT D.ANO AS NO, D.PNO, D.ANO, D.PNAME,D.PCATEGORY, D.PIMAGE, R.RCONTENT, R.RRATING
+		    FROM(SELECT C.PNO, P.PNAME, P.PIMAGE, P.ANO, P.PCATEGORY
+		        FROM (SELECT ROWNUM RN,B.PNO 
+		            FROM(SELECT A.PNO, COUNT(A.PNO) C
+		                FROM (SELECT PNO FROM PRODUCT
+		                WHERE PCATEGORY = '전통주') A, ORDERS O
+		            WHERE A.PNO = O.PNO
+		            GROUP BY A.PNO
+		            ORDER BY C DESC)B) C, PRODUCT P
+		        WHERE C.PNO = P.PNO
+		        AND C.RN BETWEEN 1 AND 10) D, (SELECT *
+		                                        FROM(SELECT PNO, RCONTENT, RRATING, ROW_NUMBER() OVER (PARTITION BY PNO ORDER BY RREGDATE) AS RN
+		                                                FROM REVIEW)
+		                                    WHERE RN = 1)R
+		    WHERE D.PNO = R.PNO) P, ARTIST Y
+		WHERE P.NO = Y.ANO
+	</select>
+	<select id="sideDishs" resultType="com.koreait.classick.dto.TabsDto">
+		SELECT Y.ANAME, P.PNO, P.PNAME, P.PIMAGE, P.RCONTENT, P.RRATING, P.PCATEGORY
+		FROM(SELECT D.ANO AS NO, D.PNO, D.ANO, D.PNAME,D.PCATEGORY, D.PIMAGE, R.RCONTENT, R.RRATING
+		    FROM(SELECT C.PNO, P.PNAME, P.PIMAGE, P.ANO, P.PCATEGORY
+		        FROM (SELECT ROWNUM RN,B.PNO 
+		            FROM(SELECT A.PNO, COUNT(A.PNO) C
+		                FROM (SELECT PNO FROM PRODUCT
+		                WHERE PCATEGORY = '수제반찬') A, ORDERS O
+		            WHERE A.PNO = O.PNO
+		            GROUP BY A.PNO
+		            ORDER BY C DESC)B) C, PRODUCT P
+		        WHERE C.PNO = P.PNO
+		        AND C.RN BETWEEN 1 AND 10) D, (SELECT *
+		                                        FROM(SELECT PNO, RCONTENT, RRATING, ROW_NUMBER() OVER (PARTITION BY PNO ORDER BY RREGDATE) AS RN
+		                                                FROM REVIEW)
+		                                    WHERE RN = 1)R
+		    WHERE D.PNO = R.PNO) P, ARTIST Y
+		WHERE P.NO = Y.ANO
+	</select>
+	<!-- 최근 작품 페이지 -->
+	<select id="recentWorksList" resultType="com.koreait.classick.dto.TabsDto">
+		SELECT P.PNO, P.PNAME, P.PIMAGE, A.ANAME
+			FROM(SELECT PNO,PNAME,PIMAGE, ANO
+			FROM PRODUCT
+			WHERE TO_CHAR(PREGDATE, 'YYYYMMDD') = (SELECT TO_CHAR(SYSDATE, 'YYYYMMDD') FROM DUAL)) P, ARTIST A
+		WHERE P.ANO = A.ANO
+	</select>
+</mapper>

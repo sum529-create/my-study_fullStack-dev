@@ -1,0 +1,102 @@
+@charset "EUC-KR";
+
+.popularWorks-banner{
+	background-image: url(../images/color-banner.png);
+	background-repeat: no-repeat;
+	width: 100%;
+	height: 200px;
+	text-align: center;
+}
+.popularWorks-banner h1{
+	font-size: 25px;
+	font-weight: 900;
+	color: white;
+	padding-top: 50px;
+	height: 150px;
+	line-height: 100px;
+}
+.popularWorks-banner p{
+	font-weight: 700;
+	font-size: 15px;
+	color: white;
+}
+.inner-popularWorks{
+	width: 1056px;
+	margin: auto;	
+}
+.popularWorks-category-list ul{
+	margin-top: 20px;
+	display:flex; 
+	align-content:flex-start; 
+	flex-direction:row;
+	flex-wrap:wrap; 
+	overflow:auto;
+}
+.popularWorks-category-list ul li{
+	width:20%;
+}
+.popularWorks-card{
+	border-radius: 5px;
+	border: 1px solid #d9d9d9;
+	overflow: hidden;
+	margin: 10px;
+}
+.popularWorks-card-head img{
+	width: 100%;
+	height: 196px;
+}
+.category-pw-title{
+	margin-top: 20px;
+	width: 100%;
+	background:#f2f2f2;
+	padding: 15px;
+	border: 1px solid #d9d9d9;
+}
+.popularWorks-card-body{
+	padding: 5px 5px;
+}
+.popularWorks-card-body-content{
+	font-size: 15px;
+	height: 20px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space:nowrap;
+}
+.popularWorks-card-body-title{
+	font-size: 10px;
+	color: #A9A9A9;
+	padding: 0 0  5px 0;
+}
+.popularWorks-card-foot{
+	border-top: 1px solid #d9d9d9;
+	padding: 5px 5px;
+}
+.popularWorks-card-foot-content{
+	padding: 5px 5px;
+	width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 24px;
+	white-space:nowrap;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.fa-star{
+	color:#FFD700;
+}

@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+.foot-wrap{
+   width:100%;
+   height:200px;
+   bottom:0;
+   text-align: center;
+	color:#666666;
+}
+
+/* 약관 */
+
+.policy{
+	width:100%;
+	height: 28px;
+	font-size: 0.750em;
+	border-bottom: 1px solid #999999;
+}
+
+.policy a{
+	color:#666666;
+	padding:10px 14px 11px;
+}
+
+/* 로고 + copyRight */
+.companyInfo{
+	height: 70px;
+	padding-top: 15px;
+}
+.copyRight{
+	padding-top: 15px;
+}
+
+.copyRight span{
+	font-size: 0.625em;
+	font-weight: 1.5;
+}
+
+.footer_logo{
+	float:left;	
+	position:absolute;
+	left: 200px;
+}
+
+.footer_logo img{
+	opacity: 0.3;
+}

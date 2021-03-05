@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.koreait.classick.dao.AdminDao">
+	
+	<select id="getTotalMemberCount" resultType="int">
+		SELECT COUNT(*)
+		  FROM MEMBER M JOIN ROLE R
+		ON M.MEMAIL = R.MEMAIL
+	</select>
+	
+	<select id="adminMemberList" resultType="com.koreait.classick.dto.AdminMemberDto">
+		SELECT B.*
+		  FROM (SELECT A.*, ROWNUM AS RN
+		          FROM (SELECT *
+		FROM MEMBER M JOIN ROLE R
+		ON M.MEMAIL = R.MEMAIL ORDER BY M.MNO DESC) A) B
+		WHERE B.RN BETWEEN #{param1} AND #{param2}
+	</select>
+	<!-- M.MNO, M.MSNO, M.MNAME, M.MEMAIL, M.MPW, M.MGENDER, M.MPNO, M.MADDR, M.MLASTADDR, M.MPHONE, M.MPFILENAME, M.MPAYMENT, M.MPOINT, M.MGRADE, M.MREGDATE, R.ROLE, R.RNO -->
+	<select id="adminMemberView" parameterType="int" resultType="com.koreait.classick.dto.AdminMemberDto">
+		SELECT M.MNO, M.MSNO, M.MNAME, M.MEMAIL, M.MPW, M.MGENDER, M.MPNO, M.MADDR, M.MLASTADDR, M.MPHONE, M.MPFILENAME, M.MPAYMENT, M.MPOINT, M.MGRADE, M.MREGDATE, R.ROLE
+		FROM MEMBER M JOIN ROLE R
+		ON M.MEMAIL = R.MEMAIL
+		WHERE MNO = #{mNo} 
+	</select>
+	
+	<insert id="adminMemberInsert1" parameterType="com.koreait.classick.dto.AdminMemberDto">
+		INSERT INTO 
+		MEMBER (MNO, MSNO, MNAME, MEMAIL, MPW, MGENDER, MPNO, MADDR, MLASTADDR, MPHONE, MPFILENAME, MPAYMENT, MPOINT, MGRADE, MREGDATE)
+		VALUES(MEMBER_SEQ.NEXTVAL, #{mSno}, #{mName}, #{mEmail}, 
+		#{mPw}, #{mGender}, #{mPno}, #{mAddr}, #{mLastAddr}, #{mPhone}, 
+		#{mPFilename}, #{mPayment}, #{mPoint}, #{mGrade}, SYSDATE)
+	</insert>
+	<insert id="adminMemberInsert2" parameterType="com.koreait.classick.dto.AdminMemberDto">	
+		INSERT INTO
+		ROLE (RNO, MEMAIL, ROLE)
+		VALUES(ROLE_SEQ.NEXTVAL, #{mEmail}, #{role})
+	</insert>
+	
+	<update id="adminMemberUpdate1" parameterType="com.koreait.classick.dto.AdminMemberDto">
+		UPDATE MEMBER
+			SET MSNO = #{mSno}, 
+				MNAME = #{mName}, 
+				MEMAIL = #{mEmail}, 
+				MPW = #{mPw}, 
+				MGENDER = #{mGender}, 
+				MPNO = #{mPno}, 
+				MADDR = #{mAddr}, 
+				MLASTADDR = #{mLastAddr}, 
+				MPHONE = #{mPhone}, 
+				MPFILENAME = #{mPFilename}, 
+				MPAYMENT = #{mPayment}, 
+				MPOINT = #{mPoint}, 
+				MGRADE = #{mGrade}
+			WHERE MNO = #{mNo}
+		
+	</update>
+	
+	<update id="adminMemberUpdate2" parameterType="com.koreait.classick.dto.AdminMemberDto">
+		UPDATE ROLE
+			SET MEMAIL = #{mEmail},
+				ROLE = #{role}
+			WHERE RNO = #{rNo}
+	</update>
+	
+	<delete id="adminMemberDelete1" parameterType="int">
+		DELETE FROM REVIEW WHERE MNO = #{mNo}
+	</delete>
+	<delete id="adminMemberDelete2" parameterType="int">
+		DELETE FROM CART WHERE MNO = #{mNo}
+	</delete>
+	<delete id="adminMemberDelete3" parameterType="int">
+		DELETE FROM ORDERS WHERE MNO = #{mNo}
+	</delete>
+	<delete id="adminMemberDelete4" parameterType="int">
+		DELETE FROM STOCK WHERE PNO = #{pNo}
+	</delete>
+	<delete id="adminMemberDelete5" parameterType="int">
+		DELETE FROM PRODUCT WHERE ANO = #{aNo}
+	</delete>
+	<delete id="adminMemberDelete6" parameterType="int">
+		DELETE FROM ARTIST WHERE ANO = #{aNo}
+	</delete>
+	<delete id="adminMemberDelete7" parameterType="int">
+		DELETE FROM ROLE WHERE RNO = #{rNo}
+	</delete>
+	<delete id="adminMemberDelete8" parameterType="int">
+		DELETE FROM MEMBER WHERE MNO = #{mNo}
+	</delete>
+	
+	<select id="adminMemberSearch" parameterType="Map" resultType="com.koreait.classick.dto.AdminMemberDto">
+		SELECT * 
+			 FROM MEMBER M JOIN ROLE R
+			ON M.MEMAIL = R.MEMAIL
+					WHERE ${column} like '%' || #{query} || '%'				
+		 
+	</select>
+	
+</mapper>

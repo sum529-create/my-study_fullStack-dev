@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.koreait.classick.dao.ArtistDao">
+	
+	<select id="getANo" parameterType="int" resultType="int">
+		SELECT ANO
+		  FROM ARTIST
+		 WHERE MNO = #{mNo}
+	</select>
+	
+	<select id="totalRecordA" resultType="int">
+		SELECT COUNT(*)
+		FROM(SELECT A.ANO
+		FROM ARTIST A, PRODUCT P
+		WHERE A.ANO = P.ANO
+		GROUP BY A.ANO)
+	</select>
+	<select id="artistList" resultType="Map">
+		SELECT  A.ANO, A.MNO, A.ANAME, A.ACOMMENT, A.AIMAGE
+		FROM A_VIEW A
+		WHERE A.RN BETWEEN #{param1} AND #{param2}
+	</select>
+	<select id="searchList" parameterType="String" resultType="com.koreait.classick.dto.ArtistDto">
+		SELECT A.ANO, A.ANAME, A.AIMAGE
+		FROM ARTIST A
+		WHERE A.ANAME LIKE '%'||#{p}||'%'
+	</select>
+	<!-- 평점 -->
+	<select id="artistRating" parameterType="int" resultType="int">
+		SELECT NVL2(AVG(R.RRATING), AVG(R.RRATING), 0)
+		FROM(SELECT P.PNO
+			FROM A_VIEW A, PRODUCT P
+			WHERE A.ANO = P.ANO
+			AND A.RN = #{rowNum}) B, REVIEW R
+		WHERE B.PNO = R.PNO
+	</select>
+	<select id="artistProductList" parameterType="int" resultType="Map">
+		SELECT B.PIMAGE
+		FROM(SELECT ROWNUM RN, P.PIMAGE
+		FROM A_VIEW A, PRODUCT P
+		WHERE A.ANO = P.ANO
+		AND A.RN = #{rowNum} AND NOT P.PIMAGE IS NULL) B
+		WHERE B.RN BETWEEN 1 AND 8
+	</select>
+	<select id="artistHasProduct" resultType="Map">
+		SELECT 1 A
+		FROM DUAL
+		WHERE  EXISTS(SELECT B.*
+		FROM (SELECT ROWNUM RN, P.PIMAGE
+				FROM A_VIEW A, PRODUCT P
+				WHERE A.ANO = P.ANO
+				AND A.RN = #{rowNum} AND NOT P.PIMAGE IS NULL) B
+		)
+	</select>
+	<!-- home query -->
+	<select id="artistHomeInfo" parameterType="int" resultType="Map">
+		SELECT * 
+		FROM A_VIEW
+		WHERE ANO = #{param1}
+	</select>
+	
+	<select id="artistHomeProductList" parameterType="int" resultType="String">
+		SELECT P.PIMAGE
+		FROM ARTIST A, PRODUCT P
+		WHERE A.ANO = P.ANO
+		AND A.ANO = #{param1}
+		AND NOT P.PIMAGE IS NULL
+	</select>
+	<select id="countArtistProduct" parameterType="int" resultType="int">
+		SELECT COUNT(*)
+		FROM ARTIST A, PRODUCT P
+		WHERE A.ANO = P.ANO
+		AND A.ANO = #{param1}
+	</select>
+	<select id="artistReviewList" parameterType="int" resultType="Map">
+		SELECT B.PNAME, R.*
+		FROM(SELECT P.PNO, P.PNAME 
+			FROM ARTIST A, PRODUCT P
+			WHERE A.ANO = P.ANO
+			AND A.ANO = #{param1}) B, REVIEW R
+		WHERE B.PNO = R.PNO
+	</select>
+	<select id="countReviewList" parameterType="int" resultType="int">
+		SELECT COUNT(*)
+		FROM(SELECT P.PNO 
+			FROM ARTIST A, PRODUCT P
+			WHERE A.ANO = P.ANO
+			AND A.ANO = #{param1}) B, REVIEW R
+		WHERE B.PNO = R.PNO
+	</select>
+	
+</mapper>

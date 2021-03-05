@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.koreait.classick.dao.ProductDao">
+	
+	<select id="totalRecordByCategory" parameterType="String" resultType="int">
+		SELECT COUNT(*) 
+		  FROM PRODUCT P, ARTIST R
+		 WHERE P.ANO = R.ANO 
+		   AND P.PCATEGORY = #{param1}
+	</select>
+	
+ 	<select id="list" resultType="com.koreait.classick.dto.ProductArtistDto">
+		SELECT B.*
+		  FROM (SELECT ROWNUM AS RN, A.* 
+		          FROM (SELECT P.*, R.MNO, R.ANAME, R.ACOMMENT, R.AIMAGE
+						  FROM PRODUCT P, ARTIST R
+						 WHERE P.ANO = R.ANO 
+						   AND P.PCATEGORY = #{param1}
+						 ORDER BY P.PNO DESC ) A ) B
+		 WHERE B.RN BETWEEN #{param2} AND #{param3}
+	</select>
+	
+	<insert id="insert" parameterType="com.koreait.classick.dto.ProductDto">
+		INSERT 
+		  INTO PRODUCT
+		VALUES (PRODUCT_SEQ.NEXTVAL, #{pName}, #{pImage}, #{pListPrice}, #{pPrice}, #{pCategory},
+			    #{pTag}, #{pDisRate}, #{pDesc}, #{pASDesc}, #{pDetail}, #{aNo}, SYSDATE)	
+	</insert>
+	
+	<select id="getPNo" resultType="int">
+		SELECT PNO
+		  FROM PRODUCT
+		 WHERE PNAME = #{param1} 
+		   AND ANO = #{param2} 
+	</select>
+	
+	<select id="view" parameterType="int" resultType="com.koreait.classick.dto.ProductArtistDto">
+		SELECT P.*, R.MNO, R.ANAME, R.ACOMMENT, R.AIMAGE
+		  FROM PRODUCT P, ARTIST R
+		 WHERE P.ANO = R.ANO
+		   AND P.PNO = #{pNo} 
+	</select>
+	
+</mapper>

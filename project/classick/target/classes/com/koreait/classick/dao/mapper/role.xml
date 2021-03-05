@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.koreait.classick.dao.RoleDao">
+	
+	<insert id="roleInsert">
+		INSERT INTO 
+		ROLE (RNO, MEMAIL, ROLE) 
+		VALUES (ROLE_SEQ.NEXTVAL, #{mEmail}, 'USER')
+	</insert>
+	
+	<select id="setLoginDto" resultType="com.koreait.classick.dto.LoginDto" parameterType="com.koreait.classick.dto.MemberDto">
+		SELECT A.*, B.ROLE 
+		  FROM MEMBER A
+		 INNER JOIN ROLE B
+		    ON A.MEMAIL = B.MEMAIL
+		 WHERE A.MEMAIL = #{mEmail}
+		   AND A.MPW = #{mPw}
+	</select>
+	
+</mapper>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+	
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<annotation-driven />
+
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<resources mapping="/resources/**" location="/resources/" />
+	<resources mapping="/assets/**" location="/assets/" />
+	<resources mapping="/image/**" location="/assets/image/" />
+	<resources mapping="/images/**" location="/assets/images/" />
+	<resources mapping="/style/**" location="/assets/style/" />
+	<resources mapping="/storage/**" location="/assets/storage/" />
+
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+	
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></beans:bean>
+
+	<!-- MemberS -->
+	<beans:bean id="memberListCommand" class="com.koreait.classick.command.member.MemberListCommand" ></beans:bean>
+	<beans:bean id="memberInsertCommand" class="com.koreait.classick.command.member.MemberInsertCommand" ></beans:bean>
+	<beans:bean id="EmailCheckCommand" class="com.koreait.classick.command.member.EmailCheckCommand" ></beans:bean>
+	<beans:bean id="emailCheckListCommand" class="com.koreait.classick.command.member.EmailCheckListCommand" ></beans:bean>
+	<beans:bean id="memberloginCommand" class="com.koreait.classick.command.member.MemberLoginCommand" ></beans:bean>	
+	<beans:bean id="emailConfirmCommand" class="com.koreait.classick.command.member.EmailConfirmCommand"></beans:bean>
+	<beans:bean id="pwConfirmCommand" class="com.koreait.classick.command.member.PwConfirmCommand"></beans:bean>
+	<beans:bean id="memberPwChangeCommand" class="com.koreait.classick.command.member.MemberPwChangeCommand" ></beans:bean>
+	
+	<!-- Product -->
+	<beans:bean id="productListCommand" class="com.koreait.classick.command.product.ProductListCommand"></beans:bean>
+	<beans:bean id="productViewCommand" class="com.koreait.classick.command.product.ProductViewCommand"></beans:bean>
+	<beans:bean id="productInsertCommand" class="com.koreait.classick.command.product.ProductInsertCommand"></beans:bean>
+	<beans:bean id="productUpdateCommand" class="com.koreait.classick.command.product.ProductUpdateCommand"></beans:bean>
+	<beans:bean id="productDeleteCommand" class="com.koreait.classick.command.product.ProductDeleteCommand"></beans:bean>
+
+	<!-- Cart -->
+	<beans:bean id="cartInsertCommand" class="com.koreait.classick.command.cart.CartInsertCommand"></beans:bean>
+	<beans:bean id="cartListCommand" class="com.koreait.classick.command.cart.CartListCommand"></beans:bean>
+	<beans:bean id="cartDeleteCommand" class="com.koreait.classick.command.cart.CartDeleteCommand"></beans:bean>
+	
+	<!-- Order -->
+	<beans:bean id="getCartCommand" class="com.koreait.classick.command.order.GetCartCommand"></beans:bean>
+	<beans:bean id="getCartCommand2" class="com.koreait.classick.command.order.GetCartCommand2"></beans:bean>
+	<beans:bean id="orderInsertCommand" class="com.koreait.classick.command.order.OrderInsertCommand"></beans:bean>
+	
+	<!-- Notice -->
+	<beans:bean id="noticeListCommand" class="com.koreait.classick.command.notice.NoticeListCommand"></beans:bean>
+	<beans:bean id="noticeViewCommand" class="com.koreait.classick.command.notice.NoticeViewCommand"></beans:bean>
+	<beans:bean id="noticeInsertCommand" class="com.koreait.classick.command.notice.NoticeInsertCommand"></beans:bean>
+	<beans:bean id="noticeUpdateCommand" class="com.koreait.classick.command.notice.NoticeUpdateCommand"></beans:bean>
+	<beans:bean id="noticeDeleteCommand" class="com.koreait.classick.command.notice.NoticeDeleteCommand"></beans:bean>
+
+	<!-- MyPage -->
+	<beans:bean id="myMainPageCommand" class="com.koreait.classick.command.mypage.MyMainPageCommand"></beans:bean>
+	<beans:bean id="myInfoUpdateCommand" class="com.koreait.classick.command.mypage.MyInfoUpdateCommand"></beans:bean>
+	<beans:bean id="deleteMyInfoCommand" class="com.koreait.classick.command.mypage.DeleteMyInfoCommand"></beans:bean>
+	<beans:bean id="updateAddrCommand" class="com.koreait.classick.command.mypage.UpdateAddrCommand"></beans:bean>
+	<beans:bean id="updatePaymentCommand" class="com.koreait.classick.command.mypage.UpdatePaymentCommand"></beans:bean>
+	<beans:bean id="profileUpdateCommand" class="com.koreait.classick.command.mypage.ProfileUpdateCommand"></beans:bean>
+	<beans:bean id="isArtistCommand" class="com.koreait.classick.command.mypage.IsArtistCommand"></beans:bean>
+	<beans:bean id="updateBannerCommand" class="com.koreait.classick.command.mypage.UpdateBannerCommand"></beans:bean>
+	<beans:bean id="getBannerCommand" class="com.koreait.classick.command.mypage.GetBannerCommand"></beans:bean>
+
+	<!-- Review -->
+	<beans:bean id="ordersListPage" class="com.koreait.classick.command.mypage.OrdersListPage"/>
+	<beans:bean id="reviewInsertCommand" class="com.koreait.classick.command.mypage.ReviewInsertCommand"/>
+	<beans:bean id="reviewDeleteCommand" class="com.koreait.classick.command.mypage.ReviewDeleteCommand"/>
+	<beans:bean id="reviewViewCommand" class="com.koreait.classick.command.mypage.ReviewViewCommand"/>
+	<beans:bean id="reviewUpdateCommand" class="com.koreait.classick.command.mypage.ReviewUpdateCommand"/>
+	<beans:bean id="reviewListCommand" class="com.koreait.classick.command.mypage.ReviewListCommand"/>
+	<beans:bean id="getTotalOrderCommand" class="com.koreait.classick.command.mypage.GetTotalOrderCommand"/>
+
+	<!-- FAQ Command -->
+	<beans:bean id="faqListCommand" class="com.koreait.classick.command.faq.FaqListCommand"></beans:bean>
+	<beans:bean id="faqViewCommand" class="com.koreait.classick.command.faq.FaqViewCommand"></beans:bean>
+	<beans:bean id="faqInsertCommand" class="com.koreait.classick.command.faq.FaqInsertCommand"></beans:bean>
+	<beans:bean id="faqUpdateCommand" class="com.koreait.classick.command.faq.FaqUpdateCommand"></beans:bean>
+	<beans:bean id="faqDeleteCommand" class="com.koreait.classick.command.faq.FaqDeleteCommand"></beans:bean>
+	
+	<beans:bean id="adminMemberListCommand" class="com.koreait.classick.command.admin.AdminMemberListCommand"></beans:bean>
+	<beans:bean id="adminMemberViewCommand" class="com.koreait.classick.command.admin.AdminMemberViewCommand"></beans:bean>
+	<beans:bean id="adminMemberInsertCommand" class="com.koreait.classick.command.admin.AdminMemberInsertCommand"></beans:bean>
+	<beans:bean id="adminMemberUpdateCommand" class="com.koreait.classick.command.admin.AdminMemberUpdateCommand"></beans:bean>
+	<beans:bean id="adminMemberDeleteCommand" class="com.koreait.classick.command.admin.AdminMemberDeleteCommand"></beans:bean>
+	<beans:bean id="adminMemberSearchCommand" class="com.koreait.classick.command.admin.AdminMemberSearchCommand"></beans:bean>
+	
+	<beans:bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"> 
+		<beans:property name="contentType" value="application/json;charset=UTF-8" /> 
+	</beans:bean>
+	
+	<!-- Artist Command -->
+	<beans:bean id="artistListCommand" class="com.koreait.classick.command.artist.ArtistListCommand"></beans:bean>
+	<beans:bean id="artistSearchCommand" class="com.koreait.classick.command.artist.ArtistSearchCommand"></beans:bean>
+	<beans:bean id="artistHomeCommand" class="com.koreait.classick.command.artist.ArtistHomeCommand"></beans:bean>
+	<beans:bean id="artistReviewCommand" class="com.koreait.classick.command.artist.ArtistReviewCommand"></beans:bean>
+	
+	<!-- Tabs Command -->	
+	<beans:bean id="popularWorksCommand" class="com.koreait.classick.command.tabs.PopularWorksCommand"></beans:bean>
+	<beans:bean id="recentWorksCommand" class="com.koreait.classick.command.tabs.RecentWorksCommand"></beans:bean>
+	<context:component-scan base-package="com.koreait.classick" />
+
+</beans:beans>

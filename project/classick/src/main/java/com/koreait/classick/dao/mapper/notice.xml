@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.koreait.classick.dao.NoticeDao">
+	
+	<select id="totalRecord" resultType="int"	>
+		SELECT COUNT(*) FROM NOTICE
+	</select>
+	
+	<select id="list" resultType="com.koreait.classick.dto.NoticeDto">
+		SELECT B.*
+		  FROM (SELECT ROWNUM AS RN, A.* 
+		          FROM (SELECT *
+		                  FROM NOTICE
+		                 ORDER BY NNO DESC ) A ) B
+		 WHERE B.RN BETWEEN #{param1} AND #{param2} 
+	</select>
+	
+	<select id="view" parameterType="int" resultType="com.koreait.classick.dto.NoticeDto">
+		SELECT * FROM NOTICE WHERE NNO = #{nNo}	
+	</select>
+	
+	<insert id="insert">
+		INSERT
+		  INTO NOTICE
+		VALUES(NOTICE_SEQ.NEXTVAL, #{param1}, #{param2}, #{param3}, #{param4}, SYSDATE) 
+	</insert>
+	
+	<update id="updateAll">
+		UPDATE NOTICE
+		   SET NTITLE = #{param1}, NCONTENT = #{param2}, NFILENAME = #{param3}
+		 WHERE NNO = #{param4}
+	</update>
+
+	<update id="update">
+		UPDATE NOTICE
+		   SET NTITLE = #{param1}, NCONTENT = #{param2}
+		 WHERE NNO = #{param3}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		DELETE
+		  FROM NOTICE
+		 WHERE NNO = #{nNo} 
+	</delete>
+	
+	
+	
+</mapper>

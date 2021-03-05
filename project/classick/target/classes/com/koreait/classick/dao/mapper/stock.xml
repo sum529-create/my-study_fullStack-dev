@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.koreait.classick.dao.StockDao">
+	
+	<insert id="insert">
+		INSERT 
+		  INTO STOCK
+		VALUES (STOCK_SEQ.NEXTVAL, #{param1}, #{param2}, #{param3}, #{param4}, #{param5})
+	</insert>
+	
+	<select id="list" resultType="com.koreait.classick.dto.StockDto">
+		SELECT * 
+		  FROM STOCK 
+		 WHERE PNO = #{pNo}
+	</select>
+	
+</mapper>

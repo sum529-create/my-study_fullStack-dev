@@ -1,0 +1,430 @@
+@charset "UTF-8";
+
+
+/** 기본태그 **/
+
+*{
+	margin:0px;
+	
+}
+
+ul{
+	list-style: none;
+}
+
+h3, h3 a{
+	color:black;
+	margin-bottom: 20px;
+}
+
+img{
+	max-width:100%;
+	height:auto;
+}
+
+/** 슬라이드 관련 조정 **/
+
+.slider img{
+	width:100%;
+}
+
+.bx-wrapper{
+	margin:0px;
+	max-width: 100% !important;
+}
+
+.bx-wrapper .mainSlider, .bx-viewport .mainSlider, .bx-viewport .mainSlider img{
+    height: 3000% !important; 
+}
+
+/** 상품 슬라이드 조정 **/
+
+.productSlider img{
+	width:200px;
+	height:200px;
+}
+
+.today_find, .realTime_purchase, .realTime_review, .recommend_product, .artist_recommendProduct,
+.today_recommendProduct, .other_homemadeFood, .stationery_product, .other_accessories, .today_story,
+.new_product, .popular_artist, .full_category
+{	
+	width:1050px;
+	height:auto;
+	margin: auto;
+	margin-bottom:100px;
+}
+
+.product, .artist-story, .artist, .category-type{
+	border:1px solid #D2D2D2;
+	margin-bottom: 10px;
+}
+
+
+
+/** 상품 슬라이드 아이템 세부  **/
+
+/* 상품 세로 슬라이드 공통 */
+#productCat a, #artistDate-story{
+	color:#999999;
+	font-size: 0.750em;
+}
+#productName a, #artistName{
+	color:#333333;
+	font-size: 0.875em;
+}
+#productRev span{
+	width:178px;
+	color:#666666;
+	font-size:0.750em;
+	overflow: hidden;
+  	text-overflow: ellipsis;
+  	display: block;
+	height:3.6em;
+  	white-space: pre-line;
+  	display:  -webkit-box;
+    -webkit-line-clamp: 3; /* 라인수 */
+    -webkit-box-orient: vertical;
+  	line-height: 1.2em;
+}
+
+#productCat , #productName, #productRat, #productRev span, #artistName , #artistDate-story, #artistComment span, #reviewProductRev span{
+	margin:10px;
+}
+
+
+/** 별점 **/
+
+#productRat{
+	margin-left: 20%;
+	color: #FFE400;
+}
+
+#artistRat{
+	margin-left: 30%;
+	color: #FFE400;
+}
+
+
+/** 상품 슬라이드 더보기 버튼 공통 **/
+.newProductBtn, .pProductBtn{
+	margin:0px 30%;
+	width:400px;
+	height:48px;
+	border:1px solid #D2D2D2;
+	color:#333333;
+	background:white;
+	text-align:center;
+	display: block;
+	line-height: 50px;
+	font-weight: bold;
+}
+
+/** 실시간 후기 가로 폼 단독 **/
+.product-list{
+	height:200px;
+}
+
+.product-list li{
+	float:left;
+	width:255px;
+	height:200px;
+	border:1px solid #D2D2D2;
+	margin-bottom: 10px;
+}
+
+.product-list li a img{
+	width:255px;
+	height:200px;
+	margin-bottom: 10px;
+}
+
+#reviewProductRev span{
+	width:200px;
+	color:#666666;
+	font-size:0.750em;
+	overflow: hidden;
+  	text-overflow: ellipsis;
+  	display: block;
+	height:3.6em;
+  	white-space: pre-line;
+  	display:  -webkit-box;
+    -webkit-line-clamp: 3; /* 라인수 */
+    -webkit-box-orient: vertical;
+  	line-height: 1.2em;
+}
+
+#reviewProductRat{
+	width:120px;
+	color: #FFE400;
+	float: left;
+}
+
+#productSub{
+	margin: 0px 10px;
+	height:22px;
+}
+
+#productMember{
+	color:#999999;
+	font-size: 0.750em;
+}
+
+.reviewProduct{
+	height: 200px;
+}
+
+.newReview .bx-wrapper{
+	max-width:1670px;
+}
+
+
+/** 인기상품 더보기 **/
+.pProduct{
+	width:1040px;
+	height:30px;
+	float:left;
+	margin:20px 0px;
+	padding:5px 10px;
+	display: flex;	
+	background-color: #EAEAEA;
+	border-radius: 10px;
+}
+.pProduct a{
+	color:#333333;
+	font-size:0.875em;
+}
+.pProductAdd, .pProductTitle{
+	width:500px;
+	height:20px;
+	font-weight: bold;4
+}
+.pProductAdd{
+	text-align: right;
+}
+.pProductBtn{
+	margin-top: 50px;
+}
+
+/** 스토리 **/
+/* .artistStoryInfo div{
+	float:left;
+} */
+.story{
+	padding:15px 23px;
+}
+
+.artist-story:hover{
+	border:1px solid gray;
+	text-decoration: underline;
+}
+
+.artistStoryInfo{
+	margin:10px;
+}
+
+.artist-storyImage{
+	width:40px;
+	height:40px;
+	float:left;
+	margin: 10px;
+}
+
+
+.storyContent-Desc{
+	width:280px;
+	height:3.6em;
+	color:#666666;
+	font-size:0.750em;	
+	margin:10px;
+	overflow: hidden;
+  	text-overflow: ellipsis;
+  	white-space: pre-line;
+  	display: block;
+  	display:  -webkit-box;
+    -webkit-line-clamp: 3; /* 라인수 */
+    -webkit-box-orient: vertical;
+  	line-height: 1.2em;
+}
+
+.artistStoryImg img{
+	width:300px;
+	height:200px;
+}
+
+/** 인기 작가 **/
+
+.artistProfile-image{
+	position: relative;
+	float:left;
+	width:320px;
+	height:220px;
+}
+
+.artistProductImg{
+	position: absolute;
+}
+
+.artistProductImg img{
+	width:320px;
+	height:170px;
+}
+
+.artistImage{
+	top:130px;
+	left:40%;
+	position: absolute;
+	background-color: white;
+	border-radius: 100%;
+}
+
+.artistImage img{
+	width:70px;
+	height:70px;
+} 
+
+.artistProfile-text{
+	top:100px;
+	clear: left;
+	margin: 20px;
+	text-align: center;
+	width: 290px;
+}
+
+
+#artistComment span{
+	width:280px;
+	height:5.2em;
+	color:#666666;
+	font-size:0.875em;	
+	margin:10px;
+	overflow: hidden;
+  	text-overflow: ellipsis;
+  	white-space: pre-line;
+  	display: block;
+  	display:  -webkit-box;
+    -webkit-line-clamp: 4; /* 라인수 */
+    -webkit-box-orient: vertical;
+  	line-height: 1.32em;
+}
+
+/** 하단 전체 카테고리 **/
+.category-lower{
+	width:1040px;
+	margin:5px;
+	height: 820px;
+}
+
+.category-type{
+	float:left;
+	width:157px;
+	height:115px;
+	margin: 14px 0px 0px 14px;
+}
+.category-type:hover{
+	text-decoration: underline;
+}
+
+.category-type a{
+	width:155px;
+	height: 90px;
+	display: block;
+	font-size: 0.750em;
+	color:black;
+	text-align: center;
+}
+
+
+/** Top 버튼 **/
+.to-top{
+	width:40px;
+	height: 40px;
+	background-color: orange;
+	color: white;
+	display: scroll; 
+	position:fixed;
+	bottom:100px;
+	right:0px;
+	text-align: center;
+	visibility: hidden;
+}
+.to-top i, .to-top span{
+	width: 30px; 
+	font-size: 0.563em;
+}
+
+.to-top span{
+	position: absolute;
+	top: 20px;
+	right:5px;
+}
+
+
+/** image hover시 image 확대기능 **/
+#productImg {
+	overflow: hidden;
+}
+
+
+#productImg img{
+	transition: transform .2s;
+}
+
+#productImg img:hover{
+	transform: scale(1.3);
+}
+
+.category-img{
+	overflow: hidden;
+}
+
+.category-img a{
+	transition: transform .2s;
+}
+.category-img a:hover{
+	transform: scale(1.3);
+}
+
+/** 상품 슬라이드 페이징 위치 변경 **/
+.newProduct .bx-controls-direction, .newReview .bx-controls-direction{
+	position: absolute;
+	top: -30px;
+}
+
+.newProduct .bx-wrapper .bx-prev, .newReview .bx-wrapper .bx-prev {
+	position:absolute;
+    left: 900px;
+    background: url('../image/direction.png') no-repeat;
+    background-size:32px 32px;
+    border:1px solid #D2D2D2; 
+    opacity: 0.7;
+}
+.newProduct .bx-wrapper .bx-next, .newReview .bx-wrapper .bx-next{
+	position:absolute;
+	left: 1000px;
+	background: url('../image/direction.png') no-repeat;
+	background-size:32px 32px;
+	transform: scaleX(-1);
+	border:1px solid #D2D2D2;
+	opacity: 0.5;
+}
+
+.newProduct .bx-pager.bx-default-pager, .newReview .bx-pager.bx-default-pager{
+	position:absolute; 
+	top:-50px;
+	left:450px;
+	height:40px;
+}
+
+.newProduct .bx-wrapper .bx-next:hover, .newReview .bx-wrapper .bx-next:hover{
+	background: url('../image/direction.png') no-repeat;
+	background-size:32px 32px;
+	transform: scaleX(-1);
+	opacity: 1;
+}
+
+.newProduct .bx-wrapper .bx-next:focus, .newReview .bx-wrapper .bx-next:focus{
+	background: url('../image/direction.png') no-repeat;
+	background-size:32px 32px;
+	transform: scaleX(-1);
+	opacity: 1;
+}

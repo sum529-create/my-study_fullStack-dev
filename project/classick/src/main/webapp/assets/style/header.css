@@ -1,0 +1,251 @@
+@charset "UTF-8";
+
+	/* 기본태그 css */ 
+
+	a{
+		text-decoration: none;
+	}
+	
+	
+	/* Header sub menu css */ 
+	
+	.top-nav{
+		height:85px;
+	}
+	
+	.header-nav{
+		position:absolute;
+		right:25%;
+		margin-top: 10px;
+	}
+	
+	.header-nav a, .dropdownSpan, .service-content a{
+		color: #666666;
+		font-size:0.625em;
+	}
+	
+	.member-nav{
+		height:35px;
+		width:120px;
+		padding: 15px 10px;
+	}
+	
+	.member-info, .cart-info{
+		float:left;
+		width:50px;
+		height:50px;
+		display: block;
+	}
+	
+	.cart-counter {
+	    position: absolute;
+	    width: 17px;
+	    height: 17px;
+	    -webkit-border-radius: 50%;
+	    -moz-border-radius: 50%;
+	    border-radius: 50%;
+	    color: #fff;
+	    background: #ff7b30;
+	    text-align: center;
+	    line-height: 18px;
+	}
+	
+	/* logo */
+	 .logo{
+	 	left:25%;
+		position:absolute;
+		top:20px;
+	 }
+	 
+	 .logo a{
+		color:black;	 	
+	 }
+	
+	
+	/* search 검색 창 */
+	#search{
+		position:absolute;
+		left: 40%;
+		top:30px;
+		border:1px solid orange;
+		width: 22%;
+		height: 34px;
+	}
+	
+ 	 input {
+       vertical-align: middle;
+     }
+     #search .form-text {
+       height: 28px;
+       border: none;
+       width:90%;
+       padding: 3px 10px;
+     }
+     #search .img-button {
+       background: url( "../image/button_search.png" ) no-repeat;
+       background-size: 20px;
+	   background-position: center;
+       border: none;
+       width: 8%;
+       height: 100%;
+       cursor: pointer;
+       padding: 3px 5px;
+     }
+	
+	
+	/* Drop down menu (카테고리, 고객센터) */
+	
+	.dropdown, .menuDropdown{
+	  position: relative;
+	  display: inline-block;
+	}
+	
+	.menuDropdown{
+		width:100%;
+		height:100%;
+	}
+	
+	.service-content {
+	  display: none;
+	  position: absolute;
+	  background-color: #f1f1f1;
+	  min-width: 100px;
+	  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	  z-index: 1;
+	}
+	
+	.service-content a {
+	  color: black;
+	  padding: 10px 10px;
+	  text-decoration: none;
+	  display: inline-block;
+	  width:100px;
+	  font-size:0.625em;
+	}
+
+	
+	.service-content a:hover {background-color: #ddd;}
+		
+	
+	.dropdown:hover .service-content {display: block;}
+	.menuDropdown:hover .category-content {display: block;}
+	
+	.dropdown:hover .dropdownSpan {font-weight: bold;}
+	.menuDropdown:hover {color: orange;}
+	
+	
+	/* 상단 카테고리 css */ 
+	
+	.nav{
+		position: relative;
+	    /* width: 100% */
+	    left: 0;
+	    top:7px;
+	    right: 0;
+		box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+		border-top: 1px solid lightgray;
+		background: white;
+		align-items:center;
+		height: 30%;
+		
+	}
+	
+	.nav .nav-menu{
+		width:50%;
+		margin: auto;
+	}
+	
+	.nav ul{
+		margin: auto;
+	}
+	
+	.menu{
+		width:10%;
+		text-align: center;
+	}
+	
+	.menu a{	
+		color: #666666;
+		font-size:0.750em;
+		display: block;
+		height: 100%;
+		line-height: 3;
+	}
+
+	
+
+	.category-content {
+	  position:absolute;
+	  height:350px;
+	  width:900px;
+	  display: none;
+	  background-color: #ffffff;
+	  min-width: 150px;
+	  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	  z-index: 1;
+	  padding:18px 0px;
+	}
+	.category-content > ul{
+		float:left;
+		width:25%;
+	    /*position: relative;
+	    width:80px;*/
+		padding: 0 18px;
+		border-right: 1px solid #d9d9d9;
+	    overflow: auto;
+	    flex-wrap: wrap;
+	    flex-direction: column;
+	    align-content: flex-start;
+	    display: flex;
+	} 
+
+	
+	.category-content > ul li{
+		line-height: 24px;
+	    width:100%;
+	    padding: 0 12px;
+	    position: relative;
+	    display: block;
+	} 
+	
+	.category-content > ul li a  {
+	  color: black;
+	  text-decoration: none;
+	  display: inline-block;
+	  width:100%;
+	  height:30px;
+	  font-size:0.750em;
+	}
+
+	.category-content > ul li i{
+		position: absolute;
+	    right: 8px;
+	    top: 8px;
+	    font-size: 8px;
+	    color: #333;
+	    display: inline-block;
+	    vertical-align: middle;
+	    opacity:0;
+	} 
+
+	.menu > a:hover, .menu > .menuDropdown > a:hover{
+		color:orange;
+	}
+	
+	#menu_home{
+		border-bottom: 3px solid orange;		
+	}
+	
+	.menu:hover ul{
+		display: block;
+	}
+	
+	
+	.menu .category-content li:hover{
+		background-color: #fed8b1;
+	}
+	
+	.menu .category-content li:hover i{
+		opacity: 1;
+	}
+	

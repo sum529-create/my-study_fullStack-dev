@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.koreait.classick.dao.FaqDao">
+	
+	<select id="totalRecord" resultType="int">
+		SELECT COUNT(*)
+		  FROM FAQ
+	</select>
+	
+	<select id="faqList" resultType="com.koreait.classick.dto.FaqDto">
+		SELECT B.*
+		  FROM (SELECT A.*, ROWNUM AS RN 
+		    FROM (SELECT *
+		    	  FROM FAQ
+		    	  ORDER BY FNO DESC) A) B
+		WHERE B.RN BETWEEN #{param1} AND #{param2}    	          
+	</select>
+	
+	<select id="faqView" parameterType="int" resultType="com.koreait.classick.dto.FaqDto">
+		SELECT *
+		  FROM FAQ 
+		WHERE FNO = #{FNo}  
+	</select>
+	
+	<insert id="faqInsert">
+		INSERT INTO
+		 FAQ (FNO, FTITLE, FCONTENT, FWRITER, FREGDATE)
+		VALUES (FAQ_SEQ.NEXTVAL, #{param1}, #{param2}, #{param3}, SYSDATE)
+	</insert>
+		
+	<select id="faqUpdatePage" parameterType="int" resultType="com.koreait.classick.dto.FaqDto">
+		SELECT *
+		  FROM FAQ 
+		WHERE FNO = #{FNo} 
+	</select>
+	
+	<update id="faqUpdate">
+		UPDATE FAQ
+		  SET FTITLE = #{param1},
+		  	  FCONTENT = #{param2}
+		WHERE FNO = #{param3}  	  
+	</update>
+		
+	<delete id="faqDelete" parameterType="int">
+		DELETE
+		  FROM FAQ
+		WHERE FNO = #{FNo}  
+	</delete>	
+		
+</mapper>

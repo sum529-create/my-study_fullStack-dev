@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.koreait.classick.dao.MemberDao">
+	
+	<select id="list" resultType="com.koreait.classick.dto.MemberDto">
+		SELECT * FROM MEMBER		
+	</select>
+
+	<!-- MyPage Func -->
+
+	<select id="myInfo" parameterType="int" resultType="com.koreait.classick.dto.MemberDto">
+		SELECT * FROM MEMBER
+		WHERE MNO = #{mNo}
+	</select>
+	<update id="updateMyInfo">
+		UPDATE MEMBER
+		SET MSNO = #{param1}, 
+			MNAME = #{param2},
+			MEMAIL = #{param3}, 
+			MGENDER = #{param4}, 
+			MPHONE = #{param5}
+		WHERE MNO = #{param6}
+	</update>
+	<!-- 회원탈퇴 기능 -->
+	<delete id="deleteMyReview">
+		DELETE FROM REVIEW
+		WHERE MNO = #{mNo}
+	</delete>
+	<delete id="deleteMyOrders">
+		DELETE FROM ORDERS
+		WHERE MNO = #{mNo}
+	</delete>
+	<delete id="deleteMyProductOrders">
+		DELETE FROM ORDERS
+		WHERE PNO IN (SELECT PNO FROM PRODUCT
+		WHERE ANO = (SELECT ANO FROM ARTIST
+		                WHERE MNO =#{mNo}))
+
+	</delete>
+	<delete id="deleteMyCart">
+		DELETE FROM CART
+		WHERE MNO = #{mNo}
+	</delete>
+	<delete id="deleteMyStock">
+		DELETE FROM STOCK 
+		WHERE PNO IN (SELECT PNO 
+                FROM PRODUCT P
+                WHERE P.ANO = (SELECT ANO FROM ARTIST
+                    WHERE MNO = #{mNo})
+                )
+	</delete>
+	<delete id="deleteMyProductReview">
+		DELETE FROM REVIEW
+		WHERE PNO IN (
+		    SELECT PNO 
+		    FROM PRODUCT
+		    WHERE PRODUCT.ANO = (
+		                SELECT ANO 
+		                FROM ARTIST
+		                WHERE MNO = #{mNo})
+		)
+	</delete>
+	<delete id="deleteMyProduct">
+		DELETE FROM PRODUCT
+		WHERE ANO = (SELECT ANO FROM ARTIST
+		                WHERE MNO = #{mNo})
+	</delete>
+	<delete id="deleteMyArtist">
+		DELETE FROM ARTIST
+		WHERE MNO = #{mNo}
+	</delete>
+	<delete id="deleteMyRole">
+		DELETE FROM ROLE R
+		WHERE R.MEMAIL = (SELECT M.MEMAIL 
+						FROM MEMBER M
+						WHERE MNO = #{mNo})
+	</delete>
+	<delete id="deleteMyInfo" parameterType="int">
+		DELETE FROM MEMBER
+		WHERE MNO = #{mNo}
+	</delete>
+	
+	<!-- 회원탈퇴 끝 -->
+	<update id="updateAddr">
+		UPDATE MEMBER
+		SET MNAME = #{param1},
+			MPNO = #{param2},
+			MADDR = #{param3},
+			MLASTADDR = #{param4},
+			MPHONE = #{param5}
+		WHERE MNO = #{param6}
+	</update>
+	
+	<update id="updatePayment">
+		UPDATE MEMBER
+		SET MPAYMENT = #{param1}
+		WHERE MNO = #{param2}
+	</update>
+	
+	<update id="updateProfile">
+		UPDATE MEMBER
+		SET MPFILENAME = #{param1}
+		WHERE MNO = #{param2}
+	</update>
+	
+	<!-- SignUp Func -->
+	<select id="memberEmailListCheck" resultType="int">
+		SELECT MEMAIL
+		  FROM MEMBER
+		 WHERE MEMAIL = #{mEmail}
+	</select>
+	
+	<insert id="memberInsert">
+		INSERT INTO
+		MEMBER (MNO, MNAME, MEMAIL, MPW, MPHONE, MREGDATE)
+		VALUES (MEMBER_SEQ.NEXTVAL, #{param1}, #{param2}, #{param3}, #{param4}, SYSDATE)
+	</insert>
+	
+	<!-- Login Func -->
+	<select id="selectLogin" parameterType="com.koreait.classick.dto.MemberDto" resultType="com.koreait.classick.dto.MemberDto">
+		SELECT *                        
+ 		  FROM MEMBER                 
+	     WHERE MEMAIL = #{mEmail}
+	       AND MPW = #{mPw}
+	</select>
+	
+	<select id="selectEmail" resultType="String">
+		SELECT MEMAIL
+		  FROM MEMBER
+		 WHERE MPHONE = #{mPhone}
+	</select>
+	<select id="selectPw" resultType="String">
+		SELECT MPW
+		  FROM MEMBER
+		 WHERE MEMAIL = #{mEmail}
+	</select>
+	<update id="updatePw">
+		UPDATE MEMBER
+		   SET MPW = #{param3}
+		 WHERE MEMAIL = #{param1}
+		   AND MPW = #{param2}
+	</update>
+	
+	<!-- 주문번호 받아와야됨 -->
+	<select id="selectMyOrdersList" resultType="Map">
+		SELECT B.*
+		FROM (SELECT ROWNUM AS RN, A.*
+			FROM (SELECT P.PNO, P.PNAME, O.ODATE, O.ONO
+				FROM ORDERS O, PRODUCT P
+					WHERE O.PNO = P.PNO
+					AND O.MNO = #{param3}
+					ORDER BY O.ODATE) A ) B
+		WHERE B.RN BETWEEN #{param1} AND #{param2}
+	</select>
+	
+	<select id="totalRecord" parameterType="int" resultType="int">
+		SELECT COUNT(*)
+		FROM ORDERS, PRODUCT
+		WHERE ORDERS.PNO = PRODUCT.PNO
+		AND ORDERS.MNO = #{mNo}
+	</select>
+	
+	<!-- 받은 주문번호 넣어줘야됨 -->
+	<insert id="insertReview">
+		INSERT INTO REVIEW
+		VALUES(REVIEW_SEQ.NEXTVAL, #{param1}, #{param2}, #{param3}, #{param4}, #{param5}, #{param6}, #{param7}, SYSDATE)
+	</insert>
+	
+	<!-- 주문테이블의 회원번호와 회원번호를 비교 -->
+	<select id="hasReview" resultType="int">
+		SELECT COUNT(*)
+		FROM REVIEW
+		WHERE ONO = #{param1} AND MNO = #{param2}
+	</select>
+	
+	<delete id="deleteReview">
+		DELETE 
+		FROM REVIEW
+		WHERE ONO = #{param1} AND MNO = #{param2}
+	</delete>
+	
+	<select id="selectrNo" resultType="Map">
+		SELECT RNO
+		FROM REVIEW
+		WHERE ONO = #{param1} AND MNO = #{param2}
+	</select>
+	
+	<select id="reviewView" parameterType="int" resultType="com.koreait.classick.dto.ReviewDto">
+		SELECT *
+		FROM REVIEW
+		WHERE RNO = #{rNo}
+	</select>
+	
+	<update id="updateReview">
+		UPDATE REVIEW
+		SET RTITLE = #{param1}, RCONTENT = #{param2}, RFILENAME = #{param3}, RRATING = #{param4} 
+		WHERE RNO = #{param5}
+	</update>
+	
+	<select id="selectReviewList" parameterType="int" resultType="Map">
+		SELECT B.*	
+		FROM (SELECT ROWNUM AS RN, A.* 
+			FROM (SELECT PNAME, RTITLE, RCONTENT, RFILENAME, RRATING
+				FROM (SELECT *
+					FROM REVIEW
+					WHERE MNO = #{param3}
+					ORDER BY RREGDATE DESC) R, PRODUCT P
+				WHERE R.PNO = P.PNO) A  ) B
+		WHERE B.RN BETWEEN #{param1} AND #{param2}
+	</select>
+	
+	<select id="totalRecordR" parameterType="int" resultType="int">
+		SELECT COUNT(*)
+		FROM (SELECT PNO
+			FROM REVIEW
+			WHERE MNO = #{mNo}) R, PRODUCT P
+		WHERE R.PNO = P.PNO
+	</select>
+	
+	<select id="isArtist" parameterType="int" resultType="Map">
+		SELECT R.ROLE
+		FROM MEMBER M, ROLE R
+		WHERE M.MEMAIL = R.MEMAIL
+		AND M.MNO = #{param1}
+	</select>
+	<update id="updateBanner">
+		UPDATE ARTIST
+		SET 
+			AIMAGE = #{param1},
+			ACOMMENT = #{param2},
+			BIMAGE = #{param3}
+		WHERE MNO = #{param4} 
+	</update>
+	<select id="selectBanner" parameterType="int" resultType="Map">
+		SELECT A.ANAME ,ACOMMENT, A.AIMAGE, A.BIMAGE
+		FROM MEMBER M, ARTIST A
+		WHERE M.MNO = A.MNO
+		AND M.MNO = #{param1}
+	</select>
+	
+</mapper>

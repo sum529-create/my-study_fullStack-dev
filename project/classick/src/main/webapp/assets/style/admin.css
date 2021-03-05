@@ -1,0 +1,391 @@
+@charset "UTF-8";
+
+	.adminManage{
+		margin: auto;
+		width: 400px;
+		height:350px;
+		padding-top: 100px;
+	}
+
+	.adminManage a{
+		color: black;
+		display: block;
+		width:200px;
+		height:50px;
+		margin: auto;
+		text-align: center;
+		border: 1px solid #999999;
+		line-height: 3;
+		margin-bottom: 20px;
+	}
+	
+	.adminManage a:hover{
+		background: #999999;
+		font-weight: bold;
+	}
+	
+	.adminMemberBottom{
+		margin: 50px 0px;
+		padding: 50px 0px;
+		border-top: 3px solid orange;	
+		height:2051px;
+		width: 100%;
+		background-image: url("../image/adminMemberReg.jpg");
+		min-height: 100%;
+	    background-position: center;
+    	background-size: cover;
+	}
+	
+	.adminMemberBottomLeft{
+		width: 50%;
+		height:1769px;
+		background-color: white;
+		float:left;
+		margin:0px 25%;
+		padding-left: 70px;
+		
+	}
+/* 	
+	.adminMemberBottomRight{
+		border-top: 1px solid #999999;
+		height:1549px;
+		width:50%;
+		background-image: url("../image/adminMemberReg.jpg");
+		float:left;
+		border-radius:100px;
+		background: #ffffff;
+  		box-shadow: 0 0 15px 10px #ffffff;
+	} */
+	
+	.adminMemberTable{
+		width: 100%;
+		height: 500px;
+	}
+	
+	.adminMemberTable table{
+		width:100%;
+	}
+	
+	.adminMemberDiv{
+		float: left;
+		width:100%;
+		margin:auto;
+		padding: 10px 0px;
+		display: block;
+		margin: auto;
+	}
+	
+	.adminMemberDiv label{
+		font-size: 14px;
+	}
+	
+	.adminMemberInfo{
+		height:1450px;
+		width: 100%;
+	}
+	
+	.imgs_wrap, .imgs_wrap_remove{
+		width:80px;
+		height:80px;
+		border: 1px solid #999999;
+		overflow: hidden;
+		display: block;
+		position: relative;
+	}
+	
+	.imgs_wrap img{
+		width:160px;
+		height:100px;
+	}
+	.adminMemberBtn{
+		text-align: center;
+		height:150px;
+		padding-top: 40px;
+	}
+	
+	table {
+		border-collapse: collapse;
+		border-color: white;
+	}
+	td, th {
+		/*border-top: 1px solid white;
+		border-bottom: 1px solid orange;*/
+		text-align: center;
+		padding: 3px;
+	}
+	th {
+		background: silver;
+	}
+	
+	/* 배너 */
+	#banner-member{
+		width:50%;
+		margin:0px 25%;
+	}
+	.banner-title[data-image=type2] {
+    	background-image: url(https://cdn.pixabay.com/photo/2015/05/15/14/22/conference-room-768441_960_720.jpg);
+	}
+	.banner-title[data-image=type3] {
+    	background-image: url(https://cdn.pixabay.com/photo/2016/01/19/17/53/writing-1149962_960_720.jpg);
+	}
+	
+	.banner-title[data-theme=orange]:before {
+    	background: -webkit-linear-gradient(353deg, #DB3A00, #FFDC7E);
+		background: -moz-linear-gradient(353deg, #DB3A00, #FFDC7E);
+		background: -o-linear-gradient(353deg, #DB3A00, #FFDC7E);
+		background: linear-gradient(97deg, #DB3A00, #FFDC7E);
+	}
+	
+	.banner-title[data-theme=gray]:before {
+    	background: -webkit-linear-gradient(353deg, #191919, #F6F6F6);
+		background: -moz-linear-gradient(353deg, #191919, #F6F6F6);
+		background: -o-linear-gradient(353deg, #191919, #F6F6F6);
+		background: linear-gradient(97deg, #191919, #F6F6F6);
+	}
+	
+	/* 회원 목록검색 */
+	#memberSearch{
+		background-image: url("https://www.pngfind.com/pngs/m/104-1043692_search-icon-transparent-white-search-icon-apple-png.png");
+		background-size: 20px 18px;
+		width:7px;
+		height: 20px;
+		cursor: pointer;
+		display: inline-block; 
+		padding: .5em .75em; 
+		color: #999; 
+		font-size: inherit; 
+		line-height: normal; 
+		vertical-align: middle; 
+		background-color: #fdfdfd; 
+		border-bottom-color: #e2e2e2; 
+		border-radius: .25em;
+		opacity: 0.8;
+	}
+	
+	.adminMemberSearchForm{
+		width: 300px;
+		margin:auto;
+	}
+	#totalRecord{
+		font-weight: bold;
+	}
+	
+	/* 페이징 */
+	
+	#paging {
+		display: flex;
+		text-align: center;
+		margin: 0px 43%;
+		width:200px;
+	}
+	#paging div {
+		width: 40px;
+		height: 20px;
+	}
+	#paging .go-page:hover {
+		cursor: pointer;
+	}
+	#paging .now-page {
+		color: black;
+		font-weight: bold;
+	}
+	#paging .disable {
+		color: silver;
+	}
+	
+	.not_remove{
+		color:red;
+		font-size: 10px;
+	}
+	
+	/* 회원 목록 테이블 */
+	.adminMemberTable{
+		overflow: scroll;
+		height: 600px;
+	}
+	
+	.adminMemberTable table{
+		width:100%;
+		height:300px;
+		box-shadow: 5px 10px 25px 3px #E4E4E4;
+  		border-radius:10px;
+	}
+	
+	table thead td{
+		background-color: white;
+		padding:15px 0px;
+		color: black;
+	    font-weight: bold;
+	    /*text-shadow: 1px 2px 3px grey;*/
+	}
+	
+	tbody > tr:nth-child(odd){
+		background-color: #FFF2E6;
+	}
+	
+	#adminMemberList td{
+		width:80px;
+		overflow: hidden;
+	}
+	
+	#adminMemberList td img{
+		width:80px;
+	}
+	
+	/* 입력항목 '*' 표시 */
+	.asterisk.red {
+	    color: #ff4b50;
+	    font-size: 18px;
+	}
+	
+	/* 회원 등록/ 수정 / 보기 */
+	#mEmail, #mPw, #mPw2, #mName, #mSno, #mPhone, #mGender, #sample4_postcode, #sample4_roadAddress, #mLastAddr, #mPayment, #mPoint, #mGrade, #role{
+		width:80%;
+		height:30px;
+		padding: 5px 10px;
+		border:1px solid #999999;
+		margin-bottom: 7px;
+	}
+	
+	#mPFilename[type="file"]{
+		position: absolute; 
+		width: 1px; 
+		height: 1px; 
+		padding: 0; 
+		margin: -1px; 
+		overflow: hidden; 
+		clip:rect(0,0,0,0); 
+		border: 0;
+	}
+	
+	#adminMemberDiv-profile{
+		padding: 0px 20% 0px 35%;
+	}
+	
+	
+	.adminMemberDiv #mPFilenameU{
+		background-image: url("https://cdn4.iconfinder.com/data/icons/eldorado-user/40/add_friend-512.png");
+		background-size:30px 30px;
+		width:30px;
+		height:30px; 
+		display: inline-block; 
+		padding: .5em .75em; 
+		color: #999; 
+		font-size: inherit; 
+		line-height: normal; 
+		vertical-align: middle; 
+		background-color: #fdfdfd; 
+		cursor: pointer; 
+		border: 1px solid #ebebeb; 
+		border-bottom-color: #e2e2e2; 
+		border-radius: .25em;
+		opacity: 0.6;
+	}
+	
+	#mPFilenameD{
+		background-image: url(https://cdn4.iconfinder.com/data/icons/eldorado-user/40/delete_profile-512.png); 
+		background-size: 30px 30px; 
+		width:30px; 
+		height:30px;
+		display: inline-block; 
+		padding: .5em .75em; 
+		color: #999; 
+		font-size: inherit; 
+		line-height: normal; 
+		vertical-align: middle; 
+		background-color: #fdfdfd; 
+		cursor: pointer; 
+		border: 1px solid #ebebeb; 
+		border-bottom-color: #e2e2e2; 
+		border-radius: .25em;
+		opacity: 0.6;
+	}
+	
+	#btnDelete{
+		background-image: url("https://fixmywp.com/wp-content/uploads/2013/07/mass-delete-wordpress-comments-480x320.png");
+		background-size: 30px 20px;
+		width:30px;
+		height: 20px;
+		border: none;
+		cursor:pointer;
+		opacity: 0.6;
+	}
+
+	#btnView{
+		background-image: url("https://www.seekpng.com/png/detail/938-9383200_png-file-svg-view-report-icon-png.png");
+		background-size: 20px 20px;
+		width:20px;
+		height:20px;
+		border: none;
+		cursor:pointer;
+		opacity: 0.6;
+	}
+	
+	#btnDelete:hover, #btnView:hover, #mPFilenameD:hover, #mPFilenameU:hover, #memberSearch:hover, #mPnoSearch:hover{
+		opacity: 1;
+	}
+	
+	#mPnoSearch{
+		background-image: url("../image/button_search.png");
+		background-size: 30px 30px;
+		width: 33px;
+		height: 30px;
+		border-radius: 3px;
+		display: inline-block; 
+		padding: .5em .75em; 
+		color: #999; 
+		font-size: inherit; 
+		line-height: normal; 
+		vertical-align: middle; 
+		background-color: #fdfdfd; 
+		cursor: pointer; 
+		border: 1px solid #ebebeb; 
+		border-bottom-color: #e2e2e2; 
+		border-radius: .25em;
+		opacity: 0.7;	
+	}
+	
+	/* 회원등록 버튼 */
+	.display{
+		margin:auto;
+		margin-top:70px;
+		width:450px;
+	}
+	
+	#btnInsert, #btnUpdate, #btnInit, #btnMInsert{
+		width:18%;
+		height:30px;
+		background-color: #FF8224;
+		color: white;
+		font-weight: bold;
+		text-shadow: 1px 2px 3px gray;
+		border: 1px solid #999999;
+		cursor: pointer;
+	}
+	
+	#onDisplay, #offDisplay{
+		width:200px;
+		height:45px;
+		background-color: #FF8224;
+		color: white;
+		font-weight: bold;
+		text-shadow: 1px 2px 3px gray;
+		border: 1px solid #999999;
+		cursor: pointer;
+	}
+	
+	#btnInsert:hover, #btnUpdate:hover, #btnInit:hover, #btnMInsert:hover, #onDisplay:hover, #offDisplay:hover{
+		background-color: #FF5E00;
+	}
+	
+	
+	/* search 결과 페이지 */
+	#pageReturn_btn{
+		background-image: url("https://i.pinimg.com/564x/eb/84/46/eb8446e1c8094b1712757cfe3ee1e688.jpg");
+		background-size: 25px 25px;
+		width: 25px;
+		height: 25px;
+		cursor: pointer;
+		border: none;
+	}
+	

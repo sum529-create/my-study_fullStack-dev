@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.koreait.classick.dao.CartDao">
+	
+	<select id="getList" resultType="com.koreait.classick.dto.CartDto">
+		SELECT *
+		  FROM CART
+		 WHERE MNO = #{param1}
+		   AND PNO = #{param2}
+	</select>
+	
+	<select id="getCartListItem" resultType="com.koreait.classick.dto.CartListDto">
+		SELECT A.*
+			 , B.PNO	
+			 , B.PNAME	
+			 , B.PIMAGE	
+			 , B.PPRICE	
+			 , B.PASDESC	
+			 , C.ANO
+			 , C.ANAME
+			 , D.SNO
+			 , D.STOCK
+			 , D.OADDPRICE	
+		  FROM CART A
+		 INNER JOIN PRODUCT B
+		    ON A.PNO = B.PNO
+		 INNER JOIN ARTIST C
+		    ON B.ANO = C.ANO
+		 INNER JOIN STOCK D
+		    ON A.SNO = D.SNO
+		 WHERE A.MNO = #{param1}
+		   AND A.PNO = #{param2}
+		   AND A.CNO = #{param3}
+	</select>
+	
+	<select id="getCartList" resultType="com.koreait.classick.dto.CartListDto">
+		SELECT A.*
+			 , B.PNO	
+			 , B.PNAME	
+			 , B.PIMAGE	
+			 , B.PPRICE	
+			 , B.PASDESC	
+			 , C.ANO
+			 , C.ANAME
+			 , D.SNO
+			 , D.STOCK
+			 , D.OADDPRICE	
+		  FROM CART A
+		 INNER JOIN PRODUCT B
+		    ON A.PNO = B.PNO
+		 INNER JOIN ARTIST C
+		    ON B.ANO = C.ANO
+		 INNER JOIN STOCK D
+		    ON A.SNO = D.SNO
+		 WHERE A.MNO = #{param1}
+		   AND A.PNO = #{param2}
+	</select>
+	
+	<select id="getPNoList" parameterType="int" resultType="int">
+		SELECT B.PNO		
+		  FROM CART A
+		 INNER JOIN PRODUCT B
+		    ON A.PNO = B.PNO
+		 INNER JOIN ARTIST C
+		    ON B.ANO = C.ANO
+		 INNER JOIN STOCK D
+		    ON A.SNO = D.SNO
+		 WHERE A.MNO = #{mNo}
+	</select>
+
+	<select id="getItemCount" parameterType="int" resultType="int">
+		SELECT COUNT(*)
+		  FROM CART
+		 WHERE MNO = #{mNo}
+	</select>
+	
+	<insert id="insert" >
+		INSERT
+		  INTO CART
+		VALUES (CART_SEQ.NEXTVAL, #{param1}, #{param2}, #{param3}, #{param4}, #{param5})
+	</insert>
+	
+	<update id="updateAmount">
+		UPDATE CART
+		   SET CAMOUNT = #{param1}
+		 WHERE CNO = #{param2} 
+	</update>
+	
+	<delete id="delete">
+		DELETE 
+		  FROM CART
+		 WHERE CNO = #{cNo}
+	</delete>
+	
+</mapper>
