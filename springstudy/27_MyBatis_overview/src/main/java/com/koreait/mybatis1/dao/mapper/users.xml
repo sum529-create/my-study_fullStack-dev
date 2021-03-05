@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 
+	UserDao와 user.xml을 연결하기 위해서
+	mapper namespace를 UserDao로 설정해 둡니다.
+ -->
+
+<!-- jsp에서 배웠던 스타일 -->
+<!-- 
+	<mapper namespace="com.koreait.mybatis1.dao.mapper.users">
+		
+	</mapper> 
+-->
+
+<!-- 
+	UserDao와 users.xml을 연결하기 위해서
+	mapper namespace를 연결해서 사용합니다.
+ -->
+
+<!-- Spring에서 새로 배우는 스타일 -->
+<mapper namespace="com.koreait.mybatis1.dao.UsersDao">
+	
+	<select id="usersList" resultType="com.koreait.mybatis1.dto.UsersDto">
+		SELECT NO, NAME, PHONE
+		  FROM USERS
+	</select>
+	
+	<!-- 파라미터가 여러 개 존재해도 상관이 없습니다. parameterType을 생략합니다. -->
+	<insert id="usersInsert1">
+		INSERT INTO
+		 USERS (NO, NAME, PHONE)
+		VALUES (USERS_SEQ.NEXTVAL, #{param1}, #{param2})
+	</insert>
+	
+	<!-- 파라미터가 한 개여도 상관이 없습니다. -->
+	<insert id="usersInsert2" parameterType="com.koreait.mybatis1.dto.UsersDto">
+		INSERT INTO
+		 USERS (NO, NAME, PHONE)
+		VALUES (USERS_SEQ.NEXTVAL, #{name}, #{phone})
+	</insert>
+	
+	<select id="usersView" parameterType="int" resultType="com.koreait.mybatis1.dto.UsersDto">
+		SELECT NO, NAME, PHONE
+		  FROM USERS
+		 WHERE NO = #{no}
+	</select>
+	
+	<update id="usersUpdate" parameterType="com.koreait.mybatis1.dto.UsersDto">
+		UPDATE USERS
+		   SET NAME = #{name},
+		       PHONE = #{phone}
+		 WHERE NO = #{no}
+	</update>
+	
+	<delete id="usersDelete" parameterType="int">
+		DELETE
+		  FROM USERS
+		 WHERE NO = #{no}
+	</delete>
+	
+</mapper>

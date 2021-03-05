@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- XML을 수정하고나면 서버 재시작이 원칙입니다. -->
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+	
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<annotation-driven />
+
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<resources mapping="/resources/**" location="/resources/" />
+	<resources mapping="/assets/**" location="/assets/" />	<!-- resources의 추가가 가능합니다. -->
+	<!-- resources 폴더 -> 이미지 저장소용 -->
+
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<!-- 
+		뷰 리졸버
+		: 컨트롤러가 반환하는 JSP(뷰)를 처리하는 클래스 
+	-->
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />	<!-- 뷰를 반환할 때 뷰 앞(prefix)에 추가하는 값(value)  -->
+		<beans:property name="suffix" value=".jsp" />				<!-- 뷰를 반환할 때 뷰 뒤(suffix)에 추가하는 값(value) -->
+	</beans:bean>
+	<!-- 
+		모든 구성요소(component)는 기본 패키지 com.koreait.mvc01 에서 찾아요.
+		다른 패키지를 만들면 안 된다는 의미입니다.
+		common 		-> com.koreait.mvc01.common
+		controller 	-> com.koreait.mvc01.controller
+		command 	-> com.koreait.mvc01.command
+		...
+		여기서 mvc01은 컨텍스트 패스를 의미합니다.
+	 -->
+	<context:component-scan base-package="com.koreait.mvc01" />
+	
+	<!--
+		root-context와는 다른 구문 
+		servlet -> 	beans:beans ...   
+		root	->	beans..
+		 
+		안녕, 나도 app-context.xml의 역할을 수행할 수 있어. 
+	-->
+	<!-- 
+	servlet~.xml
+		<beans:bean id="" class="">
+			
+		</beans:bean>
+	root~.xml
+		<bean id="" class="">
+		 	
+		 </bean>
+	  -->
+	
+</beans:beans>

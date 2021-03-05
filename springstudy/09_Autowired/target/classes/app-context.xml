@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+	<!-- 
+		자바 애너테이션을 활용해어 Bean을 생성한다면,
+		Namespace에서 context를 추가하고 <context:annotation-config/> 태그를 추가합니다.
+	 -->
+	
+	<context:annotation-config />
+	<!-- getter, setter도 넣지 않았다. property 등 사용불가함 -->
+	<!-- speaker : 정상 생성된다. (int volume은 자동으로 0으로 초기화 된다.
+		+ int a; -> 0 -->
+	<bean id="speaker" class="com.koreait.spring.Speaker" />	<!-- 정상적 처리 -->
+	
+	<!-- tv : 비정상적인 Bean이 생성된다. (Speaker speaker는 자동으로 null로 초기화 되는데 그러면 speaker.volumeUp(volume)에서 NullPointerException 발생해요. 
+	(speaker은 현재 없음 사용하지 않으면 문제가 없겠지만,
+		메소드에서 speaker을 사용했음)  -->
+	<!-- 정상적인 주입이 되려면<property name="speaker" ref="speaker"/> 가 필요하지만 지금 없다. -->
+	<bean id = "tv" class="com.koreait.spring.TV"/> <!-- 비정상적 처리 null~에러발생 -->
+	
+	<!-- 
+		현재 speaker Bean은 생성되었지만, 
+		TV 클래스의 property인(field) Speaker speaker는 생성되지 않았으므로
+		TV 클래스에서 직접 Speaker speaker를 생성해 보려고 합니다. (TV클래스로 가세요.)
+	 -->
+	
+</beans>

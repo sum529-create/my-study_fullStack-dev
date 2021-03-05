@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+<!-- Mybatis용 dataSource, sqlSessionFactory, sqlSession -->
+	
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
+		<property name="username" value="spring" />
+		<property name="password" value="1111" />
+	</bean>
+	
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mapperLocations" value="classpath:com/koreait/mybatis3/dao/mapper/*.xml" />
+	</bean>
+	
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory" />
+	</bean>
+	
+	
+	<!-- 파일업로드용 : multipartResolver -->
+	<!-- 10485760 = 1024 * 1024 * 10 byte = 10MB -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="defaultEncoding" value="utf-8" />
+		<property name="maxUploadSize" value="10485760" />  
+	</bean>
+	
+	
+	<!-- command -->
+	<bean id="boardListCommand" class="com.koreait.mybatis3.command.BoardListCommand" />
+	<bean id="boardInsertCommand" class="com.koreait.mybatis3.command.BoardInsertCommand"/>
+	<bean id="boardViewCommand" class="com.koreait.mybatis3.command.BoardViewCommand"/>
+	<bean id="downloadCommand" class="com.koreait.mybatis3.command.DownloadCommand"/>
+	<bean id="deleteCommand" class="com.koreait.mybatis3.command.BoardDeleteCommand"/>
+	<bean id="emailAuthCommand" class="com.koreait.mybatis3.command.EmailAuthCommand"/>
+	
+	
+	<!-- 이메일 인증 : mailSender -->
+	<!-- 1. 메일을 보내는 계정은 "구글"계정이어야만 합니다. -->
+	<!-- 2. 메일을 받는 계정은 모두 가능합니다. -->
+	<!-- 3. 정상적인 동작을 위해서 "구글 로그인" ->  "보안 수준이 낮은 앱 허용"을 해야 합니다. -->
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com"/>
+		<property name="port" value="587"/>
+		<property name="username" value="nosumin29@gmail.com"/><!-- 본인구글이메일계정(aaa@gmail.com) -->
+		<property name="password" value="tnals0825@"></property><!-- 본인구글비밀번호(1234) -->
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+			</props>
+		</property>
+	</bean>
+	
+</beans>

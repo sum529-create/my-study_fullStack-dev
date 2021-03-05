@@ -1,0 +1,23 @@
+app-context2.xml 이용합니다.
+
+BMICalculator.java
+	// bmi = 몸무게(kg) / 키(m) 제곱
+	// Field
+	// 저체중(bmi : ~19) 
+	private double normal; // 정상(bmi : 20~25)
+	private double over; // 과체중(bmi : 26~30)
+	private double obesity; // 비만(bmi : 31~)
+Person.java
+	// Field
+	private String name;  // 이름
+	private double weight; // 몸무게
+	private double height; // 키
+	private BMICalculator bmiCalculator;  // bmi 계산기(체질량지수)
+	private ArrayList<String> hobbies; // 최소 3개의 취미
+PersonMain.java
+	// 다음과 같은 출력을 생성한다.
+	성명: 앨리스
+	키: 165.5
+	몸무게: 55.5
+	체질량(BMI) 지수: 20.262684714451307(정상)
+	취미: [운동, 여행, 독서]

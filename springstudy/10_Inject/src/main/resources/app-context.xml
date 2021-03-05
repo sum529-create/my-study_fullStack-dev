@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+	<!-- 애너테이션을 사용해서 Bean을 생성하려고 합니다. -->
+	<context:annotation-config/>
+	
+	<!-- Bean: calculator (정상적인 Bean입니다.) -->
+	<bean id="calculator" class="com.koreait.spring.Calculator"/>
+	
+	<!-- Bean: eCalculator <property name="calculator" ref="calculator"/> 태그가 없으므로 비정상 bean입니다. -->
+	<bean id="eCalculator" class="com.koreait.spring.EngineerCalculator"/>
+	
+</beans>

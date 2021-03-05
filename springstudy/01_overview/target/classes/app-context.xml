@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- spring bean configuration file -->
+	<!-- 안녕, 나는 빈(객체, 인스턴스)을 만들어 주는 xml 파일이야. -->
+	
+	<!-- 1. 디폴트 생성자 + setter -->
+	<!-- 
+		1) 디폴트 생성
+		<bean id="객체명" class="클래스명" >
+		2) 디폴트 생성자 + setter
+		<bean id="객체명" class="클래스명">
+			<property name="필드명">
+				<value>값</value>	// 문자, 숫자 상관 없이 따옴표 없이 그냥 적어요.
+			</property>
+			<property name="필드명">
+				<ref bean="객체명"/>	// 참조 타입명, 다른 빈(bean)을 필드로 가지는 경우에 써요.
+				(reference, bean값을 넣고 싶을 때)
+				// 일반 값들은 value태그 사용하고, bean값은 ref를 사용한다.
+			</property>
+		</bean>
+	 -->
+	 
+	 <!-- 
+	 	지금부터 아래 빈을 만들거에요.
+	 	Calculator calculator1 = new Calculator();
+	 	Calculator calculator2 = new Calculator();
+	  -->
+	  
+	  <bean id="calculator1" class="com.koreait.spring.Calculator"/>
+	  <bean id="calculator2" class="com.koreait.spring.Calculator"/>
+	  
+	  
+	  <!-- 
+	  	지금부터 아래 빈을 만들거에요.
+	  	EngineerCalculator eCalculator1 = new EngineerCalculator();
+		eCalculator1.setA(10);
+		eCalculator1.setB(3);
+		eCalculator1.setCalculator(calculator1);
+	   -->
+		
+		<bean id="eCalculator1" class="com.koreait.spring.EngineerCalculator">
+			<property name="a">	<!-- 스프링은 .setA()값을 가져온다. -->
+				<value>10</value>
+			</property>
+			<property name="b">
+				<value>3</value>
+			</property>
+			<property name="calculator">
+				<ref bean="calculator1"/>
+			</property>
+		</bean>
+		
+		<!-- 2. 필드를 이용한 생성자 -->
+		<!-- 
+		public EngineerCalculator(Calculator calculator, int a, int b) {
+			super();
+			this.calculator = calculator;
+			this.a = a;
+			this.b = b;
+		} 자바에서는 이거
+		 -->
+		<!-- 
+			<bean id="객체명" class="클래스명">
+				<constructor-arg>
+					<value>첫번째인수값</value>	// constructor-arg는 반드시 매개변수의 순서대로 작성해요.
+				</constructor-arg>
+				<constructor-arg>
+					<value>두번째인수값</value>
+				</constructor-arg>
+				<constructor-arg>
+					<ref bean="객체명" />	// 다른 빈(bean)을 필드로 가지는 경우에 써요.
+				</constructor-arg>
+			</bean>
+			<bean id="객체명" class="클래스명">
+				<constructor-arg value="첫번째인수값" />	// constructor-arg는 반드시 매개변수의 순서대로 작성해요.
+				<constructor-arg value="두번째인수값" />
+				<constructor-arg ref="객체명" />			// 다른 빈(bean)을 필드로 가지는 경우에 써요.
+			</bean>
+			
+		 -->
+		 
+		 <!-- 
+		 	지금부터 아래 빈을 만들거에요.
+		 	EngineerCalculator eCalculator2 = new EngineerCalculator(calculator2, 100, 30);
+		  -->
+		  <bean id="eCalculator2" class="com.koreait.spring.EngineerCalculator">
+		  	<constructor-arg>
+		  		<ref bean="calculator2"/>
+		  	</constructor-arg>
+		  	<constructor-arg>
+		  		<value>100</value>
+		  	</constructor-arg>
+		  	<constructor-arg>
+		  		<value>30</value>
+		  	</constructor-arg>
+		  </bean>
+		 
+	 <!-- 
+		3) 디폴트 생성자 + setter
+		<bean id="객체명" class="클래스명">
+			<property name="필드명" value="값"/>	// 일반 타입용, 문자, 숫자 상관없이 항상 따옴표를 써야해요.
+			<property name="필드명" ref="객체명"/>  // 참조 타입묭, 다른 빈(bean)을 필드로 가지는 경우에 써요.
+		</bean>
+	 -->
+	 
+	 <!-- 
+	 	지금부터 아래 빈을 만들거에요.
+	 	Calculator calculator1 = new Calculator();
+	 	Calculator calculator2 = new Calculator();
+	  -->
+</beans>

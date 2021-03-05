@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+	
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<annotation-driven />
+
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<resources mapping="/resources/**" location="/resources/" />
+
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+	
+	<context:component-scan base-package="com.koreait.mvc02" />
+	
+	<!-- servlet-context.xml도 Bean을 생성할 수 있습니다. -->
+	<!--
+		WebApplicationContext 클래스로 생성하지는 않습니다.
+		@Autowired 애너테이션을 사용하면 정상적으로 Bean이 생성됩니다.
+	-->
+	<beans:bean id="contact3" class="com.koreait.mvc02.dto.ContactDto">
+		<beans:property name="phone" value="010-3333-3333" />
+		<beans:property name="address" value="서울시 강남구" />
+	</beans:bean>
+	<beans:bean id="person3" class="com.koreait.mvc02.dto.PersonDto">
+		<beans:property name="name" value="패트릭" />
+		<beans:property name="age" value="40" />
+		<beans:property name="contact" ref="contact3" />
+	</beans:bean>
+	
+</beans:beans>

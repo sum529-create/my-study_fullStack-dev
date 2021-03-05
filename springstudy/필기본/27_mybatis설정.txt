@@ -1,0 +1,91 @@
+mybatis 설정
+
+SPRING 업데이트 캡처본 참조
+
+
+
+<!-- ojdb6.jar 톰캣에 배치했으므로 dependency를 추가히지 않습니다. -->
+		
+<!-- Mybatis dependency 3개 : mybatis + mybatis-spring + spring-jdbc -->
+
+
+* mybatis
+
+https://mvnrepository.com/artifact/org.mybatis/mybatis
+
+-> 3.2.8
+
+<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+<dependency>
+    <groupId>org.mybatis</groupId>
+    <artifactId>mybatis</artifactId>
+    <version>3.2.8</version>
+</dependency>
+
+
+
+* mybatis spring
+
+https://mvnrepository.com/artifact/org.mybatis/mybatis-spring
+
+-> 1.2.2
+
+<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
+<dependency>
+    <groupId>org.mybatis</groupId>
+    <artifactId>mybatis-spring</artifactId>
+    <version>1.2.2</version>
+</dependency>
+
+
+
+* spring jdbc
+
+https://mvnrepository.com/artifact/org.springframework/spring-jdbc/5.1.4.RELEASE
+
+-> 5.1.4
+
+<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-jdbc</artifactId>
+    <version>5.1.4.RELEASE</version>
+</dependency>
+
+
+<!-- spring버전과 맞추는것이 좋다. 그래서 version부분을 21줄에 있는 
+      ${org.springframework-version}로 대체해도 된다. -->
+
+
+
+* lombok 추가
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<dependency>
+		    <groupId>org.projectlombok</groupId>
+		    <artifactId>lombok</artifactId>
+		    <version>1.18.12</version>
+		    <scope>provided</scope>
+		</dependency>
+
+
+
+* 인코딩 web.xml
+
+	<!-- 인코딩 -->
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>import org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>	
+			<param-value>UTF-8</param-value>	
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>	
+			<param-value>true</param-value>	
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern><!-- 모두 다 인코딩하라  -->
+	</filter-mapping>

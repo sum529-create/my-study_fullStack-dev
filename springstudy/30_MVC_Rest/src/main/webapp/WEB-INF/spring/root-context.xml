@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+		
+		
+		<!-- Mybatis용 dataSource, sqlSessionFactory, sqlSession -->
+	<!-- spring에서 지원하는 DataSouce가 connection 관리할때 사용 -->
+	<!-- 스프링에서 지원하는 DataSource를 hikari로 변경할 수 있다. -->
+	<!--  
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
+		<property name="username" value="spring" />
+		<property name="password" value="1111" />
+	</bean>
+	-->
+	<!-- pom에서 레퍼지토리 삽입 -->
+
+	<!-- HikariConfig (url -> jdbcUrl) -->
+	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe" />
+		<property name="username" value="spring" />
+		<property name="password" value="1111" />
+	</bean>
+	
+	<!-- HikariDataSource  아래 dataSource와 이름을 맞춘다. -->
+	<!-- config값을 가지고 있다. constructor-arg를 사용 -->
+	<!--  destroy 컨넥션 닫는다. -->
+	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+		<constructor-arg ref="hikariConfig"/>
+	</bean>
+	
+	
+	<!-- 아래 2개 mybatis이용 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mapperLocations" value="classpath:com/koreait/rest/dao/mapper/*.xml" />
+	</bean>
+	
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory" />
+	</bean>
+		
+</beans>

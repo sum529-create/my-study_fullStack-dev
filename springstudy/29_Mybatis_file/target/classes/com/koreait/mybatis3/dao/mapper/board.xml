@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.koreait.mybatis3.dao.BoardDao">
+	<select id="boardList" resultType="com.koreait.mybatis3.dto.BoardDto">
+		SELECT * FROM BOARD
+	</select>
+	
+	<insert id="boardInsert">
+		INSERT INTO
+			BOARD (NO, WRITER, TITLE, CONTENT, FILENAME, REGDATE) 
+			VALUES (BOARD_SEQ.NEXTVAL, #{param1}, #{param2}, #{param3}, #{param4}, SYSDATE)
+	</insert>
+	
+	<select id="boardView" parameterType="int" resultType="com.koreait.mybatis3.dto.BoardDto">
+		SELECT *
+			FROM BOARD
+		 WHERE NO = #{no}
+	</select>
+	<!-- parameter 타입은 필수가 아니다. -->
+	<!-- 404시 xml을 보라 -->
+	<delete id="boardDelete" parameterType="int">
+		DELETE FROM BOARD WHERE NO = #{no}
+	</delete>
+</mapper>
