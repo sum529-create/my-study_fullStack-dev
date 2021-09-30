@@ -1,0 +1,56 @@
+v-text
+v-html
+v-show
+v-if
+v-else
+v-else-if
+v-pre
+v-cloak
+v-once
+
+
+HTML
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+  <div id="app" v-cloak>
+    <h1 v-once v-if="value > 5">value 가 5보다 크군요</h1>
+    <h1 v-else-if="value === 5">값이 5네요</h1>
+    <h1 v-else>value가 5보다 작아요</h1>
+    <h2 v-once>초기 값 : {{value}} </h2>
+    <h2>현재 값 : {{value}} </h2>
+    <h1 v-pre>{{이건 그대로 렌더링해요}}</h1>
+  </div>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</body>
+</html>
+
+
+CSS
+[v-clock]{
+  display:none;
+}
+
+
+JS
+var app = new Vue({
+  el: '#app', // 어떤 엘리먼트에 적용시킬것인지
+  // data -> 해당 뷰에서의 사용할 정보를 지님
+  data : {
+//     name1: '<b>볼드채</b>',
+//     name2: '<i>이탈릭채</i>',
+//     visible: true,
+    value : 0
+  }
+})
+
+
+
+
+
+
